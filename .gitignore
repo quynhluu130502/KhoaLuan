@@ -1,24 +1,27 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+/client/dist
+/client/tmp
+/client/out-tsc
+/client/bazel-out
 
 # Node
-/node_modules
-npm-debug.log
-yarn-error.log
+/client/node_modules
+/client/npm-debug.log
+/client/yarn-error.log
+/server/node_modules
+/server/npm-debug.log
+/server/yarn-error.log
 
 # IDEs and editors
-.idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+/client/.idea/
+/client/.project
+/client/.classpath
+/client/.c9/
+/client/*.launch
+/client/.settings/
+/client/*.sublime-workspace
 
 # Visual Studio Code
 .vscode/*
@@ -29,7 +32,7 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
+/client/.angular/cache
 .sass-cache/
 /connect.lock
 /coverage
