@@ -1,19 +1,27 @@
 import { NgModule, isDevMode } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { GraduationThesisModule } from './graduation-thesis/graduation-thesis.module';
+
+import { FeatherModule } from 'angular-feather';
+import { allIcons } from 'angular-feather/icons';
 
 import { AppRoutingModule } from './app-routing.module';
+import { FullComponent } from './full/full.component';
 import { AppComponent } from './app.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FullComponent, RegisterComponent, LoginComponent],
   imports: [
+    CommonModule,
     BrowserModule,
-    AppRoutingModule,
+    BrowserAnimationsModule,
     NgbModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
@@ -21,10 +29,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000',
     }),
-    BrowserAnimationsModule,
     FormsModule,
-    FontAwesomeModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FeatherModule.pick(allIcons),
+    GraduationThesisModule,
+    AppRoutingModule,
   ],
+  exports: [FeatherModule],
   providers: [],
   bootstrap: [AppComponent],
 })
