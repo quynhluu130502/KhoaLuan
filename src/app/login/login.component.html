@@ -15,24 +15,26 @@
             <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
               <!-- Email input -->
               <div class="form-outline mb-4">
+                <label class="form-label">Username</label>
                 <input
                   type="text"
                   formControlName="username"
                   placeholder="Tên đăng nhập"
                   class="form-control"
                 />
-                <label class="form-label">Username</label>
+                <label *ngIf="username.invalid" [ngClass] = "'text-danger'"> Name is required with 10 max character. </label>
               </div>
 
               <!-- Password input -->
               <div class="form-outline mb-4">
+                <label class="form-label">Password</label>
                 <input
                   type="password"
                   formControlName="password"
                   placeholder="Mật khẩu"
                   class="form-control"
                 />
-                <label class="form-label">Password</label>
+                <label *ngIf="loginForm.get('password').invalid" [ngClass] = "'text-danger'"> Password is required. </label>
               </div>
 
               <!-- 2 column grid layout for inline styling -->
