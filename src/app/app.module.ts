@@ -10,6 +10,7 @@ import { GraduationThesisModule } from './graduation-thesis/graduation-thesis.mo
 
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { FullComponent } from './full/full.component';
@@ -33,6 +34,12 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     HttpClientModule,
     FeatherModule.pick(allIcons),
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      progressBar: true,
+      progressAnimation: 'increasing',
+      preventDuplicates: true,
+    }),
     GraduationThesisModule,
     AppRoutingModule,
   ],
