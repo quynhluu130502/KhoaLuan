@@ -1,31 +1,28 @@
 import express, { Express, Request, Response } from "express";
+
 import dotenv from "dotenv";
-import mongoose from "mongoose";
 dotenv.config();
 
 const app: Express = express();
-const port = process.env.PORT || 3000;
-
 app.use(express.json());
 
-const mongoString: string = process.env.DATABASE_URL!;
-mongoose.connect(mongoString);
-const database = mongoose.connection;
-database.on("error", (error: any) => {
-  console.log(error);
-});
+import morgan from "morgan";
+var env: string = process.env.NODE_ENV || "development";
+if (env !== "production") {
+  app.use(morgan("combined"));
+}
 
-database.once("connected", () => {
-  console.log("Database Connected");
-});
+import connectDatabase from "./configs/connectDatabase";
+connectDatabase();
 
-import routes from "./routes/routes";
-app.use("/api", routes);
+import routes from "./routes/userRoutes";
+app.use("/user", routes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
 });
 
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });
