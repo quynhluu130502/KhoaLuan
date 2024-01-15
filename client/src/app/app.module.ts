@@ -17,8 +17,15 @@ import { FullComponent } from './full/full.component';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { InternalUserComponent } from './internal-user/internal-user.component';
 @NgModule({
-  declarations: [AppComponent, FullComponent, RegisterComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    FullComponent,
+    RegisterComponent,
+    LoginComponent,
+    InternalUserComponent,
+  ],
   imports: [
     CommonModule,
     BrowserModule,

@@ -34,7 +34,7 @@
                   placeholder="Mật khẩu"
                   class="form-control"
                 />
-                <label *ngIf="loginForm.get('password').invalid" [ngClass] = "'text-danger'"> Password is required. </label>
+                <label *ngIf="loginForm?.get('password')?.invalid" [ngClass]="'text-danger'"> Password is required. </label>
               </div>
 
               <!-- 2 column grid layout for inline styling -->

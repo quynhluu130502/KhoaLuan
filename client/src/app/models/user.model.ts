@@ -1,0 +1,24 @@
+export class User {
+  sso: number;
+  name: string;
+  email: string;
+  language: string;
+  role: string;
+  application: string;
+  last_login: string;
+  pass: string;
+  salt: string;
+  active: boolean;
+  constructor() {
+    this.sso = 0;
+    this.name = '';
+    this.email = '';
+    this.language = 'English';
+    this.role = '';
+    this.application = 'NC';
+    this.last_login = Date.now().toString();
+    this.pass = '';
+    this.salt = '';
+    this.active = true;
+  }
+}

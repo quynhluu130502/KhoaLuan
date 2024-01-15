@@ -42,7 +42,7 @@ let userSchema = new mongoose.Schema({
   },
   last_login: {
     required: true,
-    type: Date,
+    type: String,
     default: Date.now(),
   },
   pass: { type: String, required: true },
