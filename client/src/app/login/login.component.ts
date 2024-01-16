@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
-import {  Router } from '@angular/router';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  AbstractControl,
+} from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../services/auth.service';
 
@@ -21,6 +26,7 @@ export class LoginComponent implements OnInit {
       username: new FormControl('', [
         Validators.required,
         Validators.maxLength(10),
+        Validators.pattern("^[a-zA-Z0-9-]+$")
       ]),
       password: new FormControl('', Validators.required),
     });
@@ -32,6 +38,10 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password')!;
   }
   onFormSubmit(): void {
+    if (this.username.invalid || this.password.invalid) {
+      this._toast.error('Vui lòng nhập đầy đủ thông tin!', 'ĐĂNG NHẬP');
+      return;
+    }
     if (this._auth.login(this.loginForm.value) === true) {
       this._toast.success('Đăng nhập thành công!', 'ĐĂNG NHẬP');
       this._router.navigate(['/qsa']);

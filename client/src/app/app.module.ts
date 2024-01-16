@@ -29,7 +29,7 @@ import { InternalUserComponent } from './internal-user/internal-user.component';
   imports: [
     CommonModule,
     BrowserModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule, // required animations module
     NgbModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),

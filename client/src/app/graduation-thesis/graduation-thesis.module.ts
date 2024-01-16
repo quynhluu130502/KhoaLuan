@@ -50,19 +50,6 @@ import { PlatformModule } from '@angular/cdk/platform';
 import { ObserversModule } from '@angular/cdk/observers';
 import { PortalModule } from '@angular/cdk/portal';
 
-import {
-  FontAwesomeModule,
-  FaIconLibrary,
-} from '@fortawesome/angular-fontawesome';
-import {
-  faTwitter,
-  faFacebook,
-  faGithub,
-  faGoogle,
-} from '@fortawesome/free-brands-svg-icons';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
-
 /**
  * NgModule that includes all Material modules that are required to serve the demo-app.
  */
@@ -113,14 +100,6 @@ import { far } from '@fortawesome/free-regular-svg-icons';
     OverlayModule,
     PlatformModule,
     PortalModule,
-
-    FontAwesomeModule,
   ],
 })
-export class GraduationThesisModule {
-  constructor(library: FaIconLibrary) {
-    // Add an icon to the library for convenient access in other components
-    library.addIcons(faTwitter, faFacebook, faGithub, faGoogle);
-    library.addIconPacks(fas, far);
-  }
-}
+export class GraduationThesisModule {}

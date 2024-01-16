@@ -32,24 +32,37 @@
     <td mat-cell *matCellDef="let element">{{ element.role }}</td>
   </ng-container>
 
-  <!-- Language Column -->
+  <!-- Application Column -->
   <ng-container matColumnDef="application">
     <th mat-header-cell *matHeaderCellDef>Applications</th>
     <td mat-cell *matCellDef="let element">{{ element.application }}</td>
   </ng-container>
 
-  <!-- Language Column -->
+  <!-- Last Login Column -->
   <ng-container matColumnDef="last_login">
     <th mat-header-cell *matHeaderCellDef>Last Login</th>
     <td mat-cell *matCellDef="let element">{{ element.last_login }}</td>
   </ng-container>
 
-  <!-- Language Column -->
+  <!-- Active Column -->
   <ng-container matColumnDef="active">
     <th mat-header-cell *matHeaderCellDef>Activate/Deactivate</th>
     <td mat-cell *matCellDef="let element">
       <mat-slide-toggle [checked]="element.active" [matTooltip]="'Deactivate this user'" [matTooltipPosition]="'above'">
       </mat-slide-toggle>
+    </td>
+  </ng-container>
+
+  <!-- Active Column -->
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button [matTooltip]="'Edit this user'" [matTooltipPosition]="'above'">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button [matTooltip]="'Delete this user'" [matTooltipPosition]="'above'">
+        <mat-icon>delete</mat-icon>
+      </button>
     </td>
   </ng-container>
 
