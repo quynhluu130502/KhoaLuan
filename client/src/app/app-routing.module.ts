@@ -7,6 +7,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FullComponent } from './full/full.component';
 // import { DashboardComponent } from './dashboard/dashboard.component';
 import { InternalUserComponent } from './internal-user/internal-user.component';
+import { authGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   {
     path: 'qsa',
     component: FullComponent,
+    canActivate:[authGuard],
     children: [
       { path: '', redirectTo: 'internal-user', pathMatch: 'full' },
       { path: 'internal-user', component: InternalUserComponent },

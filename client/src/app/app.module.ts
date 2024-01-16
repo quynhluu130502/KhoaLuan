@@ -18,6 +18,7 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { InternalUserComponent } from './internal-user/internal-user.component';
+import { CreateInternalUserComponent } from './create-internal-user/create-internal-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { InternalUserComponent } from './internal-user/internal-user.component';
     RegisterComponent,
     LoginComponent,
     InternalUserComponent,
+    CreateInternalUserComponent
   ],
   imports: [
     CommonModule,

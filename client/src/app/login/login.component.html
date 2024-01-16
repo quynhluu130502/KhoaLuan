@@ -15,14 +15,14 @@
             <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
               <!-- Email input -->
               <div class="form-outline mb-4">
-                <label class="form-label">Username</label>
+                <label class="form-label">SSO</label>
                 <input
                   type="text"
-                  formControlName="username"
+                  formControlName="sso"
                   placeholder="Tên đăng nhập"
                   class="form-control"
                 />
-                <label *ngIf="username.invalid" [ngClass] = "'text-danger'"> Name is required with 10 max character. </label>
+                <label *ngIf="sso.invalid" [ngClass] = "'text-danger'"> SSO is required with 6 max character. </label>
               </div>
 
               <!-- Password input -->
@@ -30,11 +30,11 @@
                 <label class="form-label">Password</label>
                 <input
                   type="password"
-                  formControlName="password"
+                  formControlName="pass"
                   placeholder="Mật khẩu"
                   class="form-control"
                 />
-                <label *ngIf="loginForm?.get('password')?.invalid" [ngClass]="'text-danger'"> Password is required. </label>
+                <label *ngIf="loginForm?.get('pass')?.invalid" [ngClass]="'text-danger'"> Password is required. </label>
               </div>
 
               <!-- 2 column grid layout for inline styling -->

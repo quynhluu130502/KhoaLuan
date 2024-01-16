@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-internal-user',
   templateUrl: './internal-user.component.html',
-  styleUrl: './internal-user.component.css',
+  styleUrl: './internal-user.component.scss',
 })
 export class InternalUserComponent {
   displayedColumns: string[] = [

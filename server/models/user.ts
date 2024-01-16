@@ -29,11 +29,15 @@ let userSchema = new mongoose.Schema({
     type: String,
     default: "English",
   },
-
-  role: {
+  job_function: {
     required: false,
     type: String,
     default: "",
+  },
+  role: {
+    required: false,
+    type: String,
+    default: "User",
   },
   application: {
     required: true,

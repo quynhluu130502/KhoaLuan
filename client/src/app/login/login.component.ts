@@ -12,7 +12,7 @@ import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({});
@@ -23,28 +23,41 @@ export class LoginComponent implements OnInit {
   ) {}
   ngOnInit() {
     this.loginForm = new FormGroup({
-      username: new FormControl('', [
+      sso: new FormControl('', [
         Validators.required,
-        Validators.maxLength(10),
-        Validators.pattern("^[a-zA-Z0-9-]+$")
+        Validators.maxLength(6),
+        Validators.minLength(6),
+        Validators.pattern('^[a-zA-Z0-9-]+$'),
       ]),
-      password: new FormControl('', Validators.required),
+      pass: new FormControl('', Validators.required),
     });
   }
-  get username(): AbstractControl {
-    return this.loginForm.get('username')!;
+  get sso(): AbstractControl {
+    return this.loginForm.get('sso')!;
   }
   get password(): AbstractControl {
-    return this.loginForm.get('password')!;
+    return this.loginForm.get('pass')!;
   }
   onFormSubmit(): void {
-    if (this.username.invalid || this.password.invalid) {
+    if (this.sso.invalid || this.password.invalid) {
       this._toast.error('Vui lòng nhập đầy đủ thông tin!', 'ĐĂNG NHẬP');
       return;
     }
-    if (this._auth.login(this.loginForm.value) === true) {
+    this._auth.login(this.loginForm.value).subscribe((res) => {
+      if (!res.user) {
+        if (res.message === 'User not found') {
+          this._toast.error('Tài khoản không tồn tại!', 'ĐĂNG NHẬP');
+          return;
+        } else {
+          this._toast.error('Sai mật khẩu!', 'ĐĂNG NHẬP');
+          return;
+        }
+      }
+      this._auth.changeAuthStatus();
+      sessionStorage.setItem('user', JSON.stringify(res.user));
+      sessionStorage.setItem('isLoggedIn', 'true');
       this._toast.success('Đăng nhập thành công!', 'ĐĂNG NHẬP');
       this._router.navigate(['/qsa']);
-    }
+    });
   }
 }

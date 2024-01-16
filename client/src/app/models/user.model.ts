@@ -3,6 +3,7 @@ export class User {
   name: string;
   email: string;
   language: string;
+  job_function:string;
   role: string;
   application: string;
   last_login: string;
@@ -14,6 +15,7 @@ export class User {
     this.name = '';
     this.email = '';
     this.language = 'English';
+    this.job_function = '';
     this.role = '';
     this.application = 'NC';
     this.last_login = Date.now().toString();

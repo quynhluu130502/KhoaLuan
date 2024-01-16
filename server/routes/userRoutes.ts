@@ -32,6 +32,7 @@ router.post("/", async (req: Request, res: Response) => {
     email: req.body!.email,
     language: req.body?.language,
     role: req.body?.role,
+    job_function: req.body?.job_function,
     application: req.body?.application,
     last_login: req.body?.last_login,
     pass: hash,
@@ -53,9 +54,9 @@ router.post("/get", async (req: Request, res: Response) => {
     const sso = req.body.sso;
     const user = await User.findOne({ sso: sso }).select("-pass -salt");
     if (user) {
-      res.send(user);
+      res.json({message: "User found", user: user});
     } else {
-      res.status(404).json({ message: "Document not found" });
+      res.json({ message: "Document not found" });
     }
   } catch (error: any) {
     res.status(400).json({ message: error.message });
@@ -87,6 +88,7 @@ router.patch("/", async (req: Request, res: Response) => {
         email: req.body?.email,
         language: req.body?.language,
         role: req.body?.role,
+        job_function: req.body?.job_function,
         application: req.body?.application,
         last_login: req.body?.last_login,
         active: req.body?.active,
@@ -153,6 +155,29 @@ router.post("/delete", async (req: Request, res: Response) => {
       return;
     }
   } catch (error: any) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+router.post("/login", async (req: Request, res: Response) => {
+  try {
+    console.log(req.body);
+    let sso = req.body.sso;
+    let pass = req.body.pass;
+    let user = await User.findOne({ sso: sso });
+    if(!user) {
+      res.json({ message: "User not found" });
+      return;
+    }
+    if (user.pass === generateHash(pass, user.salt)) {
+      user.pass = "";
+      user.salt = "";
+      res.json({ message: "Login successful", user: user });
+    } else {
+      res.json({ message: "Login failed - Wrong password" });
+    }
+  }
+  catch (error: any) {
     res.status(400).json({ message: error.message });
   }
 });

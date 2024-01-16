@@ -1,0 +1,80 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>Create Internal User</h1>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-tab-group>
+    <mat-tab label="Grid Solutions">
+      <div class="p-5">
+        <form (ngSubmit)="onSearch()"
+          class="d-flex flex-row flex-wrap justify-content-between align-content-start"
+        >
+          <mat-form-field>
+            <mat-label>SSO</mat-label>
+            <input
+              matInput
+              maxlength="6"
+              placeholder="Ex. 100123"
+              [formControl]="sso"
+            />
+            @if (sso.invalid) {
+            <mat-error>{{ getSSOErrorMessage() }}</mat-error>
+            }
+          </mat-form-field>
+          <div id="div-search">
+            <button mat-flat-button color="accent" type="submit" [disabled]="sso.invalid">Search</button>
+          </div>
+        </form>
+        <form
+          class="d-flex flex-row flex-wrap justify-content-between align-content-start"
+          [formGroup]="inforForm"
+        >
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              maxlength="6"
+              placeholder="Ex. pascal.lumbroso@med.ge.com"
+              formControlName="email"
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Full Name</mat-label>
+            <input
+              matInput
+              maxlength="6"
+              placeholder="Ex. 100123"
+              formControlName="name"
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Language</mat-label>
+            <mat-select formControlName="language">
+              <mat-option value="English">English</mat-option>
+              <mat-option value="French">French</mat-option>
+              <mat-option value="Turkish">Turkish</mat-option>
+              <mat-option value="Italian">Italian</mat-option>
+              <mat-option value="Portuguese">Portuguese</mat-option>
+              <mat-option value="Chinese">Chinese</mat-option>
+              <mat-option value="German">German</mat-option>
+              <mat-option value="Spanish">Spanish</mat-option>
+            </mat-select>
+            <mat-hint align="end">Click here to drop down menu</mat-hint>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Job Function</mat-label>
+            <input
+              matInput
+              maxlength="6"
+              placeholder="Ex. Digital Technology"
+              formControlName="job_function"
+            />
+          </mat-form-field>
+        </form>
+        <button mat-flat-button color="accent">Add Internal User</button>
+      </div>
+    </mat-tab>
+    <mat-tab label="Hydro Solutions"></mat-tab>
+  </mat-tab-group>
+</mat-card>
