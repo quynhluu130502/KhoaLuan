@@ -30,12 +30,12 @@ export class FullComponent {
 
   sidebarMenu: sidebarMenu[] = [
     {
-      link: '/home',
+      link: '/qsa/internal-user',
       icon: 'home',
       menu: 'Dashboard',
     },
     {
-      link: '/forms',
+      link: '/qsa/non-conformities',
       icon: 'layout',
       menu: 'Forms',
     },
@@ -43,36 +43,6 @@ export class FullComponent {
       link: '/alerts',
       icon: 'info',
       menu: 'Alerts',
-    },
-    {
-      link: '/grid-list',
-      icon: 'file-text',
-      menu: 'Grid List',
-    },
-    {
-      link: '/menu',
-      icon: 'menu',
-      menu: 'Menus',
-    },
-    {
-      link: '/table',
-      icon: 'grid',
-      menu: 'Tables',
-    },
-    {
-      link: '/tabs',
-      icon: 'list',
-      menu: 'Tabs',
-    },
-    {
-      link: '/progress',
-      icon: 'bar-chart-2',
-      menu: 'Progress Bar',
-    },
-    {
-      link: '/slide-toggle',
-      icon: 'layers',
-      menu: 'Slide Toggle',
     },
   ];
 }

@@ -1,0 +1,49 @@
+<div>
+  <div class="example-action-buttons">
+    <button mat-button (click)="accordion.openAll()">Expand All</button>
+    <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+  </div>
+  <mat-accordion class="" multi>
+    <!-- NC Detail -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> NC Detail </mat-panel-title>
+        <mat-panel-description>
+          Type your NC Detail
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div>
+        <div class="row">
+          <div class="col-4">
+            <mat-form-field>
+              <mat-label>First name</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Age</mat-label>
+              <input matInput type="number" min="1" />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+
+    <!-- Problem Detail -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Problem Detail </mat-panel-title>
+      </mat-expansion-panel-header>
+      <!-- Title -->
+        <mat-form-field>
+          <mat-label>Problem Title</mat-label>
+          <input matInput type="text" [formControl]="title"/>
+        </mat-form-field>
+        <!-- Detail -->
+          <div class="w-100">
+            <app-rich-text [detail]="detail"></app-rich-text>
+          </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

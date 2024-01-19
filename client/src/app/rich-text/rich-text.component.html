@@ -1,0 +1,19 @@
+<mat-label>Problem Detail</mat-label>
+<quill-editor
+  class="content-editor"
+  [placeholder]="''"
+  [modules]="QuillConfiguration"
+  [formControl]="detail"
+  [required]="true"
+  [styles]="{
+    height: '250px',
+    width: '100%',
+    border: '4px solid #ccc',
+    borderRadius: '10px',
+    borderColor: detail.invalid ? 'red' : 'green',
+  }"
+  [placeholder]="'Enter your problem detail here...'"
+>
+</quill-editor>
+<mat-label *ngIf="detail.invalid">Problem Detail</mat-label>
+{{ detail.value }}

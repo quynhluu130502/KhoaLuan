@@ -8,6 +8,7 @@ import { FullComponent } from './full/full.component';
 // import { DashboardComponent } from './dashboard/dashboard.component';
 import { InternalUserComponent } from './internal-user/internal-user.component';
 import { authGuard } from './auth.guard';
+import { NonConformitiesComponent } from './non-conformities/non-conformities.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'internal-user', pathMatch: 'full' },
       { path: 'internal-user', component: InternalUserComponent },
+      { path: 'non-conformities', component: NonConformitiesComponent },
     ],
   },
   { path: '**', component: PageNotFoundComponent },

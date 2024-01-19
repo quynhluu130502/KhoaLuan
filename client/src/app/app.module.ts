@@ -11,6 +11,7 @@ import { GraduationThesisModule } from './graduation-thesis/graduation-thesis.mo
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
 import { ToastrModule } from 'ngx-toastr';
+import { QuillModule } from 'ngx-quill'
 
 import { AppRoutingModule } from './app-routing.module';
 import { FullComponent } from './full/full.component';
@@ -19,6 +20,9 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { InternalUserComponent } from './internal-user/internal-user.component';
 import { CreateInternalUserComponent } from './create-internal-user/create-internal-user.component';
+import { NonConformitiesComponent } from './non-conformities/non-conformities.component';
+import { CreateNonConformitiesComponent } from './create-non-conformities/create-non-conformities.component';
+import { RichTextComponent } from './rich-text/rich-text.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +30,10 @@ import { CreateInternalUserComponent } from './create-internal-user/create-inter
     RegisterComponent,
     LoginComponent,
     InternalUserComponent,
-    CreateInternalUserComponent
+    CreateInternalUserComponent,
+    NonConformitiesComponent,
+    CreateNonConformitiesComponent,
+    RichTextComponent
   ],
   imports: [
     CommonModule,
@@ -49,6 +56,7 @@ import { CreateInternalUserComponent } from './create-internal-user/create-inter
       progressAnimation: 'increasing',
       preventDuplicates: true,
     }),
+    QuillModule.forRoot(),
     GraduationThesisModule,
     AppRoutingModule,
   ],
