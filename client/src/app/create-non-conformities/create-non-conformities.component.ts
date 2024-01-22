@@ -90,7 +90,8 @@ export class CreateNonConformitiesComponent implements OnInit {
     );
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.problemDescription.setValue(result);
+      console.log(result)
+      this.problemDescription.setValue(result.description);
     });
   }
 }

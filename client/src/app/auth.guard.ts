@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { inject } from '@angular/core';
 import {
   CanActivateFn,
@@ -11,9 +12,6 @@ export const authGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
 ) => {
-  console.log('CanActivate called');
-  console.log('route: ', route);
-  console.log('state: ', state);
   const router: Router = inject(Router);
   const authService: AuthService = inject(AuthService);
   const isLoggedIn = authService.isAuthenticated();

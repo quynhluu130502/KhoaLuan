@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, retry } from 'rxjs';
 import { User } from '../models/user.model';
 import { handleError } from '../constant';
@@ -13,7 +13,7 @@ interface successfulLogin {
   providedIn: 'root',
 })
 export class AuthService {
-  isLoggedIn:boolean = false;
+  isLoggedIn: boolean = false;
   constructor(private _http: HttpClient) {
     this.isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
   }
@@ -33,10 +33,10 @@ export class AuthService {
       );
   }
 
-  isAuthenticated(){
+  isAuthenticated() {
     return this.isLoggedIn;
   }
-  changeAuthStatus(){
+  changeAuthStatus() {
     this.isLoggedIn = !this.isLoggedIn;
   }
 }

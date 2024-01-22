@@ -20,4 +20,13 @@ export class NcgService {
         catchError(handleError)
       );
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  addFiles(formData: FormData): Observable<any> {
+    return this._http
+      .post('http://localhost:3000/ncg/upload', formData, {
+        reportProgress: true,
+        observe: 'events',
+      })
+      .pipe(catchError(handleError));
+  }
 }

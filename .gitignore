@@ -39,6 +39,7 @@
 /libpeerconnection.log
 testem.log
 /typings
+/server/public
 
 # System files
 .DS_Store

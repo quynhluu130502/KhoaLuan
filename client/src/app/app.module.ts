@@ -24,6 +24,7 @@ import { NonConformitiesComponent } from './non-conformities/non-conformities.co
 import { CreateNonConformitiesComponent } from './create-non-conformities/create-non-conformities.component';
 import { RichTextComponent } from './rich-text/rich-text.component';
 import { ProblemDescriptionDialogComponent } from './problem-description-dialog/problem-description-dialog.component';
+import { DragDropFileUploadDirective } from './directives/drag-drop-file-upload.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { ProblemDescriptionDialogComponent } from './problem-description-dialog/
     NonConformitiesComponent,
     CreateNonConformitiesComponent,
     RichTextComponent,
-    ProblemDescriptionDialogComponent
+    ProblemDescriptionDialogComponent,
+    DragDropFileUploadDirective,
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,5 @@
 import * as mongoose from "mongoose";
-import User from "./user"; // Import the User model
+import User from "./User"; // Import the User model
 
 let userSchema = new mongoose.Schema({
   sso: {

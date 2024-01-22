@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
 import crypto from "crypto";
-import User from "../models/user";
+import User from "../models/User";
 
 const router = Router();
 
@@ -54,7 +54,7 @@ router.post("/get", async (req: Request, res: Response) => {
     const sso = req.body.sso;
     const user = await User.findOne({ sso: sso }).select("-pass -salt");
     if (user) {
-      res.json({message: "User found", user: user});
+      res.json({ message: "User found", user: user });
     } else {
       res.json({ message: "Document not found" });
     }
@@ -165,7 +165,7 @@ router.post("/login", async (req: Request, res: Response) => {
     let sso = req.body.sso;
     let pass = req.body.pass;
     let user = await User.findOne({ sso: sso });
-    if(!user) {
+    if (!user) {
       res.json({ message: "User not found" });
       return;
     }
@@ -176,8 +176,7 @@ router.post("/login", async (req: Request, res: Response) => {
     } else {
       res.json({ message: "Login failed - Wrong password" });
     }
-  }
-  catch (error: any) {
+  } catch (error: any) {
     res.status(400).json({ message: error.message });
   }
 });
