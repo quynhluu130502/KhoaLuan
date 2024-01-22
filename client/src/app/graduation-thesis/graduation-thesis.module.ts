@@ -40,6 +40,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { provideMomentDateAdapter } from '@angular/material-moment-adapter';
 
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
@@ -49,6 +50,18 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { PlatformModule } from '@angular/cdk/platform';
 import { ObserversModule } from '@angular/cdk/observers';
 import { PortalModule } from '@angular/cdk/portal';
+
+const VIETNAM_DATE_FORMAT = {
+  parse: {
+    dateInput: 'DD/MM/YYYY',
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MMMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 /**
  * NgModule that includes all Material modules that are required to serve the demo-app.
@@ -101,5 +114,7 @@ import { PortalModule } from '@angular/cdk/portal';
     PlatformModule,
     PortalModule,
   ],
+  // Enable to use moment date adapter for datepicker
+  providers: [provideMomentDateAdapter(VIETNAM_DATE_FORMAT, { useUtc: true })],
 })
 export class GraduationThesisModule {}

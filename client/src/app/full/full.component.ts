@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { Data } from '@angular/router';
 
 interface sidebarMenu {
   link: string;
@@ -14,35 +16,25 @@ interface sidebarMenu {
   templateUrl: './full.component.html',
   styleUrl: './full.component.scss',
 })
-export class FullComponent {
+export class FullComponent implements OnInit {
   search: boolean = false;
-
-  isHandset$: Observable<boolean> = this.breakpointObserver
+  routerActive: string = 'activelink';
+  sidebarMenu: sidebarMenu[] = [];
+  isHandset$: Observable<boolean> = this._breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
       map((result) => result.matches),
       shareReplay()
     );
+  constructor(
+    private _breakpointObserver: BreakpointObserver,
+    private _activatedRoute: ActivatedRoute
+  ) {}
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
-
-  routerActive: string = 'activelink';
-
-  sidebarMenu: sidebarMenu[] = [
-    {
-      link: '/qsa/internal-user',
-      icon: 'home',
-      menu: 'Dashboard',
-    },
-    {
-      link: '/qsa/non-conformities',
-      icon: 'layout',
-      menu: 'Forms',
-    },
-    {
-      link: '/alerts',
-      icon: 'info',
-      menu: 'Alerts',
-    },
-  ];
+  ngOnInit(): void {
+    this._activatedRoute.data.subscribe((data: Data) => {
+      const sidebarMenu = Object.values(data);
+      this.sidebarMenu = sidebarMenu as sidebarMenu[];
+    });
+  }
 }

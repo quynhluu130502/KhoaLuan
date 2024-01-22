@@ -22,8 +22,11 @@ app.use(cors({
 import connectDatabase from "./configs/connectDatabase";
 connectDatabase();
 
-import routes from "./routes/userRoutes";
-app.use("/user", routes);
+import userRoutes from "./routes/userRoutes";
+app.use("/user", userRoutes);
+
+import ncgRoutes from "./routes/ncgRoutes";
+app.use("/ncg", ncgRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");

@@ -23,6 +23,7 @@ import { CreateInternalUserComponent } from './create-internal-user/create-inter
 import { NonConformitiesComponent } from './non-conformities/non-conformities.component';
 import { CreateNonConformitiesComponent } from './create-non-conformities/create-non-conformities.component';
 import { RichTextComponent } from './rich-text/rich-text.component';
+import { ProblemDescriptionDialogComponent } from './problem-description-dialog/problem-description-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { RichTextComponent } from './rich-text/rich-text.component';
     CreateInternalUserComponent,
     NonConformitiesComponent,
     CreateNonConformitiesComponent,
-    RichTextComponent
+    RichTextComponent,
+    ProblemDescriptionDialogComponent
   ],
   imports: [
     CommonModule,

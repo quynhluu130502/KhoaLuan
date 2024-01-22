@@ -1,49 +1,140 @@
 <div>
-  <div class="example-action-buttons">
+  <div>
     <button mat-button (click)="accordion.openAll()">Expand All</button>
     <button mat-button (click)="accordion.closeAll()">Collapse All</button>
   </div>
   <mat-accordion class="" multi>
     <!-- NC Detail -->
-    <mat-expansion-panel>
+    <mat-expansion-panel
+      [expanded]="step === 0"
+      (opened)="setStep(0)"
+      hideToggle
+    >
       <mat-expansion-panel-header>
         <mat-panel-title> NC Detail </mat-panel-title>
-        <mat-panel-description>
-          Type your NC Detail
-          <mat-icon>account_circle</mat-icon>
-        </mat-panel-description>
+        <mat-panel-description> Type your NC Detail </mat-panel-description>
+        <mat-icon>account_circle</mat-icon>
       </mat-expansion-panel-header>
 
       <div>
         <div class="row">
           <div class="col-4">
             <mat-form-field>
-              <mat-label>First name</mat-label>
-              <input matInput />
+              <mat-label>NC Type</mat-label>
+              <mat-select>
+                <mat-option [value]="'factory internal'"
+                  >Factory Internal</mat-option
+                >
+              </mat-select>
             </mat-form-field>
+          </div>
+          <div class="col-4">
             <mat-form-field>
-              <mat-label>Age</mat-label>
-              <input matInput type="number" min="1" />
+              <mat-label>Detected By Unit</mat-label>
+              <input
+                matInput
+                type="text"
+                placeholder="Pick one"
+                [formControl]="detectedByUnitControl"
+                [matAutocomplete]="detectedByUnit"
+              />
+              <mat-autocomplete #detectedByUnit="matAutocomplete">
+                @for (option of filteredDetectedByUnit | async; track option) {
+                <mat-option [value]="option">{{ option.unitName }}</mat-option>
+                }
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+          <div class="col-4">
+            <mat-form-field>
+              <mat-label>Detection Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="detectionDate"
+                [max]="maxDetectionDate"
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="detectionDate"
+              ></mat-datepicker-toggle>
+              <mat-datepicker
+                #detectionDate
+                [startAt]="maxDetectionDate"
+              ></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <mat-form-field>
+              <mat-label>Problem Title</mat-label>
+              <input
+                matInput
+                type="text"
+                [formControl]="problemTitle"
+                [required]="true"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-4">
+            <mat-form-field>
+              <mat-label>Problem Description</mat-label>
+              <input
+                matInput
+                type="text"
+                [formControl]="problemDescription"
+                [value]=""
+                [required]="true"
+                (click)="openDialog('375ms', '375ms')"
+                [readonly]="true"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-4">
+            <mat-form-field>
+              <mat-label>Containment</mat-label>
+              <input
+                matInput
+                type="text"
+                [formControl]="contaiment"
+                [required]="false"
+              />
             </mat-form-field>
           </div>
         </div>
       </div>
+      <mat-action-row>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
     </mat-expansion-panel>
 
     <!-- Problem Detail -->
-    <mat-expansion-panel>
+    <mat-expansion-panel
+      [expanded]="step === 1"
+      (opened)="setStep(1)"
+      hideToggle
+    >
       <mat-expansion-panel-header>
         <mat-panel-title> Problem Detail </mat-panel-title>
+        <mat-panel-description>
+          Type your Problem Detail
+        </mat-panel-description>
       </mat-expansion-panel-header>
       <!-- Title -->
+      <div>
         <mat-form-field>
           <mat-label>Problem Title</mat-label>
-          <input matInput type="text" [formControl]="title"/>
+          <textarea matInput type="text" [formControl]="title"></textarea>
         </mat-form-field>
         <!-- Detail -->
-          <div class="w-100">
-            <app-rich-text [detail]="detail"></app-rich-text>
-          </div>
+        <div class="w-100">
+          <!-- <app-rich-text [detail]="detail"></app-rich-text> -->
+        </div>
+      </div>
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
 </div>

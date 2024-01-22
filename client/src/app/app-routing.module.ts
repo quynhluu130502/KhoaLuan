@@ -9,6 +9,7 @@ import { FullComponent } from './full/full.component';
 import { InternalUserComponent } from './internal-user/internal-user.component';
 import { authGuard } from './auth.guard';
 import { NonConformitiesComponent } from './non-conformities/non-conformities.component';
+import { ncgMenu, qsaMenu } from './constant';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,10 +18,20 @@ const routes: Routes = [
   {
     path: 'qsa',
     component: FullComponent,
-    canActivate:[authGuard],
+    canActivate: [authGuard],
+    data: qsaMenu,
     children: [
       { path: '', redirectTo: 'internal-user', pathMatch: 'full' },
       { path: 'internal-user', component: InternalUserComponent },
+    ],
+  },
+  {
+    path: 'ncg',
+    component: FullComponent,
+    canActivate: [authGuard],
+    data: ncgMenu,
+    children: [
+      { path: '', redirectTo: 'non-conformities', pathMatch: 'full' },
       { path: 'non-conformities', component: NonConformitiesComponent },
     ],
   },

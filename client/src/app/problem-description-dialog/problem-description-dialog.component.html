@@ -1,0 +1,16 @@
+<h2 class="mat-dialog-title" mat-dialog-title>Problem Description</h2>
+<mat-dialog-content>
+  <div class="w-100">
+    <mat-form-field>
+      <mat-label>Problem Description</mat-label>
+      <textarea matInput type="text" [(ngModel)]="dialogData.description" [required]="true"></textarea>
+    </mat-form-field>
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0 w-100">
+
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="dialogData.description">Install</button>
+</mat-dialog-actions>
