@@ -1,5 +1,4 @@
-import { Component, Inject , ViewEncapsulation} from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NcgService } from '../services/ncg.service';
@@ -15,12 +14,19 @@ interface DialogData {
   selector: 'app-problem-description-dialog',
   templateUrl: './problem-description-dialog.component.html',
   styleUrl: './problem-description-dialog.component.css',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class ProblemDescriptionDialogComponent {
-  problemDescription: FormControl = new FormControl('');
-  files: { item: File; url: string }[] = [];
-  uploadForm: FormGroup = new FormGroup({});
+  private _files: { item: File; url: string }[] = [];
+
+  get files(): { item: File; url: string }[] {
+    return this._files;
+  }
+
+  set files(value: { item: File; url: string }[]) {
+    this._files = value;
+    this.dialogData.files = value;
+  }
   msg: string = '';
   progress: number = 0;
   constructor(
@@ -28,8 +34,7 @@ export class ProblemDescriptionDialogComponent {
     private _sanitizer: DomSanitizer,
     private _ncgService: NcgService,
     private _toastService: ToastrService,
-    public dialogRef: MatDialogRef<ProblemDescriptionDialogComponent>,
-    public _formBuilder: FormBuilder
+    public dialogRef: MatDialogRef<ProblemDescriptionDialogComponent>
   ) {}
 
   onCancelClick(): void {
@@ -43,7 +48,7 @@ export class ProblemDescriptionDialogComponent {
   upload(e: FileList) {
     Array.from(e).forEach((item: File) => {
       const url = URL.createObjectURL(item);
-      this.files.push({ item, url: url });
+      this.files = this.files.concat({ item, url: url });
     });
   }
 
@@ -56,27 +61,31 @@ export class ProblemDescriptionDialogComponent {
     this.files.forEach((file) => {
       formData.append('file', file.item);
     });
-    this._ncgService.addFiles(formData).subscribe((event: HttpEvent<ResponseType>) => {
-      switch (event.type) {
-        case HttpEventType.Sent:
-          // console.log('Request has been made!');
-          break;
-        case HttpEventType.ResponseHeader:
-          // console.log('Response header has been received!');
-          break;
-        case HttpEventType.UploadProgress:
-          this.progress = Math.round((event.loaded / (event.total ?? 1)) * 100);
-          // console.log(`Uploaded! ${this.progress}%`);
-          break;
-        case HttpEventType.Response:
-          // console.log('File uploaded successfully!', event.body);
-          setTimeout(() => {
-            this.progress = 0;
-            this.msg = 'File uploaded successfully!';
-          }, 1500);
-      }
-      this.dialogData.files = this.files;
-      this._toastService.success('File uploaded successfully!');
-    });
+    this._ncgService
+      .addFiles(formData)
+      .subscribe((event: HttpEvent<ResponseType>) => {
+        switch (event.type) {
+          case HttpEventType.Sent:
+            // console.log('Request has been made!');
+            break;
+          case HttpEventType.ResponseHeader:
+            // console.log('Response header has been received!');
+            break;
+          case HttpEventType.UploadProgress:
+            this.progress = Math.round(
+              (event.loaded / (event.total ?? 1)) * 100
+            );
+            // console.log(`Uploaded! ${this.progress}%`);
+            break;
+          case HttpEventType.Response:
+            // console.log('File uploaded successfully!', event.body);
+            setTimeout(() => {
+              this.progress = 0;
+              this.msg = 'File uploaded successfully!';
+            }, 1500);
+        }
+        this.dialogData.files = this.files;
+        this._toastService.success('File uploaded successfully!');
+      });
   }
 }

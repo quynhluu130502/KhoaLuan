@@ -2,25 +2,25 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, retry } from 'rxjs';
 import { handleError } from '../constant';
-import { DetectedUnit } from '../models/detectedUnit';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NcgService {
   constructor(private _http: HttpClient) {}
-  getDetectedUnits(): Observable<DetectedUnit[]> {
+
+  getMasterData(): Observable<any> {
     return this._http
-      .get(`${process.env['SERVER_URL']}/ncg/detectedUnits`)
+      .get(`${process.env['SERVER_URL']}/ncg/masterData`)
       .pipe(
         map((res) => {
-          return res as DetectedUnit[];
+          return res;
         }),
         retry(2),
         catchError(handleError)
       );
   }
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   addFiles(formData: FormData): Observable<any> {
     return this._http
       .post('http://localhost:3000/ncg/upload', formData, {
@@ -28,5 +28,17 @@ export class NcgService {
         observe: 'events',
       })
       .pipe(catchError(handleError));
+  }
+
+  getInternalUsers(): Observable<any> {
+    return this._http
+      .get(`${process.env['SERVER_URL']}/ncg/internalUsers`)
+      .pipe(
+        map((res) => {
+          return res;
+        }),
+        retry(2),
+        catchError(handleError)
+      );
   }
 }

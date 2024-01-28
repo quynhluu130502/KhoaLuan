@@ -1,0 +1,3723 @@
+{
+  "mdDefectiveUnits": [
+    {
+      "code": "EA",
+      "nameEN": "EA - Each",
+      "nameFR": "EA - Each",
+      "namePT": "Un - Unidade",
+      "nameGR": "ea - Jede",
+      "nameZH": "ea - 每个",
+      "nameTR": "EA - Each",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 885,
+      "codeSap": "EA"
+    },
+    {
+      "code": "FT",
+      "nameEN": "ft - FEET",
+      "nameFR": "ft - FEET",
+      "namePT": "ft - FEET",
+      "nameGR": "ft - FEET",
+      "nameZH": "ft - FEET",
+      "nameTR": "ft - FEET",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 886,
+      "codeSap": "ft"
+    },
+    {
+      "code": "GAL",
+      "nameEN": "gal – Gallon",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 887,
+      "codeSap": "gal"
+    },
+    {
+      "code": "KGM",
+      "nameEN": "KG - Kilogram",
+      "nameFR": "KG - Kilogram",
+      "namePT": "KG - Quilograma",
+      "nameGR": "kg - Kilogramm",
+      "nameZH": "kg - 公斤",
+      "nameTR": "KG - Kilogram",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 888,
+      "codeSap": "KG"
+    },
+    {
+      "code": "LB",
+      "nameEN": "LB – Pound",
+      "nameFR": "LB – Pound",
+      "namePT": "LB - Libra",
+      "nameGR": "lb - Pfund",
+      "nameZH": "lb - 磅",
+      "nameTR": "LB – Pound",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 889,
+      "codeSap": "LB – Pound"
+    },
+    {
+      "code": "LOT",
+      "nameEN": "lot - Lot",
+      "nameFR": "lot - Lot",
+      "namePT": "lot - Lot",
+      "nameGR": "lot - Lot",
+      "nameZH": "lot - Lot",
+      "nameTR": "lot - Lot",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 890,
+      "codeSap": "lot"
+    },
+    {
+      "code": "LTR",
+      "nameEN": "L - Liter",
+      "nameFR": "L - Liter",
+      "namePT": "L - Litro",
+      "nameGR": "l - Liter",
+      "nameZH": "l - 升",
+      "nameTR": "L - Liter",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 891,
+      "codeSap": "L"
+    },
+    {
+      "code": "MM",
+      "nameEN": "mm - Millimeter",
+      "nameFR": "mm - Millimeter",
+      "namePT": "mm - Milímetro",
+      "nameGR": "mm - Millimeter",
+      "nameZH": "mm - Millimeter",
+      "nameTR": "mm - Millimeter",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 892,
+      "codeSap": "mm"
+    },
+    {
+      "code": "MTR",
+      "nameEN": "M - Meter",
+      "nameFR": "M - Meter",
+      "namePT": "M - Metro",
+      "nameGR": "m - Meter",
+      "nameZH": "m - 米",
+      "nameTR": "M - Meter",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 893,
+      "codeSap": "M"
+    },
+    {
+      "code": "PAC",
+      "nameEN": "PK - Pack",
+      "nameFR": "PK - Pack",
+      "namePT": "PK - Pacote",
+      "nameGR": "pk - Packung",
+      "nameZH": "pk - 包",
+      "nameTR": "PK - Pack",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 894,
+      "codeSap": "PK"
+    },
+    {
+      "code": "PCE",
+      "nameEN": "PC - Piece",
+      "nameFR": "PC - Piece",
+      "namePT": "Peça",
+      "nameGR": "pc - Stück",
+      "nameZH": "pc - 个",
+      "nameTR": "PC - Piece",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 895,
+      "codeSap": "PC"
+    },
+    {
+      "code": "SET",
+      "nameEN": "set - Set",
+      "nameFR": "set - Set",
+      "namePT": "Conjunto",
+      "nameGR": "set - Set",
+      "nameZH": "set - Set",
+      "nameTR": "set - Set",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 896,
+      "codeSap": "set"
+    },
+    {
+      "code": "UNT",
+      "nameEN": "unt - Unit",
+      "nameFR": "unt - Unit",
+      "namePT": "unt - Unidade",
+      "nameGR": "unt - Unit",
+      "nameZH": "unt - Unit",
+      "nameTR": "unt - Unit",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 897,
+      "codeSap": "unt"
+    }
+  ],
+  "mdSymptomCodeL0s": [
+    {
+      "code": "1.Performance Deviation / Compliance / Specifications",
+      "nameEN": "1.Performance Deviation / Compliance / Specifications",
+      "nameFR": "1.Déviation des performances / Conformité / Spécifications",
+      "namePT": "1.Desvio de performance/ Conformidade / Especificações",
+      "nameGR": "1. Leistungsabweichung / Konformität / Spezifikationen",
+      "nameZH": "1. 性能偏差 / 合规性 / 规格",
+      "nameTR": "1.Performans Sapması / Uyumluluk / Şartname",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 9023,
+      "subBusinessCode": "GSI",
+      "ncType": "FACTORY_INTERNAL",
+      "unitCode": null,
+      "mdSymptomCodeL1s": [
+        {
+          "code": "1.1 Electrical",
+          "nameEN": "1.1 Electrical",
+          "nameFR": "1.1 Electrique",
+          "namePT": "1.1 Elétrica",
+          "nameGR": "1.1 Elektrische",
+          "nameZH": "1.1 电气方面",
+          "nameTR": "1.1 Elektriksel",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47252,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 152297,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "1.2 Software/Firmware",
+          "nameEN": "1.2 Software/Firmware",
+          "nameFR": "1.2 Logiciel/Firmware",
+          "namePT": "1.2 Software/  Firmware",
+          "nameGR": "1.2 Software / Firmware",
+          "nameZH": "1.2 软件 / 固件",
+          "nameTR": "1.2 Yazılım / Donanım Yazılımı",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47253,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 152298,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "1.3 Application / Configuration",
+          "nameEN": "1.3 Application / Configuration",
+          "nameFR": "1.3 Application / Configuration",
+          "namePT": "1.3 Aplicativo/ Configuração",
+          "nameGR": "1.3 Applikation / Konfiguration",
+          "nameZH": "1.3 应用程序 / 配置",
+          "nameTR": "1.3 Uygulama / Konfigürasyon",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47254,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 152299,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "1.4 Mechanical, Dimensional",
+          "nameEN": "1.4 Mechanical, Dimensional",
+          "nameFR": "1.4 Mécanique, Dimension",
+          "namePT": "1.4 Mecânico, Dimensional",
+          "nameGR": "1.4 Mechanisch, dimensional",
+          "nameZH": "1.4 机械、尺寸",
+          "nameTR": "1.4 Mekaniksel, Boyutsal",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47255,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 152300,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "1.5 Leaks (oil, gaz, water, etc…)",
+          "nameEN": "1.5 Leaks (oil, gaz, water, etc…)",
+          "nameFR": "1.5 Fuite (Huile, gaz, eau, etc…)",
+          "namePT": "1.5 Vazamentos (óleo, gás, água, etc.)",
+          "nameGR": "1.5 Lecks (Öl, Gas, Wasser, usw...)",
+          "nameZH": "1.5 泄漏 (油、 气、水等)",
+          "nameTR": "1.5 Sızıntı (yağ, gaz, su vb.)",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47256,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 152301,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "1.6 Fire/Flash Over",
+          "nameEN": "1.6 Fire/Flash Over",
+          "nameFR": "1.6 Feu/Flash Over",
+          "namePT": "1.6 Fogo / Flash over",
+          "nameGR": "1.6 Feuer / Überschlag",
+          "nameZH": "1.6 火灾 / 闪络",
+          "nameTR": "1.6 Yangın/Elektriksel Atlama",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47257,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 152302,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "1.7 Missing Components/Parts",
+          "nameEN": "1.7 Missing Components/Parts",
+          "nameFR": "1.7 Composants manquants/Elément",
+          "namePT": "1.7 Componentes/ peças ausentes",
+          "nameGR": "1.7 Fehlende Komponenten / Teile",
+          "nameZH": "1.7 缺少部件 / 零件",
+          "nameTR": "1.7 Eksik Bileşenler/Parçalar",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47258,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 152303,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "1.8 Material",
+          "nameEN": "1.8 Material",
+          "nameFR": "1.8 Matériel",
+          "namePT": "1.8 Material",
+          "nameGR": "1.8 Material",
+          "nameZH": "1.8 材料",
+          "nameTR": "1.8 Malzeme",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47259,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 152304,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "2.Damaged",
+      "nameEN": "2.Damaged",
+      "nameFR": "2.Endommagé",
+      "namePT": "2.Danificado",
+      "nameGR": "2. Beschädigt",
+      "nameZH": "2. 受损",
+      "nameTR": "2.Hasarlı",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 9040,
+      "subBusinessCode": "GSI",
+      "ncType": "FACTORY_INTERNAL",
+      "unitCode": null,
+      "mdSymptomCodeL1s": [
+        {
+          "code": "2.1 Aesthetic/Cosmetic",
+          "nameEN": "2.1 Aesthetic/Cosmetic",
+          "nameFR": "2.1 Esthétique/Cosmétique",
+          "namePT": "2.1 Estética/ Cosmética",
+          "nameGR": "2.1 Ästhetisch / Kosmetisch",
+          "nameZH": "2.1 美观",
+          "nameTR": "2.1 Estetik / Kozmetik",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47388,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 153479,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "2.2 Packaging",
+          "nameEN": "2.2 Packaging",
+          "nameFR": "2.2 Emballage",
+          "namePT": "2.2 Embalagem",
+          "nameGR": "2.2 Verpackung",
+          "nameZH": "2.2 包装",
+          "nameTR": "2.2 Ambalajlama",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47389,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 153480,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "2.3 Surface Condition/Contamination/Deformation",
+          "nameEN": "2.3 Surface Condition/Contamination/Deformation",
+          "nameFR": "2.3 Surface Condition/Contamination/Deformation",
+          "namePT": "2.3 Condição da superfície/ contaminação /  deformação",
+          "nameGR": "2.3 Oberflächenzustand / Verschmutzung / Verformung",
+          "nameZH": "2.3 表面状况 / 污染 / 变形",
+          "nameTR": "2.3 Yüzey Durumu / Kirlilik / Deformasyon",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47390,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 153481,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "2.4 Component or Part",
+          "nameEN": "2.4 Component or Part",
+          "nameFR": "2.4 Composant ou élément",
+          "namePT": "2.4 Componente ou peça",
+          "nameGR": "2.4 Component or Part",
+          "nameZH": "2.4 Component or Part",
+          "nameTR": "2.4 Component or Part",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47391,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 153482,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "3.Process Issue",
+      "nameEN": "3.Process Issue",
+      "nameFR": "3.Problème Processus",
+      "namePT": "3.Problema de processo",
+      "nameGR": "3. Prozessproblem",
+      "nameZH": "3. 流程问题",
+      "nameTR": "3.Proses Hatası",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 9057,
+      "subBusinessCode": "GSI",
+      "ncType": "FACTORY_INTERNAL",
+      "unitCode": null,
+      "mdSymptomCodeL1s": [
+        {
+          "code": "3.1 Wrong Order / Quantities Placed",
+          "nameEN": "3.1 Wrong Order / Quantities Placed",
+          "nameFR": "3.1 Mauvaise Commande / Quantité",
+          "namePT": "3.1 Ordem  quantidades incorretas",
+          "nameGR": "3.1 Falsch bestellt / Falsche Bestellmenge",
+          "nameZH": "3.1 下错订单 / 填错数量",
+          "nameTR": "3.1 Yanlış verilen sipariş / sipariş adeti",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47456,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 153603,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "3.2 Incorrect Order Shipped",
+          "nameEN": "3.2 Incorrect Order Shipped",
+          "nameFR": "3.2 Mauvaise commande envoyée",
+          "namePT": "3.2 Pedido incorreto enviado",
+          "nameGR": "3.2 Falsche Bestellung versandt",
+          "nameZH": "3.2 发错订单",
+          "nameTR": "3.2 Yanlış siparişin gönderimi",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47457,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 153604,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "3.3 Shipped To Wrong Location",
+          "nameEN": "3.3 Shipped To Wrong Location",
+          "nameFR": "3.3 Envoyée à une mauvaise adresse",
+          "namePT": "3.3 Enviado para local errado",
+          "nameGR": "3.3 Falscher Lieferort",
+          "nameZH": "3.3 发错地址",
+          "nameTR": "3.3 Siparişin yanlış yere gönderimi",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47458,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 153605,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "3.4 Missed Date",
+          "nameEN": "3.4 Missed Date",
+          "nameFR": "3.4 Envoyée en retard",
+          "namePT": "3.4 Data Perdida",
+          "nameGR": "3.4 Liefertermin versäumt",
+          "nameZH": "3.4 错过交货日期",
+          "nameTR": "3.4 Gecikme",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47459,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 153606,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "3.5 Billing Issue",
+          "nameEN": "3.5 Billing Issue",
+          "nameFR": "3.5 Problème de facturation",
+          "namePT": "3.5 Problema de cobrança",
+          "nameGR": "3.5 Abrechnungsproblem",
+          "nameZH": "3.5 账单错误",
+          "nameTR": "3.5 Faturalandırma Sorunu",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47460,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 153607,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "3.6 Incomplete Operation",
+          "nameEN": "3.6 Incomplete Operation",
+          "nameFR": "3.6 Opération Incomplète",
+          "namePT": "3.6 Operação incompleta",
+          "nameGR": "3.6 Unvollständiger Betrieb",
+          "nameZH": "3.6 运作不完整",
+          "nameTR": "3.6 Tamamlanmayan Çalışma",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47461,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 153608,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "3.7 Foreign Material Exclusion deviation",
+          "nameEN": "3.7 Foreign Material Exclusion deviation",
+          "nameFR": "3.7 Ecart aux règles d'exportation",
+          "namePT": "3.7 Desvio de exclusão de material estrangeiro",
+          "nameGR": "3.7 Abweichung beim Ausschluss von Fremdmaterial ",
+          "nameZH": "3.7 异物排除出现偏差",
+          "nameTR": "3.7 Yabancı Maddelerin hariç tutulmasından sapma",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47462,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 153609,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "3.8 Work Performance Issue",
+          "nameEN": "3.8 Work Performance Issue",
+          "nameFR": "3.8 Problème de performance des travaux effectués",
+          "namePT": "3.8 Problema no desempenho do trabalho",
+          "nameGR": "3.8 Arbeitsleistung",
+          "nameZH": "3.8 工作绩效问题",
+          "nameTR": "3.8 İş Performansı Sorunu",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47463,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 153610,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "3.9 Audit Finding",
+          "nameEN": "3.9 Audit Finding",
+          "nameFR": "3.9 Problème trouvé lors d'un audit",
+          "namePT": "3.9 Constatação de auditoria",
+          "nameGR": "3.9 Audit-Feststellungen",
+          "nameZH": "3.9 审计结果",
+          "nameTR": "3.9 Denetim Bulgusu",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47464,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 153611,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "4.Documentation Error",
+      "nameEN": "4.Documentation Error",
+      "nameFR": "4.Erreur Documentation",
+      "namePT": "4.Documentação errada",
+      "nameGR": "4. Dokumentationsfehler",
+      "nameZH": "4. 文件错误",
+      "nameTR": "4.Dokümantasyon Hatası",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 9074,
+      "subBusinessCode": "GSI",
+      "ncType": "FACTORY_INTERNAL",
+      "unitCode": null,
+      "mdSymptomCodeL1s": [
+        {
+          "code": "4.1 Missing/Lost",
+          "nameEN": "4.1 Missing/Lost",
+          "nameFR": "4.1 Manquant/Perdu",
+          "namePT": "4.1 Ausente  Perdido",
+          "nameGR": "4.1 Vermisst / verloren",
+          "nameZH": "4.1 失踪/丢失",
+          "nameTR": "4.1 Mevcut Olmayan / Kayıp Doküman",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47610,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 154114,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "4.2 Wrong Documents",
+          "nameEN": "4.2 Wrong Documents",
+          "nameFR": "4.2 Mauvais documents",
+          "namePT": "4.2 Documentos errados",
+          "nameGR": "4.2 Falsche Dokumente",
+          "nameZH": "4.2 错误的文件",
+          "nameTR": "4.2 Hatalı Doküman",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47611,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 154115,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "4.3 Incomplete",
+          "nameEN": "4.3 Incomplete",
+          "nameFR": "4.3 Incomplets",
+          "namePT": "4.3 Incompleto",
+          "nameGR": "4.3 Unvollständig",
+          "nameZH": "4.3 内容不完整",
+          "nameTR": "4.3 Tamamlanmamış doküman",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47612,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 154116,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "5.Resource Allocation",
+      "nameEN": "5.Resource Allocation",
+      "nameFR": "5. Allocation des ressources",
+      "namePT": "5.Alocação de recursos",
+      "nameGR": "5. Ressourcenzuteilung",
+      "nameZH": "5. 资源分配",
+      "nameTR": "5.Kaynak Tahsisi",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 9091,
+      "subBusinessCode": "GSI",
+      "ncType": "FACTORY_INTERNAL",
+      "unitCode": null,
+      "mdSymptomCodeL1s": [
+        {
+          "code": "5.1 Delay",
+          "nameEN": "5.1 Delay",
+          "nameFR": "5.1 Retard",
+          "namePT": "5.1 Atraso",
+          "nameGR": "5.1 Verzögerung",
+          "nameZH": "5.1 延迟",
+          "nameTR": "5.1 Gecikme",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47662,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 154170,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "5.2 Availability",
+          "nameEN": "5.2 Availability",
+          "nameFR": "5.2 Disponibilité",
+          "namePT": "5.2 Disponibilidade",
+          "nameGR": "5.2 Verfügbarkeit",
+          "nameZH": "5.2 供应情况",
+          "nameTR": "5.2 Kaynakların müsaitliği",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47663,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 154171,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "5.3 Competency",
+          "nameEN": "5.3 Competency",
+          "nameFR": "5.3 Compétence",
+          "namePT": "5.3 Competência",
+          "nameGR": "5.3 Kompetenz",
+          "nameZH": "5.3 胜任能力",
+          "nameTR": "5.3 Uzmanlık",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47664,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 154172,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "5.4 Incorrect certification",
+          "nameEN": "5.4 Incorrect certification",
+          "nameFR": "5.4 Certification Incorrecte",
+          "namePT": "5.4 Certificação incorreta",
+          "nameGR": "5.4 Fehlerhafte Zertifizierung",
+          "nameZH": "5.4 认证有问题",
+          "nameTR": "5.4 Hatalı sertifikalandırma",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47665,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 154173,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "5.5 Immigration/visas",
+          "nameEN": "5.5 Immigration/visas",
+          "nameFR": "5.5 Immigration/visas",
+          "namePT": "5.5 Imigração  vistos",
+          "nameGR": "5.5 Immigration / Visa",
+          "nameZH": "5.5 移民 / 签证",
+          "nameTR": "5.5 Göçmenlik / vize",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47666,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 154174,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "6.Scope/Planning Error",
+      "nameEN": "6.Scope/Planning Error",
+      "nameFR": "6. Périmètre/Erreur de plannification",
+      "namePT": "6. Escopo/ Erro de planejamento",
+      "nameGR": "6. Umfangs- / Planungsfehler",
+      "nameZH": "6. 范围 / 规划错误",
+      "nameTR": "6.Kapsam / Planlama Hatası",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 9108,
+      "subBusinessCode": "GSI",
+      "ncType": "FACTORY_INTERNAL",
+      "unitCode": null,
+      "mdSymptomCodeL1s": [
+        {
+          "code": "6.1 Management issue",
+          "nameEN": "6.1 Management issue",
+          "nameFR": "6.1 Problème de Management",
+          "namePT": "6.1 Problema de gerenciamento",
+          "nameGR": "6.1 Problem des Managements",
+          "nameZH": "6.1 管理问题",
+          "nameTR": "6.1 Yönetim sorunu",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47748,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 154262,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "6.2 Work scope Issue",
+          "nameEN": "6.2 Work scope Issue",
+          "nameFR": "6.2 Périmètre de travail",
+          "namePT": "6.2 Escopo do trabalho",
+          "nameGR": "6.2 Problem des Arbeitsumfangs ",
+          "nameZH": "6.2 工作范围问题",
+          "nameTR": "6.2 İş kapsamı sorunu",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47749,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 154263,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        },
+        {
+          "code": "6.3 Cost/resource estimate error",
+          "nameEN": "6.3 Cost/resource estimate error",
+          "nameFR": "6.3 Erreur dans l'estimation des coûts/ressources nécessaires",
+          "namePT": "6.3 Erro na estimativa de custo/ recurso",
+          "nameGR": "6.3 Kosten- / Ressourcenschätzungsfehler",
+          "nameZH": "6.3 费用 / 资源估计错误",
+          "nameTR": "6.3 Maliyet / kaynak tahmini hatası",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47750,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 154264,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "N/A",
+      "nameEN": "N/A",
+      "nameFR": "N/A",
+      "namePT": "N/A",
+      "nameGR": "N/A",
+      "nameZH": "N/A",
+      "nameTR": "N/A",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 9125,
+      "subBusinessCode": "GSI",
+      "ncType": "FACTORY_INTERNAL",
+      "unitCode": null,
+      "mdSymptomCodeL1s": [
+        {
+          "code": "N/A",
+          "nameEN": "N/A",
+          "nameFR": "N/A",
+          "namePT": "N/A",
+          "nameGR": "N/A",
+          "nameZH": "N/A",
+          "nameTR": "N/A",
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 47800,
+          "l2List": [
+            {
+              "code": "N/A",
+              "nameEN": "N/A",
+              "nameFR": "N/A",
+              "namePT": "N/A",
+              "nameGR": "N/A",
+              "nameZH": "N/A",
+              "nameTR": "N/A",
+              "nameIT": null,
+              "activeFlag": true,
+              "id": 154314,
+              "l3List": [],
+              "riskAssessmentList": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mdDetectedByUnits": [
+    {
+      "unitId": "fb886dfa-9e46-4217-ba2b-f7c0192eda10",
+      "subBusiness": "HVS",
+      "unitCode": "AHT",
+      "unitName": "AHT France - HVS",
+      "country": "France"
+    },
+    {
+      "unitId": "1748a30d-bdc5-42d4-a8c1-5762af0d0ae8",
+      "subBusiness": "HVS",
+      "unitCode": "HVJ",
+      "unitName": "HVJ Japan - HVS",
+      "country": "Japan"
+    },
+    {
+      "unitId": "407909f1-ca88-414a-827f-843d4d9d65a3",
+      "subBusiness": "HVS",
+      "unitCode": "JHT",
+      "unitName": "JHT China - HVS",
+      "country": "China"
+    },
+    {
+      "unitId": "b5d2f93e-ce40-4a7a-8267-0c9aa713ba59",
+      "subBusiness": "HVS",
+      "unitCode": "CHT",
+      "unitName": "CHT India - HVS",
+      "country": "India"
+    },
+    {
+      "unitId": "c71da719-f650-44fa-880f-67d75cb3eb50",
+      "subBusiness": "HVS",
+      "unitCode": "TDC",
+      "unitName": "TDC Canada - HVS",
+      "country": "Canada"
+    },
+    {
+      "unitId": "e81055ab-0ede-414f-bd40-2fba7b047b55",
+      "subBusiness": "HVS",
+      "unitCode": "AGK",
+      "unitName": "AGK Germany - HVS",
+      "country": "Germany"
+    },
+    {
+      "unitId": "59cac392-4bc1-434c-95d9-b0cca95feabd",
+      "subBusiness": "HVS",
+      "unitCode": "AIB",
+      "unitName": "AIB Brazil - HVS",
+      "country": "Brazil"
+    },
+    {
+      "unitId": "8e06300e-dfb8-4554-a05f-3ac92a92794f",
+      "subBusiness": "HVS",
+      "unitCode": "BHT",
+      "unitName": "BHT France - HVS",
+      "country": "France"
+    },
+    {
+      "unitId": "e469e86c-a117-43f6-9644-a1ac906805bc",
+      "subBusiness": "HVS",
+      "unitCode": "CME",
+      "unitName": "CME Italy - HVS",
+      "country": "Italy"
+    },
+    {
+      "unitId": "713a47a7-b414-473b-9e4b-1995d9775366",
+      "subBusiness": "HVS",
+      "unitCode": "HVM",
+      "unitName": "HVM India - HVS",
+      "country": "India"
+    },
+    {
+      "unitId": "5d15013c-3992-4ca9-92b0-6e738435844e",
+      "subBusiness": "HVS",
+      "unitCode": "RMK",
+      "unitName": "RMK India - HVS",
+      "country": "India"
+    },
+    {
+      "unitId": "dbb31197-987e-417f-bb38-c9d6f55abbef",
+      "subBusiness": "HVS",
+      "unitCode": "SEH",
+      "unitName": "SEH Switzerland - HVS",
+      "country": "Switzerland"
+    },
+    {
+      "unitId": "458cabc3-42a4-428e-be57-6f8d5071cf0a",
+      "subBusiness": "HVS",
+      "unitCode": "SHT",
+      "unitName": "SHT China - HVS",
+      "country": "China"
+    },
+    {
+      "unitId": "f3c91867-b3a9-4f80-a0ae-b7d2533142cd",
+      "subBusiness": "HVS",
+      "unitCode": "SHV",
+      "unitName": "SHV China - HVS",
+      "country": "China"
+    },
+    {
+      "unitId": "4d7e9090-31ca-40b5-987a-358504cc4a64",
+      "subBusiness": "HVS",
+      "unitCode": "USC",
+      "unitName": "USC USA - HVS",
+      "country": "USA"
+    },
+    {
+      "unitId": "baf8ba16-a400-45d3-9598-98b576778e78",
+      "subBusiness": "HVS",
+      "unitCode": "UTR",
+      "unitName": "UTR Indonesia - HVS",
+      "country": "Indonesia"
+    },
+    {
+      "unitId": "ffb824a2-3d9a-40d9-93de-c5bd126fadcb",
+      "subBusiness": "HVS",
+      "unitCode": "RML",
+      "unitName": "RML Germany - HVS",
+      "country": "Germany"
+    },
+    {
+      "unitId": "58354ef3-6b6e-405c-a782-51ca59a841d2",
+      "subBusiness": "HVS",
+      "unitCode": "RMW",
+      "unitName": "RMW USA - HVS",
+      "country": "USA"
+    },
+    {
+      "unitId": "64d2ee79-f27c-429d-acb9-5c8088a8fd24",
+      "subBusiness": "PTR",
+      "unitCode": "AWT",
+      "unitName": "AWT China - PTR",
+      "country": "China"
+    },
+    {
+      "unitId": "39413520-82d2-40de-a715-402547d0d9f9",
+      "subBusiness": "PTR",
+      "unitCode": "PTI",
+      "unitName": "PTI India - PTR",
+      "country": "India"
+    },
+    {
+      "unitId": "d84664cf-1bc3-4121-a549-82cb807a9b76",
+      "subBusiness": "PTR",
+      "unitCode": "SNT",
+      "unitName": "SNT USA - PTR",
+      "country": "USA"
+    },
+    {
+      "unitId": "c9add883-4394-44ee-9083-fcf7337a7a33",
+      "subBusiness": "PTR",
+      "unitCode": "AGM",
+      "unitName": "AGM Germany - PTR",
+      "country": "Germany"
+    },
+    {
+      "unitId": "738fcbad-7e3d-4312-81ad-d5258fe34b70",
+      "subBusiness": "PTR",
+      "unitCode": "RMK",
+      "unitName": "RMK Bushing India - PTR",
+      "country": "Bushing India"
+    },
+    {
+      "unitId": "a4717423-a0f6-4e7c-b4e5-30ff1c73d744",
+      "subBusiness": "PTR",
+      "unitCode": "RPV",
+      "unitName": "RPV Italy - PTR",
+      "country": "Italy"
+    },
+    {
+      "unitId": "73513604-9081-4898-a31d-d40dcf6cbcde",
+      "subBusiness": "PTR",
+      "unitCode": "TST",
+      "unitName": "TST UK - PTR",
+      "country": "UK"
+    },
+    {
+      "unitId": "a279d6f2-5465-4195-aa1d-8d3a6d205874",
+      "subBusiness": "PTR",
+      "unitCode": "UTR",
+      "unitName": "UTR Indonesia - PTR",
+      "country": "Indonesia"
+    },
+    {
+      "unitId": "ec5911bb-476d-4358-8b47-32dbda35f66c",
+      "subBusiness": "PTR",
+      "unitCode": "ATT",
+      "unitName": "ATT Turkey - PTR",
+      "country": "Turkey"
+    },
+    {
+      "unitId": "adbfacb6-9a7f-48e4-a138-c4761b35008b",
+      "subBusiness": "PTR",
+      "unitCode": "LTI",
+      "unitName": "LTI India - PTR",
+      "country": "India"
+    },
+    {
+      "unitId": "d143cf59-117b-4a7e-a600-023a0cfa90e9",
+      "subBusiness": "SER",
+      "unitCode": "TSG",
+      "unitName": "TSG Turkey - SER",
+      "country": "Turkey"
+    },
+    {
+      "unitId": "d0e48052-80e1-4854-9f4f-372ecded2435",
+      "subBusiness": "SER",
+      "unitCode": "FSU",
+      "unitName": "FSU France - SER",
+      "country": "France"
+    },
+    {
+      "unitId": "d363a45a-3efb-4cfc-99dd-ac45ab4db3ae",
+      "subBusiness": "SER",
+      "unitCode": "GSS",
+      "unitName": "GSS UK - SER",
+      "country": "UK"
+    },
+    {
+      "unitId": "24b861fa-c19c-4e08-b9f9-839ef6504a44",
+      "subBusiness": "SER",
+      "unitCode": "CSM",
+      "unitName": "CSM Canada - SER",
+      "country": "Canada"
+    },
+    {
+      "unitId": "ea6c1d0d-f6b2-4842-a1e8-f2ce3593e68a",
+      "subBusiness": "SER",
+      "unitCode": "DSD",
+      "unitName": "DSD Germany - SER",
+      "country": "Germany"
+    },
+    {
+      "unitId": "b31ee6e8-9b63-4b06-97b1-c23c6010ad98",
+      "subBusiness": "CAPACITORS",
+      "unitCode": "CWC",
+      "unitName": "CWC USA - Capacitors",
+      "country": "USA"
+    },
+    {
+      "unitId": "58dfdf53-cf21-48db-b338-85078c127fad",
+      "subBusiness": "PQP",
+      "unitCode": "AIB-RPC",
+      "unitName": "AIB-RPC  - PQP",
+      "country": ""
+    },
+    {
+      "unitId": "f69b8852-c3f9-4c32-9d6a-d256f9105633",
+      "subBusiness": "PQP",
+      "unitCode": "CWC",
+      "unitName": "CWC - PQP",
+      "country": ""
+    },
+    {
+      "unitId": "d0b94261-336d-4fce-8b52-244c932a8cc6",
+      "subBusiness": "GSI",
+      "unitCode": "ASB",
+      "unitName": "ASB - Brisbane Australia - GSI",
+      "country": "Brisbane Australia"
+    },
+    {
+      "unitId": "8db76bb9-ae5e-4277-98b8-e4f4adef2ede",
+      "subBusiness": "GSI",
+      "unitCode": "TST",
+      "unitName": "TST - Stafford Lichfield United Kingdom - GSI",
+      "country": "Stafford Lichfield United Kingdom"
+    },
+    {
+      "unitId": "1118ff5f-5947-473f-bd8b-6963b9e57b11",
+      "subBusiness": "GSI",
+      "unitCode": "ABS_ACS",
+      "unitName": "ABS_ACS - Sao Paulo Brazil - GSI",
+      "country": "Sao Paulo Brazil"
+    },
+    {
+      "unitId": "cd3e26a3-5b97-462e-98d3-0ea5bc8169e9",
+      "subBusiness": "GSI",
+      "unitCode": "ABS_FACTS",
+      "unitName": "ABS_FACTS - Sao Paulo Brazil - GSI",
+      "country": "Sao Paulo Brazil"
+    },
+    {
+      "unitId": "6aa6a93f-6d6d-419d-8a52-e64e5584bd17",
+      "subBusiness": "GSI",
+      "unitCode": "ABJ",
+      "unitName": "ABJ - Abuja Nigeria - GSI",
+      "country": "Abuja Nigeria"
+    },
+    {
+      "unitId": "b529d4bf-dfe7-4dc0-bf96-e8196d9f59a1",
+      "subBusiness": "GSI",
+      "unitCode": "SOA",
+      "unitName": "SOA - Leonding Austria - GSI",
+      "country": "Leonding Austria"
+    },
+    {
+      "unitId": "7c96bbea-44f2-4f05-851b-5f95c83ef607",
+      "subBusiness": "GSI",
+      "unitCode": "HVDC_CoE",
+      "unitName": "HVDC_CoE - Berlin Germany - GSI",
+      "country": "Berlin Germany"
+    },
+    {
+      "unitId": "8667431e-0ac5-49d2-be7f-d3a87d3bbb9b",
+      "subBusiness": "GSI",
+      "unitCode": "PET",
+      "unitName": "PET - Tampere Finland - GSI",
+      "country": "Tampere Finland"
+    },
+    {
+      "unitId": "9dc74d76-8aa3-4bcc-8d26-e213866cffc3",
+      "subBusiness": "GSI",
+      "unitCode": "ABS_ACS",
+      "unitName": "ABS_ACS - Bogota Columbia - GSI",
+      "country": "Bogota Columbia"
+    },
+    {
+      "unitId": "338f433b-bd26-41a9-aefc-1483b175d675",
+      "subBusiness": "GSI",
+      "unitCode": "ABS",
+      "unitName": "ABS - Bogota Colombia - GSI",
+      "country": "Bogota Colombia"
+    },
+    {
+      "unitId": "1cdc1d28-f25a-44d9-bd54-af3002ffceed",
+      "subBusiness": "GSI",
+      "unitCode": "AFD",
+      "unitName": "AFD - Berlin Germany - GSI",
+      "country": "Berlin Germany"
+    },
+    {
+      "unitId": "1ccbb270-906e-4495-84f3-c3137ce41935",
+      "subBusiness": "GSI",
+      "unitCode": "AFD",
+      "unitName": "AFD - Dresden Germany - GSI",
+      "country": "Dresden Germany"
+    },
+    {
+      "unitId": "2e9e80f0-e094-4122-ba87-baf112f9c1f2",
+      "subBusiness": "GSI",
+      "unitCode": "AGS",
+      "unitName": "AGS - Stafford Lord Nelson United Kingdom - GSI",
+      "country": "Stafford Lord Nelson United Kingdom"
+    },
+    {
+      "unitId": "ea293336-d298-4206-9956-ace3525a5e61",
+      "subBusiness": "GSI",
+      "unitCode": "AHE",
+      "unitName": "AHE - Athens Greece - GSI",
+      "country": "Athens Greece"
+    },
+    {
+      "unitId": "c183a869-cf5e-4333-b229-9865d005b4a2",
+      "subBusiness": "GSI",
+      "unitCode": "AML",
+      "unitName": "AML - Kuala Lumpur Malaysia - GSI",
+      "country": "Kuala Lumpur Malaysia"
+    },
+    {
+      "unitId": "6f1f5e7e-7c4e-4e37-b717-1449ac8e1770",
+      "subBusiness": "GSI",
+      "unitCode": "AMR",
+      "unitName": "AMR - Moscow Russia - GSI",
+      "country": "Moscow Russia"
+    },
+    {
+      "unitId": "33a0f166-afcf-4f3e-8922-9fb8e09ea07e",
+      "subBusiness": "GSI",
+      "unitCode": "ARO",
+      "unitName": "ARO - Bucharest Romania - GSI",
+      "country": "Bucharest Romania"
+    },
+    {
+      "unitId": "5d9c946f-3b8b-4527-94c3-2ab41bf9a9a7",
+      "subBusiness": "GSI",
+      "unitCode": "ASG",
+      "unitName": "ASG - Singapore Singapore - GSI",
+      "country": "Singapore Singapore"
+    },
+    {
+      "unitId": "780b71b2-00a1-46be-b86b-b31e0a51703a",
+      "subBusiness": "GSI",
+      "unitCode": "ASW",
+      "unitName": "ASW - Västerås Sweden - GSI",
+      "country": "Västerås Sweden"
+    },
+    {
+      "unitId": "56ddc002-2f59-4298-b842-1bc0f677df74",
+      "subBusiness": "GSI",
+      "unitCode": "ATW",
+      "unitName": "ATW - Taipei Taiwan - GSI",
+      "country": "Taipei Taiwan"
+    },
+    {
+      "unitId": "f162e3af-9173-4402-b8db-398578c43382",
+      "subBusiness": "GSI",
+      "unitCode": "BHN",
+      "unitName": "BHN - Bahrain Bahrain - GSI",
+      "country": "Bahrain Bahrain"
+    },
+    {
+      "unitId": "433a2d58-da15-40c2-8c82-75b08eb09f69",
+      "subBusiness": "GSI",
+      "unitCode": "BSL",
+      "unitName": "BSL - Sao Paulo Brazil - GSI",
+      "country": "Sao Paulo Brazil"
+    },
+    {
+      "unitId": "2617f0e0-d6b2-42da-8334-884be630f60a",
+      "subBusiness": "GSI",
+      "unitCode": "CD_MX",
+      "unitName": "CD_MX - Mexico City Mexico - GSI",
+      "country": "Mexico City Mexico"
+    },
+    {
+      "unitId": "77f9ea7e-6da1-4f6f-a547-7f6632552df2",
+      "subBusiness": "GSI",
+      "unitCode": "CME",
+      "unitName": "CME - Sesto San Giovanni Italy - GSI",
+      "country": "Sesto San Giovanni Italy"
+    },
+    {
+      "unitId": "5edd4b52-2096-49af-b545-08becc38884c",
+      "subBusiness": "GSI",
+      "unitCode": "CoE",
+      "unitName": "CoE - Villeurbanne France - GSI",
+      "country": "Villeurbanne France"
+    },
+    {
+      "unitId": "a032f1c8-1eb3-4955-8482-28081398e7a0",
+      "subBusiness": "GSI",
+      "unitCode": "CSL",
+      "unitName": "CSL - Santiago Chile - GSI",
+      "country": "Santiago Chile"
+    },
+    {
+      "unitId": "f289f7f9-5b71-4d6d-a4d8-e3da5e32d2ea",
+      "subBusiness": "GSI",
+      "unitCode": "CSS",
+      "unitName": "CSS - Santiago Chile - GSI",
+      "country": "Santiago Chile"
+    },
+    {
+      "unitId": "3b9b866e-3bf4-4e57-b427-273f9c5e39ee",
+      "subBusiness": "GSI",
+      "unitCode": "CSZ",
+      "unitName": "CSZ - Shanghai China - GSI",
+      "country": "Shanghai China"
+    },
+    {
+      "unitId": "80bf0ce1-47a1-4104-86dc-4819d41a53c4",
+      "subBusiness": "GSI",
+      "unitCode": "ETS",
+      "unitName": "ETS - Cairo Egypt  - GSI",
+      "country": "Cairo Egypt"
+    },
+    {
+      "unitId": "f16f6fee-75b2-439c-9986-1c6cfe927292",
+      "subBusiness": "GSI",
+      "unitCode": "FST",
+      "unitName": "FST - RAMONVILLE France - GSI",
+      "country": "RAMONVILLE France"
+    },
+    {
+      "unitId": "2c8132ae-ab43-4766-b6a4-abdbaa64c82e",
+      "subBusiness": "GSI",
+      "unitCode": "GOT",
+      "unitName": "GOT - Oakbrook Terrace IL United States - GSI",
+      "country": "Oakbrook Terrace IL United States"
+    },
+    {
+      "unitId": "bb616888-0af9-4ab9-b91e-9d22c1f8c3bc",
+      "subBusiness": "GSI",
+      "unitCode": "HUK",
+      "unitName": "HUK - Stafford Redhill United Kingdom - GSI",
+      "country": "Stafford Redhill United Kingdom"
+    },
+    {
+      "unitId": "8f3aacd3-5dd8-4516-8918-fb5ab3b22b3e",
+      "subBusiness": "GSI",
+      "unitCode": "HVDC_CoE",
+      "unitName": "HVDC_CoE - Noida India - GSI",
+      "country": "Noida India"
+    },
+    {
+      "unitId": "50a1e0d2-2626-41f7-9e5c-2430044f4599",
+      "subBusiness": "GSI",
+      "unitCode": "HVDC_CoE",
+      "unitName": "HVDC_CoE - Stafford UK - GSI",
+      "country": "Stafford UK"
+    },
+    {
+      "unitId": "1185bfa7-bc3d-4752-9f08-a35a6545fe2e",
+      "subBusiness": "GSI",
+      "unitCode": "HVDC_CoE",
+      "unitName": "HVDC_CoE - St Priest France - GSI",
+      "country": "St Priest France"
+    },
+    {
+      "unitId": "1117595d-efca-4987-bcf4-0e8d72568188",
+      "subBusiness": "GSI",
+      "unitCode": "ISJ",
+      "unitName": "ISJ - Jakarta Indonesia - GSI",
+      "country": "Jakarta Indonesia"
+    },
+    {
+      "unitId": "7271ea24-3b54-449b-a695-94a05289f52a",
+      "subBusiness": "GSI",
+      "unitCode": "ISN",
+      "unitName": "ISN - Noida India - GSI",
+      "country": "Noida India"
+    },
+    {
+      "unitId": "ca4759be-edd6-4f3f-a23c-9bace6834a6f",
+      "subBusiness": "GSI",
+      "unitCode": "ITS",
+      "unitName": "ITS - Jakarta Indonesia - GSI",
+      "country": "Jakarta Indonesia"
+    },
+    {
+      "unitId": "6fe657a9-5595-4550-9de2-6d6a09726ec5",
+      "subBusiness": "GSI",
+      "unitCode": "MSM",
+      "unitName": "MSM - Toluca Mexico - GSI",
+      "country": "Toluca Mexico"
+    },
+    {
+      "unitId": "c46a9091-ec13-4a66-ba75-f02f8d8b281a",
+      "subBusiness": "GSI",
+      "unitCode": "NGR",
+      "unitName": "NGR - Lagos Nigeria - GSI",
+      "country": "Lagos Nigeria"
+    },
+    {
+      "unitId": "063c06d3-afa2-4228-a3ca-3f485256e23c",
+      "subBusiness": "GSI",
+      "unitCode": "PEA",
+      "unitName": "PEA - Saratoga Spring United States - GSI",
+      "country": "Saratoga Spring United States"
+    },
+    {
+      "unitId": "3c0e6e69-3f34-4cd0-b31c-d831c7169df1",
+      "subBusiness": "GSI",
+      "unitCode": "PLS",
+      "unitName": "PLS - Katowice Poland - GSI",
+      "country": "Katowice Poland"
+    },
+    {
+      "unitId": "6dc97e68-7c07-4cde-9db3-6b75e56667e9",
+      "subBusiness": "GSI",
+      "unitCode": "AMS",
+      "unitName": "AMS - Mexico City Mexico - GSI",
+      "country": "Mexico City Mexico"
+    },
+    {
+      "unitId": "26e9bad7-770c-451a-b389-b0b35b9ca8fa",
+      "subBusiness": "GSI",
+      "unitCode": "ACS",
+      "unitName": "ACS - Buenos Aires Argentina - GSI",
+      "country": "Buenos Aires Argentina"
+    },
+    {
+      "unitId": "50230c5f-0a8b-43fa-a992-f82914d58036",
+      "subBusiness": "GSI",
+      "unitCode": "CSH",
+      "unitName": "CSH - Hong Kong China - GSI",
+      "country": "Hong Kong China"
+    },
+    {
+      "unitId": "faca9e46-2c23-4fdd-9caf-350d3172795e",
+      "subBusiness": "GSI",
+      "unitCode": "SAU",
+      "unitName": "SAU - Riyadh Saudi Arabia - GSI",
+      "country": "Riyadh Saudi Arabia"
+    },
+    {
+      "unitId": "7103f47b-f849-4943-beba-8e2eee07a513",
+      "subBusiness": "GSI",
+      "unitCode": "SBC",
+      "unitName": "SBC - La Prairie Canada - GSI",
+      "country": "La Prairie Canada"
+    },
+    {
+      "unitId": "7a36760b-f53a-4191-9dac-f5fb74469128",
+      "subBusiness": "GSI",
+      "unitCode": "SCN",
+      "unitName": "SCN - Shanghai China - GSI",
+      "country": "Shanghai China"
+    },
+    {
+      "unitId": "63d61f34-8352-4529-8ab3-818e13c0e5db",
+      "subBusiness": "GSI",
+      "unitCode": "SEH",
+      "unitName": "SEH - Oberentfelden Switzerland - GSI",
+      "country": "Oberentfelden Switzerland"
+    },
+    {
+      "unitId": "a89b439c-f4d9-43c7-8918-54e02fd646d6",
+      "subBusiness": "GSI",
+      "unitCode": "SOA",
+      "unitName": "SOA - Vienna Austria - GSI",
+      "country": "Vienna Austria"
+    },
+    {
+      "unitId": "fc5d6ccf-ef3c-4d63-a4cf-ee53e13ad6c3",
+      "subBusiness": "GSI",
+      "unitCode": "SON",
+      "unitName": "SON - The Hague Netherland - GSI",
+      "country": "The Hague Netherland"
+    },
+    {
+      "unitId": "7caf6a75-06e1-43de-b695-f99ce36276f6",
+      "subBusiness": "GSI",
+      "unitCode": "SRI",
+      "unitName": "SRI - Chennai India - GSI",
+      "country": "Chennai India"
+    },
+    {
+      "unitId": "c7e41561-f6ec-4375-8bda-184fc69092b3",
+      "subBusiness": "GSI",
+      "unitCode": "SRI",
+      "unitName": "SRI - Kolkata India - GSI",
+      "country": "Kolkata India"
+    },
+    {
+      "unitId": "5afb54e4-b131-48ff-ace1-b38f1777255b",
+      "subBusiness": "GSI",
+      "unitCode": "SRI",
+      "unitName": "SRI - Mumbai India - GSI",
+      "country": "Mumbai India"
+    },
+    {
+      "unitId": "c4d9a7c4-2a41-4627-929c-058985293566",
+      "subBusiness": "GSI",
+      "unitCode": "SRI",
+      "unitName": "SRI - Noida India - GSI",
+      "country": "Noida India"
+    },
+    {
+      "unitId": "775378f3-f63a-4f12-b35c-e61fb94eafb6",
+      "subBusiness": "GSI",
+      "unitCode": "SSG",
+      "unitName": "SSG - Singapore Singapore - GSI",
+      "country": "Singapore Singapore"
+    },
+    {
+      "unitId": "c8e5cc3a-3b41-4803-b955-ee152e032520",
+      "subBusiness": "GSI",
+      "unitCode": "SSP",
+      "unitName": "SSP - Madrid Spain - GSI",
+      "country": "Madrid Spain"
+    },
+    {
+      "unitId": "e73aba1c-08c3-4391-9eae-3272cd200c53",
+      "subBusiness": "GSI",
+      "unitCode": "SSP_SER",
+      "unitName": "SSP_SER - Madrid Spain - GSI",
+      "country": "Madrid Spain"
+    },
+    {
+      "unitId": "31c17a14-e2a4-4670-bdc1-5717863be240",
+      "subBusiness": "GSI",
+      "unitCode": "SUP",
+      "unitName": "SUP - Karachi Pakistan - GSI",
+      "country": "Karachi Pakistan"
+    },
+    {
+      "unitId": "394a4cff-29ac-4d9f-84e0-93b7beb748fb",
+      "subBusiness": "GSI",
+      "unitCode": "Tbd",
+      "unitName": "Tbd - Casablanca Morocco - GSI",
+      "country": "Casablanca Morocco"
+    },
+    {
+      "unitId": "2c4b3539-f08c-49aa-b6d8-a072c924b14c",
+      "subBusiness": "GSI",
+      "unitCode": "Tbd",
+      "unitName": "Tbd - Kuala Lumpur Malaysia - GSI",
+      "country": "Kuala Lumpur Malaysia"
+    },
+    {
+      "unitId": "8f43e9ca-73f7-45b3-87f4-1291bfc0f3ad",
+      "subBusiness": "GSI",
+      "unitCode": "Tbd",
+      "unitName": "Tbd - Oslo Norway - GSI",
+      "country": "Oslo Norway"
+    },
+    {
+      "unitId": "b5f10e4a-96f6-4979-b842-53bd1628825c",
+      "subBusiness": "GSI",
+      "unitCode": "Tbd",
+      "unitName": "Tbd - Taipei Taiwan Province of China - GSI",
+      "country": "Taipei Taiwan Province of China"
+    },
+    {
+      "unitId": "a96571d6-fa0a-4050-89be-c0ea83f4262d",
+      "subBusiness": "GSI",
+      "unitCode": "TPA",
+      "unitName": "TPA - Parramatta Australia - GSI",
+      "country": "Parramatta Australia"
+    },
+    {
+      "unitId": "05ae164a-0730-4774-a127-bda15394f90e",
+      "subBusiness": "GSI",
+      "unitCode": "TPP",
+      "unitName": "TPP - Ankara Turkey - GSI",
+      "country": "Ankara Turkey"
+    },
+    {
+      "unitId": "76980657-af42-46fa-9c83-f94d2affa8f3",
+      "subBusiness": "GSI",
+      "unitCode": "TSB",
+      "unitName": "TSB - Bangkok Thailand - GSI",
+      "country": "Bangkok Thailand"
+    },
+    {
+      "unitId": "6608a7bf-68c5-40e3-a9f5-1900848cf649",
+      "subBusiness": "GSI",
+      "unitCode": "TSB_SER",
+      "unitName": "TSB_SER - Bangkok Thailand - GSI",
+      "country": "Bangkok Thailand"
+    },
+    {
+      "unitId": "552316bf-c9fd-4619-8f47-c994ef5d05db",
+      "subBusiness": "GSI",
+      "unitCode": "UAE",
+      "unitName": "UAE - Dubai UAE - GSI",
+      "country": "Dubai UAE"
+    },
+    {
+      "unitId": "38ebd3d0-da35-4c72-93dd-bea901b61993",
+      "subBusiness": "GSI",
+      "unitCode": "VNS",
+      "unitName": "VNS - Ha Noi Vietnam - GSI",
+      "country": "Ha Noi Vietnam"
+    },
+    {
+      "unitId": "546daa44-4ffe-4d08-b5d9-54c3ebbef79b",
+      "subBusiness": "GSI",
+      "unitCode": "VNS",
+      "unitName": "VNS - Ho Chi Minh Vietnam - GSI",
+      "country": "Ho Chi Minh Vietnam"
+    },
+    {
+      "unitId": "951324b3-3385-45b0-94fd-6f636459b08f",
+      "subBusiness": "GSI",
+      "unitCode": "IRQ",
+      "unitName": "IRQ - Baghdad Irak - GSI",
+      "country": "Baghdad Irak"
+    },
+    {
+      "unitId": "3098f521-02ea-4e4c-b107-006342d9bcc4",
+      "subBusiness": "PT",
+      "unitCode": "CSM",
+      "unitName": "CSM - Calgary Canada - PT",
+      "country": "Calgary Canada"
+    },
+    {
+      "unitId": "0142a154-8157-4325-a8e6-ad13051654d5",
+      "subBusiness": "PT",
+      "unitCode": "AIB",
+      "unitName": "AIB - Itajuba Brazil - PT",
+      "country": "Itajuba Brazil"
+    },
+    {
+      "unitId": "6cbda631-3ed0-4596-a90f-48222cced10b",
+      "subBusiness": "PT",
+      "unitCode": "SSO",
+      "unitName": "SSO - Oberentfelden Switzerland - PT",
+      "country": "Oberentfelden Switzerland"
+    },
+    {
+      "unitId": "48c2d420-89c6-4318-bc8c-d5550b5668eb",
+      "subBusiness": "PT",
+      "unitCode": "CHT_AIS",
+      "unitName": "CHT_AIS - Padappaï India - PT",
+      "country": "Padappaï India"
+    },
+    {
+      "unitId": "9c4634b9-259c-4e7a-affd-e539fbe81644",
+      "subBusiness": "PT",
+      "unitCode": "SHV_GIS",
+      "unitName": "SHV_GIS - Suzhou China - PT",
+      "country": "Suzhou China"
+    },
+    {
+      "unitId": "2b503229-d515-46a0-8144-9c7ef36bbcda",
+      "subBusiness": "PT",
+      "unitCode": "AGK",
+      "unitName": "AGK - Kassel Germany - PT",
+      "country": "Kassel Germany"
+    },
+    {
+      "unitId": "ecf7e58e-8d44-4779-8ff5-2e277395037a",
+      "subBusiness": "PT",
+      "unitCode": "USC",
+      "unitName": "USC - Charleroi United States - PT",
+      "country": "Charleroi United States"
+    },
+    {
+      "unitId": "95f3285e-711b-4a94-a6d8-93f193d6014f",
+      "subBusiness": "PT",
+      "unitCode": "CSM",
+      "unitName": "CSM - La Prairie Canada - PT",
+      "country": "La Prairie Canada"
+    },
+    {
+      "unitId": "6d033869-78d0-41b3-a448-a543615ed699",
+      "subBusiness": "PT",
+      "unitCode": "SHV_AIS",
+      "unitName": "SHV_AIS - Suzhou China - PT",
+      "country": "Suzhou China"
+    },
+    {
+      "unitId": "3ff902b2-742a-4262-8277-0ad6862cf880",
+      "subBusiness": "PT",
+      "unitCode": "AWT",
+      "unitName": "AWT - Wuhan China - PT",
+      "country": "Wuhan China"
+    },
+    {
+      "unitId": "bc17a0b7-c34c-4fa4-9b8a-55c5d48c414c",
+      "subBusiness": "PT",
+      "unitCode": "BHT",
+      "unitName": "BHT - Aix les Bains France - PT",
+      "country": "Aix les Bains France"
+    },
+    {
+      "unitId": "027bdc07-4c43-45f8-901d-32e4aef73618",
+      "subBusiness": "PT",
+      "unitCode": "FSA",
+      "unitName": "FSA - Aix les Bains France - PT",
+      "country": "Aix les Bains France"
+    },
+    {
+      "unitId": "b84a313a-d7ce-44d9-8e5f-34c33b983965",
+      "subBusiness": "PT",
+      "unitCode": "AHT",
+      "unitName": "AHT - Villeurbanne France - PT",
+      "country": "Villeurbanne France"
+    },
+    {
+      "unitId": "a458cde0-374e-4d00-baba-d9d2a7e3cafc",
+      "subBusiness": "PT",
+      "unitCode": "DSD",
+      "unitName": "DSD - Kassel Germany - PT",
+      "country": "Kassel Germany"
+    },
+    {
+      "unitId": "3327b625-af20-4954-bc8a-cafb6129c16f",
+      "subBusiness": "PT",
+      "unitCode": "AGM",
+      "unitName": "AGM - Mönchengladbach Germany - PT",
+      "country": "Mönchengladbach Germany"
+    },
+    {
+      "unitId": "8802d4ee-b878-4ba3-ad4a-568ec6a4da71",
+      "subBusiness": "PT",
+      "unitCode": "DSD",
+      "unitName": "DSD - Mönchengladbach Germany - PT",
+      "country": "Mönchengladbach Germany"
+    },
+    {
+      "unitId": "fea0cf1d-f6b6-43e2-b714-08641e67803d",
+      "subBusiness": "PT",
+      "unitCode": "RMK",
+      "unitName": "RMK - Hosur India - PT",
+      "country": "Hosur India"
+    },
+    {
+      "unitId": "f6d205dc-ee00-4b55-912d-83353cf627a4",
+      "subBusiness": "PT",
+      "unitCode": "CHT_GIS",
+      "unitName": "CHT_GIS - Padappaï India - PT",
+      "country": "Padappaï India"
+    },
+    {
+      "unitId": "325e6099-2675-465e-b1f3-b2a4300a2c8e",
+      "subBusiness": "PT",
+      "unitCode": "LTI",
+      "unitName": "LTI - Vadodara India - PT",
+      "country": "Vadodara India"
+    },
+    {
+      "unitId": "55139d0f-856d-4fc1-9c53-c839e4591055",
+      "subBusiness": "PT",
+      "unitCode": "UTR",
+      "unitName": "UTR - Swadaya Indonesia - PT",
+      "country": "Swadaya Indonesia"
+    },
+    {
+      "unitId": "300b9656-d9c1-4e26-9be8-76213f07b1c1",
+      "subBusiness": "PT",
+      "unitCode": "CME",
+      "unitName": "CME - Noventa di Piave Italy - PT",
+      "country": "Noventa di Piave Italy"
+    },
+    {
+      "unitId": "77c764f3-b27e-404d-a030-020573fb8490",
+      "subBusiness": "PT",
+      "unitCode": "RPV",
+      "unitName": "RPV - Sesto San Giovanni Italy - PT",
+      "country": "Sesto San Giovanni Italy"
+    },
+    {
+      "unitId": "e893cad9-8346-401c-9f3a-2c19be07bf99",
+      "subBusiness": "PT",
+      "unitCode": "SEH",
+      "unitName": "SEH - Oberentfelden Switzerland - PT",
+      "country": "Oberentfelden Switzerland"
+    },
+    {
+      "unitId": "db58eb8b-5b1e-4787-85de-bee437a59556",
+      "subBusiness": "PT",
+      "unitCode": "ATT",
+      "unitName": "ATT - Gebze Turkey - PT",
+      "country": "Gebze Turkey"
+    },
+    {
+      "unitId": "2d631318-4302-460c-88d7-048667cf3454",
+      "subBusiness": "PT",
+      "unitCode": "TSG",
+      "unitName": "TSG - Gebze Turkey - PT",
+      "country": "Gebze Turkey"
+    },
+    {
+      "unitId": "3b2e25ab-1d0a-458d-9ce9-477bab80d3f9",
+      "subBusiness": "PT",
+      "unitCode": "GSS",
+      "unitName": "GSS - Stafford Redhill United Kingdom - PT",
+      "country": "Stafford Redhill United Kingdom"
+    },
+    {
+      "unitId": "4b6529f1-6b40-43a0-9f65-1ff765f06c9c",
+      "subBusiness": "PT",
+      "unitCode": "ITI",
+      "unitName": "ITI - Clearwater United States - PT",
+      "country": "Clearwater United States"
+    },
+    {
+      "unitId": "5cd60299-1c94-4916-86dc-cd26be5fbc2e",
+      "subBusiness": "GA",
+      "unitCode": "BBO",
+      "unitName": "BBO Spain - GA",
+      "country": "Spain"
+    },
+    {
+      "unitId": "7d9338fa-b460-4266-9bd9-dbe1b3323ae0",
+      "subBusiness": "GA",
+      "unitCode": "LSB",
+      "unitName": "LSB UK - GA",
+      "country": "UK"
+    },
+    {
+      "unitId": "8c10acea-a832-4137-9971-6ed86671f5b1",
+      "subBusiness": "GA",
+      "unitCode": "MKM",
+      "unitName": "MKM Canada - GA",
+      "country": "Canada"
+    },
+    {
+      "unitId": "a2f04804-57d5-4821-a0cc-7eddb6286b50",
+      "subBusiness": "GA",
+      "unitCode": "RTB",
+      "unitName": "RTB Brazil - GA",
+      "country": "Brazil"
+    },
+    {
+      "unitId": "867eea0e-44f4-4a39-9407-63d9d64782f2",
+      "subBusiness": "GA",
+      "unitCode": "PCP",
+      "unitName": "PCP India - GA",
+      "country": "India"
+    },
+    {
+      "unitId": "b4bba924-f3ee-4adf-8ced-03f552f262c4",
+      "subBusiness": "GA",
+      "unitCode": "SMP",
+      "unitName": "SMP India - GA",
+      "country": "India"
+    },
+    {
+      "unitId": "2af3cb76-5d26-4bba-b90e-dfc9177e67b2",
+      "subBusiness": "GA",
+      "unitCode": "SMS",
+      "unitName": "SMS UK - GA",
+      "country": "UK"
+    },
+    {
+      "unitId": "75c65aa0-222e-4eb6-9fba-99f13aeb3992",
+      "subBusiness": "GA",
+      "unitCode": "ANA-PT",
+      "unitName": "ANA-PT USA - GA",
+      "country": "USA"
+    },
+    {
+      "unitId": "73d13eaa-ac48-4395-ba2c-03325fa56d98",
+      "subBusiness": "GA",
+      "unitCode": "EME",
+      "unitName": "EME France - GA",
+      "country": "France"
+    },
+    {
+      "unitId": "c31910fc-41e0-49ef-8ebb-9c8e97c1ea37",
+      "subBusiness": "GA",
+      "unitCode": "ROC",
+      "unitName": "ROC USA - GA",
+      "country": "USA"
+    },
+    {
+      "unitId": "7e5c03f8-9572-41d3-abd9-6ec003bdbdd9",
+      "subBusiness": "GA",
+      "unitCode": "ANA",
+      "unitName": "ANA USA - GA",
+      "country": "USA"
+    }
+  ],
+  "mdProductTypes": [
+    {
+      "code": "Earth Switch",
+      "nameEN": "Earth Switch",
+      "nameFR": "Earth Switch",
+      "namePT": "Earth Switch",
+      "nameGR": "Earth Switch",
+      "nameZH": "Earth Switch",
+      "nameTR": "Earth Switch",
+      "nameIT": "Earth Switch",
+      "activeFlag": true,
+      "id": 10189,
+      "mdDevice": [
+        {
+          "code": "Cable (Fibre optic)",
+          "nameEN": "Cable (Fibre optic)",
+          "nameFR": "Cable (Fibre optic)",
+          "namePT": "Cable (Fibre optic)",
+          "nameGR": "Cable (Fibre optic)",
+          "nameZH": "Cable (Fibre optic)",
+          "nameTR": "Cable (Fibre optic)",
+          "nameIT": "Cable (Fibre optic)",
+          "activeFlag": true,
+          "id": 75730
+        },
+        {
+          "code": "Cable (wire)",
+          "nameEN": "Cable (wire)",
+          "nameFR": "Cable (wire)",
+          "namePT": "Cable (wire)",
+          "nameGR": "Cable (wire)",
+          "nameZH": "Cable (wire)",
+          "nameTR": "Cable (wire)",
+          "nameIT": "Cable (wire)",
+          "activeFlag": true,
+          "id": 75729
+        },
+        {
+          "code": "Capacitor Bank",
+          "nameEN": "Capacitor Bank",
+          "nameFR": "Capacitor Bank",
+          "namePT": "Capacitor Bank",
+          "nameGR": "Capacitor Bank",
+          "nameZH": "Capacitor Bank",
+          "nameTR": "Capacitor Bank",
+          "nameIT": "Capacitor Bank",
+          "activeFlag": true,
+          "id": 75726
+        },
+        {
+          "code": "Ceramic",
+          "nameEN": "Ceramic",
+          "nameFR": "Ceramic",
+          "namePT": "Ceramic",
+          "nameGR": "Ceramic",
+          "nameZH": "Ceramic",
+          "nameTR": "Ceramic",
+          "nameIT": "Ceramic",
+          "activeFlag": true,
+          "id": 75725
+        },
+        {
+          "code": "Electrical",
+          "nameEN": "Electrical",
+          "nameFR": "Electrical",
+          "namePT": "Electrical",
+          "nameGR": "Electrical",
+          "nameZH": "Electrical",
+          "nameTR": "Electrical",
+          "nameIT": "Electrical",
+          "activeFlag": true,
+          "id": 75727
+        },
+        {
+          "code": "Electronic",
+          "nameEN": "Electronic",
+          "nameFR": "Electronic",
+          "namePT": "Electronic",
+          "nameGR": "Electronic",
+          "nameZH": "Electronic",
+          "nameTR": "Electronic",
+          "nameIT": "Electronic",
+          "activeFlag": true,
+          "id": 75728
+        },
+        {
+          "code": "Metallic",
+          "nameEN": "Metallic",
+          "nameFR": "Metallic",
+          "namePT": "Metallic",
+          "nameGR": "Metallic",
+          "nameZH": "Metallic",
+          "nameTR": "Metallic",
+          "nameIT": "Metallic",
+          "activeFlag": true,
+          "id": 75723
+        },
+        {
+          "code": "N/A",
+          "nameEN": "N/A",
+          "nameFR": "N/A",
+          "namePT": "N/A",
+          "nameGR": "N/A",
+          "nameZH": "N/A",
+          "nameTR": "N/A",
+          "nameIT": "N/A",
+          "activeFlag": true,
+          "id": 75733
+        },
+        {
+          "code": "Other",
+          "nameEN": "Other",
+          "nameFR": "Other",
+          "namePT": "Other",
+          "nameGR": "Other",
+          "nameZH": "Other",
+          "nameTR": "Other",
+          "nameIT": "Other",
+          "activeFlag": true,
+          "id": 75732
+        },
+        {
+          "code": "PCA or PCBA",
+          "nameEN": "PCA or PCBA",
+          "nameFR": "PCA or PCBA",
+          "namePT": "PCA or PCBA",
+          "nameGR": "PCA or PCBA",
+          "nameZH": "PCA or PCBA",
+          "nameTR": "PCA or PCBA",
+          "nameIT": "PCA or PCBA",
+          "activeFlag": true,
+          "id": 75731
+        },
+        {
+          "code": "Plastic",
+          "nameEN": "Plastic",
+          "nameFR": "Plastic",
+          "namePT": "Plastic",
+          "nameGR": "Plastic",
+          "nameZH": "Plastic",
+          "nameTR": "Plastic",
+          "nameIT": "Plastic",
+          "activeFlag": true,
+          "id": 75724
+        }
+      ]
+    },
+    {
+      "code": "H400",
+      "nameEN": "H400",
+      "nameFR": "H400",
+      "namePT": "H400",
+      "nameGR": "H400",
+      "nameZH": "H400",
+      "nameTR": "H400",
+      "nameIT": "H400",
+      "activeFlag": true,
+      "id": 10187,
+      "mdDevice": [
+        {
+          "code": "Cable (Fibre optic)",
+          "nameEN": "Cable (Fibre optic)",
+          "nameFR": "Cable (Fibre optic)",
+          "namePT": "Cable (Fibre optic)",
+          "nameGR": "Cable (Fibre optic)",
+          "nameZH": "Cable (Fibre optic)",
+          "nameTR": "Cable (Fibre optic)",
+          "nameIT": "Cable (Fibre optic)",
+          "activeFlag": true,
+          "id": 75708
+        },
+        {
+          "code": "Cable (wire)",
+          "nameEN": "Cable (wire)",
+          "nameFR": "Cable (wire)",
+          "namePT": "Cable (wire)",
+          "nameGR": "Cable (wire)",
+          "nameZH": "Cable (wire)",
+          "nameTR": "Cable (wire)",
+          "nameIT": "Cable (wire)",
+          "activeFlag": true,
+          "id": 75707
+        },
+        {
+          "code": "Capacitor Bank",
+          "nameEN": "Capacitor Bank",
+          "nameFR": "Capacitor Bank",
+          "namePT": "Capacitor Bank",
+          "nameGR": "Capacitor Bank",
+          "nameZH": "Capacitor Bank",
+          "nameTR": "Capacitor Bank",
+          "nameIT": "Capacitor Bank",
+          "activeFlag": true,
+          "id": 75704
+        },
+        {
+          "code": "Ceramic",
+          "nameEN": "Ceramic",
+          "nameFR": "Ceramic",
+          "namePT": "Ceramic",
+          "nameGR": "Ceramic",
+          "nameZH": "Ceramic",
+          "nameTR": "Ceramic",
+          "nameIT": "Ceramic",
+          "activeFlag": true,
+          "id": 75703
+        },
+        {
+          "code": "Electrical",
+          "nameEN": "Electrical",
+          "nameFR": "Electrical",
+          "namePT": "Electrical",
+          "nameGR": "Electrical",
+          "nameZH": "Electrical",
+          "nameTR": "Electrical",
+          "nameIT": "Electrical",
+          "activeFlag": true,
+          "id": 75705
+        },
+        {
+          "code": "Electronic",
+          "nameEN": "Electronic",
+          "nameFR": "Electronic",
+          "namePT": "Electronic",
+          "nameGR": "Electronic",
+          "nameZH": "Electronic",
+          "nameTR": "Electronic",
+          "nameIT": "Electronic",
+          "activeFlag": true,
+          "id": 75706
+        },
+        {
+          "code": "Metallic",
+          "nameEN": "Metallic",
+          "nameFR": "Metallic",
+          "namePT": "Metallic",
+          "nameGR": "Metallic",
+          "nameZH": "Metallic",
+          "nameTR": "Metallic",
+          "nameIT": "Metallic",
+          "activeFlag": true,
+          "id": 75701
+        },
+        {
+          "code": "N/A",
+          "nameEN": "N/A",
+          "nameFR": "N/A",
+          "namePT": "N/A",
+          "nameGR": "N/A",
+          "nameZH": "N/A",
+          "nameTR": "N/A",
+          "nameIT": "N/A",
+          "activeFlag": true,
+          "id": 75711
+        },
+        {
+          "code": "Other",
+          "nameEN": "Other",
+          "nameFR": "Other",
+          "namePT": "Other",
+          "nameGR": "Other",
+          "nameZH": "Other",
+          "nameTR": "Other",
+          "nameIT": "Other",
+          "activeFlag": true,
+          "id": 75710
+        },
+        {
+          "code": "PCA or PCBA",
+          "nameEN": "PCA or PCBA",
+          "nameFR": "PCA or PCBA",
+          "namePT": "PCA or PCBA",
+          "nameGR": "PCA or PCBA",
+          "nameZH": "PCA or PCBA",
+          "nameTR": "PCA or PCBA",
+          "nameIT": "PCA or PCBA",
+          "activeFlag": true,
+          "id": 75709
+        },
+        {
+          "code": "Plastic",
+          "nameEN": "Plastic",
+          "nameFR": "Plastic",
+          "namePT": "Plastic",
+          "nameGR": "Plastic",
+          "nameZH": "Plastic",
+          "nameTR": "Plastic",
+          "nameIT": "Plastic",
+          "activeFlag": true,
+          "id": 75702
+        }
+      ]
+    },
+    {
+      "code": "H450",
+      "nameEN": "H450",
+      "nameFR": "H450",
+      "namePT": "H450",
+      "nameGR": "H450",
+      "nameZH": "H450",
+      "nameTR": "H450",
+      "nameIT": "H450",
+      "activeFlag": true,
+      "id": 10188,
+      "mdDevice": [
+        {
+          "code": "Cable (Fibre optic)",
+          "nameEN": "Cable (Fibre optic)",
+          "nameFR": "Cable (Fibre optic)",
+          "namePT": "Cable (Fibre optic)",
+          "nameGR": "Cable (Fibre optic)",
+          "nameZH": "Cable (Fibre optic)",
+          "nameTR": "Cable (Fibre optic)",
+          "nameIT": "Cable (Fibre optic)",
+          "activeFlag": true,
+          "id": 75719
+        },
+        {
+          "code": "Cable (wire)",
+          "nameEN": "Cable (wire)",
+          "nameFR": "Cable (wire)",
+          "namePT": "Cable (wire)",
+          "nameGR": "Cable (wire)",
+          "nameZH": "Cable (wire)",
+          "nameTR": "Cable (wire)",
+          "nameIT": "Cable (wire)",
+          "activeFlag": true,
+          "id": 75718
+        },
+        {
+          "code": "Capacitor Bank",
+          "nameEN": "Capacitor Bank",
+          "nameFR": "Capacitor Bank",
+          "namePT": "Capacitor Bank",
+          "nameGR": "Capacitor Bank",
+          "nameZH": "Capacitor Bank",
+          "nameTR": "Capacitor Bank",
+          "nameIT": "Capacitor Bank",
+          "activeFlag": true,
+          "id": 75715
+        },
+        {
+          "code": "Ceramic",
+          "nameEN": "Ceramic",
+          "nameFR": "Ceramic",
+          "namePT": "Ceramic",
+          "nameGR": "Ceramic",
+          "nameZH": "Ceramic",
+          "nameTR": "Ceramic",
+          "nameIT": "Ceramic",
+          "activeFlag": true,
+          "id": 75714
+        },
+        {
+          "code": "Electrical",
+          "nameEN": "Electrical",
+          "nameFR": "Electrical",
+          "namePT": "Electrical",
+          "nameGR": "Electrical",
+          "nameZH": "Electrical",
+          "nameTR": "Electrical",
+          "nameIT": "Electrical",
+          "activeFlag": true,
+          "id": 75716
+        },
+        {
+          "code": "Electronic",
+          "nameEN": "Electronic",
+          "nameFR": "Electronic",
+          "namePT": "Electronic",
+          "nameGR": "Electronic",
+          "nameZH": "Electronic",
+          "nameTR": "Electronic",
+          "nameIT": "Electronic",
+          "activeFlag": true,
+          "id": 75717
+        },
+        {
+          "code": "Metallic",
+          "nameEN": "Metallic",
+          "nameFR": "Metallic",
+          "namePT": "Metallic",
+          "nameGR": "Metallic",
+          "nameZH": "Metallic",
+          "nameTR": "Metallic",
+          "nameIT": "Metallic",
+          "activeFlag": true,
+          "id": 75712
+        },
+        {
+          "code": "N/A",
+          "nameEN": "N/A",
+          "nameFR": "N/A",
+          "namePT": "N/A",
+          "nameGR": "N/A",
+          "nameZH": "N/A",
+          "nameTR": "N/A",
+          "nameIT": "N/A",
+          "activeFlag": true,
+          "id": 75722
+        },
+        {
+          "code": "Other",
+          "nameEN": "Other",
+          "nameFR": "Other",
+          "namePT": "Other",
+          "nameGR": "Other",
+          "nameZH": "Other",
+          "nameTR": "Other",
+          "nameIT": "Other",
+          "activeFlag": true,
+          "id": 75721
+        },
+        {
+          "code": "PCA or PCBA",
+          "nameEN": "PCA or PCBA",
+          "nameFR": "PCA or PCBA",
+          "namePT": "PCA or PCBA",
+          "nameGR": "PCA or PCBA",
+          "nameZH": "PCA or PCBA",
+          "nameTR": "PCA or PCBA",
+          "nameIT": "PCA or PCBA",
+          "activeFlag": true,
+          "id": 75720
+        },
+        {
+          "code": "Plastic",
+          "nameEN": "Plastic",
+          "nameFR": "Plastic",
+          "namePT": "Plastic",
+          "nameGR": "Plastic",
+          "nameZH": "Plastic",
+          "nameTR": "Plastic",
+          "nameIT": "Plastic",
+          "activeFlag": true,
+          "id": 75713
+        }
+      ]
+    },
+    {
+      "code": "N/A",
+      "nameEN": "N/A",
+      "nameFR": "N/A",
+      "namePT": "N/A",
+      "nameGR": "N/A",
+      "nameZH": "N/A",
+      "nameTR": "N/A",
+      "nameIT": "N/A",
+      "activeFlag": true,
+      "id": 10191,
+      "mdDevice": [
+        {
+          "code": "Cable (Fibre optic)",
+          "nameEN": "Cable (Fibre optic)",
+          "nameFR": "Cable (Fibre optic)",
+          "namePT": "Cable (Fibre optic)",
+          "nameGR": "Cable (Fibre optic)",
+          "nameZH": "Cable (Fibre optic)",
+          "nameTR": "Cable (Fibre optic)",
+          "nameIT": "Cable (Fibre optic)",
+          "activeFlag": true,
+          "id": 75752
+        },
+        {
+          "code": "Cable (wire)",
+          "nameEN": "Cable (wire)",
+          "nameFR": "Cable (wire)",
+          "namePT": "Cable (wire)",
+          "nameGR": "Cable (wire)",
+          "nameZH": "Cable (wire)",
+          "nameTR": "Cable (wire)",
+          "nameIT": "Cable (wire)",
+          "activeFlag": true,
+          "id": 75751
+        },
+        {
+          "code": "Capacitor Bank",
+          "nameEN": "Capacitor Bank",
+          "nameFR": "Capacitor Bank",
+          "namePT": "Capacitor Bank",
+          "nameGR": "Capacitor Bank",
+          "nameZH": "Capacitor Bank",
+          "nameTR": "Capacitor Bank",
+          "nameIT": "Capacitor Bank",
+          "activeFlag": true,
+          "id": 75748
+        },
+        {
+          "code": "Ceramic",
+          "nameEN": "Ceramic",
+          "nameFR": "Ceramic",
+          "namePT": "Ceramic",
+          "nameGR": "Ceramic",
+          "nameZH": "Ceramic",
+          "nameTR": "Ceramic",
+          "nameIT": "Ceramic",
+          "activeFlag": true,
+          "id": 75747
+        },
+        {
+          "code": "Electrical",
+          "nameEN": "Electrical",
+          "nameFR": "Electrical",
+          "namePT": "Electrical",
+          "nameGR": "Electrical",
+          "nameZH": "Electrical",
+          "nameTR": "Electrical",
+          "nameIT": "Electrical",
+          "activeFlag": true,
+          "id": 75749
+        },
+        {
+          "code": "Electronic",
+          "nameEN": "Electronic",
+          "nameFR": "Electronic",
+          "namePT": "Electronic",
+          "nameGR": "Electronic",
+          "nameZH": "Electronic",
+          "nameTR": "Electronic",
+          "nameIT": "Electronic",
+          "activeFlag": true,
+          "id": 75750
+        },
+        {
+          "code": "Metallic",
+          "nameEN": "Metallic",
+          "nameFR": "Metallic",
+          "namePT": "Metallic",
+          "nameGR": "Metallic",
+          "nameZH": "Metallic",
+          "nameTR": "Metallic",
+          "nameIT": "Metallic",
+          "activeFlag": true,
+          "id": 75745
+        },
+        {
+          "code": "N/A",
+          "nameEN": "N/A",
+          "nameFR": "N/A",
+          "namePT": "N/A",
+          "nameGR": "N/A",
+          "nameZH": "N/A",
+          "nameTR": "N/A",
+          "nameIT": "N/A",
+          "activeFlag": true,
+          "id": 75755
+        },
+        {
+          "code": "Other",
+          "nameEN": "Other",
+          "nameFR": "Other",
+          "namePT": "Other",
+          "nameGR": "Other",
+          "nameZH": "Other",
+          "nameTR": "Other",
+          "nameIT": "Other",
+          "activeFlag": true,
+          "id": 75754
+        },
+        {
+          "code": "PCA or PCBA",
+          "nameEN": "PCA or PCBA",
+          "nameFR": "PCA or PCBA",
+          "namePT": "PCA or PCBA",
+          "nameGR": "PCA or PCBA",
+          "nameZH": "PCA or PCBA",
+          "nameTR": "PCA or PCBA",
+          "nameIT": "PCA or PCBA",
+          "activeFlag": true,
+          "id": 75753
+        },
+        {
+          "code": "Plastic",
+          "nameEN": "Plastic",
+          "nameFR": "Plastic",
+          "namePT": "Plastic",
+          "nameGR": "Plastic",
+          "nameZH": "Plastic",
+          "nameTR": "Plastic",
+          "nameIT": "Plastic",
+          "activeFlag": true,
+          "id": 75746
+        }
+      ]
+    },
+    {
+      "code": "VSC",
+      "nameEN": "VSC",
+      "nameFR": "VSC",
+      "namePT": "VSC",
+      "nameGR": "VSC",
+      "nameZH": "VSC",
+      "nameTR": "VSC",
+      "nameIT": "VSC",
+      "activeFlag": true,
+      "id": 10190,
+      "mdDevice": [
+        {
+          "code": "Cable (Fibre optic)",
+          "nameEN": "Cable (Fibre optic)",
+          "nameFR": "Cable (Fibre optic)",
+          "namePT": "Cable (Fibre optic)",
+          "nameGR": "Cable (Fibre optic)",
+          "nameZH": "Cable (Fibre optic)",
+          "nameTR": "Cable (Fibre optic)",
+          "nameIT": "Cable (Fibre optic)",
+          "activeFlag": true,
+          "id": 75741
+        },
+        {
+          "code": "Cable (wire)",
+          "nameEN": "Cable (wire)",
+          "nameFR": "Cable (wire)",
+          "namePT": "Cable (wire)",
+          "nameGR": "Cable (wire)",
+          "nameZH": "Cable (wire)",
+          "nameTR": "Cable (wire)",
+          "nameIT": "Cable (wire)",
+          "activeFlag": true,
+          "id": 75740
+        },
+        {
+          "code": "Capacitor Bank",
+          "nameEN": "Capacitor Bank",
+          "nameFR": "Capacitor Bank",
+          "namePT": "Capacitor Bank",
+          "nameGR": "Capacitor Bank",
+          "nameZH": "Capacitor Bank",
+          "nameTR": "Capacitor Bank",
+          "nameIT": "Capacitor Bank",
+          "activeFlag": true,
+          "id": 75737
+        },
+        {
+          "code": "Ceramic",
+          "nameEN": "Ceramic",
+          "nameFR": "Ceramic",
+          "namePT": "Ceramic",
+          "nameGR": "Ceramic",
+          "nameZH": "Ceramic",
+          "nameTR": "Ceramic",
+          "nameIT": "Ceramic",
+          "activeFlag": true,
+          "id": 75736
+        },
+        {
+          "code": "Electrical",
+          "nameEN": "Electrical",
+          "nameFR": "Electrical",
+          "namePT": "Electrical",
+          "nameGR": "Electrical",
+          "nameZH": "Electrical",
+          "nameTR": "Electrical",
+          "nameIT": "Electrical",
+          "activeFlag": true,
+          "id": 75738
+        },
+        {
+          "code": "Electronic",
+          "nameEN": "Electronic",
+          "nameFR": "Electronic",
+          "namePT": "Electronic",
+          "nameGR": "Electronic",
+          "nameZH": "Electronic",
+          "nameTR": "Electronic",
+          "nameIT": "Electronic",
+          "activeFlag": true,
+          "id": 75739
+        },
+        {
+          "code": "Metallic",
+          "nameEN": "Metallic",
+          "nameFR": "Metallic",
+          "namePT": "Metallic",
+          "nameGR": "Metallic",
+          "nameZH": "Metallic",
+          "nameTR": "Metallic",
+          "nameIT": "Metallic",
+          "activeFlag": true,
+          "id": 75734
+        },
+        {
+          "code": "N/A",
+          "nameEN": "N/A",
+          "nameFR": "N/A",
+          "namePT": "N/A",
+          "nameGR": "N/A",
+          "nameZH": "N/A",
+          "nameTR": "N/A",
+          "nameIT": "N/A",
+          "activeFlag": true,
+          "id": 75744
+        },
+        {
+          "code": "Other",
+          "nameEN": "Other",
+          "nameFR": "Other",
+          "namePT": "Other",
+          "nameGR": "Other",
+          "nameZH": "Other",
+          "nameTR": "Other",
+          "nameIT": "Other",
+          "activeFlag": true,
+          "id": 75743
+        },
+        {
+          "code": "PCA or PCBA",
+          "nameEN": "PCA or PCBA",
+          "nameFR": "PCA or PCBA",
+          "namePT": "PCA or PCBA",
+          "nameGR": "PCA or PCBA",
+          "nameZH": "PCA or PCBA",
+          "nameTR": "PCA or PCBA",
+          "nameIT": "PCA or PCBA",
+          "activeFlag": true,
+          "id": 75742
+        },
+        {
+          "code": "Plastic",
+          "nameEN": "Plastic",
+          "nameFR": "Plastic",
+          "namePT": "Plastic",
+          "nameGR": "Plastic",
+          "nameZH": "Plastic",
+          "nameTR": "Plastic",
+          "nameIT": "Plastic",
+          "activeFlag": true,
+          "id": 75735
+        }
+      ]
+    }
+  ],
+  "mdPhaseDetections": [
+    {
+      "code": "Engineering NTI/NPI-R&D",
+      "nameEN": "Engineering NTI/NPI-R&D",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6579,
+      "subBusinessCode": "GSI",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "N/A",
+          "nameEN": "N/A",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10623
+        }
+      ]
+    },
+    {
+      "code": "External Logistic (transportation)",
+      "nameEN": "External Logistic (transportation)",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6580,
+      "subBusinessCode": "GSI",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "N/A",
+          "nameEN": "N/A",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10624
+        }
+      ]
+    },
+    {
+      "code": "ITO/Proposal/Tendering",
+      "nameEN": "ITO/Proposal/Tendering",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6581,
+      "subBusinessCode": "GSI",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "N/A",
+          "nameEN": "N/A",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10625
+        }
+      ]
+    },
+    {
+      "code": "Manufacturing or internal logistic",
+      "nameEN": "Manufacturing or internal logistic",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6582,
+      "subBusinessCode": "GSI",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "1. Winding",
+          "nameEN": "1. Winding",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10626
+        },
+        {
+          "code": "2. Winding test",
+          "nameEN": "2. Winding test",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10627
+        },
+        {
+          "code": "3. Insulation",
+          "nameEN": "3. Insulation",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10628
+        },
+        {
+          "code": "4. Pre-assembly test",
+          "nameEN": "4. Pre-assembly test",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10629
+        },
+        {
+          "code": "5. Assembly",
+          "nameEN": "5. Assembly",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10630
+        },
+        {
+          "code": "6. Drying & oil filling",
+          "nameEN": "6. Drying & oil filling",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10631
+        },
+        {
+          "code": "7. Final tests",
+          "nameEN": "7. Final tests",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10632
+        },
+        {
+          "code": "8. Final assembly",
+          "nameEN": "8. Final assembly",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10633
+        },
+        {
+          "code": "9. Packing",
+          "nameEN": "9. Packing",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10634
+        },
+        {
+          "code": "N/A",
+          "nameEN": "N/A",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10635
+        }
+      ]
+    },
+    {
+      "code": "Post Sales / In-Service / Customer",
+      "nameEN": "Post Sales / In-Service / Customer",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6583,
+      "subBusinessCode": "GSI",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "N/A",
+          "nameEN": "N/A",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10636
+        }
+      ]
+    },
+    {
+      "code": "Procurement",
+      "nameEN": "Procurement",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6584,
+      "subBusinessCode": "GSI",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "N/A",
+          "nameEN": "N/A",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10637
+        }
+      ]
+    },
+    {
+      "code": "Project Engineering/Engineering Requisition",
+      "nameEN": "Project Engineering/Engineering Requisition",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6585,
+      "subBusinessCode": "GSI",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "N/A",
+          "nameEN": "N/A",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10638
+        }
+      ]
+    },
+    {
+      "code": "Project Management",
+      "nameEN": "Project Management",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6586,
+      "subBusinessCode": "GSI",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "N/A",
+          "nameEN": "N/A",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10639
+        }
+      ]
+    },
+    {
+      "code": "Site Execution",
+      "nameEN": "Site Execution",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6587,
+      "subBusinessCode": "GSI",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "N/A",
+          "nameEN": "N/A",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10640
+        }
+      ]
+    },
+    {
+      "code": "Supplier",
+      "nameEN": "Supplier",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6588,
+      "subBusinessCode": "GSI",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "N/A",
+          "nameEN": "N/A",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10641
+        }
+      ]
+    },
+    {
+      "code": "Test/Inspection",
+      "nameEN": "Test/Inspection",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6589,
+      "subBusinessCode": "GSI",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "N/A",
+          "nameEN": "N/A",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 10642
+        }
+      ]
+    }
+  ],
+  "mdImpactPriorities": [
+    {
+      "code": "Delay in delivery < 1 week",
+      "nameEN": "Delay in delivery < 1 week",
+      "nameFR": "Delay in delivery < 1 week",
+      "namePT": "Atraso na entrega < 1 Semana",
+      "nameGR": "Verspätung der Lieferung < 1 Woche",
+      "nameZH": "延迟交付 <1周",
+      "nameTR": "Teslimatta gecikme < 1 hafta",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6053,
+      "subBusinessCode": "GSI",
+      "priority": "3. Low"
+    },
+    {
+      "code": "Delay in delivery >= 1 week and < 2 weeks",
+      "nameEN": "Delay in delivery >= 1 week and < 2 weeks",
+      "nameFR": "Delay in delivery >= 1 week and < 2 weeks",
+      "namePT": "Atraso na entrega> = 1 semana e <2 semanas",
+      "nameGR": "Verspätung der Lieferung >= 1 Woche und < 2 Wochen",
+      "nameZH": "延迟交付 >= 1 周 且 < 2 周",
+      "nameTR": "Teslimatta gecikme >= 1  hafta ve < 2 hafta",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6054,
+      "subBusinessCode": "GSI",
+      "priority": "2. Medium"
+    },
+    {
+      "code": "Delay in delivery >= 2 weeks",
+      "nameEN": "Delay in delivery >= 2 weeks",
+      "nameFR": "Delay in delivery >= 2 weeks",
+      "namePT": "Atraso na entrega >= 2 Semanas",
+      "nameGR": "Verspätung der Lieferung >=2 Wochen",
+      "nameZH": "延迟交付 >= 2 周",
+      "nameTR": "Teslimatta gecikme >= 2 hafta",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6055,
+      "subBusinessCode": "GSI",
+      "priority": "1. High"
+    },
+    {
+      "code": "Failure during commissioning (before waranty start)",
+      "nameEN": "Failure during commissioning (before warranty start)",
+      "nameFR": "Failure during commissioning (before warranty start)",
+      "namePT": "Falha durante o comissionamento (antes do início da garantia)",
+      "nameGR": "Fehler während Inbetriebnahme (Vor der Garantie)",
+      "nameZH": "调试期间故障 (质保开始前)",
+      "nameTR": "Saha devreye alma esnasında arıza (Garanti başlamadan önce)",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6056,
+      "subBusinessCode": "GSI",
+      "priority": "1. High"
+    },
+    {
+      "code": "Failure during erection (before waranty start)",
+      "nameEN": "Failure during erection (before waranty start)",
+      "nameFR": "Failure during erection (before waranty start)",
+      "namePT": "Falha durante a montagem (antes do início da garantia)",
+      "nameGR": "Fehler während Installation (Vor der Garantie)",
+      "nameZH": "装配期间故障 (质保开始前)",
+      "nameTR": "Saha kurulumu esnasında arıza (Garanti başlamadan önce)",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6057,
+      "subBusinessCode": "GSI",
+      "priority": "1. High"
+    },
+    {
+      "code": "Level 1 Final Test Failure",
+      "nameEN": "Level 1 Final Test Failure",
+      "nameFR": "Level 1 Final Test Failure",
+      "namePT": "Falha no teste final Nivel 1",
+      "nameGR": "Level 1 Finaler Testfehler",
+      "nameZH": "最终测试失败 级别1",
+      "nameTR": "Seviye 1 Kabul Testi Arızası",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6058,
+      "subBusinessCode": "GSI",
+      "priority": "1. High"
+    },
+    {
+      "code": "Level 2 Final Test Failure",
+      "nameEN": "Level 2 Final Test Failure",
+      "nameFR": "Level 2 Final Test Failure",
+      "namePT": "Falha no teste final Nivel 2",
+      "nameGR": "Level 2 Finaler Testfehler",
+      "nameZH": "最终测试失败 级别2",
+      "nameTR": "Seviye 2 Kabul Testi Arızası",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6059,
+      "subBusinessCode": "GSI",
+      "priority": "1. High"
+    },
+    {
+      "code": "Level 3 Final Test Failure",
+      "nameEN": "Level 3 Final Test Failure",
+      "nameFR": "Level 3 Final Test Failure",
+      "namePT": "Falha no teste final Nivel 3",
+      "nameGR": "Level 3 Finaler Testfehler",
+      "nameZH": "最终测试失败 级别3",
+      "nameTR": "Seviye 3 Kabul Testi Arızası",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6060,
+      "subBusinessCode": "GSI",
+      "priority": "2. Medium"
+    },
+    {
+      "code": "Potential Cost <= 20k$",
+      "nameEN": "Potential Cost <= 20k$",
+      "nameFR": "Potential Cost <= 20k$",
+      "namePT": "Custo potencial <= 20k$",
+      "nameGR": "Potenzielle Kosten <= 20 k$",
+      "nameZH": "潜在成本  <= 20 k$",
+      "nameTR": "Olası Maliyet <= 20k$",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6061,
+      "subBusinessCode": "GSI",
+      "priority": "3. Low"
+    },
+    {
+      "code": "Potential Cost > 100 k$",
+      "nameEN": "Potential Cost > 100 k$",
+      "nameFR": "Potential Cost > 100 k$",
+      "namePT": "Custo potencial > 100 k$",
+      "nameGR": "Potenzielle Kosten > 100 k$",
+      "nameZH": "潜在成本 > 100 k$",
+      "nameTR": "Olası Maliyet > 100 k$",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6062,
+      "subBusinessCode": "GSI",
+      "priority": "1. High"
+    },
+    {
+      "code": "Potential Cost > 200 k$",
+      "nameEN": "Potential Cost > 200 k$",
+      "nameFR": "Potential Cost > 200 k$",
+      "namePT": "Potential Cost > 200 k$",
+      "nameGR": "Potential Cost > 200 k$",
+      "nameZH": "Potential Cost > 200 k$",
+      "nameTR": "Olası Maliyet > 200 k$",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6063,
+      "subBusinessCode": "GSI",
+      "priority": "1. High"
+    },
+    {
+      "code": "Potential cost > 20 k$ and <= 100 k$",
+      "nameEN": "Potential cost > 20 k$ and <= 100 k$",
+      "nameFR": "Potential cost > 20 k$ and <= 100 k$",
+      "namePT": "Custo potencial > 100 k$",
+      "nameGR": "Potenzielle Kosten > 20 k$ and <= 100 k$",
+      "nameZH": "潜在成本 > 20 k$ 且 <= 100 k$",
+      "nameTR": "Olası Maliyet > 20 k$ and <= 100 k$",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6064,
+      "subBusinessCode": "GSI",
+      "priority": "2. Medium"
+    },
+    {
+      "code": "Product non conformance brings an EHS risk",
+      "nameEN": "Product non conformance brings an EHS risk",
+      "nameFR": "Product non conformance brings an EHS risk",
+      "namePT": "Produto não conforme gerando risco de EHS",
+      "nameGR": "Nicht-Konformität des Produkts birgt ein EHS-Risiko",
+      "nameZH": "产品不合格引起环境/健康/安全风险",
+      "nameTR": "Ürün uygunsuzluğu EHS riskine yol açar.",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 6065,
+      "subBusinessCode": "GSI",
+      "priority": "1. High"
+    }
+  ],
+  "mdLocationWhereDetecteds": [
+    {
+      "code": "1. Contrôle - Réception",
+      "nameEN": "1. Contrôle - Réception",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 106233,
+      "subBusinessCode": "HVS",
+      "unitCode": "AHT",
+      "country": "France"
+    },
+    {
+      "code": "2.a Montage LT",
+      "nameEN": "2.a Montage LT",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 106234,
+      "subBusinessCode": "HVS",
+      "unitCode": "AHT",
+      "country": "France"
+    },
+    {
+      "code": "2.b Montage GCB",
+      "nameEN": "2.b Montage GCB",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 106235,
+      "subBusinessCode": "HVS",
+      "unitCode": "AHT",
+      "country": "France"
+    },
+    {
+      "code": "3. SAV",
+      "nameEN": "3. SAV",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 106236,
+      "subBusinessCode": "HVS",
+      "unitCode": "AHT",
+      "country": "France"
+    },
+    {
+      "code": "4. Site client",
+      "nameEN": "4. Site client",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 106237,
+      "subBusinessCode": "HVS",
+      "unitCode": "AHT",
+      "country": "France"
+    },
+    {
+      "code": "5. Fournisseur rang 2",
+      "nameEN": "5. Fournisseur rang 2",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 106238,
+      "subBusinessCode": "HVS",
+      "unitCode": "AHT",
+      "country": "France"
+    }
+  ],
+  "mdAssignedDepartments": [
+    {
+      "code": "Management & Organisation & Communication"
+    },
+    {
+      "code": "EHS"
+    },
+    {
+      "code": "Tendering"
+    },
+    {
+      "code": "Telemetry Engineering & Industrialisation"
+    },
+    {
+      "code": "Software Delivery"
+    },
+    {
+      "code": "Sourcing"
+    },
+    {
+      "code": "Logistic"
+    },
+    {
+      "code": "Q&CI"
+    },
+    {
+      "code": "Support & Services"
+    },
+    {
+      "code": "HR"
+    },
+    {
+      "code": "Project Management"
+    },
+    {
+      "code": "Sales"
+    },
+    {
+      "code": "Marketing"
+    },
+    {
+      "code": "Procurement"
+    },
+    {
+      "code": "Fields Services"
+    },
+    {
+      "code": "R&D"
+    },
+    {
+      "code": "Finances"
+    },
+    {
+      "code": "IT"
+    },
+    {
+      "code": "Facility management"
+    },
+    {
+      "code": "Supplier"
+    }
+  ]
+}
