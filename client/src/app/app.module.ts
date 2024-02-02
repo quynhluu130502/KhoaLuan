@@ -25,6 +25,9 @@ import { CreateNonConformitiesComponent } from './create-non-conformities/create
 import { RichTextComponent } from './rich-text/rich-text.component';
 import { ProblemDescriptionDialogComponent } from './problem-description-dialog/problem-description-dialog.component';
 import { DragDropFileUploadDirective } from './directives/drag-drop-file-upload.directive';
+import { TableTicketComponent } from './table-ticket/table-ticket.component';
+import { UserRoleCreateComponent } from './user-role-create/user-role-create.component';
+import { UserRoleListCreateComponent } from './user-role-list-create/user-role-list-create.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +41,9 @@ import { DragDropFileUploadDirective } from './directives/drag-drop-file-upload.
     RichTextComponent,
     ProblemDescriptionDialogComponent,
     DragDropFileUploadDirective,
+    TableTicketComponent,
+    UserRoleCreateComponent,
+    UserRoleListCreateComponent,
   ],
   imports: [
     CommonModule,

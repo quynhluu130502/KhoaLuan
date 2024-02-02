@@ -1,0 +1,42 @@
+[
+  {
+    "subBusinessId": "edc31d81-e37d-4bad-9928-962d1ed787a1",
+    "subBusinessCode": "CAPACITORS",
+    "subBusinessName": "Capacitors"
+  },
+  {
+    "subBusinessId": "ddc9254e-babd-4013-b0c5-c01a715495bb",
+    "subBusinessCode": "GSI",
+    "subBusinessName": "GSI"
+  },
+  {
+    "subBusinessId": "1215e679-5b15-4f6d-967c-4abe02ef79f5",
+    "subBusinessCode": "GA",
+    "subBusinessName": "Grid Automation"
+  },
+  {
+    "subBusinessId": "cc8599d2-f321-4683-bae0-302df4bde9d3",
+    "subBusinessCode": "HVS",
+    "subBusinessName": "HVS"
+  },
+  {
+    "subBusinessId": "b1fc1c25-f663-42fd-87ec-7bce987fb159",
+    "subBusinessCode": "PQP",
+    "subBusinessName": "PQP"
+  },
+  {
+    "subBusinessId": "5f4ddfa2-0a3f-4623-a0fe-2afb2034478a",
+    "subBusinessCode": "PT",
+    "subBusinessName": "PT"
+  },
+  {
+    "subBusinessId": "59160ed9-ff48-40a2-860b-fa2f4be9c9d6",
+    "subBusinessCode": "PTR",
+    "subBusinessName": "PTR"
+  },
+  {
+    "subBusinessId": "be52adc2-95bc-47b5-93d2-4f0bf63ca388",
+    "subBusinessCode": "SER",
+    "subBusinessName": "SER"
+  }
+]

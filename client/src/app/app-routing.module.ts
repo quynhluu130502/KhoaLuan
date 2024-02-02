@@ -10,6 +10,7 @@ import { InternalUserComponent } from './internal-user/internal-user.component';
 import { authGuard } from './auth.guard';
 import { NonConformitiesComponent } from './non-conformities/non-conformities.component';
 import { ncgMenu, qsaMenu } from './constant';
+import { TableTicketComponent } from './table-ticket/table-ticket.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -33,6 +34,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'non-conformities', pathMatch: 'full' },
       { path: 'non-conformities', component: NonConformitiesComponent },
+      { path: 'ticket', component: TableTicketComponent },
     ],
   },
   { path: '**', component: PageNotFoundComponent },

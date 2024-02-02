@@ -25,7 +25,7 @@ const ncgMenu = [
     menu: 'Create NC',
   },
   {
-    link: '/ncg/non-conformities',
+    link: '/ncg/ticket',
     icon: 'layout',
     menu: 'MY NCs',
   },

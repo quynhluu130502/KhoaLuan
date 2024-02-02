@@ -1,0 +1,112 @@
+[
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "c9add883-4394-44ee-9083-fcf7337a7a33",
+    "unitCode": "AGM",
+    "unitName": "AGM Germany - PTR",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "ec5911bb-476d-4358-8b47-32dbda35f66c",
+    "unitCode": "ATT",
+    "unitName": "ATT Turkey - PTR",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "64d2ee79-f27c-429d-acb9-5c8088a8fd24",
+    "unitCode": "AWT",
+    "unitName": "AWT China - PTR",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "adbfacb6-9a7f-48e4-a138-c4761b35008b",
+    "unitCode": "LTI",
+    "unitName": "LTI India - PTR",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "39413520-82d2-40de-a715-402547d0d9f9",
+    "unitCode": "PTI",
+    "unitName": "PTI India - PTR",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "738fcbad-7e3d-4312-81ad-d5258fe34b70",
+    "unitCode": "RMK",
+    "unitName": "RMK Bushing India - PTR",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "a4717423-a0f6-4e7c-b4e5-30ff1c73d744",
+    "unitCode": "RPV",
+    "unitName": "RPV Italy - PTR",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "d84664cf-1bc3-4121-a549-82cb807a9b76",
+    "unitCode": "SNT",
+    "unitName": "SNT USA - PTR",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "73513604-9081-4898-a31d-d40dcf6cbcde",
+    "unitCode": "TST",
+    "unitName": "TST UK - PTR",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "a279d6f2-5465-4195-aa1d-8d3a6d205874",
+    "unitCode": "UTR",
+    "unitName": "UTR Indonesia - PTR",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  }
+]

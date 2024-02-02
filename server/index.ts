@@ -39,6 +39,9 @@ app.use("/user", userRoutes);
 import ncgRoutes from "./routes/ncgRoutes";
 app.use("/ncg", ncgRoutes);
 
+import qsaRoutes from "./routes/qsaRoutes";
+app.use("/qsa", qsaRoutes);
+
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
 });

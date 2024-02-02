@@ -1,0 +1,123 @@
+[
+  {
+    "createdDate": "2023-12-13T15:54:32.007",
+    "createdBy": "admin",
+    "updatedDate": "2023-12-13T15:54:32.007",
+    "updatedBy": "admin",
+    "unitId": "75c65aa0-222e-4eb6-9fba-99f13aeb3992",
+    "unitCode": "ANA-PT",
+    "unitName": "ANA-PT USA - GA",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2023-11-01T06:25:30.409",
+    "updatedBy": "503318519",
+    "unitId": "7e5c03f8-9572-41d3-abd9-6ec003bdbdd9",
+    "unitCode": "ANA",
+    "unitName": "ANA USA - GA",
+    "subBusinessId": null,
+    "hasRcgValidator": true
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2023-11-01T06:25:30.410",
+    "updatedBy": "503318519",
+    "unitId": "5cd60299-1c94-4916-86dc-cd26be5fbc2e",
+    "unitCode": "BBO",
+    "unitName": "BBO Spain - GA",
+    "subBusinessId": null,
+    "hasRcgValidator": true
+  },
+  {
+    "createdDate": "2023-09-19T09:19:43.010",
+    "createdBy": "admin",
+    "updatedDate": "2023-09-19T09:19:43.010",
+    "updatedBy": "admin",
+    "unitId": "73d13eaa-ac48-4395-ba2c-03325fa56d98",
+    "unitCode": "EME",
+    "unitName": "EME France - GA",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2023-11-01T06:25:30.412",
+    "updatedBy": "503318519",
+    "unitId": "7d9338fa-b460-4266-9bd9-dbe1b3323ae0",
+    "unitCode": "LSB",
+    "unitName": "LSB UK - GA",
+    "subBusinessId": null,
+    "hasRcgValidator": true
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2023-11-01T06:25:30.413",
+    "updatedBy": "503318519",
+    "unitId": "8c10acea-a832-4137-9971-6ed86671f5b1",
+    "unitCode": "MKM",
+    "unitName": "MKM Canada - GA",
+    "subBusinessId": null,
+    "hasRcgValidator": true
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2023-11-01T06:25:30.414",
+    "updatedBy": "503318519",
+    "unitId": "867eea0e-44f4-4a39-9407-63d9d64782f2",
+    "unitCode": "PCP",
+    "unitName": "PCP India - GA",
+    "subBusinessId": null,
+    "hasRcgValidator": true
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2023-11-01T06:25:30.415",
+    "updatedBy": "503318519",
+    "unitId": "c31910fc-41e0-49ef-8ebb-9c8e97c1ea37",
+    "unitCode": "ROC",
+    "unitName": "ROC USA - GA",
+    "subBusinessId": null,
+    "hasRcgValidator": true
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2023-11-01T06:25:30.416",
+    "updatedBy": "503318519",
+    "unitId": "a2f04804-57d5-4821-a0cc-7eddb6286b50",
+    "unitCode": "RTB",
+    "unitName": "RTB Brazil - GA",
+    "subBusinessId": null,
+    "hasRcgValidator": true
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2023-11-01T06:25:30.417",
+    "updatedBy": "503318519",
+    "unitId": "b4bba924-f3ee-4adf-8ced-03f552f262c4",
+    "unitCode": "SMP",
+    "unitName": "SMP India - GA",
+    "subBusinessId": null,
+    "hasRcgValidator": true
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2023-11-01T06:25:30.458",
+    "updatedBy": "503318519",
+    "unitId": "2af3cb76-5d26-4bba-b90e-dfc9177e67b2",
+    "unitCode": "SMS",
+    "unitName": "SMS UK - GA",
+    "subBusinessId": null,
+    "hasRcgValidator": true
+  }
+]

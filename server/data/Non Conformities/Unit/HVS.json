@@ -1,0 +1,200 @@
+[
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "e81055ab-0ede-414f-bd40-2fba7b047b55",
+    "unitCode": "AGK",
+    "unitName": "AGK Germany - HVS",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "fb886dfa-9e46-4217-ba2b-f7c0192eda10",
+    "unitCode": "AHT",
+    "unitName": "AHT France - HVS",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "59cac392-4bc1-434c-95d9-b0cca95feabd",
+    "unitCode": "AIB",
+    "unitName": "AIB Brazil - HVS",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2023-12-15T02:12:03.396",
+    "updatedBy": "503243198",
+    "unitId": "8e06300e-dfb8-4554-a05f-3ac92a92794f",
+    "unitCode": "BHT",
+    "unitName": "BHT France - HVS",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "b5d2f93e-ce40-4a7a-8267-0c9aa713ba59",
+    "unitCode": "CHT",
+    "unitName": "CHT India - HVS",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "e469e86c-a117-43f6-9644-a1ac906805bc",
+    "unitCode": "CME",
+    "unitName": "CME Italy - HVS",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "1748a30d-bdc5-42d4-a8c1-5762af0d0ae8",
+    "unitCode": "HVJ",
+    "unitName": "HVJ Japan - HVS",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "713a47a7-b414-473b-9e4b-1995d9775366",
+    "unitCode": "HVM",
+    "unitName": "HVM India - HVS",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "407909f1-ca88-414a-827f-843d4d9d65a3",
+    "unitCode": "JHT",
+    "unitName": "JHT China - HVS",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "5d15013c-3992-4ca9-92b0-6e738435844e",
+    "unitCode": "RMK",
+    "unitName": "RMK India - HVS",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "ffb824a2-3d9a-40d9-93de-c5bd126fadcb",
+    "unitCode": "RML",
+    "unitName": "RML Germany - HVS",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "58354ef3-6b6e-405c-a782-51ca59a841d2",
+    "unitCode": "RMW",
+    "unitName": "RMW USA - HVS",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "dbb31197-987e-417f-bb38-c9d6f55abbef",
+    "unitCode": "SEH",
+    "unitName": "SEH Switzerland - HVS",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "458cabc3-42a4-428e-be57-6f8d5071cf0a",
+    "unitCode": "SHT",
+    "unitName": "SHT China - HVS",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "f3c91867-b3a9-4f80-a0ae-b7d2533142cd",
+    "unitCode": "SHV",
+    "unitName": "SHV China - HVS",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "c71da719-f650-44fa-880f-67d75cb3eb50",
+    "unitCode": "TDC",
+    "unitName": "TDC Canada - HVS",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "4d7e9090-31ca-40b5-987a-358504cc4a64",
+    "unitCode": "USC",
+    "unitName": "USC USA - HVS",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "baf8ba16-a400-45d3-9598-98b576778e78",
+    "unitCode": "UTR",
+    "unitName": "UTR Indonesia - HVS",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  }
+]

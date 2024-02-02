@@ -7,25 +7,29 @@
   <mat-tab-group>
     <mat-tab label="Grid Solutions">
       <div class="p-5">
-        <form (ngSubmit)="onSearch()"
-          class="d-flex flex-row flex-wrap justify-content-between align-content-start"
-        >
-          <mat-form-field>
-            <mat-label>SSO</mat-label>
-            <input
-              matInput
-              maxlength="6"
-              placeholder="Ex. 100123"
-              [formControl]="sso"
-            />
-            @if (sso.invalid) {
-            <mat-error>{{ getSSOErrorMessage() }}</mat-error>
-            }
-          </mat-form-field>
-          <div id="div-search">
-            <button mat-flat-button color="accent" type="submit" [disabled]="sso.invalid">Search</button>
-          </div>
-        </form>
+        <mat-form-field>
+          <mat-label>SSO</mat-label>
+          <input
+            matInput
+            maxlength="6"
+            placeholder="Ex. 100123"
+            [formControl]="sso"
+          />
+          @if (sso.invalid) {
+          <mat-error>{{ getSSOErrorMessage() }}</mat-error>
+          }
+        </mat-form-field>
+        <div id="div-search">
+          <button
+            mat-flat-button
+            color="accent"
+            type="button"
+            (click)="onSearch()"
+            [disabled]="sso.invalid"
+          >
+            Search
+          </button>
+        </div>
         <form
           class="d-flex flex-row flex-wrap justify-content-between align-content-start"
           [formGroup]="inforForm"
@@ -71,8 +75,39 @@
               formControlName="job_function"
             />
           </mat-form-field>
+          <div>
+            <div *ngFor="let userRole of userRoles; index as i">
+              <app-user-role-create
+                (remove)="removeUserRole(i)"
+                [applications]="applications"
+                [userRole]="userRole"
+              ></app-user-role-create>
+            </div>
+            <div
+              class="d-flex flex-row justify-content-end align-content-center align-items-center"
+            >
+              <button
+                matTooltip="Add new role"
+                matTooltipPosition="above"
+                mat-mini-fab
+                color="accent"
+                (click)="addUserRole()"
+                title="Add new role"
+              >
+                <mat-icon>add_circle</mat-icon>
+              </button>
+            </div>
+          </div>
         </form>
-        <button mat-flat-button color="accent">Add Internal User</button>
+        <button
+          mat-flat-button
+          color="accent"
+          (click)="addRole()"
+          type="button"
+          [disabled]="inforForm.invalid"
+        >
+          Add Internal User
+        </button>
       </div>
     </mat-tab>
   </mat-tab-group>

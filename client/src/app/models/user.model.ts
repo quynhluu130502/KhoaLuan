@@ -5,7 +5,7 @@ export class User {
   language: string;
   job_function:string;
   role: string;
-  application: string;
+  application: Array<object>;
   last_login: string;
   pass: string;
   salt: string;
@@ -17,7 +17,7 @@ export class User {
     this.language = 'English';
     this.job_function = '';
     this.role = '';
-    this.application = 'NC';
+    this.application = [];
     this.last_login = Date.now().toString();
     this.pass = '';
     this.salt = '';

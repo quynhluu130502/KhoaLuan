@@ -1,0 +1,24 @@
+[
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2023-01-11T07:49:13.195",
+    "updatedBy": "503287948",
+    "unitId": "58dfdf53-cf21-48db-b338-85078c127fad",
+    "unitCode": "AIB-RPC",
+    "unitName": "AIB-RPC  - PQP",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2023-01-11T07:49:13.282",
+    "updatedBy": "503287948",
+    "unitId": "f69b8852-c3f9-4c32-9d6a-d256f9105633",
+    "unitCode": "CWC",
+    "unitName": "CWC - PQP",
+    "subBusinessId": null,
+    "hasRcgValidator": true
+  }
+]

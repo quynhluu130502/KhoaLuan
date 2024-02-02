@@ -1,0 +1,83 @@
+[
+  {
+    "roleId": "f2f662d6-ae6b-4022-ac54-dc057101447e",
+    "roleCode": "NC_ADMIN",
+    "roleName": "Admin",
+    "tier2Application": {
+      "createdDate": "2021-02-25T14:09:40.349",
+      "createdBy": "admin",
+      "updatedDate": "2021-02-25T14:09:40.349",
+      "updatedBy": "admin",
+      "id": "d16d56c4-f627-4174-8590-ba4699893009",
+      "tier2": {
+        "tierId": "2a3643ff-cb24-45b8-b22c-c2da8efa2245",
+        "tierCode": "GRID_SOLUTION",
+        "tierName": "Grid Solutions"
+      },
+      "application": {
+        "createdDate": "2021-02-25T14:09:29.282",
+        "createdBy": "admin",
+        "updatedDate": "2021-02-25T14:09:29.282",
+        "updatedBy": "admin",
+        "applicationId": "07f731f5-685a-44ee-b5b0-e9c641578165",
+        "applicationCode": "NC",
+        "applicationName": "Non Conformities"
+      }
+    },
+    "features": null
+  },
+  {
+    "roleId": "e34212a1-c94a-465f-9e78-bf83c27b348d",
+    "roleCode": "NC_REQUESTOR",
+    "roleName": "Requestor",
+    "tier2Application": {
+      "createdDate": "2021-02-25T14:09:40.349",
+      "createdBy": "admin",
+      "updatedDate": "2021-02-25T14:09:40.349",
+      "updatedBy": "admin",
+      "id": "d16d56c4-f627-4174-8590-ba4699893009",
+      "tier2": {
+        "tierId": "2a3643ff-cb24-45b8-b22c-c2da8efa2245",
+        "tierCode": "GRID_SOLUTION",
+        "tierName": "Grid Solutions"
+      },
+      "application": {
+        "createdDate": "2021-02-25T14:09:29.282",
+        "createdBy": "admin",
+        "updatedDate": "2021-02-25T14:09:29.282",
+        "updatedBy": "admin",
+        "applicationId": "07f731f5-685a-44ee-b5b0-e9c641578165",
+        "applicationCode": "NC",
+        "applicationName": "Non Conformities"
+      }
+    },
+    "features": null
+  },
+  {
+    "roleId": "9b2970d8-f93b-4cb0-9429-db53283a59af",
+    "roleCode": "NC_VALIDATOR",
+    "roleName": "Updater",
+    "tier2Application": {
+      "createdDate": "2021-02-25T14:09:40.349",
+      "createdBy": "admin",
+      "updatedDate": "2021-02-25T14:09:40.349",
+      "updatedBy": "admin",
+      "id": "d16d56c4-f627-4174-8590-ba4699893009",
+      "tier2": {
+        "tierId": "2a3643ff-cb24-45b8-b22c-c2da8efa2245",
+        "tierCode": "GRID_SOLUTION",
+        "tierName": "Grid Solutions"
+      },
+      "application": {
+        "createdDate": "2021-02-25T14:09:29.282",
+        "createdBy": "admin",
+        "updatedDate": "2021-02-25T14:09:29.282",
+        "updatedBy": "admin",
+        "applicationId": "07f731f5-685a-44ee-b5b0-e9c641578165",
+        "applicationCode": "NC",
+        "applicationName": "Non Conformities"
+      }
+    },
+    "features": null
+  }
+]

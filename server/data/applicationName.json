@@ -1,0 +1,83 @@
+[
+  {
+    "createdDate": "2021-02-25T14:09:29.282",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:29.282",
+    "updatedBy": "admin",
+    "applicationId": "437b50bf-6830-4f83-96f9-6864530034f5",
+    "applicationCode": "ALL",
+    "applicationName": "All"
+  },
+  {
+    "createdDate": "2023-09-26T09:20:47.849",
+    "createdBy": "admin",
+    "updatedDate": "2023-09-26T09:20:47.849",
+    "updatedBy": "admin",
+    "applicationId": "54a24143-de56-4663-8d12-667606fbd814",
+    "applicationCode": "CQ",
+    "applicationName": "Contractor Qualification"
+  },
+  {
+    "createdDate": "2021-02-25T14:09:29.282",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:29.282",
+    "updatedBy": "admin",
+    "applicationId": "07f731f5-685a-44ee-b5b0-e9c641578165",
+    "applicationCode": "NC",
+    "applicationName": "Non Conformities"
+  },
+  {
+    "createdDate": "2021-02-25T14:09:29.282",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:29.282",
+    "updatedBy": "admin",
+    "applicationId": "6423b5a4-82b6-4aa9-800d-1976b9d768f3",
+    "applicationCode": "PQ",
+    "applicationName": "Part Qualification"
+  },
+  {
+    "createdDate": "2023-09-19T09:19:43.010",
+    "createdBy": "admin",
+    "updatedDate": "2023-09-19T09:19:43.010",
+    "updatedBy": "admin",
+    "applicationId": "22ca648a-fe6b-4760-ac9d-5d2aeb08906c",
+    "applicationCode": "QER",
+    "applicationName": "Quality Escalation Request"
+  },
+  {
+    "createdDate": "2021-02-25T14:09:29.282",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:29.282",
+    "updatedBy": "admin",
+    "applicationId": "d95f2bfc-b34e-4027-85f9-bb9429edbc9a",
+    "applicationCode": "RCA",
+    "applicationName": "Root Cause Analysis"
+  },
+  {
+    "createdDate": "2022-11-25T09:20:41.666",
+    "createdBy": "admin",
+    "updatedDate": "2022-11-25T09:20:41.666",
+    "updatedBy": "admin",
+    "applicationId": "7a4d7180-29e5-4906-8d8d-d6c0f8901b2b",
+    "applicationCode": "SA",
+    "applicationName": "Supplier Audit"
+  },
+  {
+    "createdDate": "2021-06-02T09:47:29.932",
+    "createdBy": "admin",
+    "updatedDate": "2021-06-02T09:47:29.932",
+    "updatedBy": "admin",
+    "applicationId": "6dbdcf75-649e-44ea-9f77-74a9d09d2d55",
+    "applicationCode": "SDR",
+    "applicationName": "Supplier Deviation Request"
+  },
+  {
+    "createdDate": "2021-07-28T07:41:39.787",
+    "createdBy": "admin",
+    "updatedDate": "2021-07-28T07:41:39.787",
+    "updatedBy": "admin",
+    "applicationId": "5e28b010-851b-4a72-aeba-e469490c06ef",
+    "applicationCode": "SR",
+    "applicationName": "Supplier Recovery"
+  }
+]

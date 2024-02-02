@@ -40,9 +40,9 @@ let userSchema = new mongoose.Schema({
     default: "User",
   },
   application: {
-    required: true,
-    type: String,
-    default: "NC",
+    required: false,
+    type: Array,
+    default: ["NC"],
   },
   last_login: {
     required: true,

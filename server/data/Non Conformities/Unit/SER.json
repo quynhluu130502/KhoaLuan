@@ -1,0 +1,57 @@
+[
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "24b861fa-c19c-4e08-b9f9-839ef6504a44",
+    "unitCode": "CSM",
+    "unitName": "CSM Canada - SER",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "ea6c1d0d-f6b2-4842-a1e8-f2ce3593e68a",
+    "unitCode": "DSD",
+    "unitName": "DSD Germany - SER",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2022-01-06T01:58:09.026",
+    "createdBy": "admin",
+    "updatedDate": "2022-01-06T01:58:09.026",
+    "updatedBy": "admin",
+    "unitId": "d0e48052-80e1-4854-9f4f-372ecded2435",
+    "unitCode": "FSU",
+    "unitName": "FSU France - SER",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "d363a45a-3efb-4cfc-99dd-ac45ab4db3ae",
+    "unitCode": "GSS",
+    "unitName": "GSS UK - SER",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  },
+  {
+    "createdDate": "2021-02-25T14:09:31.670",
+    "createdBy": "admin",
+    "updatedDate": "2021-02-25T14:09:31.670",
+    "updatedBy": "admin",
+    "unitId": "d143cf59-117b-4a7e-a600-023a0cfa90e9",
+    "unitCode": "TSG",
+    "unitName": "TSG Turkey - SER",
+    "subBusinessId": null,
+    "hasRcgValidator": false
+  }
+]
