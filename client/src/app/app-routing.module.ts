@@ -11,9 +11,10 @@ import { authGuard } from './auth.guard';
 import { NonConformitiesComponent } from './non-conformities/non-conformities.component';
 import { ncgMenu, qsaMenu } from './constant';
 import { TableTicketComponent } from './table-ticket/table-ticket.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', component: LandingPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {

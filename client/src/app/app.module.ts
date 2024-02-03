@@ -28,6 +28,7 @@ import { DragDropFileUploadDirective } from './directives/drag-drop-file-upload.
 import { TableTicketComponent } from './table-ticket/table-ticket.component';
 import { UserRoleCreateComponent } from './user-role-create/user-role-create.component';
 import { UserRoleListCreateComponent } from './user-role-list-create/user-role-list-create.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { UserRoleListCreateComponent } from './user-role-list-create/user-role-l
     TableTicketComponent,
     UserRoleCreateComponent,
     UserRoleListCreateComponent,
+    LandingPageComponent,
   ],
   imports: [
     CommonModule,
