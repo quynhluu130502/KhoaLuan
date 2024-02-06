@@ -17,7 +17,6 @@ interface sidebarMenu {
   styleUrl: './full.component.scss',
 })
 export class FullComponent implements OnInit {
-  search: boolean = false;
   routerActive: string = 'activelink';
   sidebarMenu: sidebarMenu[] = [];
   isHandset$: Observable<boolean> = this._breakpointObserver

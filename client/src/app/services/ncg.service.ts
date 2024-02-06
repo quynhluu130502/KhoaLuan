@@ -10,15 +10,13 @@ export class NcgService {
   constructor(private _http: HttpClient) {}
 
   getMasterData(): Observable<any> {
-    return this._http
-      .get(`${process.env['SERVER_URL']}/ncg/masterData`)
-      .pipe(
-        map((res) => {
-          return res;
-        }),
-        retry(2),
-        catchError(handleError)
-      );
+    return this._http.get(`${process.env['SERVER_URL']}/ncg/masterData`).pipe(
+      map((res) => {
+        return res;
+      }),
+      retry(2),
+      catchError(handleError)
+    );
   }
 
   addFiles(formData: FormData): Observable<any> {
@@ -40,5 +38,27 @@ export class NcgService {
         retry(2),
         catchError(handleError)
       );
+  }
+
+  createNC(data: any): Observable<any> {
+    return this._http
+      .post(`${process.env['SERVER_URL']}/ncg/create`, data)
+      .pipe(
+        map((res) => {
+          return res;
+        }),
+        retry(2),
+        catchError(handleError)
+      );
+  }
+
+  getNCR(id: string): Observable<any> {
+    return this._http.get(`${process.env['SERVER_URL']}/ncg/get/${id}`).pipe(
+      map((res) => {
+        return res;
+      }),
+      retry(2),
+      catchError(handleError)
+    );
   }
 }

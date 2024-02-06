@@ -8,7 +8,7 @@ import {
   OnChanges,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { QsaService } from '../services/qsa.service';
+import { QsaService } from '../../services/qsa.service';
 import { MatSelectChange } from '@angular/material/select';
 
 @Component({

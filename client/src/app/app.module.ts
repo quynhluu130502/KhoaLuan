@@ -6,12 +6,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { GraduationThesisModule } from './graduation-thesis/graduation-thesis.module';
+import { GraduationThesisModule } from './modules/graduation-thesis/graduation-thesis.module';
 
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
 import { ToastrModule } from 'ngx-toastr';
-import { QuillModule } from 'ngx-quill'
+import { QuillModule } from 'ngx-quill';
 
 import { AppRoutingModule } from './app-routing.module';
 import { FullComponent } from './full/full.component';
@@ -19,16 +19,19 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { InternalUserComponent } from './internal-user/internal-user.component';
-import { CreateInternalUserComponent } from './create-internal-user/create-internal-user.component';
+import { CreateInternalUserComponent } from './qsa/create-internal-user/create-internal-user.component';
 import { NonConformitiesComponent } from './non-conformities/non-conformities.component';
 import { CreateNonConformitiesComponent } from './create-non-conformities/create-non-conformities.component';
 import { RichTextComponent } from './rich-text/rich-text.component';
 import { ProblemDescriptionDialogComponent } from './problem-description-dialog/problem-description-dialog.component';
 import { DragDropFileUploadDirective } from './directives/drag-drop-file-upload.directive';
 import { TableTicketComponent } from './table-ticket/table-ticket.component';
-import { UserRoleCreateComponent } from './user-role-create/user-role-create.component';
-import { UserRoleListCreateComponent } from './user-role-list-create/user-role-list-create.component';
+import { UserRoleCreateComponent } from './qsa/user-role-create/user-role-create.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { NCRDetailComponent } from './ncg/ncr-detail/ncr-detail.component';
+import { NonGaContainmentInvestigationComponent } from './ncg/non-ga/non-ga-containment-investigation/non-ga-containment-investigation.component';
+import { NonGaNcDetailsComponent } from './ncg/non-ga/non-ga-nc-details/non-ga-nc-details.component';
+import { ActionTableDialogComponent } from './ncg/action-table-dialog/action-table-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,8 +47,11 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     DragDropFileUploadDirective,
     TableTicketComponent,
     UserRoleCreateComponent,
-    UserRoleListCreateComponent,
     LandingPageComponent,
+    NCRDetailComponent,
+    NonGaContainmentInvestigationComponent,
+    NonGaNcDetailsComponent,
+    ActionTableDialogComponent,
   ],
   imports: [
     CommonModule,

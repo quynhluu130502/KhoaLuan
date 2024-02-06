@@ -1,0 +1,242 @@
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort, Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { ActionTableDialogComponent } from '../../action-table-dialog/action-table-dialog.component';
+import {
+  Observable,
+  Subject,
+  defaultIfEmpty,
+  map,
+  startWith,
+  takeUntil,
+} from 'rxjs';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { NcgService } from 'src/app/services/ncg.service';
+
+@Component({
+  selector: 'app-non-ga-containment-investigation',
+  templateUrl: './non-ga-containment-investigation.component.html',
+  styleUrl: './non-ga-containment-investigation.component.scss',
+})
+export class NonGaContainmentInvestigationComponent
+  implements AfterViewInit, OnDestroy, OnInit
+{
+  @Input() masterData: any;
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  private destroy$ = new Subject<void>();
+
+  displayedColumns: string[] = [
+    'ID',
+    'Class',
+    'Action_Description',
+    'Department',
+    'Responsible',
+    'Additional_Notify_Person',
+    'Start_Date',
+    'Completion_Date',
+    'Status',
+    'Edit',
+    'Delete',
+  ];
+  dataSource = new MatTableDataSource();
+  // Department
+  department: any[] = [];
+
+  // Responsible
+  responsibleArray: FormArray<FormControl> = this._formBuilder.array([]);
+  responsible: any[] = [];
+  arrayFilteredResponsible: Observable<any[]>[] = [];
+
+  today = new Date();
+
+  // Findings & Decision
+  findingsAndDecision = new FormControl<string | any>('', Validators.required);
+
+  // Cause Code L0
+  causeCodeL0Control = new FormControl<string | any>('', Validators.required);
+  filteredCauseCodeL0: Observable<any[]> = new Observable<any[]>();
+  causeCodeL0s: any[] = [];
+
+  // Cause Code L1
+  causeCodeL1Control = new FormControl<string | any>('', Validators.required);
+  causeCodeL1s: any[] = [];
+
+  // Decision
+  decision = new FormControl<string | any>('', Validators.required);
+
+  // Decision Validator
+  decisionValidator = new FormControl<string | any>('', Validators.required);
+
+  containmentInvestigationForm = new FormGroup({
+    findingsAndDecision: this.findingsAndDecision,
+    causeCodeL0Control: this.causeCodeL0Control,
+    causeCodeL1Control: this.causeCodeL1Control,
+    decision: this.decision,
+    decisionValidator: this.decisionValidator,
+  });
+
+  constructor(
+    private _liveAnnouncer: LiveAnnouncer,
+    private _tableDialog: MatDialog,
+    private _formBuilder: FormBuilder,
+    private _ncgService: NcgService
+  ) {
+    this._ncgService.getInternalUsers().subscribe((data) => {
+      this.responsible = data;
+    });
+    this.causeCodeL0Control.setValue('');
+  }
+
+  ngOnInit(): void {
+    this.department = this.masterData.mdAssignedDepartments;
+    this.causeCodeL0s = this.masterData.mdCauseCodeL0s;
+    this.filteredCauseCodeL0 = this.causeCodeL0Control.valueChanges.pipe(
+      takeUntil(this.destroy$),
+      startWith(''),
+      map((value: any) => {
+        const name = typeof value === 'string' ? value : value?.code;
+        return name
+          ? this._filterCauseCodeL0(name as string)
+          : this.causeCodeL0s.slice();
+      }),
+      defaultIfEmpty(this.causeCodeL0s)
+    );
+
+    this.filteredCauseCodeL0.subscribe((data) => {
+      if (data.length == 1) {
+        this.masterData.mdSupplierCauseCodeL0s.forEach((element: any) => {
+          if (element.code == data[0].code) {
+            this.causeCodeL1s = element.l1List;
+          }
+        });
+      }
+    });
+    Object.keys(this.containmentInvestigationForm.controls).forEach((field) => {
+      const control = this.containmentInvestigationForm.get(field);
+      control!.markAsTouched({ onlySelf: true });
+    });
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  announceSortChange(sortState: Sort) {
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
+  }
+
+  openDialog(
+    enterAnimationDuration: string = '2000',
+    exitAnimationDuration: string = '2000'
+  ): void {
+    const dialogRef = this._tableDialog.open(ActionTableDialogComponent, {
+      width: '75%',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+        masterData: this.masterData,
+      },
+    });
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        this.dataSource.data = [...this.dataSource.data, result];
+        this.arrayFilteredResponsible.push(new Observable<any[]>());
+        const newControl = this._formBuilder.control<FormControl>(
+          result.responsible,
+          Validators.required
+        );
+        this.arrayFilteredResponsible[
+          this.arrayFilteredResponsible.length - 1
+        ] = newControl.valueChanges.pipe(
+          takeUntil(this.destroy$),
+          startWith(''),
+          map((value: any) => {
+            const name = typeof value === 'string' ? value : value?.name;
+            return name
+              ? this._filterResponsible(name as string)
+              : this.responsible.slice();
+          }),
+          defaultIfEmpty(this.responsible)
+        );
+        this.responsibleArray.push(newControl);
+      }
+    });
+  }
+
+  editDialog(
+    enterAnimationDuration: string = '2000',
+    exitAnimationDuration: string = '2000',
+    rowData: any,
+    index: any
+  ): void {
+    rowData.responsible = this.responsibleArray.at(index).value;
+    const dialogRef = this._tableDialog.open(ActionTableDialogComponent, {
+      width: '75%',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+        masterData: this.masterData,
+        rowData: rowData,
+      },
+    });
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        console.log(result);
+        this.dataSource.data[index] = result;
+        this.dataSource.data = [...this.dataSource.data];
+        this.responsibleArray.at(index).setValue(result.responsible);
+      }
+    });
+  }
+
+  deleteRow(index: any) {
+    this.dataSource.data.splice(index, 1);
+    this.dataSource.data = [...this.dataSource.data];
+    this.arrayFilteredResponsible.splice(index, 1);
+    this.responsibleArray.removeAt(index);
+  }
+
+  private _filterResponsible(name: string): any[] {
+    const filterValue = name.toLowerCase();
+    return this.responsible.filter(
+      (option) =>
+        option.sso.toString().includes(filterValue) ||
+        option.name.toLowerCase().includes(filterValue)
+    );
+  }
+
+  private _filterCauseCodeL0(name: string): any[] {
+    const filterValue = name.toLowerCase();
+    return this.causeCodeL0s.filter((option) =>
+      option.code.toLowerCase().includes(filterValue)
+    );
+  }
+}

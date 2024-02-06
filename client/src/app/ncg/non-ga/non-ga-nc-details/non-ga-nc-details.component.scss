@@ -1,0 +1,32 @@
+.mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.image-list {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background: #c2dffc;
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 10px 10px 10px 15px;
+  margin-bottom: 10px;
+}
+
+.profile {
+  overflow: hidden;
+  border-radius: 4px;
+  display: inline-block;
+  width: 90%;
+  height: 50%;
+}
+
+.profile img {
+  width: 100%;
+  height: auto;
+}
+
+.problem-description {
+  max-height: 250px;
+  overflow-y: scroll;
+}

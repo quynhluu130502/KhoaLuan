@@ -1,5 +1,4 @@
 import * as mongoose from "mongoose";
-import User from "./User"; // Import the User model
 
 let userSchema = new mongoose.Schema({
   sso: {
@@ -57,7 +56,7 @@ let userSchema = new mongoose.Schema({
 
 userSchema.pre("save", async function (next) {
   if (this.isNew) {
-    const maxSSO = await User.find().sort("-sso").limit(1);
+    const maxSSO = await mongoose.models.User.find().sort("-sso").limit(1);
     let newSSO;
     if (maxSSO.length > 0 && maxSSO[0].sso) {
       newSSO = maxSSO[0].sso + 1;

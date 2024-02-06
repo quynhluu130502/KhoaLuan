@@ -1,9 +1,10 @@
 table {
   width: 100%;
+  overflow-x: auto;
 }
 
-th {
-  text-align: center;
+th.mat-sort-header-sorted {
+  color: black;
 }
 
 .table-responsive {

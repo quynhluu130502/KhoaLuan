@@ -40,7 +40,7 @@
                   <mat-autocomplete #detectedByUnit="matAutocomplete">
                     @for (option of filteredDetectedByUnit | async; track
                     option) {
-                    <mat-option [value]="option.unitName">{{
+                    <mat-option [value]="option.unitCode">{{
                       option.unitName
                     }}</mat-option>
                     }
@@ -195,7 +195,7 @@
                   <mat-autocomplete #defectiveUnit="matAutocomplete">
                     @for (option of filteredDefectiveUnit | async; track option)
                     {
-                    <mat-option [value]="option?.nameEN">{{
+                    <mat-option [value]="option?.code">{{
                       option?.nameEN
                     }}</mat-option>
                     }

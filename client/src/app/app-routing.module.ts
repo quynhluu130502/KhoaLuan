@@ -12,6 +12,7 @@ import { NonConformitiesComponent } from './non-conformities/non-conformities.co
 import { ncgMenu, qsaMenu } from './constant';
 import { TableTicketComponent } from './table-ticket/table-ticket.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { NCRDetailComponent } from './ncg/ncr-detail/ncr-detail.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -33,8 +34,9 @@ const routes: Routes = [
     canActivate: [authGuard],
     data: ncgMenu,
     children: [
-      { path: '', redirectTo: 'non-conformities', pathMatch: 'full' },
-      { path: 'non-conformities', component: NonConformitiesComponent },
+      { path: '', redirectTo: 'create-ncr', pathMatch: 'full' },
+      { path: 'create-ncr', component: NonConformitiesComponent },
+      { path: 'ncr-details/:id', component: NCRDetailComponent },
       { path: 'ticket', component: TableTicketComponent },
     ],
   },

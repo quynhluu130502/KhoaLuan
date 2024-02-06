@@ -1,31 +1,17 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatAccordion } from '@angular/material/expansion';
-import { NcgService } from '../services/ncg.service';
+import { NcgService } from 'src/app/services/ncg.service';
 import { Observable, defaultIfEmpty, map, startWith } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { ProblemDescriptionDialogComponent } from '../problem-description-dialog/problem-description-dialog.component';
+import { ProblemDescriptionDialogComponent } from 'src/app/problem-description-dialog/problem-description-dialog.component';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-create-non-conformities',
-  templateUrl: './create-non-conformities.component.html',
-  styleUrl: './create-non-conformities.component.css',
+  selector: 'app-non-ga-nc-details',
+  templateUrl: './non-ga-nc-details.component.html',
+  styleUrl: './non-ga-nc-details.component.scss',
 })
-export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
-  @ViewChild(MatAccordion) accordion!: MatAccordion;
-  step = 0;
-  setStep(index: number) {
-    this.step = index;
-  }
-  nextStep() {
-    this.step++;
-  }
-  prevStep() {
-    this.step--;
-  }
-
+export class NonGaNcDetailsComponent implements OnInit {
   // NC Type
   ncTypeControl = new FormControl('factory internal', Validators.required);
 
@@ -145,7 +131,8 @@ export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
   assignedDepartment: any[] = [];
   filteredAssignedDepartment: Observable<any[]> = new Observable<any[]>();
 
-  createNCForm: FormGroup = new FormGroup({
+  @Input() formData!: Observable<any>;
+  createNCForm = new FormGroup({
     ncType: this.ncTypeControl,
     detectedByUnit: this.detectedByUnitControl,
     detectionDate: this.detectionDateControl,
@@ -172,38 +159,27 @@ export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
   constructor(
     private _ncgService: NcgService,
     public problemDescriptionDialog: MatDialog,
-    private _sanitizer: DomSanitizer,
-    private _activedRoute: ActivatedRoute,
-    private _router: Router
+    private _sanitizer: DomSanitizer
   ) {
     this._ncgService.getMasterData().subscribe((res) => {
       this.detectedByUnits = res.mdDetectedByUnits;
-      this.detectedByUnitControl.setValue('');
 
       this.defectiveUnits = res.mdDefectiveUnits;
-      this.defectiveUnitControl.setValue('');
 
       this.productTypes = res.mdProductTypes;
-      this.productTypeControl.setValue('');
 
       this.symptomCodeL0s = res.mdSymptomCodeL0s;
-      this.symptomCodeL0Control.setValue('');
 
       this.locationWhereDetected = res.mdLocationWhereDetecteds;
-      this.locationWhereDetectedControl.setValue('');
 
       this.phaseDetections = res.mdPhaseDetections;
-      this.phaseDetectionControl.setValue('');
 
       this.impact = res.mdImpactPriorities;
-      this.impactControl.setValue('');
 
       this.assignedDepartment = res.mdAssignedDepartments;
-      this.assignedDepartmentControl.setValue('');
     });
     this._ncgService.getInternalUsers().subscribe((res) => {
       this.validators = res;
-      this.validatorControl.setValue('');
     });
   }
 
@@ -350,24 +326,15 @@ export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
         }),
         defaultIfEmpty(this.assignedDepartment)
       );
+
+    this.formData.subscribe((res) => {
+      this.createNCForm.patchValue(res);
+    });
+
     Object.keys(this.createNCForm.controls).forEach((field) => {
       const control = this.createNCForm.get(field);
       control!.markAsTouched({ onlySelf: true });
     });
-  }
-
-  ngOnDestroy(): void {
-    this.filteredProductType = new Observable<any[]>();
-    this.filteredDevice = new Observable<any[]>();
-    this.filteredDetectedByUnit = new Observable<any[]>();
-    this.filteredDefectiveUnit = new Observable<any[]>();
-    this.filteredSymptomCodeL0 = new Observable<any[]>();
-    this.filteredSymptomCodeL1 = new Observable<any[]>();
-    this.filteredImpact = new Observable<any[]>();
-    this.filteredPhaseDetection = new Observable<any[]>();
-    this.filteredLocationWhereDetected = new Observable<any[]>();
-    this.filteredValidator = new Observable<any[]>();
-    this.filteredAssignedDepartment = new Observable<any[]>();
   }
 
   private _filterProductType(name: string): any[] {
@@ -447,24 +414,5 @@ export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
     return this.assignedDepartment.filter((option) =>
       option.code.toLowerCase().includes(filterValue)
     );
-  }
-
-  onResetClick() {
-    this.createNCForm.reset();
-    this.files = [];
-  }
-
-  onSubmitClick() {
-    (this.createNCForm as FormGroup).addControl(
-      'attachment',
-      new FormControl(this.files)
-    );
-    this._ncgService.createNC(this.createNCForm.value).subscribe((res) => {
-      if (res.result) {
-        this._router.navigate(['/ncg/ncr-details', res.result.id]);
-      } else {
-        console.log(res.message);
-      }
-    });
   }
 }

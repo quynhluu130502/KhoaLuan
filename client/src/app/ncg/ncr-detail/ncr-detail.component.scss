@@ -1,0 +1,19 @@
+.ncr-header {
+  background-color: #e5e8ec;
+  box-shadow: none !important;
+}
+
+.second-btn-primary {
+  border: 2px solid #1687fb !important;
+  color: #1687fb;
+}
+
+.second-btn-warn {
+  border: 1px solid #f44336 !important;
+  color: #f44336;
+}
+
+/* Not recommended for accessibility */
+::ng-deep .mat-horizontal-stepper-header {
+  pointer-events: none !important;
+}

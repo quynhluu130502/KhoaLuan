@@ -3719,5 +3719,905 @@
     {
       "code": "Supplier"
     }
+  ],
+  "mdCauseCodeL0s": [
+    {
+      "code": "Customer Induced",
+      "nameEN": "Customer Induced",
+      "nameFR": "Induit par le client",
+      "namePT": "Gerado pelo cliente",
+      "nameGR": "Vom Kunden induzierte",
+      "nameZH": "客户引发",
+      "nameTR": "Müşteri kaynaklı",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 5130,
+      "subBusinessCode": "HVS",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "Customer - Incorrect Settings / Configuration",
+          "nameEN": "Customer - Incorrect Settings / Configuration",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 17953
+        },
+        {
+          "code": "Customer - Incorrect Wiring",
+          "nameEN": "Customer - Incorrect Wiring",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 17954
+        },
+        {
+          "code": "Customer - Other / Force Majeure",
+          "nameEN": "Customer - Other / Force Majeure",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 17956
+        },
+        {
+          "code": "Customer - System / Application",
+          "nameEN": "Customer - System / Application",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 17955
+        }
+      ]
+    },
+    {
+      "code": "Environment",
+      "nameEN": "Environment",
+      "nameFR": "Environnement",
+      "namePT": "Meio ambiente",
+      "nameGR": "Umwelt",
+      "nameZH": "环境",
+      "nameTR": "çevre",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 5135,
+      "subBusinessCode": "HVS",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "Humidity lower / higher level vs specification",
+          "nameEN": "Humidity lower / higher level vs specification",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 17975
+        },
+        {
+          "code": "Light not appropriate",
+          "nameEN": "Light not appropriate",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 17977
+        },
+        {
+          "code": "Pollution",
+          "nameEN": "Pollution",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 17978
+        },
+        {
+          "code": "Temperature lower / higher level vs specification",
+          "nameEN": "Temperature lower / higher level vs specification",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 17974
+        },
+        {
+          "code": "Vacuum at a lower / higher level vs specification",
+          "nameEN": "Vacuum at a lower / higher level vs specification",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 17976
+        }
+      ]
+    },
+    {
+      "code": "Machine",
+      "nameEN": "Machine",
+      "nameFR": "Machine",
+      "namePT": "Máquina",
+      "nameGR": "Maschine",
+      "nameZH": "机器",
+      "nameTR": "Makine",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 5140,
+      "subBusinessCode": "HVS",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "Standard incomplete",
+          "nameEN": "Standard incomplete",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 17999
+        },
+        {
+          "code": "Standard not applied",
+          "nameEN": "Standard not applied",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 17997
+        },
+        {
+          "code": "Standard not existing",
+          "nameEN": "Standard not existing",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 17998
+        }
+      ]
+    },
+    {
+      "code": "Man (Human)",
+      "nameEN": "Man (Human)",
+      "nameFR": "Homme (humain)",
+      "namePT": "Homem (humano)",
+      "nameGR": "Mensch",
+      "nameZH": "人",
+      "nameTR": "İnsan (İnsan)",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 5145,
+      "subBusinessCode": "HVS",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "Documentation Incomplete",
+          "nameEN": "Documentation Incomplete",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 18014
+        },
+        {
+          "code": "Documentation not available",
+          "nameEN": "Documentation not available",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 18013
+        },
+        {
+          "code": "Documentation not followed",
+          "nameEN": "Documentation not followed",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 18012
+        }
+      ]
+    },
+    {
+      "code": "Material",
+      "nameEN": "Material",
+      "nameFR": "Matériel",
+      "namePT": "Material",
+      "nameGR": "Material",
+      "nameZH": "材料",
+      "nameTR": "Malzeme",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 5150,
+      "subBusinessCode": "HVS",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "Standard incomplete",
+          "nameEN": "Standard incomplete",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 18029
+        },
+        {
+          "code": "Standard not applied",
+          "nameEN": "Standard not applied",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 18027
+        },
+        {
+          "code": "Standard not existing",
+          "nameEN": "Standard not existing",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 18028
+        }
+      ]
+    },
+    {
+      "code": "Measurement System",
+      "nameEN": "Measurement System",
+      "nameFR": "Système de mesure",
+      "namePT": "Sistema de Medição",
+      "nameGR": "Messsystem",
+      "nameZH": "测量系统",
+      "nameTR": "Ölçüm sistemi",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 5155,
+      "subBusinessCode": "HVS",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "Calibration not done",
+          "nameEN": "Calibration not done",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 18047
+        },
+        {
+          "code": "Inadequate device",
+          "nameEN": "Inadequate device",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 18048
+        },
+        {
+          "code": "Standard incomplete",
+          "nameEN": "Standard incomplete",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 18046
+        },
+        {
+          "code": "Standard not applied",
+          "nameEN": "Standard not applied",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 18044
+        },
+        {
+          "code": "Standard not existing",
+          "nameEN": "Standard not existing",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 18045
+        }
+      ]
+    },
+    {
+      "code": "Method",
+      "nameEN": "Method",
+      "nameFR": "Méthode",
+      "namePT": "Método",
+      "nameGR": "Methode",
+      "nameZH": "方法",
+      "nameTR": "Yöntem",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 5160,
+      "subBusinessCode": "HVS",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "NPI not carried out as expected",
+          "nameEN": "NPI not carried out as expected",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 18068
+        },
+        {
+          "code": "Standard incomplete",
+          "nameEN": "Standard incomplete",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 18070
+        },
+        {
+          "code": "Standard not delivered",
+          "nameEN": "Standard not delivered",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 18071
+        },
+        {
+          "code": "Standard not existing",
+          "nameEN": "Standard not existing",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 18069
+        }
+      ]
+    },
+    {
+      "code": "Unknown / Unexplainable",
+      "nameEN": "Unknown / Unexplainable",
+      "nameFR": "Inconnu / Inexplicable",
+      "namePT": "Desconhecido / inexplicável",
+      "nameGR": "Unbekannt / Unerklärlich",
+      "nameZH": "不明 / 无法解释",
+      "nameTR": "Bilinmeyen / Açıklanamaz",
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 5165,
+      "subBusinessCode": "HVS",
+      "ncType": "FACTORY_INTERNAL",
+      "l1List": [
+        {
+          "code": "Non-Reproducible",
+          "nameEN": "Non-Reproducible",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 18085
+        }
+      ]
+    }
+  ],
+  "mdSupplierCauseCodeL0s": [
+    {
+      "code": "Customer Induced",
+      "nameEN": "Customer Induced",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 3513,
+      "subBusinessCode": "HVS",
+      "l1List": [
+        {
+          "code": "Customer - Incorrect Settings / Configuration",
+          "nameEN": "Customer - Incorrect Settings / Configuration",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11415
+        },
+        {
+          "code": "Customer - Incorrect Wiring",
+          "nameEN": "Customer - Incorrect Wiring",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11416
+        },
+        {
+          "code": "Customer - Other / Force Majeure",
+          "nameEN": "Customer - Other / Force Majeure",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11418
+        },
+        {
+          "code": "Customer - System / Application",
+          "nameEN": "Customer - System / Application",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11417
+        }
+      ]
+    },
+    {
+      "code": "Environment",
+      "nameEN": "Environment",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 3514,
+      "subBusinessCode": "HVS",
+      "l1List": [
+        {
+          "code": "Humidity lower / higher level vs specification",
+          "nameEN": "Humidity lower / higher level vs specification",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11420
+        },
+        {
+          "code": "Light not appropriate",
+          "nameEN": "Light not appropriate",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11422
+        },
+        {
+          "code": "Pollution",
+          "nameEN": "Pollution",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11423
+        },
+        {
+          "code": "Temperature lower / higher level vs specification",
+          "nameEN": "Temperature lower / higher level vs specification",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11419
+        },
+        {
+          "code": "Vacuum at a lower / higher level vs specification",
+          "nameEN": "Vacuum at a lower / higher level vs specification",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11421
+        }
+      ]
+    },
+    {
+      "code": "Machine",
+      "nameEN": "Machine",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 3515,
+      "subBusinessCode": "HVS",
+      "l1List": [
+        {
+          "code": "Standard incomplete",
+          "nameEN": "Standard incomplete",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11426
+        },
+        {
+          "code": "Standard not applied",
+          "nameEN": "Standard not applied",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11424
+        },
+        {
+          "code": "Standard not existing",
+          "nameEN": "Standard not existing",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11425
+        }
+      ]
+    },
+    {
+      "code": "Man (Human)",
+      "nameEN": "Man (Human)",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 3516,
+      "subBusinessCode": "HVS",
+      "l1List": [
+        {
+          "code": "Documentation Incomplete",
+          "nameEN": "Documentation Incomplete",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11429
+        },
+        {
+          "code": "Documentation not available",
+          "nameEN": "Documentation not available",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11428
+        },
+        {
+          "code": "Documentation not followed",
+          "nameEN": "Documentation not followed",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11427
+        }
+      ]
+    },
+    {
+      "code": "Material",
+      "nameEN": "Material",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 3517,
+      "subBusinessCode": "HVS",
+      "l1List": [
+        {
+          "code": "Standard incomplete",
+          "nameEN": "Standard incomplete",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11432
+        },
+        {
+          "code": "Standard not applied",
+          "nameEN": "Standard not applied",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11430
+        },
+        {
+          "code": "Standard not existing",
+          "nameEN": "Standard not existing",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11431
+        }
+      ]
+    },
+    {
+      "code": "Measurement System",
+      "nameEN": "Measurement System",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 3518,
+      "subBusinessCode": "HVS",
+      "l1List": [
+        {
+          "code": "Calibration not done",
+          "nameEN": "Calibration not done",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11434
+        },
+        {
+          "code": "Inadequate device",
+          "nameEN": "Inadequate device",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11435
+        },
+        {
+          "code": "Standard incomplete",
+          "nameEN": "Standard incomplete",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11433
+        }
+      ]
+    },
+    {
+      "code": "Method",
+      "nameEN": "Method",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 3519,
+      "subBusinessCode": "HVS",
+      "l1List": [
+        {
+          "code": "NPI not carried out as expected",
+          "nameEN": "NPI not carried out as expected",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11436
+        },
+        {
+          "code": "Standard incomplete",
+          "nameEN": "Standard incomplete",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11438
+        },
+        {
+          "code": "Standard not delivered",
+          "nameEN": "Standard not delivered",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11439
+        },
+        {
+          "code": "Standard not existing",
+          "nameEN": "Standard not existing",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11437
+        }
+      ]
+    },
+    {
+      "code": "Unknown / Unexplainable",
+      "nameEN": "Unknown / Unexplainable",
+      "nameFR": null,
+      "namePT": null,
+      "nameGR": null,
+      "nameZH": null,
+      "nameTR": null,
+      "nameIT": null,
+      "activeFlag": true,
+      "id": 3520,
+      "subBusinessCode": "HVS",
+      "l1List": [
+        {
+          "code": "Non-Reproducible",
+          "nameEN": "Non-Reproducible",
+          "nameFR": null,
+          "namePT": null,
+          "nameGR": null,
+          "nameZH": null,
+          "nameTR": null,
+          "nameIT": null,
+          "activeFlag": true,
+          "id": 11440
+        }
+      ]
+    }
   ]
 }

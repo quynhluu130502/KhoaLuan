@@ -1,0 +1,85 @@
+<div class="details-conatainer">
+  <mat-card class="ncr-header">
+    <mat-card-header>
+      <mat-card-title>NC ID: NC-24000315</mat-card-title>
+      <mat-card-subtitle>Created By: Nhan Dam</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <mat-horizontal-stepper
+    headerPosition="bottom"
+    #stepper="matHorizontalStepper"
+    [linear]="true"
+    [selectedIndex]="stage"
+    [formGroup]="stepperForm"
+  >
+    <mat-step [stepControl]="firstFormGroup">
+      <ng-template matStepLabel>Created</ng-template>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <ng-template matStepLabel>Acepted</ng-template>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
+      <ng-template matStepLabel>In progress</ng-template>
+    </mat-step>
+    <mat-step [stepControl]="fourthFormGroup">
+      <ng-template matStepLabel>Closed</ng-template>
+    </mat-step>
+  </mat-horizontal-stepper>
+  <div class="details-non-ga-container mb-5">
+    <mat-tab-group dynamicHeight selectedIndex="2">
+      <mat-tab label="Attachments">
+        <div class=""></div>
+      </mat-tab>
+      <mat-tab label="NC Details">
+        <div class="">
+          <app-non-ga-nc-details [formData]="firstFormData"></app-non-ga-nc-details>
+        </div>
+      </mat-tab>
+      <mat-tab label="Investigations and Solutions">
+        <div class="">
+          <app-non-ga-containment-investigation
+            *ngIf="masterData$ | async as masterData"
+            [masterData]="masterData"
+          ></app-non-ga-containment-investigation>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div
+        class="w-100 d-flex flex-row justify-content-center align-items-center"
+      >
+        <div class="me-3">
+          <button mat-raised-button color="warn" (click)="onCancel()">
+            Cancel NC
+          </button>
+        </div>
+        <div class="me-3">
+          <button mat-raised-button color="primary" (click)="onClone()">
+            Clone
+          </button>
+        </div>
+        <div class="me-3">
+          <button mat-raised-button class="second-btn-warn" (click)="onBack()">
+            Send Back to Requestor
+          </button>
+        </div>
+        <div class="me-3">
+          <button
+            mat-raised-button
+            class="second-btn-primary"
+            (click)="onSave()"
+          >
+            Save
+          </button>
+        </div>
+        <div class="me-3">
+          <button mat-raised-button color="primary" (click)="onAcept()">
+            Acept
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

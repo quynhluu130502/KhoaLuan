@@ -1,0 +1,357 @@
+<div class="non-ga-nc-details mt-3">
+  <div class="row">
+    <h2 class="col-12">General</h2>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>NC Type</mat-label>
+        <mat-select [formControl]="ncTypeControl">
+          <mat-option [value]="'factory internal'">Factory Internal</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Detected By Unit</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Pick one"
+          [formControl]="detectedByUnitControl"
+          [matAutocomplete]="detectedByUnit"
+        />
+        <mat-autocomplete #detectedByUnit="matAutocomplete">
+          @for (option of filteredDetectedByUnit | async; track option) {
+          <mat-option [value]="option.unitCode">{{
+            option.unitName
+          }}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Detection Date</mat-label>
+        <input
+          matInput
+          [formControl]="detectionDateControl"
+          [matDatepicker]="detectionDate"
+          [max]="maxDetectionDate"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="detectionDate"
+        ></mat-datepicker-toggle>
+        <mat-datepicker
+          #detectionDate
+          [startAt]="maxDetectionDate"
+        ></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Problem Title</mat-label>
+        <input
+          matInput
+          type="text"
+          [formControl]="problemTitle"
+          [required]="true"
+        />
+      </mat-form-field>
+      <mat-error *ngIf="problemTitle.hasError('required')">
+        Project Title is required
+      </mat-error>
+    </div>
+    <div class="col-4 problem-description">
+      <mat-form-field>
+        <mat-label>Problem Description</mat-label>
+        <input
+          matInput
+          type="text"
+          [formControl]="problemDescription"
+          [value]=""
+          [required]="true"
+          (click)="openDialog('375ms', '375ms')"
+          [readonly]="true"
+        />
+      </mat-form-field>
+      <div class="image-list" *ngFor="let file of files; let i = index">
+        <div class="profile">
+          <img [src]="sanitize(file['url'])" alt="" />
+          <div class="d-flex flex-row justify-content-center">
+            <p class="text-center">{{ file.item.name }}</p>
+          </div>
+        </div>
+        <button
+          class="btn btn-danger h-50 m-3 align-self-center"
+          (click)="removeFile(i)"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Containment</mat-label>
+        <input matInput type="text" [formControl]="contaiment" />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Project Number</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Fill in Project Number"
+          [formControl]="projectNumberControl"
+          #projectNumber
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Project Name</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Fill in Project Name"
+          [formControl]="projectNameControl"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <h2 class="col-12">Part</h2>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Defective quantity</mat-label>
+        <input
+          matInput
+          type="number"
+          min="0"
+          [formControl]="defectiveQuantityControl"
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Defective Unit / Unit of Measure</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Pick one"
+          [formControl]="defectiveUnitControl"
+          [matAutocomplete]="defectiveUnit"
+        />
+        <mat-autocomplete #defectiveUnit="matAutocomplete">
+          @for (option of filteredDefectiveUnit | async; track option) {
+          <mat-option [value]="option?.nameEN">{{ option?.nameEN }}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <h2 class="col-12">Quality</h2>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Product Type</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Pick one"
+          [formControl]="productTypeControl"
+          [matAutocomplete]="productType"
+        />
+        <mat-autocomplete #productType="matAutocomplete">
+          @for (option of filteredProductType | async; track option) {
+          <mat-option [value]="option.code">{{ option.code }}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Device</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Pick one"
+          [formControl]="deviceControl"
+          [matAutocomplete]="device"
+        />
+        <mat-autocomplete #device="matAutocomplete">
+          @for (option of filteredDevice | async; track option) {
+          <mat-option [value]="option.code">{{ option.code }}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Symptom Code - L0</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Pick one"
+          [formControl]="symptomCodeL0Control"
+          [matAutocomplete]="symptomCodeL0"
+        />
+        <mat-autocomplete #symptomCodeL0="matAutocomplete">
+          @for (option of filteredSymptomCodeL0 | async; track option) {
+          <mat-option [value]="option.code">{{ option.code }}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Symptom Code - L1</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Pick one"
+          [formControl]="symptomCodeL1Control"
+          [matAutocomplete]="symptomCodeL1"
+        />
+        <mat-icon matSuffix (click)="symptomCodeL1Control.setValue('')"
+          >clear</mat-icon
+        >
+        <mat-autocomplete #symptomCodeL1="matAutocomplete">
+          @for (option of filteredSymptomCodeL1 | async; track option) {
+          <mat-option [value]="option.code">{{ option.code }}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Location where Detected</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Pick one"
+          [formControl]="locationWhereDetectedControl"
+          [matAutocomplete]="locationWhereDetected"
+        />
+        <mat-autocomplete #locationWhereDetected="matAutocomplete">
+          @for (option of filteredLocationWhereDetected | async; track option) {
+          <mat-option [value]="option.code">{{ option.code }}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Phase Detection</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Pick one"
+          [formControl]="phaseDetectionControl"
+          [matAutocomplete]="phaseDetection"
+        />
+        <mat-autocomplete #phaseDetection="matAutocomplete">
+          @for (option of filteredPhaseDetection | async; track option) {
+          <mat-option [value]="option.code">{{ option.code }}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Due Date</mat-label>
+        <input
+          matInput
+          [formControl]="dueDateControl"
+          [matDatepicker]="dueDate"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="dueDate"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #dueDate [startAt]="maxDetectionDate"></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Impact </mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Pick one"
+          [formControl]="impactControl"
+          [matAutocomplete]="impact"
+        />
+        <mat-autocomplete #impact="matAutocomplete">
+          @for (option of filteredImpact | async; track option) {
+          <mat-option [value]="option.code">{{ option.code }}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Priority</mat-label>
+        <input
+          type="text"
+          matInput
+          [formControl]="priorityControl"
+          [placeholder]="'Select impact first'"
+          [readonly]="true"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <h2 class="col-12">Contacts</h2>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Validator</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Pick one"
+          [formControl]="validatorControl"
+          [matAutocomplete]="validator"
+        />
+        <mat-autocomplete #validator="matAutocomplete">
+          @for (option of filteredValidator | async; track option) {
+          <mat-option [value]="option.sso"
+            >{{ option.sso }} - {{ option.name }}</mat-option
+          >
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Assigned Department</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Pick one"
+          [formControl]="assignedDepartmentControl"
+          [matAutocomplete]="assignedDepartment"
+        />
+        <mat-autocomplete #assignedDepartment="matAutocomplete">
+          @for (option of filteredAssignedDepartment | async; track option) {
+          <mat-option [value]="option.code">{{ option.code }}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row"></div>
+</div>

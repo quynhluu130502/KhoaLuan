@@ -20,7 +20,7 @@ const qsaMenu = [
 ];
 const ncgMenu = [
   {
-    link: '/ncg/non-conformities',
+    link: '/ncg/create-ncr',
     icon: 'home',
     menu: 'Create NC',
   },

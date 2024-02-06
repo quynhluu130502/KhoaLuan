@@ -1,8 +1,8 @@
 import { Component, QueryList, ViewChildren } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { QsaService } from '../services/qsa.service';
+import { QsaService } from '../../services/qsa.service';
 import { UserRoleCreateComponent } from '../user-role-create/user-role-create.component';
 
 @Component({

@@ -3,7 +3,7 @@
 // @=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@
 
 .sidenav {
-  min-width: 265px;
+  min-width: fit-content;
   box-shadow: 0px 7px 30px 0px $shadow;
   border: 0;
 
@@ -26,5 +26,4 @@
     background-color: $light-primary;
     border-radius: 10px;
   }
-
 }

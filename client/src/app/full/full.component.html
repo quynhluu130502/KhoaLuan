@@ -9,11 +9,15 @@
     [opened]="(isHandset$ | async) === false"
   >
     <div class="p-16">
-      <div class="mb-16">
-        <a href="javascript:void(0)" class="d-flex align-items-center">
-          <img src="assets/images/favicon.png" alt="" />
-          <span class="ms-16 fw-medium fs-26">Người yêu</span>
+      <div class="mb-16 d-flex flex-column align-items-center">
+        <a href="javascript:void(0)" class="">
+          <img
+            src="assets/images/favicon.png"
+            alt="favicon.png"
+            style="margin: 0 auto"
+          />
         </a>
+        <span class="ms-16 fw-medium fs-26 mt-2">Người yêu</span>
       </div>
 
       <div class="pt-8">
@@ -52,12 +56,6 @@
         <i-feather
           name="menu"
           class="text-light-muted feather-base mt-n3"
-        ></i-feather>
-      </button>
-      <button mat-icon-button class="ms-4 me-4" (click)="search = !search">
-        <i-feather
-          name="search"
-          class="mt-n3 text-light-muted feather-base text-dark"
         ></i-feather>
       </button>
       <div class="ms-auto">
@@ -107,17 +105,3 @@
     </p>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-<!-- Search Box -->
-<div *ngIf="search" class="search-section d-flex align-items-center">
-  <mat-form-field class="w-100" color="primary">
-    <mat-label class="fs-16">Search Here</mat-label>
-    <input matInput />
-  </mat-form-field>
-  <button mat-icon-button (click)="search = !search">
-    <i-feather
-      name="x-circle"
-      class="mt-n3 text-light-muted feather-base text-dark"
-    ></i-feather>
-  </button>
-</div>
