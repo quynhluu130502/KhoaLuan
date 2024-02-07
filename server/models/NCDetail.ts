@@ -93,8 +93,49 @@ let ncDetailSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  actions: {
+    type: Array,
+    required: false,
+  },
+  findingsAndDecision: {
+    type: String,
+    required: false,
+  },
+  causeCodeL0Control: {
+    type: String,
+    required: false,
+  },
+  causeCodeL1Control: {
+    type: String,
+    required: false,
+  },
+  decision: {
+    type: String,
+    required: false,
+  },
+  decisionValidator: {
+    type: String,
+    required: false,
+  },
   stage: {
     type: Number,
+    required: false,
+  },
+  createdDate: {
+    type: Date,
+    required: false,
+    default: Date.now,
+  },
+  acceptedDate: {
+    type: Date,
+    required: false,
+  },
+  closedDate: {
+    type: Date,
+    required: false,
+  },
+  creator: {
+    type: String,
     required: false,
   },
   __v: { type: Number, select: false },

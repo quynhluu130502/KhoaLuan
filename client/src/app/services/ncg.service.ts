@@ -52,8 +52,19 @@ export class NcgService {
       );
   }
 
-  getNCR(id: string): Observable<any> {
+  getNC(id: string): Observable<any> {
     return this._http.get(`${process.env['SERVER_URL']}/ncg/get/${id}`).pipe(
+      map((res) => {
+        return res;
+      }),
+      retry(2),
+      catchError(handleError)
+    );
+  }
+
+  updateNC(data: any, id: string): Observable<any> {
+    data.id = id;
+    return this._http.put(`${process.env['SERVER_URL']}/ncg`, data).pipe(
       map((res) => {
         return res;
       }),

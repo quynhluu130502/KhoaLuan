@@ -50,6 +50,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { PlatformModule } from '@angular/cdk/platform';
 import { ObserversModule } from '@angular/cdk/observers';
 import { PortalModule } from '@angular/cdk/portal';
+import { CdkStepperModule } from '@angular/cdk/stepper';
 
 const VIETNAM_DATE_FORMAT = {
   parse: {
@@ -113,6 +114,7 @@ const VIETNAM_DATE_FORMAT = {
     OverlayModule,
     PlatformModule,
     PortalModule,
+    CdkStepperModule,
   ],
   // Enable to use moment date adapter for datepicker
   providers: [provideMomentDateAdapter(VIETNAM_DATE_FORMAT, { useUtc: true })],

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NcgService } from 'src/app/services/ncg.service';
 import { Observable, defaultIfEmpty, map, startWith } from 'rxjs';
@@ -12,6 +12,16 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrl: './non-ga-nc-details.component.scss',
 })
 export class NonGaNcDetailsComponent implements OnInit {
+  constructor(
+    private _ncgService: NcgService,
+    public problemDescriptionDialog: MatDialog,
+    private _sanitizer: DomSanitizer
+  ) {}
+
+  @Input() detailForm!: FormGroup;
+  @Input() masterData: any;
+  @Output() dataLoaded = new EventEmitter<boolean>();
+
   // NC Type
   ncTypeControl = new FormControl('factory internal', Validators.required);
 
@@ -131,59 +141,19 @@ export class NonGaNcDetailsComponent implements OnInit {
   assignedDepartment: any[] = [];
   filteredAssignedDepartment: Observable<any[]> = new Observable<any[]>();
 
-  @Input() formData!: Observable<any>;
-  createNCForm = new FormGroup({
-    ncType: this.ncTypeControl,
-    detectedByUnit: this.detectedByUnitControl,
-    detectionDate: this.detectionDateControl,
-    problemTitle: this.problemTitle,
-    problemDescription: this.problemDescription,
-    contaiment: this.contaiment,
-    projectNumber: this.projectNumberControl,
-    projectName: this.projectNameControl,
-    defectiveQuantity: this.defectiveQuantityControl,
-    defectiveUnit: this.defectiveUnitControl,
-    productType: this.productTypeControl,
-    device: this.deviceControl,
-    symptomCodeL0: this.symptomCodeL0Control,
-    symptomCodeL1: this.symptomCodeL1Control,
-    locationWhereDetected: this.locationWhereDetectedControl,
-    phaseDetection: this.phaseDetectionControl,
-    dueDate: this.dueDateControl,
-    impact: this.impactControl,
-    priority: this.priorityControl,
-    validator: this.validatorControl,
-    assignedDepartment: this.assignedDepartmentControl,
-  });
-
-  constructor(
-    private _ncgService: NcgService,
-    public problemDescriptionDialog: MatDialog,
-    private _sanitizer: DomSanitizer
-  ) {
-    this._ncgService.getMasterData().subscribe((res) => {
-      this.detectedByUnits = res.mdDetectedByUnits;
-
-      this.defectiveUnits = res.mdDefectiveUnits;
-
-      this.productTypes = res.mdProductTypes;
-
-      this.symptomCodeL0s = res.mdSymptomCodeL0s;
-
-      this.locationWhereDetected = res.mdLocationWhereDetecteds;
-
-      this.phaseDetections = res.mdPhaseDetections;
-
-      this.impact = res.mdImpactPriorities;
-
-      this.assignedDepartment = res.mdAssignedDepartments;
-    });
+  ngOnInit(): void {
+    this.detectedByUnits = this.masterData.mdDetectedByUnits;
+    this.defectiveUnits = this.masterData.mdDefectiveUnits;
+    this.productTypes = this.masterData.mdProductTypes;
+    this.symptomCodeL0s = this.masterData.mdSymptomCodeL0s;
+    this.locationWhereDetected = this.masterData.mdLocationWhereDetecteds;
+    this.phaseDetections = this.masterData.mdPhaseDetections;
+    this.impact = this.masterData.mdImpactPriorities;
+    this.assignedDepartment = this.masterData.mdAssignedDepartments;
     this._ncgService.getInternalUsers().subscribe((res) => {
       this.validators = res;
+      this.dataLoaded.emit(true);
     });
-  }
-
-  ngOnInit(): void {
     // Product Type
     this.filteredProductType = this.productTypeControl.valueChanges.pipe(
       startWith(''),
@@ -327,12 +297,39 @@ export class NonGaNcDetailsComponent implements OnInit {
         defaultIfEmpty(this.assignedDepartment)
       );
 
-    this.formData.subscribe((res) => {
-      this.createNCForm.patchValue(res);
-    });
+    this.detailForm.addControl('ncType', this.ncTypeControl);
+    this.detailForm.addControl('detectedByUnit', this.detectedByUnitControl);
+    this.detailForm.addControl('detectionDate', this.detectionDateControl);
+    this.detailForm.addControl('problemTitle', this.problemTitle);
+    this.detailForm.addControl('problemDescription', this.problemDescription);
+    this.detailForm.addControl('contaiment', this.contaiment);
+    this.detailForm.addControl('projectNumber', this.projectNumberControl);
+    this.detailForm.addControl('projectName', this.projectNameControl);
+    this.detailForm.addControl(
+      'defectiveQuantity',
+      this.defectiveQuantityControl
+    );
+    this.detailForm.addControl('defectiveUnit', this.defectiveUnitControl);
+    this.detailForm.addControl('productType', this.productTypeControl);
+    this.detailForm.addControl('device', this.deviceControl);
+    this.detailForm.addControl('symptomCodeL0', this.symptomCodeL0Control);
+    this.detailForm.addControl('symptomCodeL1', this.symptomCodeL1Control);
+    this.detailForm.addControl(
+      'locationWhereDetected',
+      this.locationWhereDetectedControl
+    );
+    this.detailForm.addControl('phaseDetection', this.phaseDetectionControl);
+    this.detailForm.addControl('dueDate', this.dueDateControl);
+    this.detailForm.addControl('impact', this.impactControl);
+    this.detailForm.addControl('priority', this.priorityControl);
+    this.detailForm.addControl('validator', this.validatorControl);
+    this.detailForm.addControl(
+      'assignedDepartment',
+      this.assignedDepartmentControl
+    );
 
-    Object.keys(this.createNCForm.controls).forEach((field) => {
-      const control = this.createNCForm.get(field);
+    Object.keys(this.detailForm.controls).forEach((field) => {
+      const control = this.detailForm.get(field);
       control!.markAsTouched({ onlySelf: true });
     });
   }

@@ -2,9 +2,11 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import {
   AfterViewInit,
   Component,
+  EventEmitter,
   Input,
   OnDestroy,
   OnInit,
+  Output,
   ViewChild,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,8 +15,10 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActionTableDialogComponent } from '../../action-table-dialog/action-table-dialog.component';
 import {
+  BehaviorSubject,
   Observable,
   Subject,
+  Subscription,
   defaultIfEmpty,
   map,
   startWith,
@@ -37,11 +41,21 @@ import { NcgService } from 'src/app/services/ncg.service';
 export class NonGaContainmentInvestigationComponent
   implements AfterViewInit, OnDestroy, OnInit
 {
+  constructor(
+    private _liveAnnouncer: LiveAnnouncer,
+    private _tableDialog: MatDialog,
+    private _formBuilder: FormBuilder,
+    private _ncgService: NcgService
+  ) {}
+  @Input() investigationForm!: FormGroup;
+  @Input() dataSource!: MatTableDataSource<any>;
   @Input() masterData: any;
+  @Output() dataLoaded = new EventEmitter<boolean>();
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   private destroy$ = new Subject<void>();
+  private subscription = new Subscription();
 
   displayedColumns: string[] = [
     'ID',
@@ -56,7 +70,9 @@ export class NonGaContainmentInvestigationComponent
     'Edit',
     'Delete',
   ];
-  dataSource = new MatTableDataSource();
+
+  dataSubject = new BehaviorSubject<any[]>([]);
+
   // Department
   department: any[] = [];
 
@@ -85,29 +101,14 @@ export class NonGaContainmentInvestigationComponent
   // Decision Validator
   decisionValidator = new FormControl<string | any>('', Validators.required);
 
-  containmentInvestigationForm = new FormGroup({
-    findingsAndDecision: this.findingsAndDecision,
-    causeCodeL0Control: this.causeCodeL0Control,
-    causeCodeL1Control: this.causeCodeL1Control,
-    decision: this.decision,
-    decisionValidator: this.decisionValidator,
-  });
-
-  constructor(
-    private _liveAnnouncer: LiveAnnouncer,
-    private _tableDialog: MatDialog,
-    private _formBuilder: FormBuilder,
-    private _ncgService: NcgService
-  ) {
-    this._ncgService.getInternalUsers().subscribe((data) => {
-      this.responsible = data;
-    });
-    this.causeCodeL0Control.setValue('');
-  }
-
   ngOnInit(): void {
     this.department = this.masterData.mdAssignedDepartments;
     this.causeCodeL0s = this.masterData.mdCauseCodeL0s;
+    this._ncgService.getInternalUsers().subscribe((data) => {
+      this.responsible = data;
+      this.dataLoaded.emit(true);
+    });
+    this.causeCodeL0Control.setValue('');
     this.filteredCauseCodeL0 = this.causeCodeL0Control.valueChanges.pipe(
       takeUntil(this.destroy$),
       startWith(''),
@@ -120,17 +121,46 @@ export class NonGaContainmentInvestigationComponent
       defaultIfEmpty(this.causeCodeL0s)
     );
 
-    this.filteredCauseCodeL0.subscribe((data) => {
-      if (data.length == 1) {
-        this.masterData.mdSupplierCauseCodeL0s.forEach((element: any) => {
-          if (element.code == data[0].code) {
-            this.causeCodeL1s = element.l1List;
-          }
-        });
-      }
-    });
-    Object.keys(this.containmentInvestigationForm.controls).forEach((field) => {
-      const control = this.containmentInvestigationForm.get(field);
+    this.subscription.add(
+      this.filteredCauseCodeL0.subscribe((data) => {
+        if (data.length == 1) {
+          this.masterData.mdSupplierCauseCodeL0s.forEach((element: any) => {
+            if (element.code == data[0].code) {
+              this.causeCodeL1s = element.l1List;
+            }
+          });
+        }
+      })
+    );
+
+    this.dataSource.data = this.dataSubject.value;
+    this.subscription.add(
+      this.dataSubject.subscribe((data) => {
+        this.dataSource.data = data;
+      })
+    );
+
+    this.investigationForm.addControl(
+      'findingsAndDecision',
+      this.findingsAndDecision
+    );
+    this.investigationForm.addControl(
+      'causeCodeL0Control',
+      this.causeCodeL0Control
+    );
+    this.investigationForm.addControl(
+      'causeCodeL1Control',
+      this.causeCodeL1Control
+    );
+    this.investigationForm.addControl('decision', this.decision);
+    this.investigationForm.addControl(
+      'decisionValidator',
+      this.decisionValidator
+    );
+    this.investigationForm.addControl('actions', new FormControl([]));
+
+    Object.keys(this.investigationForm.controls).forEach((field) => {
+      const control = this.investigationForm.get(field);
       control!.markAsTouched({ onlySelf: true });
     });
   }
@@ -143,6 +173,7 @@ export class NonGaContainmentInvestigationComponent
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+    this.subscription.unsubscribe();
   }
 
   announceSortChange(sortState: Sort) {
@@ -167,7 +198,8 @@ export class NonGaContainmentInvestigationComponent
     });
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
-        this.dataSource.data = [...this.dataSource.data, result];
+        // this.dataSource.data = [...this.dataSource.data, result];
+        this.dataSubject.next([...this.dataSource.data, result]);
         this.arrayFilteredResponsible.push(new Observable<any[]>());
         const newControl = this._formBuilder.control<FormControl>(
           result.responsible,
@@ -209,9 +241,8 @@ export class NonGaContainmentInvestigationComponent
     });
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
-        console.log(result);
-        this.dataSource.data[index] = result;
-        this.dataSource.data = [...this.dataSource.data];
+        this.dataSubject.value[index] = result;
+        this.dataSubject.next(this.dataSubject.value);
         this.responsibleArray.at(index).setValue(result.responsible);
       }
     });

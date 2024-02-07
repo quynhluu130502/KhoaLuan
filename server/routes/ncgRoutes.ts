@@ -61,4 +61,20 @@ router.get("/get/:id", async (req: Request, res: Response) => {
     });
 });
 
+router.put("", async (req: Request, res: Response) => {
+  req.body.stage = Stage.InProgress;
+  req.body.acceptedDate = new Date();
+  await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
+    .then((result) => {
+      if (result) {
+        res.json({ result: result, message: "NC Detail updated successfully!" });
+      } else {
+        res.json({ message: "NC Detail not found!" });
+      }
+    })
+    .catch((err) => {
+      res.json({ message: err });
+    });
+});
+
 export default router;
