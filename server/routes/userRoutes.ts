@@ -1,6 +1,7 @@
 import { Router, Request, Response } from "express";
 import crypto from "crypto";
 import User from "../models/User";
+import { verify, sign } from "jsonwebtoken";
 
 const router = Router();
 
@@ -19,14 +20,10 @@ router.get("/", async (req: Request, res: Response) => {
 // Create a new user
 router.post("/", async (req: Request, res: Response) => {
   if (!req.body.email || !req.body.name || !req.body.pass) {
-    return res
-      .status(400)
-      .send({ error: "Missing required fields: email, name, pass" });
+    return res.status(400).send({ error: "Missing required fields: email, name, pass" });
   }
   let salt: string = crypto.randomBytes(16).toString("hex");
-  let hash: string = crypto
-    .pbkdf2Sync(req.body.pass, salt, 1000, 64, `sha512`)
-    .toString(`hex`);
+  let hash: string = crypto.pbkdf2Sync(req.body.pass, salt, 1000, 64, `sha512`).toString(`hex`);
   const user = new User({
     name: req.body!.name,
     email: req.body!.email,
@@ -65,9 +62,7 @@ router.post("/get", async (req: Request, res: Response) => {
 
 // Function to generate hash and salt for password
 const generateHash = (password: string, salt: string): string => {
-  let hash: string = crypto
-    .pbkdf2Sync(password, salt, 1000, 64, `sha512`)
-    .toString(`hex`);
+  let hash: string = crypto.pbkdf2Sync(password, salt, 1000, 64, `sha512`).toString(`hex`);
   return hash;
 };
 
@@ -120,11 +115,7 @@ router.patch("/password", async (req: Request, res: Response) => {
       // If the old password is correct, generate a new hash and salt
       if (temp && temp.pass === generateHash(oldPass, temp.salt)) {
         let salt = generateSalt();
-        await User.findOneAndUpdate(
-          { sso: sso },
-          { salt: salt, pass: generateHash(newPass, salt) },
-          { new: true }
-        );
+        await User.findOneAndUpdate({ sso: sso }, { salt: salt, pass: generateHash(newPass, salt) }, { new: true });
         res.status(200).json({ message: "Password updated" });
         return;
       } else {
@@ -132,9 +123,7 @@ router.patch("/password", async (req: Request, res: Response) => {
         return;
       }
     } else {
-      res
-        .status(400)
-        .json({ message: "Missing required fields: oldPass, newPass" });
+      res.status(400).json({ message: "Missing required fields: oldPass, newPass" });
       return;
     }
   } catch (error: any) {
@@ -163,7 +152,7 @@ router.post("/login", async (req: Request, res: Response) => {
   try {
     let sso = req.body.sso;
     let pass = req.body.pass;
-    let user = await User.findOne({ sso: sso });
+    let user = await User.findOne({ sso: sso }).select("-_id");
     if (!user) {
       res.json({ message: "User not found" });
       return;
@@ -171,12 +160,63 @@ router.post("/login", async (req: Request, res: Response) => {
     if (user.pass === generateHash(pass, user.salt)) {
       user.pass = "";
       user.salt = "";
-      res.json({ message: "Login successful", user: user });
+      const accessToken = sign(user.toJSON(), process.env.TOKEN_SECRET!, { expiresIn: "1h", algorithm: "HS256" });
+      const refreshToken = sign({ sso: user.sso }, process.env.REFRESH_TOKEN_SECRET!, { expiresIn: "1d", algorithm: "HS256" });
+      res.cookie("refreshToken", refreshToken, { httpOnly: true, secure: true, maxAge: 24 * 60 * 60 * 1000, sameSite: "none" });
+      res.json({ message: "Login successful", user: user, token: accessToken });
     } else {
-      res.json({ message: "Login failed - Wrong password" });
+      res.json({ message: "Login failed - Wrong password | Invalid credentials" });
     }
   } catch (error: any) {
-    res.status(400).json({ message: error.message });
+    res.status(401).json({ message: error.message });
   }
 });
+
+router.post("/refreshToken", async (req: Request, res: Response) => {
+  const refreshToken = req.cookies?.refreshToken;
+  console.log(refreshToken);
+  if (refreshToken == undefined) {
+    return res.json({ message: "Invalid token" });
+  }
+  try {
+    const user = verify(refreshToken, process.env.REFRESH_TOKEN_SECRET!);
+    if (!user) {
+      return res.json({ message: "Invalid token" });
+    }
+    User.findOne({ sso: user })
+      .select("-pass -salt -_id")
+      .then((data) => {
+        if (data) {
+          console.log(data);
+          const accessToken = sign(data.toJSON(), process.env.TOKEN_SECRET!, { expiresIn: "1h", algorithm: "HS256" });
+          const refreshToken = sign({ sso: data.sso }, process.env.REFRESH_TOKEN_SECRET!, { expiresIn: "1d", algorithm: "HS256" });
+          res.cookie("refreshToken", refreshToken, { httpOnly: true, secure: true, maxAge: 24 * 60 * 60 * 1000, sameSite: "none" });
+          res.json({ token: accessToken });
+        }
+      });
+  } catch {
+    res.json({ message: "Invalid token" });
+  }
+});
+
+router.get("/protected", async (req, res) => {
+  const authorizationHeader = req.headers.authorization;
+  if (authorizationHeader) {
+    const token = authorizationHeader.split(" ")[1];
+    try {
+      const user = verify(token, process.env.TOKEN_SECRET!);
+      res.json({ message: "Protected data", result: user });
+    } catch {
+      res.json({ message: "Invalid token" });
+    }
+  } else {
+    res.json({ message: "Authorization header missing" });
+  }
+});
+
+router.post("/logout", async (req: Request, res: Response) => {
+  res.clearCookie("refreshToken");
+  res.json({ message: "Logout successful" });
+});
+
 export default router;

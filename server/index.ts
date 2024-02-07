@@ -42,6 +42,9 @@ app.use("/ncg", ncgRoutes);
 import qsaRoutes from "./routes/qsaRoutes";
 app.use("/qsa", qsaRoutes);
 
+import authRoutes from "./routes/authRoutes";
+app.use("/auth", authRoutes);
+
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
 });
@@ -56,15 +59,20 @@ app.listen(port, () => {
 });
 
 // 404 Error Handler
+import createError from "http-errors";
 app.use((req, res, next) => {
   // Error goes via `next()` method
   setImmediate(() => {
-    next(new Error("Something went wrong"));
+    // next(new Error("Something went wrong"));
+    next(createError(404));
   });
 });
 
 // Error handling middleware
 app.use(function (err: Error, _req: Request, res: Response, _next: NextFunction) {
+  console.log(err.stack);
   console.error("Server response: " + err.message);
   res.status(500).send("Server response: " + err.message);
 });
+
+// console.log(require('crypto').randomBytes(64).toString('hex'));

@@ -16,12 +16,18 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({});
+  rememberMeControl = new FormControl(false);
   constructor(
     private _router: Router,
     private _auth: AuthService,
     private _toast: ToastrService
   ) {}
   ngOnInit() {
+    this._auth.getProtected().subscribe((res: any) => {
+      if (res.result) {
+        this._router.navigate(['']);
+      }
+    });
     this.loginForm = new FormGroup({
       sso: new FormControl('', [
         Validators.required,
@@ -31,6 +37,10 @@ export class LoginComponent implements OnInit {
       ]),
       pass: new FormControl('', Validators.required),
     });
+    if (localStorage.getItem('sso')) {
+      this.rememberMeControl.setValue(true);
+      this.sso.setValue(JSON.parse(localStorage.getItem('sso')!) || '');
+    }
   }
   get sso(): AbstractControl {
     return this.loginForm.get('sso')!;
@@ -53,9 +63,10 @@ export class LoginComponent implements OnInit {
           return;
         }
       }
-      this._auth.changeAuthStatus();
-      sessionStorage.setItem('user', JSON.stringify(res.user));
-      sessionStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('token', res.token);
+      if (this.rememberMeControl.value === true) {
+        localStorage.setItem('sso', JSON.stringify(res.user.sso));
+      }
       this._toast.success('Đăng nhập thành công!', 'ĐĂNG NHẬP');
       this._router.navigate(['/qsa']);
     });

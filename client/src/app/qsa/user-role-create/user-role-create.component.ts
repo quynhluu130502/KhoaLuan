@@ -60,7 +60,6 @@ export class UserRoleCreateComponent implements OnInit, OnChanges {
   }
   ngOnChanges(changes: SimpleChanges) {
     if (changes['userRole'] && changes['userRole'].currentValue) {
-      console.log(this.userRole, 'userRole');
       if (this.userRole.application) {
         this._qsa.getApplicationRole('nc').subscribe((res) => {
           this.roles = res;

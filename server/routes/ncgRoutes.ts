@@ -3,6 +3,7 @@ import NCDetail from "../models/NCDetail";
 import User from "../models/User";
 import upload from "../configs/multerConfig";
 import masterData from "../data/masterData.json";
+import { JwtPayload, verify } from "jsonwebtoken";
 
 enum Stage {
   Created = 0,
@@ -34,6 +35,20 @@ router.post("/upload", upload.array("file", 6), async (req: Request, res: Respon
 });
 
 router.post("/create", async (req: Request, res: Response) => {
+  const authorizationHeader = req.headers.authorization;
+  let token = "";
+  if (authorizationHeader) {
+    token = authorizationHeader.split(" ")[1];
+    const data: JwtPayload = verify(token, process.env.TOKEN_SECRET!) as JwtPayload;
+    if (!data) {
+      res.status(401).send("Invalid token");
+      return;
+    }
+    req.body.creator = data.sso;
+  } else {
+    res.status(401).send("Authorization header missing");
+    return;
+  }
   const ncDetail = new NCDetail(req.body);
   ncDetail.stage = Stage.Created;
   await ncDetail
@@ -46,15 +61,31 @@ router.post("/create", async (req: Request, res: Response) => {
     });
 });
 
+router.post("/clone", async (req: Request, res: Response) => {
+  const ncDetail = new NCDetail(req.body);
+  await ncDetail
+    .save()
+    .then((result) => {
+      res.json({ result: result, message: "NC Detail cloned successfully!" });
+    })
+    .catch((err) => {
+      res.json({ message: err });
+    });
+});
+
 router.get("/list", async (req: Request, res: Response) => {
   const ncDetails = await NCDetail.find({});
   res.json(ncDetails);
 });
 
 router.get("/get/:id", async (req: Request, res: Response) => {
-  await NCDetail.find({ id: req.params.id })
+  await NCDetail.findOne({ id: req.params.id })
     .then((result) => {
-      res.json({ result: result, message: "NC Detail found!" });
+      if (result != null) {
+        return res.json({ result: result, message: "NC Detail found!" });
+      } else {
+        return res.json({ message: "NC Detail not found!" });
+      }
     })
     .catch((err) => {
       res.json({ message: err });

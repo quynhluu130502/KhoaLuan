@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NcgService } from 'src/app/services/ncg.service';
 import { Observable, defaultIfEmpty, map, startWith } from 'rxjs';
@@ -10,6 +17,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   selector: 'app-non-ga-nc-details',
   templateUrl: './non-ga-nc-details.component.html',
   styleUrl: './non-ga-nc-details.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
 export class NonGaNcDetailsComponent implements OnInit {
   constructor(

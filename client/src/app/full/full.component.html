@@ -82,7 +82,12 @@
           <hr />
 
           <div class="p-16">
-            <button mat-flat-button color="accent" class="w-100 text-white">
+            <button
+              mat-flat-button
+              color="accent"
+              class="w-100 text-white"
+              (click)="onLogout()"
+            >
               Logout
             </button>
           </div>

@@ -72,10 +72,14 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
     }
     if (this.dataLoadedCount === this.totalComponents) {
       this._ncgService.getNC(this.id).subscribe((res) => {
-        console.log(res);
-        this.detailForm.patchValue(res.result[0]);
-        this.investigationForm.patchValue(res.result[0]);
-        this.stage.next(res.result[0].stage);
+        if (!res.result) {
+          this._toastr.error('Error', 'Error in fetching the NCR');
+          console.log(res.message);
+          return;
+        }
+        this.detailForm.patchValue(res.result);
+        this.investigationForm.patchValue(res.result);
+        this.stage.next(res.result.stage);
       });
     }
   }
@@ -89,19 +93,18 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
   onAccept() {
     if (this.stage.value === 1) {
       this.investigationForm.controls['actions'].setValue(this.dataSource.data);
-      console.log(this.investigationForm.value);
-      this._ncgService
-        .updateNC(this.investigationForm.value, this.id)
-        .subscribe((res) => {
-          console.log(res);
-          if (res.result) {
-            console.log(res.result);
-            this.stepper.next();
-          } else {
-            this._toastr.error('Error', 'Error in updating the NCR');
-            console.log(res.message);
-          }
-        });
+      const mergedValues = {
+        ...this.investigationForm.value,
+        ...this.detailForm.value,
+      };
+      this._ncgService.updateNC(mergedValues, this.id).subscribe((res) => {
+        if (res.result) {
+          this.stepper.next();
+        } else {
+          this._toastr.error('Error', 'Error in updating the NCR');
+          console.log(res.message);
+        }
+      });
     }
   }
 }

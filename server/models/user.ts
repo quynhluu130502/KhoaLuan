@@ -51,6 +51,8 @@ let userSchema = new mongoose.Schema({
   pass: { type: String, required: true },
   salt: { type: String, required: true },
   active: { type: Boolean, required: true, default: true },
+  accessToken: { type: String, required: false },
+  refreshToken: { type: String, required: false },
   __v: { type: Number, select: false },
 });
 

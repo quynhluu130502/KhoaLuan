@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, Observable, retry } from 'rxjs';
 import { handleError } from '../constant';
 
@@ -41,8 +41,11 @@ export class NcgService {
   }
 
   createNC(data: any): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    });
     return this._http
-      .post(`${process.env['SERVER_URL']}/ncg/create`, data)
+      .post(`${process.env['SERVER_URL']}/ncg/create`, data, { headers })
       .pipe(
         map((res) => {
           return res;
@@ -65,6 +68,16 @@ export class NcgService {
   updateNC(data: any, id: string): Observable<any> {
     data.id = id;
     return this._http.put(`${process.env['SERVER_URL']}/ncg`, data).pipe(
+      map((res) => {
+        return res;
+      }),
+      retry(2),
+      catchError(handleError)
+    );
+  }
+
+  cloneNC(data:any): Observable<any> {
+    return this._http.post(`${process.env['SERVER_URL']}/ncg/clone`, data).pipe(
       map((res) => {
         return res;
       }),
