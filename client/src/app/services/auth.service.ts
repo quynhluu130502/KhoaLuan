@@ -23,11 +23,12 @@ export class AuthService {
         userInfor,
         {
           withCredentials: true,
+          observe: 'response',
         }
       )
       .pipe(
         map((res) => {
-          return res as successfulLogin;
+          return res.body as successfulLogin;
         }),
         retry(2),
         catchError(handleError)
@@ -54,9 +55,13 @@ export class AuthService {
 
   getRefreshToken(): any {
     return this._http
-      .post(`${process.env['SERVER_URL']}/user/refreshToken`, {
-        withCredentials: true,
-      })
+      .post(
+        `${process.env['SERVER_URL']}/user/refreshToken`,
+        {},
+        {
+          withCredentials: true,
+        }
+      )
       .pipe(
         map((res) => {
           return res;

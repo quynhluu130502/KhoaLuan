@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
 import crypto from "crypto";
 import User from "../models/User";
-import { verify, sign } from "jsonwebtoken";
+import { verify, sign, JwtPayload } from "jsonwebtoken";
 
 const router = Router();
 
@@ -174,24 +174,23 @@ router.post("/login", async (req: Request, res: Response) => {
 
 router.post("/refreshToken", async (req: Request, res: Response) => {
   const refreshToken = req.cookies?.refreshToken;
-  console.log(refreshToken);
   if (refreshToken == undefined) {
     return res.json({ message: "Invalid token" });
   }
   try {
-    const user = verify(refreshToken, process.env.REFRESH_TOKEN_SECRET!);
+    const user: JwtPayload = verify(refreshToken, process.env.REFRESH_TOKEN_SECRET!) as JwtPayload;
     if (!user) {
       return res.json({ message: "Invalid token" });
     }
-    User.findOne({ sso: user })
+    User.findOne({ sso: user.sso })
       .select("-pass -salt -_id")
       .then((data) => {
         if (data) {
-          console.log(data);
           const accessToken = sign(data.toJSON(), process.env.TOKEN_SECRET!, { expiresIn: "1h", algorithm: "HS256" });
           const refreshToken = sign({ sso: data.sso }, process.env.REFRESH_TOKEN_SECRET!, { expiresIn: "1d", algorithm: "HS256" });
           res.cookie("refreshToken", refreshToken, { httpOnly: true, secure: true, maxAge: 24 * 60 * 60 * 1000, sameSite: "none" });
-          res.json({ token: accessToken });
+          res.json({ token: accessToken, message: "Token refreshed" });
+          return;
         }
       });
   } catch {
@@ -216,7 +215,7 @@ router.get("/protected", async (req, res) => {
 
 router.post("/logout", async (req: Request, res: Response) => {
   res.clearCookie("refreshToken");
-  res.json({ message: "Logout successful" });
+  res.json({ message: "Logout successful", result: true });
 });
 
 export default router;

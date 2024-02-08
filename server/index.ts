@@ -23,6 +23,10 @@ app.use(
   })
 );
 
+// Cookie Parser
+import cookieParser from "cookie-parser";
+app.use(cookieParser());
+
 // Connect to MongoDB
 import connectDatabase from "./configs/connectDatabase";
 connectDatabase();
@@ -53,10 +57,23 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/public", express.static("public"));
 
 // Start the server
+import https from "https";
+import fs from "fs";
+import path from "path";
+const options = {
+  key: fs.readFileSync(path.resolve(__dirname, `localhost+1-key.pem`), "utf-8"),
+  cert: fs.readFileSync(path.resolve(__dirname, `localhost+1.pem`), "utf-8"),
+};
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
-});
+if (env === "production") {
+  app.listen(port, () => {
+    console.log(`[server]: Server is running at http://localhost:${port}`);
+  });
+} else {
+  https.createServer(options, app).listen(port, () => {
+    console.log(`[server]: Server is running at https://localhost:${port}`);
+  });
+}
 
 // 404 Error Handler
 import createError from "http-errors";

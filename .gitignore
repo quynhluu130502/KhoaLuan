@@ -40,6 +40,8 @@
 testem.log
 /typings
 /server/public
+/server/localhost+1.pem
+/server/localhost+1-key.pem
 
 # System files
 .DS_Store

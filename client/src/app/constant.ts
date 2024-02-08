@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 
 const qsaMenu = [
   {
@@ -54,7 +54,7 @@ const handleError = (err: HttpErrorResponse) => {
   // return Observable.of<any>({my: "default value..."});
   // or simply an empty observable
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return new Observable<any>();
+  return [];
 };
 
 const handleSimpleError = (err: HttpErrorResponse) => {
