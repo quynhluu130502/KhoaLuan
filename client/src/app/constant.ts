@@ -20,8 +20,13 @@ const qsaMenu = [
 ];
 const ncgMenu = [
   {
-    link: '/ncg/create-ncr',
+    link: '/ncg/dashboard',
     icon: 'home',
+    menu: 'Home',
+  },
+  {
+    link: '/ncg/create-ncr',
+    icon: 'package',
     menu: 'Create NC',
   },
   {

@@ -5,36 +5,36 @@
     matSort
     (matSortChange)="announceSortChange($event)"
   >
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
+    <!-- NC_ID Column -->
+    <ng-container matColumnDef="NC_ID">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
-        <mat-icon>filter_list_alt</mat-icon> No.
+        <mat-icon>filter_list_alt</mat-icon> NC ID
       </th>
-      <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
     </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
+    <!-- Detected_By_Unit Column -->
+    <ng-container matColumnDef="Detected_By_Unit">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
-        <mat-icon>filter_list_alt</mat-icon> Name
+        <mat-icon>filter_list_alt</mat-icon> Detected By Unit
       </th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.detectedByUnit }}</td>
     </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
+    <!-- Status Column -->
+    <ng-container matColumnDef="Status">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
-        <mat-icon>filter_list_alt</mat-icon> Weight
+        <mat-icon>filter_list_alt</mat-icon> Status
       </th>
-      <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.status }}</td>
     </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
+    <!-- Action_Plan_Due_Date Column -->
+    <ng-container matColumnDef="Action_Plan_Due_Date">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
-        <mat-icon>filter_list_alt</mat-icon> Symbol
+        <mat-icon>filter_list_alt</mat-icon> Action Plan Due Date
       </th>
-      <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.dueDate }}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

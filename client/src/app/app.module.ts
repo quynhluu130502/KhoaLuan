@@ -1,11 +1,5 @@
 import { NgModule, isDevMode } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
 import { GraduationThesisModule } from './modules/graduation-thesis/graduation-thesis.module';
 
 import { FeatherModule } from 'angular-feather';
@@ -32,6 +26,7 @@ import { NCRDetailComponent } from './ncg/ncr-detail/ncr-detail.component';
 import { NonGaContainmentInvestigationComponent } from './ncg/non-ga/non-ga-containment-investigation/non-ga-containment-investigation.component';
 import { NonGaNcDetailsComponent } from './ncg/non-ga/non-ga-nc-details/non-ga-nc-details.component';
 import { ActionTableDialogComponent } from './ncg/action-table-dialog/action-table-dialog.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,21 +47,15 @@ import { ActionTableDialogComponent } from './ncg/action-table-dialog/action-tab
     NonGaContainmentInvestigationComponent,
     NonGaNcDetailsComponent,
     ActionTableDialogComponent,
+    DashboardComponent,
   ],
   imports: [
-    CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule, // required animations module
-    NgbModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000',
     }),
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
     FeatherModule.pick(allIcons),
     ToastrModule.forRoot({
       timeOut: 2000,

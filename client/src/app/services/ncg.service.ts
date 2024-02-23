@@ -76,7 +76,7 @@ export class NcgService {
     );
   }
 
-  cloneNC(data:any): Observable<any> {
+  cloneNC(data: any): Observable<any> {
     return this._http.post(`${process.env['SERVER_URL']}/ncg/clone`, data).pipe(
       map((res) => {
         return res;
@@ -84,5 +84,33 @@ export class NcgService {
       retry(2),
       catchError(handleError)
     );
+  }
+
+  deleteNC(id: string): Observable<any> {
+    return this._http.delete(`${process.env['SERVER_URL']}/ncg/${id}`).pipe(
+      map((res) => {
+        return res;
+      }),
+      retry(2),
+      catchError(handleError)
+    );
+  }
+
+  getMyNCs(): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    });
+    return this._http
+      .get(`${process.env['SERVER_URL']}/ncg/myNCs`, {
+        headers: headers,
+        withCredentials: true,
+      })
+      .pipe(
+        map((res) => {
+          return res;
+        }),
+        retry(2),
+        catchError(handleError)
+      );
   }
 }

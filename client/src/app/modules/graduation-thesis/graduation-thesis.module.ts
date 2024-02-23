@@ -52,6 +52,14 @@ import { ObserversModule } from '@angular/cdk/observers';
 import { PortalModule } from '@angular/cdk/portal';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { HighchartsChartModule } from 'highcharts-angular';
+
 const VIETNAM_DATE_FORMAT = {
   parse: {
     dateInput: 'DD/MM/YYYY',
@@ -115,6 +123,15 @@ const VIETNAM_DATE_FORMAT = {
     PlatformModule,
     PortalModule,
     CdkStepperModule,
+
+    CommonModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    HighchartsChartModule,
   ],
   // Enable to use moment date adapter for datepicker
   providers: [provideMomentDateAdapter(VIETNAM_DATE_FORMAT, { useUtc: true })],

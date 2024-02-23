@@ -108,4 +108,36 @@ router.put("", async (req: Request, res: Response) => {
     });
 });
 
+router.delete("/:id", async (req: Request, res: Response) => {
+  await NCDetail.findOneAndDelete({ id: req.params.id })
+    .then((result) => {
+      if (result) {
+        res.json({ result: result, message: "NC Detail deleted successfully!" });
+      } else {
+        res.json({ message: "NC Detail not found!" });
+      }
+    })
+    .catch((err) => {
+      res.json({ message: err });
+    });
+});
+
+router.get("/myNCs", async (req: Request, res: Response) => {
+  const authorizationHeader = req.headers.authorization;
+  let token = "";
+  if (authorizationHeader) {
+    token = authorizationHeader.split(" ")[1];
+    const data: JwtPayload = verify(token, process.env.TOKEN_SECRET!) as JwtPayload;
+    if (!data) {
+      res.status(401).send("Invalid token");
+      return;
+    }
+    const ncDetails = await NCDetail.find({ creator: data.sso });
+    res.json(ncDetails);
+  } else {
+    res.status(401).send("Authorization header missing");
+    return;
+  }
+});
+
 export default router;
