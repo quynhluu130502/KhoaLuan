@@ -27,6 +27,7 @@ import { NonGaContainmentInvestigationComponent } from './ncg/non-ga/non-ga-cont
 import { NonGaNcDetailsComponent } from './ncg/non-ga/non-ga-nc-details/non-ga-nc-details.component';
 import { ActionTableDialogComponent } from './ncg/action-table-dialog/action-table-dialog.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AttachmentComponent } from './attachment/attachment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     NonGaNcDetailsComponent,
     ActionTableDialogComponent,
     DashboardComponent,
+    AttachmentComponent,
   ],
   imports: [
     ServiceWorkerModule.register('ngsw-worker.js', {

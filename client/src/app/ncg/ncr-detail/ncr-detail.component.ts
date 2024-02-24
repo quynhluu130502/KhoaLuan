@@ -22,7 +22,6 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatStepper) stepper!: MatStepper;
   private subscription = new Subscription();
-  id: string = '';
 
   detailForm: FormGroup = this._formBuilder.group({});
   investigationForm: FormGroup = this._formBuilder.group({});
@@ -39,10 +38,13 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
   stage = new BehaviorSubject<number>(0);
   dataLoadedCount = 0;
   totalComponents = 2;
+  nc_id: string = '';
+  nc_creator: string = '';
+  attachmentFiles = new BehaviorSubject<any[]>([]);
   ngOnInit() {
     this._activatedRoute.params.subscribe((params) => {
       if (params['id']) {
-        this.id = params['id'];
+        this.nc_id = params['id'];
       }
     });
     this.subscription.add(
@@ -71,7 +73,7 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
       this.dataLoadedCount++;
     }
     if (this.dataLoadedCount === this.totalComponents) {
-      this._ncgService.getNC(this.id).subscribe((res) => {
+      this._ncgService.getNC(this.nc_id).subscribe((res) => {
         if (!res.result) {
           this._toastr.error('Error', 'Error in fetching the NCR');
           console.log(res.message);
@@ -80,6 +82,12 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
         this.detailForm.patchValue(res.result);
         this.investigationForm.patchValue(res.result);
         this.stage.next(res.result.stage);
+        this.attachmentFiles.next(res.result.attachment);
+        this._ncgService.getNameBySSO(res.result.creator).subscribe((res) => {
+          if (res.result) {
+            this.nc_creator = res.result;
+          }
+        });
       });
     }
   }
@@ -97,7 +105,7 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
         ...this.investigationForm.value,
         ...this.detailForm.value,
       };
-      this._ncgService.updateNC(mergedValues, this.id).subscribe((res) => {
+      this._ncgService.updateNC(mergedValues, this.nc_id).subscribe((res) => {
         if (res.result) {
           this.stepper.next();
         } else {

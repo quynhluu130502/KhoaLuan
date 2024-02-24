@@ -8,7 +8,7 @@ import { NcgService } from '../services/ncg.service';
 @Component({
   selector: 'app-table-ticket',
   templateUrl: './table-ticket.component.html',
-  styleUrl: './table-ticket.component.css',
+  styleUrl: './table-ticket.component.scss',
 })
 export class TableTicketComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
@@ -30,7 +30,6 @@ export class TableTicketComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this._ncgService.getMyNCs().subscribe((data) => {
       this.dataSource.data = data;
-      console.log(data);
     });
   }
 

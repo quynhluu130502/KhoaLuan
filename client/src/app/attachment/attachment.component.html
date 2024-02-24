@@ -1,0 +1,41 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0 w-100">
+  <div class="container">
+    <mat-label>File attachment</mat-label>
+    <div class="row">
+      <div class="col-md-12">
+        <div
+          class="fileupload"
+          appDragDropFileUpload
+          (click)="fileField.click()"
+          (fileDropped)="upload($event)"
+        >
+          <span class="input-info">Choose a file or drag here</span>
+          <input
+            type="file"
+            #fileField
+            (change)="upload($any($event).target.files)"
+            hidden
+            multiple
+          />
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="image-list" *ngFor="let file of files; let i = index">
+          <div class="profile">
+            <img [src]="sanitize(file['url'])" alt="" />
+            <div class="d-flex flex-row justify-content-center">
+              <p class="text-center">{{ file.item.name }}</p>
+            </div>
+          </div>
+          <button
+            class="btn btn-danger h-50 m-3 align-self-center"
+            (click)="removeFile(i)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -140,4 +140,13 @@ router.get("/myNCs", async (req: Request, res: Response) => {
   }
 });
 
+router.get("/getNameBySSO/:sso", async (req: Request, res: Response) => {
+  const user = await User.findOne({ sso: req.params.sso });
+  if (user) {
+    res.json({ result: user.name });
+  } else {
+    res.json({ message: "User not found" });
+  }
+});
+
 export default router;

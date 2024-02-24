@@ -1,8 +1,8 @@
 <div class="details-conatainer">
   <mat-card class="ncr-header">
     <mat-card-header>
-      <mat-card-title>NC ID: NC-24000315</mat-card-title>
-      <mat-card-subtitle>Created By: Nhan Dam</mat-card-subtitle>
+      <mat-card-title>NC ID: {{ nc_id }}</mat-card-title>
+      <mat-card-subtitle>Created By: {{ nc_creator }}</mat-card-subtitle>
     </mat-card-header>
   </mat-card>
   <mat-stepper
@@ -27,9 +27,11 @@
     </mat-step>
   </mat-stepper>
   <div class="details-non-ga-container mb-5">
-    <mat-tab-group dynamicHeight selectedIndex="2">
+    <mat-tab-group dynamicHeight selectedIndex="1">
       <mat-tab label="Attachments">
-        <div class=""></div>
+        <div class="">
+          <app-attachment [attachmentFiles]="attachmentFiles"></app-attachment>
+        </div>
       </mat-tab>
       <mat-tab label="NC Details">
         <div class="">

@@ -14,6 +14,9 @@ IndicatorZigzag(Highcharts);
 export class DashboardComponent implements OnInit {
   Highcharts: typeof Highcharts = Highcharts;
   pieChartOptions: Highcharts.Options = {
+    accessibility: {
+      enabled: false,
+    },
     chart: {
       type: 'pie',
       backgroundColor: '#FFFFFF',
@@ -89,6 +92,9 @@ export class DashboardComponent implements OnInit {
     },
   };
   barChartOptions: Highcharts.Options = {
+    accessibility: {
+      enabled: false,
+    },
     chart: {
       type: 'bar',
       backgroundColor: '#FFFFFF',
@@ -146,6 +152,9 @@ export class DashboardComponent implements OnInit {
   };
 
   columnChartOptions: Highcharts.Options = {
+    accessibility: {
+      enabled: false,
+    },
     chart: {
       type: 'column',
       backgroundColor: '#FFFFFF',

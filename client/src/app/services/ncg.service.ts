@@ -21,7 +21,7 @@ export class NcgService {
 
   addFiles(formData: FormData): Observable<any> {
     return this._http
-      .post('http://localhost:3000/ncg/upload', formData, {
+      .post(`${process.env['SERVER_URL']}/ncg/upload`, formData, {
         reportProgress: true,
         observe: 'events',
       })
@@ -112,5 +112,27 @@ export class NcgService {
         retry(2),
         catchError(handleError)
       );
+  }
+
+  getNameBySSO(sso: string): Observable<any> {
+    return this._http
+      .get(`${process.env['SERVER_URL']}/ncg/getNameBySSO/${sso}`)
+      .pipe(
+        map((res) => {
+          return res;
+        }),
+        retry(2),
+        catchError(handleError)
+      );
+  }
+
+  getFile(url: string): Observable<Blob> {
+    return this._http.get(`${url}`, { responseType: 'blob' }).pipe(
+      map((res: Blob) => {
+        return res;
+      }),
+      retry(2),
+      catchError(handleError)
+    );
   }
 }

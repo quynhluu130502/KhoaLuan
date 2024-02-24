@@ -68,14 +68,17 @@ export class ProblemDescriptionDialogComponent {
           case HttpEventType.Sent:
             // console.log('Request has been made!');
             break;
-          case HttpEventType.ResponseHeader:
-            // console.log('Response header has been received!');
-            break;
           case HttpEventType.UploadProgress:
             this.progress = Math.round(
               (event.loaded / (event.total ?? 1)) * 100
             );
             // console.log(`Uploaded! ${this.progress}%`);
+            break;
+          case HttpEventType.ResponseHeader:
+            // console.log('Response header has been received!');
+            break;
+          case HttpEventType.DownloadProgress:
+            // console.log(`Download in progress! ${this.progress}%`);
             break;
           case HttpEventType.Response:
             // console.log('File uploaded successfully!', event.body);
@@ -83,9 +86,20 @@ export class ProblemDescriptionDialogComponent {
               this.progress = 0;
               this.msg = 'File uploaded successfully!';
             }, 1500);
+            break;
+          case HttpEventType.User:
+            // console.log('User event');
+            break;
         }
-        this.dialogData.files = this.files;
-        this._toastService.success('File uploaded successfully!');
+        if (event.type === HttpEventType.Response) {
+          for (let i = 0; i < this.files.length; i++) {
+            if (event.body && event.body[i]) {
+              this.files[i].url = event.body[i] as string;
+            }
+          }
+          this.dialogData.files = this.files;
+          this._toastService.success('File uploaded successfully!');
+        }
       });
   }
 }

@@ -12,3 +12,12 @@ table.table-responsive {
   white-space: nowrap;
   max-height: 70vh;
 }
+
+td a {
+  color: #1687fb;
+}
+
+td a:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
