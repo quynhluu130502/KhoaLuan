@@ -5,27 +5,29 @@
       <mat-card-subtitle>Created By: {{ nc_creator }}</mat-card-subtitle>
     </mat-card-header>
   </mat-card>
+  <!-- The linear attribute can be set on mat-stepper to create a linear stepper that requires the user to complete previous steps before proceeding to following steps -->
   <mat-stepper
     headerPosition="bottom"
     orientation="horizontal"
     #stepper
-    [linear]="true"
+    [linear]="false"
     [formGroup]="stepperForm"
-    [selectedIndex]="stage.value"
+    [selectedIndex]="stage.value !== -1 ? stage.value : 0"
   >
-    <mat-step [stepControl]="detailForm">
+    <mat-step>
       <ng-template matStepLabel>Created</ng-template>
     </mat-step>
-    <mat-step [stepControl]="investigationForm">
+    <mat-step>
       <ng-template matStepLabel>Accepted</ng-template>
     </mat-step>
-    <mat-step [stepControl]="thirdFormGroup">
-      <ng-template matStepLabel>In progress</ng-template>
+    <mat-step>
+      <ng-template matStepLabel>Solved</ng-template>
     </mat-step>
-    <mat-step [stepControl]="fourthFormGroup">
+    <mat-step>
       <ng-template matStepLabel>Closed</ng-template>
     </mat-step>
   </mat-stepper>
+  <h3 class="text-center fs-1 fw-bold">{{ noti }}</h3>
   <div class="details-non-ga-container mb-5">
     <mat-tab-group dynamicHeight selectedIndex="1">
       <mat-tab label="Attachments">
@@ -50,13 +52,13 @@
             (dataLoaded)="onDataLoaded(true)"
             *ngIf="masterData$ | async as masterData"
             [masterData]="masterData"
-            [dataSource]="dataSource"
+            [actionsTable]="actionsTable"
           ></app-non-ga-containment-investigation>
         </div>
       </mat-tab>
     </mat-tab-group>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="stage.value < 3 && stage.value > -1">
     <div class="col-12">
       <div
         class="w-100 d-flex flex-row justify-content-center align-items-center"

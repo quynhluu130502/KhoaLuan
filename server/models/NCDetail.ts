@@ -134,6 +134,10 @@ let ncDetailSchema = new mongoose.Schema({
     type: Date,
     required: false,
   },
+  cancelledDate: {
+    type: Date,
+    required: false,
+  },
   creator: {
     type: String,
     required: false,

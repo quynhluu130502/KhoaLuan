@@ -50,7 +50,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { PlatformModule } from '@angular/cdk/platform';
 import { ObserversModule } from '@angular/cdk/observers';
 import { PortalModule } from '@angular/cdk/portal';
-import { CdkStepperModule } from '@angular/cdk/stepper';
+import { CdkStepperModule, STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -134,6 +134,12 @@ const VIETNAM_DATE_FORMAT = {
     HighchartsChartModule,
   ],
   // Enable to use moment date adapter for datepicker
-  providers: [provideMomentDateAdapter(VIETNAM_DATE_FORMAT, { useUtc: true })],
+  providers: [
+    provideMomentDateAdapter(VIETNAM_DATE_FORMAT, { useUtc: true }),
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { displayDefaultIndicatorType: false },
+    },
+  ],
 })
 export class GraduationThesisModule {}

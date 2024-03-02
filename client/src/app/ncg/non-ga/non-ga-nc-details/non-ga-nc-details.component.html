@@ -276,12 +276,13 @@
           matInput
           [formControl]="dueDateControl"
           [matDatepicker]="dueDate"
+          [readonly]="true"
         />
         <mat-datepicker-toggle
           matIconSuffix
           [for]="dueDate"
         ></mat-datepicker-toggle>
-        <mat-datepicker #dueDate [startAt]="maxDetectionDate"></mat-datepicker>
+        <mat-datepicker #dueDate [disabled]="true"></mat-datepicker>
       </mat-form-field>
     </div>
     <div class="col-4">

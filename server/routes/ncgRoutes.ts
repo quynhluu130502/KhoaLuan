@@ -3,13 +3,15 @@ import NCDetail from "../models/NCDetail";
 import User from "../models/User";
 import upload from "../configs/multerConfig";
 import masterData from "../data/masterData.json";
-import { JwtPayload, verify } from "jsonwebtoken";
+import { JsonWebTokenError, JwtPayload, verify } from "jsonwebtoken";
+import mongoose from "mongoose";
 
 enum Stage {
   Created = 0,
   Accepted = 1,
-  InProgress = 2,
+  Solved = 2,
   Closed = 3,
+  Cancelled = -1,
 }
 
 const router = Router();
@@ -62,15 +64,24 @@ router.post("/create", async (req: Request, res: Response) => {
 });
 
 router.post("/clone", async (req: Request, res: Response) => {
-  const ncDetail = new NCDetail(req.body);
-  await ncDetail
-    .save()
-    .then((result) => {
-      res.json({ result: result, message: "NC Detail cloned successfully!" });
-    })
-    .catch((err) => {
-      res.json({ message: err });
-    });
+  let ncDetail = await NCDetail.findOne({ id: req.body.id });
+  if (ncDetail) {
+    let temp = ncDetail.toObject();
+    temp._id = new mongoose.Types.ObjectId();
+    const clonedNcDetail = new NCDetail(temp);
+    await clonedNcDetail
+      .save()
+      .then((result) => {
+        res.json({ result: result, message: "NC Detail cloned successfully!" });
+        return;
+      })
+      .catch((err) => {
+        res.json({ message: err });
+      });
+  } else {
+    res.json({ message: "NC Detail not found!" });
+    return;
+  }
 });
 
 router.get("/list", async (req: Request, res: Response) => {
@@ -92,13 +103,75 @@ router.get("/get/:id", async (req: Request, res: Response) => {
     });
 });
 
+router.patch("", async (req: Request, res: Response) => {
+  await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
+    .then((result) => {
+      if (result) {
+        res.json({ result: result, message: "NC Detail updated successfully!" });
+      } else {
+        res.json({ message: "NC Detail not found!" });
+      }
+    })
+    .catch((err) => {
+      res.json({ message: err });
+    });
+});
+
+router.patch("/cancel", async (req: Request, res: Response) => {
+  req.body.stage = Stage.Cancelled;
+  req.body.cancelledDate = new Date();
+  await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
+    .then((result) => {
+      if (result) {
+        res.json({ result: result, message: "NC Detail cancelled successfully!" });
+      } else {
+        res.json({ message: "NC Detail not found!" });
+      }
+    })
+    .catch((err) => {
+      res.json({ message: err });
+    });
+});
+
 router.put("", async (req: Request, res: Response) => {
-  req.body.stage = Stage.InProgress;
+  req.body.stage = Stage.Solved;
   req.body.acceptedDate = new Date();
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
     .then((result) => {
       if (result) {
         res.json({ result: result, message: "NC Detail updated successfully!" });
+      } else {
+        res.json({ message: "NC Detail not found!" });
+      }
+    })
+    .catch((err) => {
+      res.json({ message: err });
+    });
+});
+
+router.put("/back", async (req: Request, res: Response) => {
+  req.body.stage = Stage.Created;
+  req.body.acceptedDate = null;
+  await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
+    .then((result) => {
+      if (result) {
+        res.json({ result: result, message: "NC Detail back successfully!" });
+      } else {
+        res.json({ message: "NC Detail not found!" });
+      }
+    })
+    .catch((err) => {
+      res.json({ message: err });
+    });
+});
+
+router.put("/close", async (req: Request, res: Response) => {
+  req.body.stage = Stage.Closed;
+  req.body.closedDate = new Date();
+  await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
+    .then((result) => {
+      if (result) {
+        res.json({ result: result, message: "NC Detail closed successfully!" });
       } else {
         res.json({ message: "NC Detail not found!" });
       }
@@ -128,12 +201,22 @@ router.get("/myNCs", async (req: Request, res: Response) => {
   if (authorizationHeader) {
     token = authorizationHeader.split(" ")[1];
     const data: JwtPayload = verify(token, process.env.TOKEN_SECRET!) as JwtPayload;
-    if (!data) {
-      res.status(401).send("Invalid token");
-      return;
+    try {
+      if (!data) {
+        res.status(401).send("Invalid token");
+        return;
+      }
+      const ncDetails = await NCDetail.find({ creator: data.sso });
+      res.json(ncDetails);
+    } catch (err) {
+      if (err instanceof JsonWebTokenError) {
+        res.status(401).json({ message: "Token expired" });
+        return;
+      } else {
+        res.status(401).json({ message: "Invalid token" });
+        return;
+      }
     }
-    const ncDetails = await NCDetail.find({ creator: data.sso });
-    res.json(ncDetails);
   } else {
     res.status(401).send("Authorization header missing");
     return;

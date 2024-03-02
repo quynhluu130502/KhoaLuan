@@ -15,16 +15,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
-  step = 0;
-  setStep(index: number) {
-    this.step = index;
-  }
-  nextStep() {
-    this.step++;
-  }
-  prevStep() {
-    this.step--;
-  }
 
   // NC Type
   ncTypeControl = new FormControl('factory internal', Validators.required);
@@ -125,7 +115,8 @@ export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
   filteredPhaseDetection: Observable<any[]> = new Observable<any[]>();
 
   // Due Date
-  dueDateControl = new FormControl(new Date());
+  _dueDate = new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000);
+  dueDateControl = new FormControl(this._dueDate, Validators.required);
 
   // Impact
   impactControl = new FormControl('');

@@ -65,7 +65,29 @@ export class NcgService {
     );
   }
 
-  updateNC(data: any, id: string): Observable<any> {
+  saveNC(data: any, id: string): Observable<any> {
+    data.id = id;
+    return this._http.patch(`${process.env['SERVER_URL']}/ncg`, data).pipe(
+      map((res) => {
+        return res;
+      }),
+      retry(2),
+      catchError(handleError)
+    );
+  }
+
+  backNC(data: any, id: string): Observable<any> {
+    data.id = id;
+    return this._http.put(`${process.env['SERVER_URL']}/ncg/back`, data).pipe(
+      map((res) => {
+        return res;
+      }),
+      retry(2),
+      catchError(handleError)
+    );
+  }
+
+  acceptNC(data: any, id: string): Observable<any> {
     data.id = id;
     return this._http.put(`${process.env['SERVER_URL']}/ncg`, data).pipe(
       map((res) => {
@@ -76,8 +98,20 @@ export class NcgService {
     );
   }
 
-  cloneNC(data: any): Observable<any> {
-    return this._http.post(`${process.env['SERVER_URL']}/ncg/clone`, data).pipe(
+  cloneNC(id: any): Observable<any> {
+    return this._http
+      .post(`${process.env['SERVER_URL']}/ncg/clone`, { id: id })
+      .pipe(
+        map((res) => {
+          return res;
+        }),
+        retry(2),
+        catchError(handleError)
+      );
+  }
+
+  deleteNC(id: string): Observable<any> {
+    return this._http.delete(`${process.env['SERVER_URL']}/ncg/${id}`).pipe(
       map((res) => {
         return res;
       }),
@@ -86,8 +120,21 @@ export class NcgService {
     );
   }
 
-  deleteNC(id: string): Observable<any> {
-    return this._http.delete(`${process.env['SERVER_URL']}/ncg/${id}`).pipe(
+  cancelNC(id: any): Observable<any> {
+    return this._http
+      .patch(`${process.env['SERVER_URL']}/ncg/cancel`, { id: id })
+      .pipe(
+        map((res) => {
+          return res;
+        }),
+        retry(2),
+        catchError(handleError)
+      );
+  }
+
+  closeNC(data: any, id: string): Observable<any> {
+    data.id = id;
+    return this._http.put(`${process.env['SERVER_URL']}/ncg/close`, data).pipe(
       map((res) => {
         return res;
       }),

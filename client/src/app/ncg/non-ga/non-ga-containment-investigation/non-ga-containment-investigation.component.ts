@@ -48,7 +48,7 @@ export class NonGaContainmentInvestigationComponent
     private _ncgService: NcgService
   ) {}
   @Input() investigationForm!: FormGroup;
-  @Input() dataSource!: MatTableDataSource<any>;
+  @Input() actionsTable!: BehaviorSubject<any[]>;
   @Input() masterData: any;
   @Output() dataLoaded = new EventEmitter<boolean>();
   @ViewChild(MatSort) sort!: MatSort;
@@ -57,6 +57,7 @@ export class NonGaContainmentInvestigationComponent
   private destroy$ = new Subject<void>();
   private subscription = new Subscription();
 
+  dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
   displayedColumns: string[] = [
     'ID',
     'Class',
@@ -70,8 +71,6 @@ export class NonGaContainmentInvestigationComponent
     'Edit',
     'Delete',
   ];
-
-  dataSubject = new BehaviorSubject<any[]>([]);
 
   // Department
   department: any[] = [];
@@ -133,9 +132,11 @@ export class NonGaContainmentInvestigationComponent
       })
     );
 
-    this.dataSource.data = this.dataSubject.value;
     this.subscription.add(
-      this.dataSubject.subscribe((data) => {
+      this.actionsTable.subscribe((data) => {
+        data.forEach((element: any) => {
+          this.createResponsibleControl(element.responsible);
+        });
         this.dataSource.data = data;
       })
     );
@@ -198,27 +199,8 @@ export class NonGaContainmentInvestigationComponent
     });
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
-        // this.dataSource.data = [...this.dataSource.data, result];
-        this.dataSubject.next([...this.dataSource.data, result]);
-        this.arrayFilteredResponsible.push(new Observable<any[]>());
-        const newControl = this._formBuilder.control<FormControl>(
-          result.responsible,
-          Validators.required
-        );
-        this.arrayFilteredResponsible[
-          this.arrayFilteredResponsible.length - 1
-        ] = newControl.valueChanges.pipe(
-          takeUntil(this.destroy$),
-          startWith(''),
-          map((value: any) => {
-            const name = typeof value === 'string' ? value : value?.name;
-            return name
-              ? this._filterResponsible(name as string)
-              : this.responsible.slice();
-          }),
-          defaultIfEmpty(this.responsible)
-        );
-        this.responsibleArray.push(newControl);
+        this.actionsTable.next([...this.actionsTable.value, result]);
+        this.createResponsibleControl(result.responsible);
       }
     });
   }
@@ -241,18 +223,39 @@ export class NonGaContainmentInvestigationComponent
     });
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
-        this.dataSubject.value[index] = result;
-        this.dataSubject.next(this.dataSubject.value);
+        this.actionsTable.value[index] = result;
+        this.actionsTable.next(this.actionsTable.value);
         this.responsibleArray.at(index).setValue(result.responsible);
       }
     });
   }
 
   deleteRow(index: any) {
-    this.dataSource.data.splice(index, 1);
-    this.dataSource.data = [...this.dataSource.data];
+    this.actionsTable.value.splice(index, 1);
+    this.actionsTable.next(this.actionsTable.value);
     this.arrayFilteredResponsible.splice(index, 1);
     this.responsibleArray.removeAt(index);
+  }
+
+  createResponsibleControl(controlData: any): void {
+    this.arrayFilteredResponsible.push(new Observable<any[]>());
+    const control = this._formBuilder.control<FormControl>(
+      controlData,
+      Validators.required
+    );
+    this.arrayFilteredResponsible[this.arrayFilteredResponsible.length - 1] =
+      control.valueChanges.pipe(
+        takeUntil(this.destroy$),
+        startWith(''),
+        map((value: any) => {
+          const name = typeof value === 'string' ? value : value?.name;
+          return name
+            ? this._filterResponsible(name as string)
+            : this.responsible.slice();
+        }),
+        defaultIfEmpty(this.responsible)
+      );
+    this.responsibleArray.push(control);
   }
 
   private _filterResponsible(name: string): any[] {

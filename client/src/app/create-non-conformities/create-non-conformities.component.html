@@ -1,15 +1,9 @@
 <div>
   <div class="bg-light">
-    <button mat-button (click)="accordion.openAll()">Expand All</button>
-    <button mat-button (click)="accordion.closeAll()">Collapse All</button>
     <form [formGroup]="createNCForm" (ngSubmit)="onSubmitClick()">
-      <mat-accordion class="" multi>
+      <mat-accordion class="" [multi]="true">
         <!-- NC Detail -->
-        <mat-expansion-panel
-          [expanded]="step === 0"
-          (opened)="setStep(0)"
-          hideToggle
-        >
+        <mat-expansion-panel [expanded]="true" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title> NC Detail </mat-panel-title>
             <mat-panel-description> Type your NC Detail </mat-panel-description>
@@ -121,23 +115,9 @@
               </div>
             </div>
           </div>
-          <mat-action-row>
-            <button
-              mat-button
-              color="primary"
-              type="button"
-              (click)="nextStep()"
-            >
-              Next
-            </button>
-          </mat-action-row>
         </mat-expansion-panel>
         <!-- Problem Detail -->
-        <mat-expansion-panel
-          [expanded]="step === 1"
-          (opened)="setStep(1)"
-          hideToggle
-        >
+        <mat-expansion-panel [expanded]="true" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title> Problem Detail </mat-panel-title>
             <mat-panel-description>
@@ -244,26 +224,9 @@
               </div>
             </div>
           </div>
-          <mat-action-row>
-            <button mat-button color="warn" (click)="prevStep()" type="button">
-              Previous
-            </button>
-            <button
-              mat-button
-              color="primary"
-              type="button"
-              (click)="nextStep()"
-            >
-              Next
-            </button>
-          </mat-action-row>
         </mat-expansion-panel>
         <!-- Qualification Details -->
-        <mat-expansion-panel
-          [expanded]="step === 2"
-          (opened)="setStep(2)"
-          hideToggle
-        >
+        <mat-expansion-panel [expanded]="true" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title> Qualification Details </mat-panel-title>
             <mat-panel-description>
@@ -368,15 +331,13 @@
                     matInput
                     [formControl]="dueDateControl"
                     [matDatepicker]="dueDate"
+                    [readonly]="true"
                   />
                   <mat-datepicker-toggle
                     matIconSuffix
                     [for]="dueDate"
                   ></mat-datepicker-toggle>
-                  <mat-datepicker
-                    #dueDate
-                    [startAt]="maxDetectionDate"
-                  ></mat-datepicker>
+                  <mat-datepicker #dueDate [disabled]="true"></mat-datepicker>
                 </mat-form-field>
               </div>
               <div class="col-4">
@@ -412,26 +373,9 @@
               </div>
             </div>
           </div>
-          <mat-action-row>
-            <button mat-button color="warn" (click)="prevStep()" type="button">
-              Previous
-            </button>
-            <button
-              mat-button
-              color="primary"
-              type="button"
-              (click)="nextStep()"
-            >
-              Next
-            </button>
-          </mat-action-row>
         </mat-expansion-panel>
         <!-- Assignment Details -->
-        <mat-expansion-panel
-          [expanded]="step === 3"
-          (opened)="setStep(3)"
-          hideToggle
-        >
+        <mat-expansion-panel [expanded]="true" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title> Assignment Details </mat-panel-title>
             <mat-panel-description>
@@ -482,11 +426,6 @@
             </div>
             <div class="row"></div>
           </div>
-          <mat-action-row>
-            <button mat-button color="warn" (click)="prevStep()" type="button">
-              Previous
-            </button>
-          </mat-action-row>
         </mat-expansion-panel>
       </mat-accordion>
       <div class="d-flex flex-row justify-content-center">
