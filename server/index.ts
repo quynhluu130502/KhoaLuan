@@ -40,7 +40,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 import userRoutes from "./routes/userRoutes";
 app.use("/user", userRoutes);
 
-import ncgRoutes from "./routes/ncgRoutes";
+import { ncgRoutes } from "./routes/ncgRoutes";
 app.use("/ncg", ncgRoutes);
 
 import qsaRoutes from "./routes/qsaRoutes";

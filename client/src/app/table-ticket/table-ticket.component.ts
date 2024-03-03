@@ -4,6 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NcgService } from '../services/ncg.service';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-table-ticket',
@@ -21,8 +23,16 @@ export class TableTicketComponent implements OnInit, AfterViewInit {
 
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
-    private _ncgService: NcgService
-  ) {}
+    private _ncgService: NcgService,
+    private _router: Router
+  ) {
+    this._router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        // This code will run every time a navigation ends
+        console.log('NavigationEnd');
+      });
+  }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

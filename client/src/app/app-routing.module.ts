@@ -39,7 +39,12 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'create-ncr', component: NonConformitiesComponent },
       { path: 'ncr-details/:id', component: NCRDetailComponent },
-      { path: 'ticket', component: TableTicketComponent },
+      {
+        path: 'ticket',
+        component: TableTicketComponent,
+        canActivate: [authGuard],
+        runGuardsAndResolvers: 'always',
+      },
     ],
   },
   { path: '**', component: PageNotFoundComponent },

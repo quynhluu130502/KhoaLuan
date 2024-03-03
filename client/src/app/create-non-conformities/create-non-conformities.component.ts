@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProblemDescriptionDialogComponent } from '../problem-description-dialog/problem-description-dialog.component';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-non-conformities',
@@ -165,7 +166,8 @@ export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
     public problemDescriptionDialog: MatDialog,
     private _sanitizer: DomSanitizer,
     private _activedRoute: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _toastr: ToastrService
   ) {
     this._ncgService.getMasterData().subscribe((res) => {
       this.detectedByUnits = res.mdDetectedByUnits;
@@ -452,6 +454,7 @@ export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
     );
     this._ncgService.createNC(this.createNCForm.value).subscribe((res) => {
       if (res.result) {
+        this._toastr.success('Create NC successfully');
         this._router.navigate(['/ncg/ncr-details', res.result.id]);
       } else {
         console.log(res.message);

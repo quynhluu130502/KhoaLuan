@@ -1,10 +1,12 @@
 import { Router, Request, Response, NextFunction } from "express";
+import mongoose from "mongoose";
+import { JsonWebTokenError, JwtPayload, verify } from "jsonwebtoken";
+
+import upload from "../configs/multerConfig";
+import sendMailToValidator from "../configs/sendMail";
+import masterData from "../data/masterData.json";
 import NCDetail from "../models/NCDetail";
 import User from "../models/User";
-import upload from "../configs/multerConfig";
-import masterData from "../data/masterData.json";
-import { JsonWebTokenError, JwtPayload, verify } from "jsonwebtoken";
-import mongoose from "mongoose";
 
 enum Stage {
   Created = 0,
@@ -56,6 +58,7 @@ router.post("/create", async (req: Request, res: Response) => {
   await ncDetail
     .save()
     .then((result) => {
+      sendMailToValidator(result);
       res.json({ result: result, message: "NC Detail created successfully!" });
     })
     .catch((err) => {
@@ -103,6 +106,7 @@ router.get("/get/:id", async (req: Request, res: Response) => {
     });
 });
 
+// API to update the NC Detail and send email to the creator
 router.patch("", async (req: Request, res: Response) => {
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
     .then((result) => {
@@ -133,6 +137,7 @@ router.patch("/cancel", async (req: Request, res: Response) => {
     });
 });
 
+// API to solve the NC Detail
 router.put("", async (req: Request, res: Response) => {
   req.body.stage = Stage.Solved;
   req.body.acceptedDate = new Date();
@@ -200,8 +205,8 @@ router.get("/myNCs", async (req: Request, res: Response) => {
   let token = "";
   if (authorizationHeader) {
     token = authorizationHeader.split(" ")[1];
-    const data: JwtPayload = verify(token, process.env.TOKEN_SECRET!) as JwtPayload;
     try {
+      const data: JwtPayload = verify(token, process.env.TOKEN_SECRET!) as JwtPayload;
       if (!data) {
         res.status(401).send("Invalid token");
         return;
@@ -223,13 +228,22 @@ router.get("/myNCs", async (req: Request, res: Response) => {
   }
 });
 
-router.get("/getNameBySSO/:sso", async (req: Request, res: Response) => {
-  const user = await User.findOne({ sso: req.params.sso });
+const getNameBySSO = async (sso: string) => {
+  const user = await User.findOne({ sso: sso });
   if (user) {
-    res.json({ result: user.name });
+    return user.name;
+  } else {
+    return null;
+  }
+};
+
+router.get("/getNameBySSO/:sso", async (req: Request, res: Response) => {
+  const name = await getNameBySSO(req.params.sso);
+  if (name !== null) {
+    res.json({ result: name });
   } else {
     res.json({ message: "User not found" });
   }
 });
 
-export default router;
+export { router as ncgRoutes, getNameBySSO };
