@@ -11,6 +11,8 @@ import morgan from "morgan";
 var env: string = process.env.NODE_ENV || "development";
 if (env !== "production") {
   app.use(morgan("combined"));
+} else {
+  app.use(morgan("common"));
 }
 
 // CORS
