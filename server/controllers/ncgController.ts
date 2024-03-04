@@ -1,8 +1,8 @@
-import { Router, Request, Response, NextFunction } from "express";
-import mongoose from "mongoose";
+import { Request, Response, NextFunction } from "express";
 import { JsonWebTokenError, JwtPayload, verify } from "jsonwebtoken";
+import mongoose from "mongoose";
+import excel from "exceljs";
 
-import upload from "../configs/multerConfig";
 import sendMailToValidator from "../configs/sendMail";
 import masterData from "../data/masterData.json";
 import NCDetail from "../models/NCDetail";
@@ -16,18 +16,24 @@ enum Stage {
   Cancelled = -1,
 }
 
-const router = Router();
+const StageString = {
+  "0": "Created",
+  "1": "Accepted",
+  "2": "Solved",
+  "3": "Closed",
+  "-1": "Cancelled",
+};
 
-router.get("/masterData", async (req: Request, res: Response) => {
+const getMasterData = async (req: Request, res: Response) => {
   res.json(masterData);
-});
+};
 
-router.get("/internalUsers", async (req: Request, res: Response) => {
+const getInternalUers = async (req: Request, res: Response) => {
   const users = await User.find({}).select("-pass -salt");
   res.json(users);
-});
+};
 
-router.post("/upload", upload.array("file", 6), async (req: Request, res: Response, next: NextFunction) => {
+const uploadFile = async (req: Request, res: Response, next: NextFunction) => {
   const reqFiles: string[] = [];
   const url = req.protocol + "://" + req.get("host");
   if (req.files && Array.isArray(req.files)) {
@@ -36,37 +42,42 @@ router.post("/upload", upload.array("file", 6), async (req: Request, res: Respon
     }
   }
   res.json(reqFiles);
-});
+};
 
-router.post("/create", async (req: Request, res: Response) => {
-  const authorizationHeader = req.headers.authorization;
-  let token = "";
-  if (authorizationHeader) {
-    token = authorizationHeader.split(" ")[1];
-    const data: JwtPayload = verify(token, process.env.TOKEN_SECRET!) as JwtPayload;
-    if (!data) {
-      res.status(401).send("Invalid token");
+const createNC = async (req: Request, res: Response) => {
+  try {
+    const authorizationHeader = req.headers.authorization;
+    let token = "";
+    if (authorizationHeader) {
+      token = authorizationHeader.split(" ")[1];
+      const data: JwtPayload = verify(token, process.env.TOKEN_SECRET!) as JwtPayload;
+      if (!data) {
+        res.status(401).send("Invalid token");
+        return;
+      }
+      req.body.creator = data.sso;
+    } else {
+      res.status(401).send("Authorization header missing");
       return;
     }
-    req.body.creator = data.sso;
-  } else {
-    res.status(401).send("Authorization header missing");
+    const ncDetail = new NCDetail(req.body);
+    ncDetail.stage = Stage.Created;
+    await ncDetail
+      .save()
+      .then((result) => {
+        sendMailToValidator(result);
+        res.json({ result: result, message: "NC Detail created successfully!" });
+      })
+      .catch((err) => {
+        res.json({ message: err });
+      });
+  } catch (err) {
+    res.status(401).send({ message: "Invalid token", error: err });
     return;
   }
-  const ncDetail = new NCDetail(req.body);
-  ncDetail.stage = Stage.Created;
-  await ncDetail
-    .save()
-    .then((result) => {
-      sendMailToValidator(result);
-      res.json({ result: result, message: "NC Detail created successfully!" });
-    })
-    .catch((err) => {
-      res.json({ message: err });
-    });
-});
+};
 
-router.post("/clone", async (req: Request, res: Response) => {
+const cloneNC = async (req: Request, res: Response) => {
   let ncDetail = await NCDetail.findOne({ id: req.body.id });
   if (ncDetail) {
     let temp = ncDetail.toObject();
@@ -85,14 +96,14 @@ router.post("/clone", async (req: Request, res: Response) => {
     res.json({ message: "NC Detail not found!" });
     return;
   }
-});
+};
 
-router.get("/list", async (req: Request, res: Response) => {
+const getAllNCs = async (req: Request, res: Response) => {
   const ncDetails = await NCDetail.find({});
   res.json(ncDetails);
-});
+};
 
-router.get("/get/:id", async (req: Request, res: Response) => {
+const getOneNC = async (req: Request, res: Response) => {
   await NCDetail.findOne({ id: req.params.id })
     .then((result) => {
       if (result != null) {
@@ -104,14 +115,13 @@ router.get("/get/:id", async (req: Request, res: Response) => {
     .catch((err) => {
       res.json({ message: err });
     });
-});
+};
 
-// API to update the NC Detail and send email to the creator
-router.patch("", async (req: Request, res: Response) => {
+const saveNC = async (req: Request, res: Response) => {
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
     .then((result) => {
       if (result) {
-        res.json({ result: result, message: "NC Detail updated successfully!" });
+        res.json({ result: result, message: "NC Detail saved successfully!" });
       } else {
         res.json({ message: "NC Detail not found!" });
       }
@@ -119,9 +129,9 @@ router.patch("", async (req: Request, res: Response) => {
     .catch((err) => {
       res.json({ message: err });
     });
-});
+};
 
-router.patch("/cancel", async (req: Request, res: Response) => {
+const cancelNC = async (req: Request, res: Response) => {
   req.body.stage = Stage.Cancelled;
   req.body.cancelledDate = new Date();
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
@@ -135,10 +145,9 @@ router.patch("/cancel", async (req: Request, res: Response) => {
     .catch((err) => {
       res.json({ message: err });
     });
-});
+};
 
-// API to solve the NC Detail
-router.put("", async (req: Request, res: Response) => {
+const accepNC = async (req: Request, res: Response) => {
   req.body.stage = Stage.Solved;
   req.body.acceptedDate = new Date();
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
@@ -152,9 +161,9 @@ router.put("", async (req: Request, res: Response) => {
     .catch((err) => {
       res.json({ message: err });
     });
-});
+};
 
-router.put("/back", async (req: Request, res: Response) => {
+const sendNCBackToRequestor = async (req: Request, res: Response) => {
   req.body.stage = Stage.Created;
   req.body.acceptedDate = null;
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
@@ -168,9 +177,9 @@ router.put("/back", async (req: Request, res: Response) => {
     .catch((err) => {
       res.json({ message: err });
     });
-});
+};
 
-router.put("/close", async (req: Request, res: Response) => {
+const closeNC = async (req: Request, res: Response) => {
   req.body.stage = Stage.Closed;
   req.body.closedDate = new Date();
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
@@ -184,9 +193,9 @@ router.put("/close", async (req: Request, res: Response) => {
     .catch((err) => {
       res.json({ message: err });
     });
-});
+};
 
-router.delete("/:id", async (req: Request, res: Response) => {
+const deleteOneNC = async (req: Request, res: Response) => {
   await NCDetail.findOneAndDelete({ id: req.params.id })
     .then((result) => {
       if (result) {
@@ -198,9 +207,9 @@ router.delete("/:id", async (req: Request, res: Response) => {
     .catch((err) => {
       res.json({ message: err });
     });
-});
+};
 
-router.get("/myNCs", async (req: Request, res: Response) => {
+const getMyNCs = async (req: Request, res: Response) => {
   const authorizationHeader = req.headers.authorization;
   let token = "";
   if (authorizationHeader) {
@@ -226,7 +235,7 @@ router.get("/myNCs", async (req: Request, res: Response) => {
     res.status(401).send("Authorization header missing");
     return;
   }
-});
+};
 
 const getNameBySSO = async (sso: string) => {
   const user = await User.findOne({ sso: sso });
@@ -237,13 +246,87 @@ const getNameBySSO = async (sso: string) => {
   }
 };
 
-router.get("/getNameBySSO/:sso", async (req: Request, res: Response) => {
+const getNameById = async (req: Request, res: Response) => {
   const name = await getNameBySSO(req.params.sso);
   if (name !== null) {
     res.json({ result: name });
   } else {
     res.json({ message: "User not found" });
   }
-});
+};
 
-export { router as ncgRoutes, getNameBySSO };
+const exportMyNCToExcel = async (req: Request, res: Response) => {
+  try {
+    const authorizationHeader = req.headers.authorization;
+    let token = "";
+    let creator = "";
+    if (authorizationHeader) {
+      token = authorizationHeader.split(" ")[1];
+      const data: JwtPayload = verify(token, process.env.TOKEN_SECRET!) as JwtPayload;
+      if (!data) {
+        res.status(401).send("Invalid token");
+        return;
+      }
+      creator = data.sso;
+    } else {
+      res.status(401).send("Authorization header missing");
+      return;
+    }
+    const creatorName = await getNameBySSO(creator);
+    let counter = 1;
+    const workbook = new excel.Workbook();
+    const worksheet = workbook.addWorksheet("NC_Report");
+    worksheet.columns = [
+      { header: "No.", key: "no", width: 10 },
+      { header: "NC ID", key: "id", width: 20 },
+      { header: "NC Title", key: "problemTitle", width: 32 },
+      { header: "NC Description", key: "problemDescription", width: 32 },
+      { header: "Creator", key: "creator", width: 15 },
+      { header: "Created Date", key: "createdDate", width: 15 },
+      { header: "Accepted Date", key: "acceptedDate", width: 15 },
+      { header: "Solved Date", key: "solvedDate", width: 15 },
+      { header: "Closed Date", key: "closedDate", width: 15 },
+      { header: "Closed Date", key: "cancelledDate", width: 15 },
+      { header: "Stage", key: "stage", width: 15 },
+    ];
+    const ncDetails = await NCDetail.find({ creator: creator });
+    ncDetails.forEach((ncDetail: any) => {
+      ncDetail.creator = creatorName;
+      ncDetail.stage = StageString[ncDetail.stage.toString() as keyof typeof StageString];
+      ncDetail.no = counter++;
+      worksheet.addRow(ncDetail);
+    });
+    res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+    res.setHeader("Content-Disposition", "attachment; filename=" + "NC_Details.xlsx");
+    return workbook.xlsx.write(res).then(function () {
+      res.status(200).end();
+    });
+  } catch (err) {
+    res.status(404).send({
+      status: "error",
+      message: err,
+    });
+  }
+};
+
+const ncgController = {
+  getMasterData,
+  getInternalUers,
+  uploadFile,
+  createNC,
+  cloneNC,
+  getAllNCs,
+  getOneNC,
+  saveNC,
+  cancelNC,
+  accepNC,
+  sendNCBackToRequestor,
+  closeNC,
+  deleteOneNC,
+  getMyNCs,
+  getNameBySSO,
+  getNameById,
+  exportMyNCToExcel,
+};
+
+export default ncgController;

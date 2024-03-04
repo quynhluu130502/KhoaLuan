@@ -2,7 +2,7 @@ import hbs, { NodemailerExpressHandlebarsOptions } from "nodemailer-express-hand
 import nodemailer from "nodemailer";
 import path from "path";
 
-import { getNameBySSO } from "../routes/ncgRoutes";
+import ncgController from "../controllers/ncgController";
 
 const Stage = {
   "0": "Created",
@@ -40,7 +40,7 @@ const handlebarOptions = {
 transporter.use("compile", hbs(handlebarOptions as NodemailerExpressHandlebarsOptions));
 
 export default async function sendMailToValidator(nc: any) {
-  const creatorName = await getNameBySSO(nc.creator);
+  const creatorName = await ncgController.getNameBySSO(nc.creator);
   const mailOptions = {
     from: "quynhluu1305@gmail.com", // sender address
     template: "index", // the name of the template file, i.e., email.handlebars

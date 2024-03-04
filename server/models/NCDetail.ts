@@ -130,6 +130,10 @@ let ncDetailSchema = new mongoose.Schema({
     type: Date,
     required: false,
   },
+  solvedDate: {
+    type: Date,
+    required: false,
+  },
   closedDate: {
     type: Date,
     required: false,

@@ -1,12 +1,9 @@
-import { Router, Request, Response } from "express";
+import { Request, Response } from "express";
+import { verify, sign, JwtPayload } from "jsonwebtoken";
 import crypto from "crypto";
 import User from "../models/User";
-import { verify, sign, JwtPayload } from "jsonwebtoken";
 
-const router = Router();
-
-// Get all users
-router.get("/", async (req: Request, res: Response) => {
+const getAllUsers = async (req: Request, res: Response) => {
   await User.find({})
     .select("-pass -salt")
     .then((users) => {
@@ -15,10 +12,9 @@ router.get("/", async (req: Request, res: Response) => {
     .catch((err): void => {
       console.log(err);
     });
-});
+};
 
-// Create a new user
-router.post("/", async (req: Request, res: Response) => {
+const createUser = async (req: Request, res: Response) => {
   if (!req.body.email || !req.body.name || !req.body.pass) {
     return res.status(400).send({ error: "Missing required fields: email, name, pass" });
   }
@@ -43,10 +39,9 @@ router.post("/", async (req: Request, res: Response) => {
     .catch((err): void => {
       console.log(err);
     });
-});
+};
 
-//Get by ID Method
-router.post("/get", async (req: Request, res: Response) => {
+const getUserById = async (req: Request, res: Response) => {
   try {
     const sso = req.body.sso;
     const user = await User.findOne({ sso: sso }).select("-pass -salt");
@@ -58,7 +53,7 @@ router.post("/get", async (req: Request, res: Response) => {
   } catch (error: any) {
     res.status(400).json({ message: error.message });
   }
-});
+};
 
 // Function to generate hash and salt for password
 const generateHash = (password: string, salt: string): string => {
@@ -72,8 +67,7 @@ const generateSalt = (): string => {
   return salt;
 };
 
-// Apply partial updates to a resource by ID
-router.patch("/", async (req: Request, res: Response) => {
+const updateUser = async (req: Request, res: Response) => {
   try {
     const sso = req.body.sso;
     const user = await User.findOneAndUpdate(
@@ -98,10 +92,9 @@ router.patch("/", async (req: Request, res: Response) => {
   } catch (error: any) {
     res.status(400).json({ message: error.message });
   }
-});
+};
 
-// Update password by ID
-router.patch("/password", async (req: Request, res: Response) => {
+const updatePassword = async (req: Request, res: Response) => {
   try {
     const sso = req.body.sso;
     let oldPass = req.body?.oldPass;
@@ -129,10 +122,9 @@ router.patch("/password", async (req: Request, res: Response) => {
   } catch (error: any) {
     res.status(400).json({ message: error.message });
   }
-});
+};
 
-//Delete by ID Method
-router.post("/delete", async (req: Request, res: Response) => {
+const deleteUser = async (req: Request, res: Response) => {
   try {
     const sso = req.body.sso;
     const user = await User.findOneAndDelete({ sso: sso }, { new: true });
@@ -146,9 +138,9 @@ router.post("/delete", async (req: Request, res: Response) => {
   } catch (error: any) {
     res.status(400).json({ message: error.message });
   }
-});
+};
 
-router.post("/login", async (req: Request, res: Response) => {
+const login = async (req: Request, res: Response) => {
   try {
     let sso = req.body.sso;
     let pass = req.body.pass;
@@ -170,9 +162,9 @@ router.post("/login", async (req: Request, res: Response) => {
   } catch (error: any) {
     res.status(401).json({ message: error.message });
   }
-});
+};
 
-router.post("/refreshToken", async (req: Request, res: Response) => {
+const refreshToken = async (req: Request, res: Response) => {
   const refreshToken = req.cookies?.refreshToken;
   if (refreshToken == undefined) {
     return res.json({ message: "Invalid token" });
@@ -196,9 +188,9 @@ router.post("/refreshToken", async (req: Request, res: Response) => {
   } catch {
     res.json({ message: "Invalid token" });
   }
-});
+};
 
-router.get("/protected", async (req, res) => {
+const isAuthorized = async (req: Request, res: Response) => {
   const authorizationHeader = req.headers.authorization;
   if (authorizationHeader) {
     const token = authorizationHeader.split(" ")[1];
@@ -211,11 +203,26 @@ router.get("/protected", async (req, res) => {
   } else {
     res.json({ message: "Authorization header missing" });
   }
-});
+};
 
-router.post("/logout", async (req: Request, res: Response) => {
+const logOut = async (req: Request, res: Response) => {
   res.clearCookie("refreshToken");
   res.json({ message: "Logout successful", result: true });
-});
+};
 
-export default router;
+const userController = {
+  getAllUsers,
+  createUser,
+  getUserById,
+  updateUser,
+  updatePassword,
+  deleteUser,
+  login,
+  refreshToken,
+  isAuthorized,
+  logOut,
+  generateHash,
+  generateSalt,
+};
+
+export default userController;

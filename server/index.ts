@@ -37,16 +37,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Routes
-import userRoutes from "./routes/userRoutes";
+import userRoutes from "./routes/userRoute";
 app.use("/user", userRoutes);
 
-import { ncgRoutes } from "./routes/ncgRoutes";
+import ncgRoutes from "./routes/ncgRoute";
 app.use("/ncg", ncgRoutes);
 
-import qsaRoutes from "./routes/qsaRoutes";
+import qsaRoutes from "./routes/qsaRoute";
 app.use("/qsa", qsaRoutes);
 
-import authRoutes from "./routes/authRoutes";
+import authRoutes from "./routes/authRoute";
 app.use("/auth", authRoutes);
 
 app.get("/", (req: Request, res: Response) => {

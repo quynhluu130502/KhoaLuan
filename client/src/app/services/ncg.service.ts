@@ -182,4 +182,22 @@ export class NcgService {
       catchError(handleError)
     );
   }
+
+  exportMyNCToExcel(): Observable<Blob> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    });
+    return this._http
+      .get(`${process.env['SERVER_URL']}/ncg/exportExcel/myNC`, {
+        headers: headers,
+        responseType: 'blob',
+      })
+      .pipe(
+        map((res: any) => {
+          return res;
+        }),
+        retry(2),
+        catchError(handleError)
+      );
+  }
 }

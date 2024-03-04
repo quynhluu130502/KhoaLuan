@@ -1,4 +1,30 @@
-<div class="table-responsive">
+<div class="table-responsive row">
+  <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+    <mat-form-field appearance="fill">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search" />
+    </mat-form-field>
+  </div>
+  <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+    <div
+      class="d-flex flex-row justify-content-end align-items-center w-100 h-100 group-buttons"
+    >
+      <div class="mb-3 me-3">
+        <button mat-flat-button color="primary">
+          <img
+            alt="rearrange column"
+            src="assets/images/tune.png"
+            class="mb-1 mt-1 rearrange-column"
+          /><span>Rearrange Columns</span>
+        </button>
+      </div>
+      <div class="mb-3">
+        <button mat-flat-button class="export-excel" (click)="exportMyNCToExcel()">
+          <mat-icon>cloud_download </mat-icon>Export Excel
+        </button>
+      </div>
+    </div>
+  </div>
   <table
     mat-table
     [dataSource]="dataSource"
