@@ -6,10 +6,10 @@ import User from "../models/User";
 const getAllUsers = async (req: Request, res: Response) => {
   await User.find({})
     .select("-pass -salt")
-    .then((users) => {
+    .then((users: any) => {
       res.json(users);
     })
-    .catch((err): void => {
+    .catch((err: any): void => {
       console.log(err);
     });
 };
@@ -33,10 +33,10 @@ const createUser = async (req: Request, res: Response) => {
     active: req.body?.active,
   });
   User.create(user)
-    .then((user) => {
+    .then((user: any) => {
       res.json(user);
     })
-    .catch((err): void => {
+    .catch((err: any): void => {
       console.log(err);
     });
 };
@@ -103,7 +103,7 @@ const updatePassword = async (req: Request, res: Response) => {
     // Check if the user want to change password
     if (oldPass && newPass) {
       // Get the password hash and salt from the database
-      let temp = await User.findOne({ sso: sso }).select("pass salt");
+      let temp: any = await User.findOne({ sso: sso }).select("pass salt");
 
       // If the old password is correct, generate a new hash and salt
       if (temp && temp.pass === generateHash(oldPass, temp.salt)) {
@@ -144,7 +144,7 @@ const login = async (req: Request, res: Response) => {
   try {
     let sso = req.body.sso;
     let pass = req.body.pass;
-    let user = await User.findOne({ sso: sso }).select("-_id");
+    let user: any = await User.findOne({ sso: sso }).select("-_id");
     if (!user) {
       res.json({ message: "User not found" });
       return;
@@ -176,7 +176,7 @@ const refreshToken = async (req: Request, res: Response) => {
     }
     User.findOne({ sso: user.sso })
       .select("-pass -salt -_id")
-      .then((data) => {
+      .then((data: any) => {
         if (data) {
           const accessToken = sign(data.toJSON(), process.env.TOKEN_SECRET!, { expiresIn: "1h", algorithm: "HS256" });
           const refreshToken = sign({ sso: data.sso }, process.env.REFRESH_TOKEN_SECRET!, { expiresIn: "1d", algorithm: "HS256" });
@@ -185,8 +185,8 @@ const refreshToken = async (req: Request, res: Response) => {
           return;
         }
       });
-  } catch {
-    res.json({ message: "Invalid token" });
+  } catch(error: any) {
+    res.json({ message: `Invalid token. The error is ${error}` });
   }
 };
 
