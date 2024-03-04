@@ -1,13 +1,17 @@
 {
   "name": "thesis-server",
   "version": "1.0.0",
+  "engines": ">=18 <19",
   "description": "",
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node dist/index.ts",
+    "start": "node dist/index.js",
     "dev": "nodemon index.ts",
-    "build": "npx tsc"
+    "prebuild": "copyfiles \"data/Non Conformities/Unit/**/*.json\" dist",
+    "build": "npx tsc",
+    "complile": "npx tsc --watch",
+    "construct":"npm install && npm run build"
   },
   "author": "Quynh Luu Nhu",
   "license": "ISC",
@@ -34,8 +38,10 @@
     "@types/multer": "^1.4.11",
     "@types/nodemailer": "^6.4.14",
     "@types/nodemailer-express-handlebars": "^4.0.5",
+    "copyfiles": "^2.4.1",
     "nodemon": "^3.0.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
 }
+

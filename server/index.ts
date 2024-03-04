@@ -53,6 +53,11 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
 });
 
+// Check if the public folder exists, if not, create it
+if (!fs.existsSync("public")) {
+  fs.mkdirSync("public");
+}
+
 // Serve static files
 app.use("/public", express.static("public"));
 
@@ -60,16 +65,17 @@ app.use("/public", express.static("public"));
 import https from "https";
 import fs from "fs";
 import path from "path";
-const options = {
-  key: fs.readFileSync(path.resolve(__dirname, `localhost+1-key.pem`), "utf-8"),
-  cert: fs.readFileSync(path.resolve(__dirname, `localhost+1.pem`), "utf-8"),
-};
+
 const port = process.env.PORT || 3000;
 if (env === "production") {
   app.listen(port, () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);
   });
 } else {
+  const options = {
+    key: fs.readFileSync(path.resolve(__dirname, `localhost+1-key.pem`), "utf-8"),
+    cert: fs.readFileSync(path.resolve(__dirname, `localhost+1.pem`), "utf-8"),
+  };
   https.createServer(options, app).listen(port, () => {
     console.log(`[server]: Server is running at https://localhost:${port}`);
   });

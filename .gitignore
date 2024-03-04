@@ -42,6 +42,7 @@ testem.log
 /server/public
 /server/localhost+1.pem
 /server/localhost+1-key.pem
+/server/dist
 
 # System files
 .DS_Store
