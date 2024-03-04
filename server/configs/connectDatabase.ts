@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 function connectDatabase() {
-  const mongoString: string = process.env.DATABASE_URL!;
+  const mongoString: string = process.env.DATABASE_URL_PROD!;
   mongoose.connect(mongoString);
   const database = mongoose.connection;
   database.on("error", (error: any) => {

@@ -19,7 +19,7 @@ export class AuthService {
   login(userInfor: object): Observable<successfulLogin> {
     return this._http
       .post<successfulLogin>(
-        `${process.env['SERVER_URL']}/user/login`,
+        `${import.meta.env['NG_APP_SERVER_URL']}/user/login`,
         userInfor,
         {
           withCredentials: true,
@@ -40,7 +40,7 @@ export class AuthService {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     });
     return this._http
-      .get(`${process.env['SERVER_URL']}/user/protected`, {
+      .get(`${import.meta.env['NG_APP_SERVER_URL']}/user/protected`, {
         headers: headers,
         withCredentials: true,
       })
@@ -56,7 +56,7 @@ export class AuthService {
   getRefreshToken(): any {
     return this._http
       .post(
-        `${process.env['SERVER_URL']}/user/refreshToken`,
+        `${import.meta.env['NG_APP_SERVER_URL']}/user/refreshToken`,
         {},
         {
           withCredentials: true,
@@ -73,7 +73,7 @@ export class AuthService {
 
   logout(): any {
     return this._http
-      .post(`${process.env['SERVER_URL']}/user/logout`, {
+      .post(`${import.meta.env['NG_APP_SERVER_URL']}/user/logout`, {
         withCredentials: true,
       })
       .pipe(

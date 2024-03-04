@@ -25,7 +25,10 @@ export class UserService {
       headers: headers,
     };
     return this._http
-      .get<User[]>(`${process.env['SERVER_URL']}/user`, requestOptions)
+      .get<User[]>(
+        `${import.meta.env['NG_APP_SERVER_URL']}/user`,
+        requestOptions
+      )
       .pipe(
         map((res) => {
           return res as User[];
@@ -41,7 +44,7 @@ export class UserService {
     };
     return this._http
       .post<successfulResponse>(
-        `${process.env['SERVER_URL']}/user/get`,
+        `${import.meta.env['NG_APP_SERVER_URL']}/user/get`,
         {
           sso: id,
         },
@@ -64,7 +67,10 @@ export class UserService {
       headers: headers,
     };
     return this._http
-      .get<string>(`${process.env['SERVER_URL']}/user/name`, requestOptions)
+      .get<string>(
+        `${import.meta.env['NG_APP_SERVER_URL']}/user/name`,
+        requestOptions
+      )
       .pipe(
         map((res) => {
           return res as string;
