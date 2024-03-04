@@ -15,9 +15,11 @@ export const authGuard: CanActivateFn = async (
   const router: Router = inject(Router);
   const authService: AuthService = inject(AuthService);
   const refresh = await authService.getRefreshToken().toPromise();
-  if (refresh.token) {
-    localStorage.setItem('token', refresh.token);
+  if (!refresh.token) {
+    router.navigate(['/login']);
+    return false;
   }
+  localStorage.setItem('token', refresh.token);
   const res = await authService.getProtected().toPromise();
   if (res.result) {
     return true;
