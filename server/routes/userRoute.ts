@@ -23,4 +23,6 @@ userRouter.get("/protected", userController.isAuthorized);
 
 userRouter.post("/logout", userController.logOut);
 
+userRouter.get("/name", userController.getNameOfUser);
+
 export default userRouter;

@@ -1,7 +1,23 @@
-@import "./variables";
-@import "./global";
-@import "./mixins";
-@import "./core/app";
-@import './grid/grid';
-@import "./layouts/layouts";
-@import "./components/components";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+}
+
+a:hover,
+a:focus,
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+hr {
+  background-color: #0000001f;
+  opacity: 0.4;
+}
+
+:focus {
+  outline: 0;
+  box-shadow: none !important;
+}

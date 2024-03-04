@@ -210,6 +210,34 @@ const logOut = async (req: Request, res: Response) => {
   res.json({ message: "Logout successful", result: true });
 };
 
+const getNameOfUser = async (req: Request, res: Response) => {
+  try {
+    const authorizationHeader = req.headers.authorization;
+    let token = "";
+    let sso = "";
+    if (authorizationHeader) {
+      token = authorizationHeader.split(" ")[1];
+      const data: JwtPayload = verify(token, process.env.TOKEN_SECRET!) as JwtPayload;
+      if (!data) {
+        res.status(401).send("Invalid token");
+        return;
+      }
+      sso = data.sso;
+    } else {
+      res.status(401).send("Authorization header missing");
+      return;
+    }
+    const user = await User.findOne({ sso: sso }).select("name");
+    if (user) {
+      res.json({ message: "User found", result: user.name });
+    } else {
+      res.json({ message: "Document not found" });
+    }
+  } catch (error: any) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 const userController = {
   getAllUsers,
   createUser,
@@ -223,6 +251,7 @@ const userController = {
   logOut,
   generateHash,
   generateSalt,
+  getNameOfUser,
 };
 
 export default userController;

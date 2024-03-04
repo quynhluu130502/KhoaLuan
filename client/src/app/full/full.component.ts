@@ -5,6 +5,8 @@ import { map, shareReplay } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Data } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 interface sidebarMenu {
   link: string;
@@ -18,6 +20,14 @@ interface sidebarMenu {
   styleUrl: './full.component.scss',
 })
 export class FullComponent implements OnInit {
+  constructor(
+    private _breakpointObserver: BreakpointObserver,
+    private _activatedRoute: ActivatedRoute,
+    private _auth: AuthService,
+    private _router: Router,
+    private _userService: UserService,
+    private _toastr: ToastrService
+  ) {}
   routerActive: string = 'activelink';
   sidebarMenu: sidebarMenu[] = [];
   isHandset$: Observable<boolean> = this._breakpointObserver
@@ -26,17 +36,19 @@ export class FullComponent implements OnInit {
       map((result) => result.matches),
       shareReplay()
     );
-  constructor(
-    private _breakpointObserver: BreakpointObserver,
-    private _activatedRoute: ActivatedRoute,
-    private _auth: AuthService,
-    private _router: Router
-  ) {}
+  username = '';
 
   ngOnInit(): void {
     this._activatedRoute.data.subscribe((data: Data) => {
       const sidebarMenu = Object.values(data);
       this.sidebarMenu = sidebarMenu as sidebarMenu[];
+    });
+    this._userService.getNameOfUser().subscribe((res: any) => {
+      if (res.result) {
+        this.username = res.result;
+        return;
+      }
+      this._toastr.error('Lỗi lấy thông tin người dùng', 'Lỗi');
     });
   }
 

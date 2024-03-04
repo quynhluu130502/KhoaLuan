@@ -1,0 +1,79 @@
+@import "../../assets/styles/variables";
+
+// @=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@
+// App
+// @=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@
+
+.body-wrapper {
+  padding: 30px;
+}
+
+.page-wrapper {
+  max-width: 1275px;
+  height: auto;
+  margin: 0px auto;
+}
+
+// @=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@
+// Sidebar
+// @=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@
+
+.sidenav {
+  min-width: fit-content;
+  width: 10vw;
+  box-shadow: 0px 7px 30px 0px $shadow;
+  border: 0;
+
+  .list-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .sidebar-menu {
+    padding: 14px 16px;
+    border-radius: 9px;
+
+    &.activelink {
+      background-color: $info !important;
+      color: $white !important;
+    }
+  }
+
+  .buy-flexy {
+    background-color: $light-primary;
+    border-radius: 10px;
+  }
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+// @=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@
+// Header
+// @=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@
+
+.header {
+  // background-color: $body-color !important;
+  background-color: transparent;
+}
+
+.profile-dropdown {
+  width: 385px;
+  box-shadow: rgba(0, 0, 0, 0.08) 1px 2px 10px !important;
+}
+
+.mat-toolbar.mat-primary {
+  z-index: 9 !important;
+}
+
+// @=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@
+// Media Querys
+// @=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@
+
+@media (max-width: 575px) {
+  .profile-dropdown {
+    max-width: 250px !important;
+  }
+}

@@ -55,4 +55,22 @@ export class UserService {
         catchError(handleError)
       );
   }
+
+  public getNameOfUser(): Observable<string> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    });
+    const requestOptions: object = {
+      headers: headers,
+    };
+    return this._http
+      .get<string>(`${process.env['SERVER_URL']}/user/name`, requestOptions)
+      .pipe(
+        map((res) => {
+          return res as string;
+        }),
+        retry(2),
+        catchError(handleError)
+      );
+  }
 }
