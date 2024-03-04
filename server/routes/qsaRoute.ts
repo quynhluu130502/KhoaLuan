@@ -4,7 +4,7 @@ import ncRole from "../data/Non Conformities/role.json";
 import ncSubBusiness from "../data/Non Conformities/sub-business.json";
 import fs from "fs";
 import path from "path";
-import User from "../models/User";
+import User from "../models/user";
 
 const getUnitFiles = (dir: string) => {
   const absoluteDir = path.resolve(__dirname, dir);

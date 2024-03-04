@@ -53,11 +53,6 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
 });
 
-// Check if the public folder exists, if not, create it
-if (!fs.existsSync("public")) {
-  fs.mkdirSync("public");
-}
-
 // Serve static files
 app.use("/public", express.static("public"));
 
@@ -65,6 +60,11 @@ app.use("/public", express.static("public"));
 import https from "https";
 import fs from "fs";
 import path from "path";
+
+// Check if the public folder exists, if not, create it
+if (!fs.existsSync("public")) {
+  fs.mkdirSync("public");
+}
 
 const port = process.env.PORT || 3000;
 if (env === "production") {

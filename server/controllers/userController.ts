@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { verify, sign, JwtPayload } from "jsonwebtoken";
 import crypto from "crypto";
-import User from "../models/User";
+import User from "../models/user";
 
 const getAllUsers = async (req: Request, res: Response) => {
   await User.find({})
@@ -185,7 +185,7 @@ const refreshToken = async (req: Request, res: Response) => {
           return;
         }
       });
-  } catch(error: any) {
+  } catch (error: any) {
     res.json({ message: `Invalid token. The error is ${error}` });
   }
 };

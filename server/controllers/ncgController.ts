@@ -6,7 +6,7 @@ import excel from "exceljs";
 import sendMailToValidator from "../configs/sendMail";
 import masterData from "../data/masterData.json";
 import NCDetail from "../models/NCDetail";
-import User from "../models/User";
+import User from "../models/user";
 
 enum Stage {
   Created = 0,
