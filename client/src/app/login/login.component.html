@@ -1,82 +1,82 @@
-<!-- Section: Design Block -->
-<div class="container-fluid h-100">
-  <section class="text-center text-lg-start h-100">
-    <div class="card h-100">
-      <div class="row g-0 d-flex align-items-center h-100">
-        <div class="col-lg-4 d-none d-lg-flex">
-          <img
-            src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg"
-            alt="Trendy Pants and Shoes"
-            class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5"
+<div class="registration-form body container-fluid">
+  <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
+    <div class="form-icon">
+      <mat-icon class="icon icon-user">account_circle</mat-icon>
+    </div>
+
+    <!-- ID input -->
+    <div class="form-group form-outline mb-3">
+      <label class="form-label">SSO</label>
+      <input
+        type="text"
+        formControlName="sso"
+        placeholder="Tên đăng nhập"
+        class="form-control item"
+        id="username"
+        [maxlength]="6"
+      />
+      <label *ngIf="sso.invalid" [ngClass]="'text-danger'">
+        SSO is required with 6 max character.
+      </label>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-group form-outline mb-3">
+      <label class="form-label">Password</label>
+      <input
+        type="password"
+        formControlName="pass"
+        placeholder="Mật khẩu"
+        class="form-control item"
+        id="password"
+      />
+      <label *ngIf="loginForm?.get('pass')?.invalid" [ngClass]="'text-danger'">
+        Password is required.
+      </label>
+    </div>
+    <div class="row mb-4">
+      <div class="col d-md-block text-md-left d-flex justify-content-center">
+        <!-- Checkbox -->
+        <div class="form-check d-flex flex-row">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="form2Example31"
+            [formControl]="rememberMeControl"
           />
-        </div>
-        <div class="col-lg-8">
-          <div class="card-body py-5 px-md-5">
-            <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
-              <!-- ID input -->
-              <div class="form-outline mb-4">
-                <label class="form-label">SSO</label>
-                <input
-                  type="text"
-                  formControlName="sso"
-                  placeholder="Tên đăng nhập"
-                  class="form-control"
-                  [maxlength]="6"
-                />
-                <label *ngIf="sso.invalid" [ngClass]="'text-danger'">
-                  SSO is required with 6 max character.
-                </label>
-              </div>
-
-              <!-- Password input -->
-              <div class="form-outline mb-4">
-                <label class="form-label">Password</label>
-                <input
-                  type="password"
-                  formControlName="pass"
-                  placeholder="Mật khẩu"
-                  class="form-control"
-                />
-                <label
-                  *ngIf="loginForm?.get('pass')?.invalid"
-                  [ngClass]="'text-danger'"
-                >
-                  Password is required.
-                </label>
-              </div>
-
-              <!-- 2 column grid layout for inline styling -->
-              <div class="row mb-4">
-                <div
-                  class="col d-md-block text-md-left d-flex justify-content-center"
-                >
-                  <!-- Checkbox -->
-                  <div class="form-check d-flex flex-row">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="form2Example31"
-                      [formControl]="rememberMeControl"
-                    />
-                    <label class="form-check-label ms-2" for="form2Example31">
-                      Remember me
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Submit button -->
-              <button type="submit" class="btn btn-primary btn-block mb-4">
-                Sign in
-              </button>
-              <button type="button" class="btn btn-success btn-block mb-4 ms-4">
-                <a href="/register">Forgot password?</a>
-              </button>
-            </form>
-          </div>
+          <label class="form-check-label ms-2" for="form2Example31">
+            Remember me
+          </label>
         </div>
       </div>
     </div>
-  </section>
+    <div class="form-group d-flex flex-row justify-content-evenly">
+      <button type="submit" class="btn btn-block login-account">
+        Đăng nhập
+      </button>
+      <button type="button" class="btn btn-block regis-account">
+        <a href="/register">Đăng ký</a>
+      </button>
+    </div>
+  </form>
+  <div class="social-media">
+    <h5>Sign up with social media</h5>
+    <div class="social-icons">
+      <a href="/login"
+        ><mat-icon class="icon-social-facebook" title="Facebook"
+          >face</mat-icon
+        ></a
+      >
+      <a href="/login"
+        ><mat-icon class="icon-social-google" title="Google"
+          >favorite</mat-icon
+        ></a
+      >
+      <a href="/login"
+        ><mat-icon class="icon-social-twitter" title="Twitter"
+          >extension</mat-icon
+        ></a
+      >
+    </div>
+  </div>
 </div>
-<!-- Section: Design Block -->
