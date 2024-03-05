@@ -17,9 +17,10 @@ if (env !== "production") {
 
 // CORS
 import cors from "cors";
+import clientOrigins from "./configs/clientOrigins";
 app.use(
   cors({
-    origin: [process.env.CLIENT_URL || ""], // Provide a default value when process.env.CLIENT_URL is undefined
+    origin: "*",
     credentials: true,
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   })

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, Observable, retry } from 'rxjs';
 import { User } from '../models/user.model';
 import { handleError } from '../constant';
+import { environment } from 'src/environments/environment';
 
 interface successfulLogin {
   user: User;
@@ -18,14 +19,10 @@ export class AuthService {
 
   login(userInfor: object): Observable<successfulLogin> {
     return this._http
-      .post<successfulLogin>(
-        `${import.meta.env['NG_APP_SERVER_URL']}/user/login`,
-        userInfor,
-        {
-          withCredentials: true,
-          observe: 'response',
-        }
-      )
+      .post<successfulLogin>(`${environment.serverUrl}/user/login`, userInfor, {
+        withCredentials: true,
+        observe: 'response',
+      })
       .pipe(
         map((res) => {
           return res.body as successfulLogin;
@@ -40,7 +37,7 @@ export class AuthService {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     });
     return this._http
-      .get(`${import.meta.env['NG_APP_SERVER_URL']}/user/protected`, {
+      .get(`${environment.serverUrl}/user/protected`, {
         headers: headers,
         withCredentials: true,
       })
@@ -56,7 +53,7 @@ export class AuthService {
   getRefreshToken(): any {
     return this._http
       .post(
-        `${import.meta.env['NG_APP_SERVER_URL']}/user/refreshToken`,
+        `${environment.serverUrl}/user/refreshToken`,
         {},
         {
           withCredentials: true,
@@ -73,7 +70,7 @@ export class AuthService {
 
   logout(): any {
     return this._http
-      .post(`${import.meta.env['NG_APP_SERVER_URL']}/user/logout`, {
+      .post(`${environment.serverUrl}/user/logout`, {
         withCredentials: true,
       })
       .pipe(

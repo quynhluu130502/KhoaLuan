@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, Observable, retry } from 'rxjs';
 import { User } from '../models/user.model';
 import { handleError } from '../constant';
+import { environment } from 'src/environments/environment';
 
 interface successfulResponse {
   user: User;
@@ -25,10 +26,7 @@ export class UserService {
       headers: headers,
     };
     return this._http
-      .get<User[]>(
-        `${import.meta.env['NG_APP_SERVER_URL']}/user`,
-        requestOptions
-      )
+      .get<User[]>(`${environment.serverUrl}/user`, requestOptions)
       .pipe(
         map((res) => {
           return res as User[];
@@ -44,7 +42,7 @@ export class UserService {
     };
     return this._http
       .post<successfulResponse>(
-        `${import.meta.env['NG_APP_SERVER_URL']}/user/get`,
+        `${environment.serverUrl}/user/get`,
         {
           sso: id,
         },
@@ -67,10 +65,7 @@ export class UserService {
       headers: headers,
     };
     return this._http
-      .get<string>(
-        `${import.meta.env['NG_APP_SERVER_URL']}/user/name`,
-        requestOptions
-      )
+      .get<string>(`${environment.serverUrl}/user/name`, requestOptions)
       .pipe(
         map((res) => {
           return res as string;
