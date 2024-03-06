@@ -20,7 +20,7 @@ import cors from "cors";
 import clientOrigins from "./configs/clientOrigins";
 app.use(
   cors({
-    origin: "*",
+    origin: clientOrigins,
     credentials: true,
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   })

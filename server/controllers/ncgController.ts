@@ -309,6 +309,45 @@ const exportMyNCToExcel = async (req: Request, res: Response) => {
   }
 };
 
+const countNumberOfEachDetectionPhase = async (req: Request, res: Response) => {
+  const ncDetails = await NCDetail.find({});
+  const detectionPhases = {};
+  ncDetails.forEach((ncDetail: any) => {
+    if (detectionPhases[ncDetail.phaseDetection] !== undefined) {
+      detectionPhases[ncDetail.phaseDetection]++;
+    } else {
+      detectionPhases[ncDetail.phaseDetection] = 1;
+    }
+  });
+  res.json(detectionPhases);
+};
+
+const countNumberOfEachSymptomCodeL0 = async (req: Request, res: Response) => {
+  const ncDetails = await NCDetail.find({});
+  const symptomCodeL0s = {};
+  ncDetails.forEach((ncDetail: any) => {
+    if (symptomCodeL0s[ncDetail.symptomCodeL0] !== undefined) {
+      symptomCodeL0s[ncDetail.symptomCodeL0]++;
+    } else {
+      symptomCodeL0s[ncDetail.symptomCodeL0] = 1;
+    }
+  });
+  res.json(symptomCodeL0s);
+};
+
+const countNumberOfEachProductType = async (req: Request, res: Response) => {
+  const ncDetails = await NCDetail.find({});
+  const productTypes = {};
+  ncDetails.forEach((ncDetail: any) => {
+    if (productTypes[ncDetail.productType] !== undefined) {
+      productTypes[ncDetail.productType]++;
+    } else {
+      productTypes[ncDetail.productType] = 1;
+    }
+  });
+  res.json(productTypes);
+};
+
 const ncgController = {
   getMasterData,
   getInternalUers,
@@ -327,6 +366,9 @@ const ncgController = {
   getNameBySSO,
   getNameById,
   exportMyNCToExcel,
+  countNumberOfEachDetectionPhase,
+  countNumberOfEachSymptomCodeL0,
+  countNumberOfEachProductType,
 };
 
 export default ncgController;

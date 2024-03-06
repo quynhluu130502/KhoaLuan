@@ -1,0 +1,38 @@
+<div class="row">
+  <!-- Detection Phase Chart -->
+  <div class="col-12">
+    <highcharts-chart
+      #detectionPhaseChart
+      [Highcharts]="Highcharts"
+      [options]="barChartOptions"
+      [(update)]="updateFlag"
+      [oneToOne]="oneToOneFlag"
+      style="overflow: hidden"
+      class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-8 pt-1"
+    ></highcharts-chart>
+  </div>
+</div>
+<div class="row">
+  <!-- System Code L0 Chart -->
+  <div class="col-6">
+    <highcharts-chart
+      #symptomCodeL0Chart
+      [Highcharts]="Highcharts"
+      [options]="columnChartOptions"
+      [(update)]="updateFlag"
+      [oneToOne]="oneToOneFlag"
+      style="width: 100%; height: 400px; display: block"
+    ></highcharts-chart>
+  </div>
+  <!-- Product's Type Chart -->
+  <div class="col-6">
+    <highcharts-chart
+      #productTypeChart
+      [Highcharts]="Highcharts"
+      [options]="areaChartOptions"
+      [(update)]="updateFlag"
+      [oneToOne]="oneToOneFlag"
+      style="width: 100%; height: 400px; display: block"
+    ></highcharts-chart>
+  </div>
+</div>

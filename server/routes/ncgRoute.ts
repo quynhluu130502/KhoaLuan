@@ -37,3 +37,9 @@ ncgRouter.get("/myNCs", ncgController.getMyNCs);
 ncgRouter.get("/getNameBySSO/:sso", ncgController.getNameById);
 
 ncgRouter.get("/exportExcel/myNC", ncgController.exportMyNCToExcel);
+
+ncgRouter.get("/count/detectionPhase", ncgController.countNumberOfEachDetectionPhase);
+
+ncgRouter.get("/count/symptomCodeL0", ncgController.countNumberOfEachSymptomCodeL0);
+
+ncgRouter.get("/count/productType", ncgController.countNumberOfEachProductType);

@@ -201,4 +201,40 @@ export class NcgService {
         catchError(handleError)
       );
   }
+
+  getCountOfEachDetectionPhase(): Observable<any> {
+    return this._http
+      .get(`${environment.serverUrl}/ncg/count/detectionPhase`)
+      .pipe(
+        map((res) => {
+          return res;
+        }),
+        retry(2),
+        catchError(handleError)
+      );
+  }
+
+  getCountOfProductType(): Observable<any> {
+    return this._http
+      .get(`${environment.serverUrl}/ncg/count/productType`)
+      .pipe(
+        map((res) => {
+          return res;
+        }),
+        retry(2),
+        catchError(handleError)
+      );
+  }
+
+  getCountOfSymptomCodeL0(): Observable<any> {
+    return this._http
+      .get(`${environment.serverUrl}/ncg/count/symptomCodeL0`)
+      .pipe(
+        map((res) => {
+          return res;
+        }),
+        retry(2),
+        catchError(handleError)
+      );
+  }
 }

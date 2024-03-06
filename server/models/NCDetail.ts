@@ -121,23 +121,28 @@ let ncDetailSchema = new mongoose.Schema({
     type: Number,
     required: false,
   },
+  // The date when the user submitted a NC ticket
   createdDate: {
     type: Date,
     required: false,
     default: Date.now,
   },
+  // The date when the user moved to status Accepted
   acceptedDate: {
     type: Date,
     required: false,
   },
+  // The date when the user moved to status Solved
   solvedDate: {
     type: Date,
     required: false,
   },
+  // The date when the user moved to status Closed
   closedDate: {
     type: Date,
     required: false,
   },
+  // The date when the user moved to status Cancelled
   cancelledDate: {
     type: Date,
     required: false,

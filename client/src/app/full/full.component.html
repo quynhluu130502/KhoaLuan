@@ -73,15 +73,23 @@
         </button>
         <mat-menu #menu="matMenu" class="profile-dropdown">
           <div class="p-16 mb-4">
-            <button mat-menu-item class="fs-16">Edit Profile</button>
-            <button mat-menu-item class="fs-16">Account</button>
-            <button mat-menu-item class="fs-16">Change Password</button>
-            <button mat-menu-item class="fs-16">My Settings</button>
+            <button mat-menu-item class="fs-16">
+              <mat-icon>dialpad</mat-icon><span>Edit Profile</span>
+            </button>
+            <button mat-menu-item class="fs-16">
+              <mat-icon>voicemail</mat-icon><span>Account</span>
+            </button>
+            <button mat-menu-item class="fs-16">
+              <mat-icon>lock</mat-icon>
+              <span>Change Password</span>
+            </button>
+            <button mat-menu-item class="fs-16">
+              <mat-icon>settings</mat-icon>
+              <span>My Settings</span>
+            </button>
           </div>
-
           <hr />
-
-          <div class="p-16">
+          <div class="p-2">
             <button
               mat-flat-button
               color="accent"

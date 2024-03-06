@@ -1,90 +1,44 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Platform } from '@angular/cdk/platform';
 import * as Highcharts from 'highcharts';
-import IndicatorsCore from 'highcharts/indicators/indicators';
-import IndicatorZigzag from 'highcharts/indicators/zigzag';
-import Boost from 'highcharts/modules/boost';
 import noData from 'highcharts/modules/no-data-to-display';
-import More from 'highcharts/highcharts-more';
 import { NcgService } from '../services/ncg.service';
+import { pieChartOptions } from '../constant';
 
-Boost(Highcharts);
 noData(Highcharts);
-More(Highcharts);
-noData(Highcharts);
-IndicatorsCore(Highcharts);
-IndicatorZigzag(Highcharts);
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss',
-  encapsulation: ViewEncapsulation.None,
+  selector: 'app-ncg-dashboard',
+  templateUrl: './ncg-dashboard.component.html',
+  styleUrl: './ncg-dashboard.component.scss',
 })
-export class DashboardComponent implements OnInit {
+export class NcgDashboardComponent implements OnInit {
   constructor(private _ncgService: NcgService, public platform: Platform) {}
 
-  @ViewChild('chart') chart: any;
+  @ViewChild('actionStatusChart') actionStatusChart!: Highcharts.Chart;
 
   item: string = 'me';
   openNCs: any[] = [];
   solvedNCs: any[] = [];
+  onTimeNCs: any[] = [];
+  overDueNCs: any[] = [];
+  // Action's status chart
   notStartedActions: any[] = [];
   solvedActions: any[] = [];
   doneActions: any[] = [];
   cancelledActions: any[] = [];
 
   Highcharts: typeof Highcharts = Highcharts;
-  pieChartOptions: Highcharts.Options = {
-    accessibility: {
-      enabled: false,
-    },
-    chart: {
-      type: 'pie',
-      backgroundColor: '#FFFFFF',
-      // width: 400,
-      // height: 200,
-      plotBackgroundColor: undefined,
-      plotBorderWidth: undefined,
-      plotShadow: false,
-    },
-    title: {
-      text: 'Status of Actions',
-    },
-    tooltip: {
-      pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>',
-    },
-    legend: {
-      floating: false,
-      align: 'center',
-      layout: 'horizontal',
-      verticalAlign: 'bottom',
-      width: 300,
-      x: 0,
-      y: 0,
-    },
-    plotOptions: {
-      pie: {
-        allowPointSelect: true,
-        cursor: 'pointer',
-        dataLabels: {
-          enabled: true,
-          format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-          style: {
-            color: 'black',
-          },
-        },
-        showInLegend: true,
-      },
-    },
-    credits: {
-      enabled: false,
-    },
-  };
+
+  pieChartOptions: Highcharts.Options = pieChartOptions;
 
   chartConstructor: string = 'chart'; // optional string, defaults to 'chart'
-  chartCallback: Highcharts.ChartCallbackFunction = function (chart) {
-    console.log(chart);
+  chartCallback: Highcharts.ChartCallbackFunction = function (
+    chart: Highcharts.Chart
+  ) {
+    if (chart !== undefined) {
+      return;
+    }
   }; // optional function, defaults to null
   updateFlag: boolean = false; // optional boolean
   oneToOneFlag: boolean = true; // optional boolean, defaults to false
@@ -111,6 +65,13 @@ export class DashboardComponent implements OnInit {
           this.solvedNCs.push(nc);
         } else if (nc.stage !== -1) {
           this.openNCs.push(nc);
+          const dueDate = new Date(nc.dueDate);
+          // Compare the due date with the current date and push the NC to the corresponding array
+          if (new Date() > dueDate) {
+            this.overDueNCs.push(nc);
+          } else {
+            this.onTimeNCs.push(nc);
+          }
         }
         // Define the status of the actions
         if (nc.actions.length != 0) {
@@ -127,7 +88,6 @@ export class DashboardComponent implements OnInit {
           });
         }
       });
-      // Update the pie chart
       this.handleUpdate();
     });
   }
@@ -145,12 +105,28 @@ export class DashboardComponent implements OnInit {
     this.pieChartOptions.series = [
       {
         type: 'pie',
-        name: 'Status',
+        name: 'Actions',
         data: [
-          { name: 'Not Started Actions', y: this.notStartedActions.length },
-          { name: 'Solved Actions', y: this.solvedActions.length },
-          { name: 'Done Actions', y: this.doneActions.length },
-          { name: 'Cancelled Actions', y: this.cancelledActions.length },
+          {
+            name: 'Not Started',
+            y: this.notStartedActions.length,
+            color: '#FFC107',
+          },
+          {
+            name: 'Solved',
+            y: this.solvedActions.length,
+            color: '#28A745',
+          },
+          {
+            name: 'Done',
+            y: this.doneActions.length,
+            color: '#007BFF',
+          },
+          {
+            name: 'Cancelled',
+            y: this.cancelledActions.length,
+            color: '#DC3545',
+          },
         ],
       },
     ];

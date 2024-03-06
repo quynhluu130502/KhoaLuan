@@ -5,7 +5,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FullComponent } from './full/full.component';
-// import { DashboardComponent } from './dashboard/dashboard.component';
 import { InternalUserComponent } from './internal-user/internal-user.component';
 import { authGuard } from './auth.guard';
 import { NonConformitiesComponent } from './non-conformities/non-conformities.component';
@@ -13,7 +12,8 @@ import { ncgMenu, qsaMenu } from './constant';
 import { TableTicketComponent } from './table-ticket/table-ticket.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NCRDetailComponent } from './ncg/ncr-detail/ncr-detail.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { NcgDashboardComponent } from './dashboard/ncg-dashboard.component';
+import { QsaDashboardComponent } from './qsa-dashboard/qsa-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -27,6 +27,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'internal-user', pathMatch: 'full' },
       { path: 'internal-user', component: InternalUserComponent },
+      { path: 'dashboard', component: QsaDashboardComponent },
     ],
   },
   {
@@ -36,7 +37,7 @@ const routes: Routes = [
     data: ncgMenu,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: DashboardComponent },
+      { path: 'dashboard', component: NcgDashboardComponent },
       { path: 'create-ncr', component: NonConformitiesComponent },
       { path: 'ncr-details/:id', component: NCRDetailComponent },
       {
