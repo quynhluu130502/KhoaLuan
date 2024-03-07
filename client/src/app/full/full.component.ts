@@ -48,7 +48,7 @@ export class FullComponent implements OnInit {
         this.username = res.result;
         return;
       }
-      this._toastr.error('Lỗi lấy thông tin người dùng', 'Lỗi');
+      this._toastr.error('Error getting user name', 'ERROR');
     });
   }
 

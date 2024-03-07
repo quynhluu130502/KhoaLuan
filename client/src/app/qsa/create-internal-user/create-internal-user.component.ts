@@ -87,9 +87,9 @@ export class CreateInternalUserComponent {
           this.inforForm.get('name')?.disable();
           this.inforForm.get('job_function')?.disable();
           this.inforForm.get('language')?.disable();
-          this._toast.success('Tìm thấy SSO', 'TÌM KIẾM');
+          this._toast.success('Account ID found', 'RETRIEVE USER INFO');
         } else {
-          this._toast.error('Không tìm thấy SSO', 'TÌM KIẾM');
+          this._toast.error('Account ID not found', 'RETRIEVE USER INFO');
         }
       });
     }

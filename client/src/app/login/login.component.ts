@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private _router: Router,
     private _auth: AuthService,
-    private _toast: ToastrService
+    private _toastr: ToastrService
   ) {}
   ngOnInit() {
     this._auth.getProtected().subscribe((res: any) => {
@@ -50,16 +50,16 @@ export class LoginComponent implements OnInit {
   }
   onFormSubmit(): void {
     if (this.sso.invalid || this.password.invalid) {
-      this._toast.error('Vui lòng nhập đầy đủ thông tin!', 'ĐĂNG NHẬP');
+      this._toastr.error('Please fill in all fields!', 'LOGIN');
       return;
     }
     this._auth.login(this.loginForm.value).subscribe((res) => {
       if (!res.user) {
         if (res.message === 'User not found') {
-          this._toast.error('Tài khoản không tồn tại!', 'ĐĂNG NHẬP');
+          this._toastr.error('User not found!', 'LOGIN');
           return;
         } else {
-          this._toast.error('Sai mật khẩu!', 'ĐĂNG NHẬP');
+          this._toastr.error('Wrong password!', 'LOGIN');
           return;
         }
       }
@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
       if (this.rememberMeControl.value === true) {
         localStorage.setItem('sso', JSON.stringify(res.user.sso));
       }
-      this._toast.success('Đăng nhập thành công!', 'ĐĂNG NHẬP');
+      this._toastr.success('Login successful!', 'LOGIN');
       this._router.navigate(['/']);
     });
   }
