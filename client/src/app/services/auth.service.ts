@@ -32,7 +32,7 @@ export class AuthService {
       );
   }
 
-  getProtected(): any {
+  getProtected(): Observable<any> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     });
@@ -50,7 +50,7 @@ export class AuthService {
       );
   }
 
-  getRefreshToken(): any {
+  getRefreshToken(): Observable<any> {
     return this._http
       .post(
         `${environment.serverUrl}/user/refreshToken`,
@@ -68,7 +68,7 @@ export class AuthService {
       );
   }
 
-  logout(): any {
+  logout(): Observable<any> {
     return this._http
       .post(`${environment.serverUrl}/user/logout`, {
         withCredentials: true,

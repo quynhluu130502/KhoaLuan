@@ -15,94 +15,103 @@
       <div
         class="products w-100 d-flex flex-row flex-wrap align-items-center justify-content-center"
       >
-        <a class="products__item d-flex flex-column align-items-center"
-          ><div class="products__item_logo">
-            <img
-              alt="product.name"
-              class="products__item_logo-img"
-              src="assets/images/qeg_logo.png"
-            />
-          </div>
-          <span class="products__item_name">
-            Quality Escalation Request
-          </span></a
-        >
-        <a class="products__item d-flex flex-column align-items-center"
-          ><div class="products__item_logo">
-            <img
-              alt="product.name"
-              class="products__item_logo-img"
-              src="assets/images/cq_logo.png"
-            />
-          </div>
-          <span class="products__item_name">
-            Contractor Qualification Management
-          </span></a
-        >
         <a
           class="products__item d-flex flex-column align-items-center"
           [routerLink]="['/ncg']"
           ><div class="products__item_logo">
             <img
               alt="product.name"
-              class="products__item_logo-img"
+              class="products__item_logo-img_product"
               src="assets/images/nc_logo.png"
             />
           </div>
           <span class="products__item_name"> Non Conformities </span></a
-        ><a class="products__item d-flex flex-column align-items-center"
-          ><div class="products__item_logo">
-            <img
-              alt="product.name"
-              class="products__item_logo-img"
-              src="assets/images/rca_logo.png"
-            />
-          </div>
-          <span class="products__item_name"> Root Cause Analysis </span></a
-        ><a class="products__item d-flex flex-column align-items-center"
-          ><div class="products__item_logo">
-            <img
-              alt="product.name"
-              class="products__item_logo-img"
-              src="assets/images/sr_logo.png"
-            />
-          </div>
-          <span class="products__item_name"> Supplier Recovery </span></a
-        ><a class="products__item d-flex flex-column align-items-center"
-          ><div class="products__item_logo">
-            <img
-              alt="product.name"
-              class="products__item_logo-img"
-              src="assets/images/sdr_logo.png"
-            />
-          </div>
-          <span class="products__item_name">
-            Supplier Deviation Request
-          </span></a
-        >
-        <a class="products__item d-flex flex-column align-items-center"
-          ><div class="products__item_logo">
-            <img
-              alt="product.name"
-              class="products__item_logo-img"
-              src="assets/images/sag_logo.png"
-            />
-          </div>
-          <span class="products__item_name"> Supplier Audit </span></a
         >
         <a
+          *ngIf="userRole === 'admin'"
           class="products__item d-flex flex-column align-items-center"
           [routerLink]="'/qsa'"
           ><div class="products__item_logo">
             <img
               alt="product.name"
-              class="products__item_logo-img"
+              class="products__item_logo-img_product"
               src="assets/images/admin.png"
             />
           </div>
           <span class="products__item_name"> Quality Suite Admin </span></a
         >
       </div>
+    </div>
+  </div>
+  <div
+    class="dasboard-container d-flex flex-column align-items-center justify-content-center"
+  >
+    <span class="welcome-message"> In-development Features </span>
+    <span class="intro-message"
+      >This is a list of features that are currently in development
+    </span>
+    <div
+      class="products w-100 d-flex flex-row flex-wrap align-items-center justify-content-center"
+    >
+      <a class="products__item d-flex flex-column align-items-center"
+        ><div class="products__item_logo">
+          <img
+            alt="product.name"
+            class="products__item_logo-img"
+            src="assets/images/qeg_logo.png"
+          />
+        </div>
+        <span class="products__item_name"> Quality Escalation Request </span></a
+      >
+      <a class="products__item d-flex flex-column align-items-center"
+        ><div class="products__item_logo">
+          <img
+            alt="product.name"
+            class="products__item_logo-img"
+            src="assets/images/cq_logo.png"
+          />
+        </div>
+        <span class="products__item_name">
+          Contractor Qualification Management
+        </span></a
+      ><a class="products__item d-flex flex-column align-items-center"
+        ><div class="products__item_logo">
+          <img
+            alt="product.name"
+            class="products__item_logo-img"
+            src="assets/images/rca_logo.png"
+          />
+        </div>
+        <span class="products__item_name"> Root Cause Analysis </span></a
+      ><a class="products__item d-flex flex-column align-items-center"
+        ><div class="products__item_logo">
+          <img
+            alt="product.name"
+            class="products__item_logo-img"
+            src="assets/images/sr_logo.png"
+          />
+        </div>
+        <span class="products__item_name"> Supplier Recovery </span></a
+      ><a class="products__item d-flex flex-column align-items-center"
+        ><div class="products__item_logo">
+          <img
+            alt="product.name"
+            class="products__item_logo-img"
+            src="assets/images/sdr_logo.png"
+          />
+        </div>
+        <span class="products__item_name"> Supplier Deviation Request </span></a
+      >
+      <a class="products__item d-flex flex-column align-items-center"
+        ><div class="products__item_logo">
+          <img
+            alt="product.name"
+            class="products__item_logo-img"
+            src="assets/images/sag_logo.png"
+          />
+        </div>
+        <span class="products__item_name"> Supplier Audit </span></a
+      >
     </div>
   </div>
 </div>

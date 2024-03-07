@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('sso', JSON.stringify(res.user.sso));
       }
       this._toast.success('Đăng nhập thành công!', 'ĐĂNG NHẬP');
-      this._router.navigate(['/qsa']);
+      this._router.navigate(['/']);
     });
   }
 }

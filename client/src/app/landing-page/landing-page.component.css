@@ -39,7 +39,7 @@
 }
 
 .products__item {
-  height: 200px;
+  height: fit-content;
   width: 200px;
   margin: 40px;
   cursor: pointer;
@@ -49,6 +49,10 @@
 
 .products__item_logo-img {
   height: 160px;
+}
+
+.products__item_logo-img_product {
+  height: 320px;
 }
 
 .products__item_name {
