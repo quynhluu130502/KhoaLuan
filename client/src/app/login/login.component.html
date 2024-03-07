@@ -6,7 +6,7 @@
 
     <!-- ID input -->
     <div class="form-group form-outline mb-3">
-      <label class="form-label">SSO</label>
+      <label class="form-label">Account ID</label>
       <input
         type="text"
         formControlName="sso"
@@ -16,7 +16,7 @@
         [maxlength]="6"
       />
       <label *ngIf="sso.invalid" [ngClass]="'text-danger'">
-        SSO is required with 6 max character.
+        Account ID is required with 6 max character.
       </label>
     </div>
 
