@@ -7,6 +7,14 @@
         matSort
         (matSortChange)="announceSortChange($event)"
       >
+        <tr class="mat-row" *matNoDataRow>
+          <td
+            class="mat-cell text-center"
+            [attr.colspan]="displayedColumns.length"
+          >
+            No data matching the filter.
+          </td>
+        </tr>
         <!-- ID Column -->
         <ng-container matColumnDef="ID">
           <th

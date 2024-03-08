@@ -76,7 +76,7 @@ export class NcgDashboardComponent implements OnInit, AfterViewInit {
   }
 
   getNCs(): void {
-    this._ncgService.getMyNCs().subscribe((res) => {
+    this._ncgService.getAllNCs().subscribe((res) => {
       this.dataSource.data = res;
       res.forEach((nc: any) => {
         // Define the status of the NC

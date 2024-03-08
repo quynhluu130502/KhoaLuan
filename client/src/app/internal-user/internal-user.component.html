@@ -9,6 +9,11 @@
   >
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell text-center" [attr.colspan]="displayedColumns.length">
+        No data matching the filter.
+      </td>
+    </tr>
 
     <!-- Position Column -->
     <ng-container matColumnDef="sso">

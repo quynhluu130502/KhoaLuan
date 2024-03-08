@@ -44,6 +44,14 @@
       matSort
       (matSortChange)="announceSortChange($event)"
     >
+      <tr class="mat-row" *matNoDataRow>
+        <td
+          class="mat-cell text-center"
+          [attr.colspan]="displayedColumns.length"
+        >
+          No data matching the filter.
+        </td>
+      </tr>
       <!-- User Column -->
       <ng-container matColumnDef="User">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>

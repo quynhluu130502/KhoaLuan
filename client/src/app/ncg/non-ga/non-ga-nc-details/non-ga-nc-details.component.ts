@@ -82,13 +82,13 @@ export class NonGaNcDetailsComponent implements OnInit {
   }
 
   // Contaiment
-  contaiment = new FormControl('');
+  contaiment = new FormControl('', Validators.required);
 
   // Project Number
-  projectNumberControl = new FormControl('');
+  projectNumberControl = new FormControl('', Validators.required);
 
   // Project Name
-  projectNameControl = new FormControl('');
+  projectNameControl = new FormControl('', Validators.required);
 
   // Defective Quantity
   defectiveQuantityControl = new FormControl('', Validators.required);
@@ -129,15 +129,15 @@ export class NonGaNcDetailsComponent implements OnInit {
   filteredPhaseDetection: Observable<any[]> = new Observable<any[]>();
 
   // Due Date
-  dueDateControl = new FormControl(new Date());
+  dueDateControl = new FormControl(new Date(), Validators.required);
 
   // Impact
-  impactControl = new FormControl('');
+  impactControl = new FormControl('', Validators.required);
   impact: any[] = [];
   filteredImpact: Observable<any[]> = new Observable<any[]>();
 
   // Priority
-  priorityControl = new FormControl('');
+  priorityControl = new FormControl('', Validators.required);
 
   // Validator
   validatorControl = new FormControl('', Validators.required);
@@ -145,7 +145,7 @@ export class NonGaNcDetailsComponent implements OnInit {
   filteredValidator: Observable<any[]> = new Observable<any[]>();
 
   // Assigned Department
-  assignedDepartmentControl = new FormControl('');
+  assignedDepartmentControl = new FormControl('', Validators.required);
   assignedDepartment: any[] = [];
   filteredAssignedDepartment: Observable<any[]> = new Observable<any[]>();
 

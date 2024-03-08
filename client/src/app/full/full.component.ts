@@ -61,4 +61,8 @@ export class FullComponent implements OnInit {
       }
     });
   }
+
+  underDevelopment(): void {
+    this._toastr.info('This feature is under development', 'INFO');
+  }
 }

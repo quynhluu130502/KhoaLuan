@@ -104,6 +104,7 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
   }
 
   onCancel() {
+    if (this.isRequestor()) return;
     if (this.openConfirmToast()) {
       this._ncgService.cancelNC(this.nc_id).subscribe((res) => {
         if (res.result) {
@@ -116,6 +117,7 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
     }
   }
   onClone() {
+    if (this.isRequestor()) return;
     if (!this.openConfirmToast()) return;
     this._ncgService
       .saveNC(this.combineForms(), this.nc_id)
@@ -137,6 +139,7 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
       });
   }
   onBack() {
+    if (this.isRequestor()) return;
     if (!this.openConfirmToast()) return;
     if (this.stage.value < 1 || this.stage.value > 2) return;
     this._ncgService
@@ -152,6 +155,7 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
       });
   }
   onSave() {
+    if (this.isRequestor()) return;
     this._ncgService
       .saveNC(this.combineForms(), this.nc_id)
       .subscribe((res) => {
@@ -164,6 +168,7 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
       });
   }
   onAccept() {
+    if (this.isRequestor()) return;
     if (this.stage.value === 0) {
       if (this.detailForm.invalid) return;
       this._ncgService
@@ -254,6 +259,17 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
 
   openConfirmToast(): boolean {
     if (confirm('Are you sure you want to do that?')) {
+      return true;
+    }
+    return false;
+  }
+
+  isRequestor() {
+    if (this._authService.userType === 'requestor') {
+      this._toastr.error(
+        'Error',
+        'You are not authorized to perform this action'
+      );
       return true;
     }
     return false;
