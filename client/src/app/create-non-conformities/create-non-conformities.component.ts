@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-create-non-conformities',
   templateUrl: './create-non-conformities.component.html',
-  styleUrl: './create-non-conformities.component.css',
+  styleUrl: './create-non-conformities.component.scss',
 })
 export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
   @ViewChild(MatAccordion) accordion!: MatAccordion;

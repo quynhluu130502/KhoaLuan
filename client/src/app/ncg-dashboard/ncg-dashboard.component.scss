@@ -55,3 +55,20 @@ mat-list-item.active span span {
   font-size: 16px;
   margin-right: 8px;
 }
+
+span.on-track {
+  color: #589b46;
+}
+
+span.closed {
+  color: #ed7d31;
+}
+
+td a {
+  color: #0073b7;
+  text-decoration: none;
+}
+
+td a:hover {
+  text-decoration: underline;
+}

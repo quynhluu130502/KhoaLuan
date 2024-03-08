@@ -13,7 +13,7 @@
         quality issues
       </span>
       <div
-        class="products w-100 d-flex flex-row flex-wrap align-items-center justify-content-center"
+        class="products w-100 d-flex flex-row flex-wrap align-items-center justify-content-around"
       >
         <a
           class="products__item d-flex flex-column align-items-center"
@@ -28,7 +28,7 @@
           <span class="products__item_name"> Non Conformities </span></a
         >
         <a
-          *ngIf="userRole === 'admin'"
+          *ngIf="userType === 'admin'"
           class="products__item d-flex flex-column align-items-center"
           [routerLink]="'/qsa'"
           ><div class="products__item_logo">

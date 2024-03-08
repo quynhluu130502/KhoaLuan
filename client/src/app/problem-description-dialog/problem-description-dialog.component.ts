@@ -13,7 +13,7 @@ interface DialogData {
 @Component({
   selector: 'app-problem-description-dialog',
   templateUrl: './problem-description-dialog.component.html',
-  styleUrl: './problem-description-dialog.component.css',
+  styleUrl: './problem-description-dialog.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
 export class ProblemDescriptionDialogComponent {

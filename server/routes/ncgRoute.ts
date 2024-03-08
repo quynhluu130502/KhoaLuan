@@ -24,9 +24,11 @@ ncgRouter.patch("", ncgController.saveNC);
 
 ncgRouter.patch("/cancel", ncgController.cancelNC);
 
-ncgRouter.put("", ncgController.accepNC);
+ncgRouter.put("/accept", ncgController.accepNC);
 
-ncgRouter.put("/back", ncgController.sendNCBackToRequestor);
+ncgRouter.put("/solve", ncgController.solveNC);
+
+ncgRouter.put("/reject", ncgController.sendNCBackToRequestor);
 
 ncgRouter.put("/close", ncgController.closeNC);
 

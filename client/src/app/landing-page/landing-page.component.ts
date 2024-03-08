@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
-  styleUrl: './landing-page.component.css',
+  styleUrl: './landing-page.component.scss',
 })
 export class LandingPageComponent implements OnInit {
   constructor(
@@ -15,7 +15,7 @@ export class LandingPageComponent implements OnInit {
     private _toastr: ToastrService
   ) {}
 
-  userRole: string = '';
+  userType: string = '';
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -28,7 +28,7 @@ export class LandingPageComponent implements OnInit {
     this._authService.getProtected().subscribe({
       next: (res) => {
         if (res.result) {
-          this.userRole = res.user.role;
+          this.userType = res.result.role;
           return;
         }
         this._toastr.info('Please login to view this page', 'Info', {

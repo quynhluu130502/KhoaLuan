@@ -14,22 +14,26 @@
 
 .app-content {
   min-height: calc(100vh - 100px);
+  width: 100%;
 }
 
 .dasboard-container {
   padding: 1.5rem 2rem;
+  width: 100%;
 }
 
 .welcome-message {
   max-width: 900px;
   text-align: center;
   font-size: 2rem;
+  font-weight: 700;
   margin-bottom: 20px;
 }
 
 .intro-message {
   color: #a7b1c0;
   font-style: italic;
+  font-weight: 200;
   max-width: 900px;
   text-align: center;
 }
@@ -60,4 +64,5 @@
   font-weight: 600;
   margin-top: 10px;
   text-align: center;
+  color: #cdd6e3;
 }

@@ -17,6 +17,8 @@ interface successfulLogin {
 export class AuthService {
   constructor(private _http: HttpClient) {}
 
+  userType: string = '';
+
   login(userInfor: object): Observable<successfulLogin> {
     return this._http
       .post<successfulLogin>(`${environment.serverUrl}/user/login`, userInfor, {
@@ -42,7 +44,10 @@ export class AuthService {
         withCredentials: true,
       })
       .pipe(
-        map((res) => {
+        map((res: any) => {
+          if (res && res.result) {
+            this.userType = res.result.role;
+          }
           return res;
         }),
         retry(2),
@@ -75,6 +80,7 @@ export class AuthService {
       })
       .pipe(
         map((res) => {
+          this.userType = '';
           return res;
         }),
         retry(2),

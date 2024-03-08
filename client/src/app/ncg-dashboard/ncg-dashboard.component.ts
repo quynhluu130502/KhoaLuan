@@ -1,9 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Platform } from '@angular/cdk/platform';
 import * as Highcharts from 'highcharts';
 import noData from 'highcharts/modules/no-data-to-display';
 import { NcgService } from '../services/ncg.service';
 import { pieChartOptions } from '../constant';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort, Sort } from '@angular/material/sort';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 noData(Highcharts);
 
@@ -12,10 +16,25 @@ noData(Highcharts);
   templateUrl: './ncg-dashboard.component.html',
   styleUrl: './ncg-dashboard.component.scss',
 })
-export class NcgDashboardComponent implements OnInit {
-  constructor(private _ncgService: NcgService, public platform: Platform) {}
+export class NcgDashboardComponent implements OnInit, AfterViewInit {
+  constructor(
+    private _ncgService: NcgService,
+    private _liveAnnouncer: LiveAnnouncer,
+    public platform: Platform
+  ) {}
 
   @ViewChild('actionStatusChart') actionStatusChart!: Highcharts.Chart;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  dataSource = new MatTableDataSource<any>([]);
+  displayedColumns: string[] = [
+    'NC_ID',
+    'Activity',
+    'Status',
+    'Detected_By_Unit',
+    'NC_Type',
+  ];
 
   item: string = 'me';
   openNCs: any[] = [];
@@ -24,9 +43,8 @@ export class NcgDashboardComponent implements OnInit {
   overDueNCs: any[] = [];
   // Action's status chart
   notStartedActions: any[] = [];
-  solvedActions: any[] = [];
+  inProgressActions: any[] = [];
   doneActions: any[] = [];
-  cancelledActions: any[] = [];
 
   Highcharts: typeof Highcharts = Highcharts;
 
@@ -59,6 +77,7 @@ export class NcgDashboardComponent implements OnInit {
 
   getNCs(): void {
     this._ncgService.getMyNCs().subscribe((res) => {
+      this.dataSource.data = res;
       res.forEach((nc: any) => {
         // Define the status of the NC
         if (nc.stage === 3) {
@@ -78,12 +97,12 @@ export class NcgDashboardComponent implements OnInit {
           nc.actions.forEach((action: any) => {
             if (action.status === 1) {
               this.notStartedActions.push(action);
-            } else if (action.status === 2) {
-              this.solvedActions.push(action);
-            } else if (action.status === 3) {
+            }
+            if (action.status === 2) {
+              this.inProgressActions.push(action);
+            }
+            if (action.status === 3) {
               this.doneActions.push(action);
-            } else if (action.status === 4) {
-              this.cancelledActions.push(action);
             }
           });
         }
@@ -113,8 +132,8 @@ export class NcgDashboardComponent implements OnInit {
             color: '#FFC107',
           },
           {
-            name: 'Solved',
-            y: this.solvedActions.length,
+            name: 'In Progress',
+            y: this.inProgressActions.length,
             color: '#28A745',
           },
           {
@@ -122,14 +141,22 @@ export class NcgDashboardComponent implements OnInit {
             y: this.doneActions.length,
             color: '#007BFF',
           },
-          {
-            name: 'Cancelled',
-            y: this.cancelledActions.length,
-            color: '#DC3545',
-          },
         ],
       },
     ];
     this.updateFlag = true;
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  announceSortChange(sortState: Sort) {
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
   }
 }

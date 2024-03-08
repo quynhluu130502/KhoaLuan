@@ -12,7 +12,7 @@ import { ncgMenu, qsaMenu } from './constant';
 import { TableTicketComponent } from './table-ticket/table-ticket.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NCRDetailComponent } from './ncg/ncr-detail/ncr-detail.component';
-import { NcgDashboardComponent } from './dashboard/ncg-dashboard.component';
+import { NcgDashboardComponent } from './ncg-dashboard/ncg-dashboard.component';
 import { QsaDashboardComponent } from './qsa-dashboard/qsa-dashboard.component';
 
 const routes: Routes = [

@@ -5,6 +5,7 @@ import { MatTabGroup } from '@angular/material/tabs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 import { NcgService } from 'src/app/services/ncg.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
   constructor(
     private _formBuilder: FormBuilder,
     private _ncgService: NcgService,
+    private _authService: AuthService,
     private _activatedRoute: ActivatedRoute,
     private _toastr: ToastrService,
     private _router: Router
@@ -158,64 +160,76 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
       });
   }
   onAccept() {
+    if (this.stage.value === 0) {
+      if (this.detailForm.invalid) return;
+      this._ncgService
+        .acceptNC(this.combineForms(), this.nc_id)
+        .subscribe((res) => {
+          if (res.result) {
+            this.stepper.next();
+            this._toastr.success('Success', 'NCR accepted successfully');
+          } else {
+            this._toastr.error('Error', 'Error in updating the NCR');
+            console.log(res.message);
+          }
+        });
+      return;
+    }
     if (!this.formValid()) {
       this._toastr.error('Error', 'Please fill all the fields');
       return;
     }
-    if (this.stage.value !== 0) {
-      if (this.actionsTable.value.length === 0) {
-        this._toastr.error(
-          'Error',
-          'Please add actions in Investigations and Solutions Table to proceed'
-        );
-        this.tabGroup.selectedIndex = 2;
-        return;
-      }
-      // Stage 1 is Accepted
-      if (this.stage.value === 1) {
-        this._ncgService
-          .acceptNC(this.combineForms(), this.nc_id)
-          .subscribe((res) => {
-            if (res.result) {
-              this.stepper.next();
-              this._toastr.success('Success', 'NCR accepted successfully');
-            } else {
-              this._toastr.error('Error', 'Error in updating the NCR');
-              console.log(res.message);
-            }
-          });
-      }
-      // Stage 2 is Solved
-      else if (this.stage.value === 2) {
-        let allActionsClosed = true;
-        this.actionsTable.value.forEach((action) => {
-          if (action.status !== 3) {
-            this._toastr.error(
-              'Error',
-              'Please close all actions before proceeding'
-            );
-            this.tabGroup.selectedIndex = 2;
-            allActionsClosed = false;
-            return;
+    if (this.actionsTable.value.length === 0) {
+      this._toastr.error(
+        'Error',
+        'Please add actions in Investigations and Solutions Table to proceed'
+      );
+      this.tabGroup.selectedIndex = 2;
+      return;
+    }
+    // Stage 1 is Accepted
+    if (this.stage.value === 1) {
+      this._ncgService
+        .solveNC(this.combineForms(), this.nc_id)
+        .subscribe((res) => {
+          if (res.result) {
+            this.stepper.next();
+            this._toastr.success('Success', 'NCR accepted successfully');
+          } else {
+            this._toastr.error('Error', 'Error in updating the NCR');
+            console.log(res.message);
           }
         });
-        if (allActionsClosed) {
-          this._ncgService
-            .closeNC(this.combineForms(), this.nc_id)
-            .subscribe((res) => {
-              if (res.result) {
-                this.stepper.next();
-                this._toastr.success('Success', 'NCR closed successfully');
-                this._router.navigate(['/ncg/ncr-details/', this.nc_id]);
-              } else {
-                this._toastr.error('Error', 'Error in closing the NCR');
-                console.log(res.message);
-              }
-            });
+      return;
+    }
+    // Stage 2 is Solved
+    if (this.stage.value === 2) {
+      let allActionsClosed = true;
+      this.actionsTable.value.forEach((action) => {
+        if (action.status !== 3) {
+          this._toastr.error(
+            'Error',
+            'Please close all actions before proceeding'
+          );
+          this.tabGroup.selectedIndex = 2;
+          allActionsClosed = false;
+          return;
         }
-      }
-    } else {
-      console.log('First stage cannot be accepted');
+      });
+      if (!allActionsClosed) return;
+      this._ncgService
+        .closeNC(this.combineForms(), this.nc_id)
+        .subscribe((res) => {
+          if (res.result) {
+            this.stepper.next();
+            this._toastr.success('Success', 'NCR closed successfully');
+            this._router.navigate(['/ncg/ncr-details/', this.nc_id]);
+          } else {
+            this._toastr.error('Error', 'Error in closing the NCR');
+            console.log(res.message);
+          }
+        });
+      return;
     }
   }
 

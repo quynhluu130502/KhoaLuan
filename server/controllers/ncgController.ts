@@ -148,12 +148,28 @@ const cancelNC = async (req: Request, res: Response) => {
 };
 
 const accepNC = async (req: Request, res: Response) => {
-  req.body.stage = Stage.Solved;
+  req.body.stage = Stage.Accepted;
   req.body.acceptedDate = new Date();
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
     .then((result) => {
       if (result) {
-        res.json({ result: result, message: "NC Detail updated successfully!" });
+        res.json({ result: result, message: "NC Detail accepted successfully!" });
+      } else {
+        res.json({ message: "NC Detail not found!" });
+      }
+    })
+    .catch((err) => {
+      res.json({ message: err });
+    });
+};
+
+const solveNC = async (req: Request, res: Response) => {
+  req.body.stage = Stage.Solved;
+  req.body.solvedDate = new Date();
+  await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
+    .then((result) => {
+      if (result) {
+        res.json({ result: result, message: "NC Detail solved successfully!" });
       } else {
         res.json({ message: "NC Detail not found!" });
       }
@@ -166,6 +182,7 @@ const accepNC = async (req: Request, res: Response) => {
 const sendNCBackToRequestor = async (req: Request, res: Response) => {
   req.body.stage = Stage.Created;
   req.body.acceptedDate = null;
+  req.body.solvedDate = null;
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
     .then((result) => {
       if (result) {
@@ -359,6 +376,7 @@ const ncgController = {
   saveNC,
   cancelNC,
   accepNC,
+  solveNC,
   sendNCBackToRequestor,
   closeNC,
   deleteOneNC,

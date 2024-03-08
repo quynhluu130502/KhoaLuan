@@ -26,9 +26,10 @@ import { NCRDetailComponent } from './ncg/ncr-detail/ncr-detail.component';
 import { NonGaContainmentInvestigationComponent } from './ncg/non-ga/non-ga-containment-investigation/non-ga-containment-investigation.component';
 import { NonGaNcDetailsComponent } from './ncg/non-ga/non-ga-nc-details/non-ga-nc-details.component';
 import { ActionTableDialogComponent } from './ncg/action-table-dialog/action-table-dialog.component';
-import { NcgDashboardComponent } from './dashboard/ncg-dashboard.component';
+import { NcgDashboardComponent } from './ncg-dashboard/ncg-dashboard.component';
 import { AttachmentComponent } from './attachment/attachment.component';
 import { QsaDashboardComponent } from './qsa-dashboard/qsa-dashboard.component';
+import { StageToStringPipe } from './Pipes/stage-to-string.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +54,9 @@ import { QsaDashboardComponent } from './qsa-dashboard/qsa-dashboard.component';
     AttachmentComponent,
     QsaDashboardComponent,
   ],
+  exports: [FeatherModule],
+  providers: [],
+  bootstrap: [AppComponent],
   imports: [
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
@@ -70,9 +74,7 @@ import { QsaDashboardComponent } from './qsa-dashboard/qsa-dashboard.component';
     QuillModule.forRoot(),
     GraduationThesisModule,
     AppRoutingModule,
+    StageToStringPipe,
   ],
-  exports: [FeatherModule],
-  providers: [],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -6,10 +6,8 @@ export {
   ncgMenu,
   handleError,
   handleSimpleError,
-  barChartOptions,
   columnChartOptions,
   pieChartOptions,
-  areaChartOptions,
 };
 
 const qsaMenu = [
@@ -77,49 +75,6 @@ const handleSimpleError = (err: HttpErrorResponse) => {
   return throwError(() => new Error(err.message));
 };
 
-const barChartOptions: Highcharts.Options = {
-  accessibility: {
-    enabled: false,
-  },
-  chart: {
-    type: 'bar',
-    backgroundColor: '#FFFFFF',
-    height: 400,
-    plotBackgroundColor: undefined,
-    plotBorderWidth: undefined,
-    plotShadow: false,
-  },
-  title: {
-    text: 'Product Types in NCs',
-  },
-  xAxis: {
-    categories: ['Product Types'],
-  },
-  yAxis: {
-    min: 0,
-    title: {
-      text: 'Total fruit consumption',
-    },
-  },
-  legend: {
-    floating: false,
-    align: 'center',
-    layout: 'horizontal',
-    verticalAlign: 'bottom',
-    width: 300,
-    x: 0,
-    y: 0,
-  },
-  plotOptions: {
-    series: {
-      stacking: 'normal',
-    },
-  },
-  credits: {
-    enabled: false,
-  },
-};
-
 const columnChartOptions: Highcharts.Options = {
   accessibility: {
     enabled: false,
@@ -132,22 +87,6 @@ const columnChartOptions: Highcharts.Options = {
     plotBackgroundColor: undefined,
     plotBorderWidth: undefined,
     plotShadow: false,
-  },
-  title: {
-    text: 'Detection Phase in NCs',
-  },
-  subtitle: {
-    text: 'Source: TrustMeBro Inc.',
-  },
-  xAxis: {
-    categories: ['Phase Detection'],
-    crosshair: true,
-  },
-  yAxis: {
-    min: 0,
-    title: {
-      text: 'Number of NCs',
-    },
   },
   legend: {
     floating: false,
@@ -186,7 +125,7 @@ const pieChartOptions: Highcharts.Options = {
     text: 'Status of Actions',
   },
   tooltip: {
-    pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>',
+    pointFormat: '{point.name}: <b>{point.y} Actions</b>',
   },
   legend: {
     floating: false,
@@ -209,59 +148,6 @@ const pieChartOptions: Highcharts.Options = {
         },
       },
       showInLegend: true,
-    },
-  },
-  credits: {
-    enabled: false,
-  },
-};
-
-const areaChartOptions: Highcharts.Options = {
-  accessibility: {
-    enabled: false,
-  },
-  chart: {
-    type: 'column',
-    plotBackgroundColor: undefined,
-    plotBorderWidth: undefined,
-    plotShadow: false,
-  },
-  title: {
-    useHTML: true,
-    text: 'Symptpm Code L<sub>0</sub>',
-    align: 'center',
-  },
-  subtitle: {
-    text:
-      'Source: ' +
-      '<a href="https://energiogklima.no/klimavakten/land-med-hoyest-utslipp/"' +
-      'target="_blank">Administrator</a>',
-    align: 'center',
-  },
-
-  xAxis: {
-    categories: ['Product Type'],
-    crosshair: true,
-  },
-  yAxis: {
-    min: 0,
-    title: {
-      text: 'Number of NCs',
-    },
-  },
-  legend: {
-    floating: false,
-    align: 'center',
-    layout: 'horizontal',
-    verticalAlign: 'bottom',
-    width: 300,
-    x: 0,
-    y: 0,
-  },
-  plotOptions: {
-    column: {
-      pointPadding: 0.2,
-      borderWidth: 0,
     },
   },
   credits: {

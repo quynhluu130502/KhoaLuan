@@ -14,7 +14,7 @@ import { MatSelectChange } from '@angular/material/select';
 @Component({
   selector: 'app-user-role-create',
   templateUrl: './user-role-create.component.html',
-  styleUrl: './user-role-create.component.css',
+  styleUrl: './user-role-create.component.scss',
 })
 export class UserRoleCreateComponent implements OnInit, OnChanges {
   @Input() applications: any;

@@ -56,6 +56,16 @@ export class NcgService {
       );
   }
 
+  getAllNCs(): Observable<any> {
+    return this._http.get(`${environment.serverUrl}/ncg/list`).pipe(
+      map((res) => {
+        return res;
+      }),
+      retry(2),
+      catchError(handleError)
+    );
+  }
+
   getNC(id: string): Observable<any> {
     return this._http.get(`${environment.serverUrl}/ncg/get/${id}`).pipe(
       map((res) => {
@@ -79,7 +89,7 @@ export class NcgService {
 
   backNC(data: any, id: string): Observable<any> {
     data.id = id;
-    return this._http.put(`${environment.serverUrl}/ncg/back`, data).pipe(
+    return this._http.put(`${environment.serverUrl}/ncg/reject`, data).pipe(
       map((res) => {
         return res;
       }),
@@ -90,7 +100,29 @@ export class NcgService {
 
   acceptNC(data: any, id: string): Observable<any> {
     data.id = id;
-    return this._http.put(`${environment.serverUrl}/ncg`, data).pipe(
+    return this._http.put(`${environment.serverUrl}/ncg/accept`, data).pipe(
+      map((res) => {
+        return res;
+      }),
+      retry(2),
+      catchError(handleError)
+    );
+  }
+
+  solveNC(data: any, id: string): Observable<any> {
+    data.id = id;
+    return this._http.put(`${environment.serverUrl}/ncg/solve`, data).pipe(
+      map((res) => {
+        return res;
+      }),
+      retry(2),
+      catchError(handleError)
+    );
+  }
+
+  closeNC(data: any, id: string): Observable<any> {
+    data.id = id;
+    return this._http.put(`${environment.serverUrl}/ncg/close`, data).pipe(
       map((res) => {
         return res;
       }),
@@ -131,17 +163,6 @@ export class NcgService {
         retry(2),
         catchError(handleError)
       );
-  }
-
-  closeNC(data: any, id: string): Observable<any> {
-    data.id = id;
-    return this._http.put(`${environment.serverUrl}/ncg/close`, data).pipe(
-      map((res) => {
-        return res;
-      }),
-      retry(2),
-      catchError(handleError)
-    );
   }
 
   getMyNCs(): Observable<any> {

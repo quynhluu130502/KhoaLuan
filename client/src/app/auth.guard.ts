@@ -7,6 +7,7 @@ import {
   Router,
 } from '@angular/router';
 import { AuthService } from './services/auth.service';
+import { firstValueFrom, lastValueFrom } from 'rxjs';
 
 export const authGuard: CanActivateFn = async (
   route: ActivatedRouteSnapshot,
@@ -14,13 +15,13 @@ export const authGuard: CanActivateFn = async (
 ) => {
   const router: Router = inject(Router);
   const authService: AuthService = inject(AuthService);
-  const refresh = await authService.getRefreshToken().toPromise();
+  const refresh = await firstValueFrom(authService.getRefreshToken());
   if (refresh == undefined) {
     router.navigate(['/login']);
     return false;
   }
   localStorage.setItem('token', refresh.token);
-  const res = await authService.getProtected().toPromise();
+  const res = await lastValueFrom(authService.getProtected());
   if (res.result) {
     return true;
   } else {
