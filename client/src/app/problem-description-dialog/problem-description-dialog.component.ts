@@ -17,18 +17,6 @@ interface DialogData {
   encapsulation: ViewEncapsulation.None,
 })
 export class ProblemDescriptionDialogComponent {
-  private _files: { item: File; url: string }[] = [];
-
-  get files(): { item: File; url: string }[] {
-    return this._files;
-  }
-
-  set files(value: { item: File; url: string }[]) {
-    this._files = value;
-    this.dialogData.files = value;
-  }
-  msg: string = '';
-  progress: number = 0;
   constructor(
     @Inject(MAT_DIALOG_DATA) public dialogData: DialogData,
     private _sanitizer: DomSanitizer,
@@ -36,6 +24,9 @@ export class ProblemDescriptionDialogComponent {
     private _toastService: ToastrService,
     public dialogRef: MatDialogRef<ProblemDescriptionDialogComponent>
   ) {}
+
+  msg: string = '';
+  progress: number = 0;
 
   onCancelClick(): void {
     this.dialogRef.close();
@@ -46,20 +37,11 @@ export class ProblemDescriptionDialogComponent {
   }
 
   upload(e: FileList) {
+    const formData = new FormData();
     Array.from(e).forEach((item: File) => {
       const url = URL.createObjectURL(item);
-      this.files = this.files.concat({ item, url: url });
-    });
-  }
-
-  removeFile(index: number) {
-    this.files.splice(index, 1);
-  }
-
-  onUploadlClick() {
-    const formData = new FormData();
-    this.files.forEach((file) => {
-      formData.append('file', file.item);
+      this.dialogData.files = this.dialogData.files.concat({ item, url: url });
+      formData.append('file', item);
     });
     this._ncgService
       .addFiles(formData)
@@ -92,14 +74,21 @@ export class ProblemDescriptionDialogComponent {
             break;
         }
         if (event.type === HttpEventType.Response) {
-          for (let i = 0; i < this.files.length; i++) {
+          for (let i = 0; i < this.dialogData.files.length; i++) {
             if (event.body && event.body[i]) {
-              this.files[i].url = event.body[i] as string;
+              this.dialogData.files[i].url = event.body[i] as string;
             }
           }
-          this.dialogData.files = this.files;
           this._toastService.success('File uploaded successfully!');
         }
       });
+  }
+
+  removeFile(index: number) {
+    this.dialogData.files.splice(index, 1);
+  }
+
+  onSubmitClick() {
+    this.dialogRef.close(this.dialogData);
   }
 }

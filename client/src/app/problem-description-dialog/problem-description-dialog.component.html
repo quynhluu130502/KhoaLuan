@@ -1,7 +1,7 @@
 <h2 class="mat-dialog-title" mat-dialog-title>Problem Description</h2>
 <mat-dialog-content>
   <div class="w-100">
-    <mat-form-field>
+    <mat-form-field class="w-100">
       <mat-label>Problem Description</mat-label>
       <textarea
         matInput
@@ -40,12 +40,16 @@
               (change)="upload($any($event).target.files)"
               hidden
               multiple
+              accept="image/*"
             />
           </div>
         </div>
 
         <div class="col-md-12">
-          <div class="image-list" *ngFor="let file of files; let i = index">
+          <div
+            class="image-list"
+            *ngFor="let file of dialogData.files; let i = index"
+          >
             <div class="profile">
               <img [src]="sanitize(file['url'])" alt="" />
               <div class="d-flex flex-row justify-content-center">
@@ -66,7 +70,6 @@
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button (click)="onUploadlClick()">Upload</button>
   <button mat-button (click)="onCancelClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="dialogData">Submit</button>
+  <button mat-button (click)="onSubmitClick()">Submit</button>
 </mat-dialog-actions>

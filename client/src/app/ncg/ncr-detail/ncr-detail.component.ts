@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { MatTabGroup } from '@angular/material/tabs';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -41,7 +41,7 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
   nc_id: string = '';
   nc_creator: string = '';
   noti: string = '';
-  attachmentFiles = new BehaviorSubject<any[]>([]);
+  attachmentFiles = new BehaviorSubject<{ item: File; url: string }[]>([]);
   ngOnInit() {
     this._activatedRoute.params.subscribe((params) => {
       if (params['id']) {
@@ -67,6 +67,10 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
           }
         }
       })
+    );
+    this.detailForm.addControl(
+      'attachment',
+      new FormControl(this.attachmentFiles.value)
     );
   }
 
@@ -234,6 +238,7 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
   }
 
   combineForms() {
+    this.detailForm.controls['attachment'].setValue(this.attachmentFiles.value);
     this.investigationForm.controls['actions'].setValue(
       this.actionsTable.value
     );

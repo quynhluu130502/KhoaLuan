@@ -8,7 +8,7 @@ app.use(express.json());
 
 // Morgan
 import morgan from "morgan";
-var env: string = process.env.NODE_ENV || "development";
+var env: string = process.env.NODE_ENV || "production";
 if (env !== "production") {
   app.use(morgan("combined"));
 } else {
@@ -72,7 +72,7 @@ if (!fs.existsSync("public")) {
 const port = process.env.PORT || 3000;
 if (env === "production") {
   app.listen(port, () => {
-    console.log(`[server]: Server is running at http://localhost:${port}`);
+    console.log(`[server]: Production Server is running at http://localhost:${port}`);
   });
 } else {
   const options = {
@@ -80,7 +80,7 @@ if (env === "production") {
     cert: fs.readFileSync(path.resolve(__dirname, `localhost+1.pem`), "utf-8"),
   };
   https.createServer(options, app).listen(port, () => {
-    console.log(`[server]: Server is running at https://localhost:${port}`);
+    console.log(`[server]: Development Server is running at https://localhost:${port}`);
   });
 }
 

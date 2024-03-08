@@ -16,28 +16,38 @@ export class AttachmentComponent implements OnInit {
     private _toastService: ToastrService,
     private _ncgService: NcgService
   ) {}
-  @Input() attachmentFiles = new BehaviorSubject<any[]>([]);
-  private _files: { item: File; url: string }[] = [];
+  @Input() attachmentFiles = new BehaviorSubject<{ item: File; url: string }[]>(
+    []
+  );
 
   get files(): { item: File; url: string }[] {
-    return this._files;
+    return this.attachmentFiles.value;
   }
 
   set files(value: { item: File; url: string }[]) {
-    this._files = value;
+    this.attachmentFiles.next(value);
   }
 
   ngOnInit(): void {
-    this.attachmentFiles.subscribe((files) => {
-      if (files.length > 0) {
-        files.forEach((file: { url: string }) => {
-          this._ncgService.getFile(file.url).subscribe((blob) => {
-            const url = file.url;
-            const fileName = url.split('/').pop() || '';
-            const fileItem = new File([blob], fileName, { type: blob.type });
-            this.files.push({ item: fileItem, url: file.url });
+    this.attachmentFiles.subscribe((items) => {
+      if (items.length > 0) {
+        const tempArray: { item: File; url: string }[] = [];
+        for (let i = 0; i < items.length; i++) {
+          this._ncgService.getFile(items[i].url).subscribe({
+            next: (blob) => {
+              const url = items[i].url;
+              const fileName = url.split('/').pop() || '';
+              const fileItem = new File([blob], fileName, { type: blob.type });
+              tempArray.push({ item: fileItem, url: items[i].url });
+            },
+            error: (err) => {
+              this._toastService.error(
+                `${err} while fetching file from server`
+              );
+            },
           });
-        });
+        }
+        this.files = tempArray;
       }
     });
   }
@@ -46,19 +56,24 @@ export class AttachmentComponent implements OnInit {
     return this._sanitizer.bypassSecurityTrustUrl(url);
   }
   removeFile(index: number) {
-    this.files.splice(index, 1);
+    const tempArray = this.files;
+    tempArray.splice(index, 1);
+    this.files = tempArray;
   }
   upload(e: FileList) {
+    const formData = new FormData();
     Array.from(e).forEach((item: File) => {
+      if (item.size > 10485760) {
+        this._toastService.error('File size should not exceed 10MB');
+        return;
+      }
       const url = URL.createObjectURL(item);
-      this.files = this.files.concat({ item, url: url });
+      const tempArray = this.files;
+      this.files = tempArray.concat({ item, url });
+      formData.append('file', item);
     });
 
     // Upload the files to the server
-    const formData = new FormData();
-    this.files.forEach((file) => {
-      formData.append('file', file.item);
-    });
     this._ncgService
       .addFiles(formData)
       .subscribe((event: HttpEvent<ResponseType>) => {
