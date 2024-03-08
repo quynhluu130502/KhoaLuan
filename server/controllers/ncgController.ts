@@ -93,7 +93,7 @@ const cloneNC = async (req: Request, res: Response) => {
         res.json({ message: err });
       });
   } else {
-    res.json({ message: "NC Detail not found!" });
+    res.json({ message: "This NC cannot be found!" });
     return;
   }
 };
@@ -109,7 +109,7 @@ const getOneNC = async (req: Request, res: Response) => {
       if (result != null) {
         return res.json({ result: result, message: "NC Detail found!" });
       } else {
-        return res.json({ message: "NC Detail not found!" });
+        return res.json({ message: "This NC cannot be found!" });
       }
     })
     .catch((err) => {
@@ -123,7 +123,7 @@ const saveNC = async (req: Request, res: Response) => {
       if (result) {
         res.json({ result: result, message: "NC Detail saved successfully!" });
       } else {
-        res.json({ message: "NC Detail not found!" });
+        res.json({ message: "This NC cannot be found!" });
       }
     })
     .catch((err) => {
@@ -139,7 +139,7 @@ const cancelNC = async (req: Request, res: Response) => {
       if (result) {
         res.json({ result: result, message: "NC Detail cancelled successfully!" });
       } else {
-        res.json({ message: "NC Detail not found!" });
+        res.json({ message: "This NC cannot be found!" });
       }
     })
     .catch((err) => {
@@ -155,7 +155,7 @@ const accepNC = async (req: Request, res: Response) => {
       if (result) {
         res.json({ result: result, message: "NC Detail accepted successfully!" });
       } else {
-        res.json({ message: "NC Detail not found!" });
+        res.json({ message: "This NC cannot be found!" });
       }
     })
     .catch((err) => {
@@ -171,7 +171,7 @@ const solveNC = async (req: Request, res: Response) => {
       if (result) {
         res.json({ result: result, message: "NC Detail solved successfully!" });
       } else {
-        res.json({ message: "NC Detail not found!" });
+        res.json({ message: "This NC cannot be found!" });
       }
     })
     .catch((err) => {
@@ -188,7 +188,7 @@ const sendNCBackToRequestor = async (req: Request, res: Response) => {
       if (result) {
         res.json({ result: result, message: "NC Detail back successfully!" });
       } else {
-        res.json({ message: "NC Detail not found!" });
+        res.json({ message: "This NC cannot be found!" });
       }
     })
     .catch((err) => {
@@ -204,7 +204,7 @@ const closeNC = async (req: Request, res: Response) => {
       if (result) {
         res.json({ result: result, message: "NC Detail closed successfully!" });
       } else {
-        res.json({ message: "NC Detail not found!" });
+        res.json({ message: "This NC cannot be found!" });
       }
     })
     .catch((err) => {
@@ -218,7 +218,7 @@ const deleteOneNC = async (req: Request, res: Response) => {
       if (result) {
         res.json({ result: result, message: "NC Detail deleted successfully!" });
       } else {
-        res.json({ message: "NC Detail not found!" });
+        res.json({ message: "This NC cannot be found!" });
       }
     })
     .catch((err) => {

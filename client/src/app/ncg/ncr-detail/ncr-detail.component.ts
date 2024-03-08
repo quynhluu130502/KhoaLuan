@@ -85,8 +85,8 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
     if (this.dataLoadedCount === this.totalComponents) {
       this._ncgService.getNC(this.nc_id).subscribe((res) => {
         if (!res.result) {
-          this._toastr.error('Error', 'Error in fetching the NCR');
-          console.log(res.message);
+          this._toastr.error('Error', `${res.message}`);
+          this._router.navigate(['/ncg/ticket']);
           return;
         }
         this.detailForm.patchValue(res.result);

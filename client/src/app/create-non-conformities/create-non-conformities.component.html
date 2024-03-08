@@ -429,10 +429,22 @@
         </mat-expansion-panel>
       </mat-accordion>
       <div class="d-flex flex-row justify-content-center">
-        <button mat-raised-button color="warn" (click)="onResetClick()">
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="onResetClick()"
+          type="button"
+        >
           Reset
         </button>
-        <button mat-stroked-button color="accent">Save</button>
+        <button
+          mat-stroked-button
+          color="accent"
+          type="button"
+          (click)="onSaveClick()"
+        >
+          Save
+        </button>
         <button mat-raised-button color="primary" type="submit">Submit</button>
       </div>
     </form>

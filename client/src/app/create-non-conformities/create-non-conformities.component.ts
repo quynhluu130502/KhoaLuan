@@ -38,6 +38,7 @@ export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
   // Problem Description
   problemDescription = new FormControl('', Validators.required);
   files: { item: File; url: string }[] = [];
+  attachmentControl = new FormControl(this.files);
   openDialog(
     enterAnimationDuration: string,
     exitAnimationDuration: string
@@ -57,6 +58,7 @@ export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.files = result.files;
+        this.attachmentControl.setValue(this.files);
         this.problemDescription.setValue(result.description);
       }
     });
@@ -96,12 +98,12 @@ export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
   filteredDevice: Observable<any[]> = new Observable<any[]>();
 
   // Symptom Code L0
-  symptomCodeL0Control = new FormControl('', Validators.required);
+  symptomCodeL0Control = new FormControl('');
   symptomCodeL0s: any[] = [];
   filteredSymptomCodeL0: Observable<any[]> = new Observable<any[]>();
 
   // System Code L1
-  symptomCodeL1Control = new FormControl('', Validators.required);
+  symptomCodeL1Control = new FormControl('');
   symptomCodeL1s: any[] = [];
   filteredSymptomCodeL1: Observable<any[]> = new Observable<any[]>();
 
@@ -143,6 +145,7 @@ export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
     detectionDate: this.detectionDateControl,
     problemTitle: this.problemTitle,
     problemDescription: this.problemDescription,
+    attachment: this.attachmentControl,
     contaiment: this.contaiment,
     projectNumber: this.projectNumberControl,
     projectName: this.projectNameControl,
@@ -197,6 +200,12 @@ export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
     this._ncgService.getInternalUsers().subscribe((res) => {
       this.validators = res;
       this.validatorControl.setValue('');
+      const savedForm = localStorage.getItem('createNCForm');
+      if (savedForm) {
+        const savedFormValue = JSON.parse(savedForm);
+        this.createNCForm.setValue(savedFormValue);
+        this.files = savedFormValue.attachment;
+      }
     });
   }
 
@@ -233,7 +242,7 @@ export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
     this.filteredDetectedByUnit = this.detectedByUnitControl.valueChanges.pipe(
       startWith(''),
       map((value) => {
-        const name = typeof value === 'string' ? value : value!.unitName;
+        const name = typeof value === 'string' ? value : value?.unitName;
         return name
           ? this._filterDetectedUnit(name as string)
           : this.detectedByUnits.slice();
@@ -343,10 +352,7 @@ export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
         }),
         defaultIfEmpty(this.assignedDepartment)
       );
-    Object.keys(this.createNCForm.controls).forEach((field) => {
-      const control = this.createNCForm.get(field);
-      control!.markAsTouched({ onlySelf: true });
-    });
+    this.markAsTouched();
   }
 
   ngOnDestroy(): void {
@@ -444,14 +450,27 @@ export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
 
   onResetClick() {
     this.createNCForm.reset();
+    localStorage.removeItem('createNCForm');
     this.files = [];
+    this.ncTypeControl.setValue('factory internal');
+    this.detectionDateControl.setValue(new Date());
+    this.dueDateControl.setValue(this._dueDate);
+    this.markAsTouched();
+  }
+
+  onSaveClick() {
+    localStorage.setItem(
+      'createNCForm',
+      JSON.stringify(this.createNCForm.value)
+    );
+    this._toastr.success('This form has been saved to localStorage', 'Success');
   }
 
   onSubmitClick() {
-    (this.createNCForm as FormGroup).addControl(
-      'attachment',
-      new FormControl(this.files)
-    );
+    if (this.createNCForm.invalid) {
+      this._toastr.error('Please fill in all required fields', 'Error');
+      return;
+    }
     this._ncgService.createNC(this.createNCForm.value).subscribe((res) => {
       if (res.result) {
         this._toastr.success('Create NC successfully');
@@ -459,6 +478,13 @@ export class CreateNonConformitiesComponent implements OnInit, OnDestroy {
       } else {
         console.log(res.message);
       }
+    });
+  }
+
+  markAsTouched() {
+    Object.keys(this.createNCForm.controls).forEach((field) => {
+      const control = this.createNCForm.get(field);
+      control!.markAsTouched({ onlySelf: true });
     });
   }
 }
