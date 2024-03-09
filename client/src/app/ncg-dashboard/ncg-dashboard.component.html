@@ -1,41 +1,4 @@
 <div class="w-100">
-  <div class="mt-2 mb-2">
-    <div class="row">
-      <mat-list>
-        <mat-list-item
-          (mouseenter)="onItemHover($event)"
-          (click)="onItemClick($event, 'me')"
-          [ngClass]="{ active: item === 'me' }"
-        >
-          Me
-        </mat-list-item>
-
-        <mat-list-item
-          (mouseenter)="onItemHover($event)"
-          (click)="onItemClick($event, 'myGroup')"
-          [ngClass]="{ active: item === 'myGroup' }"
-        >
-          My Group
-        </mat-list-item>
-
-        <mat-list-item
-          (mouseenter)="onItemHover($event)"
-          (click)="onItemClick($event, 'businessUnit')"
-          [ngClass]="{ active: item === 'businessUnit' }"
-        >
-          Business Unit
-        </mat-list-item>
-
-        <mat-list-item
-          (mouseenter)="onItemHover($event)"
-          (click)="onItemClick($event, 'subBusiness')"
-          [ngClass]="{ active: item === 'subBusiness' }"
-        >
-          Sub-business
-        </mat-list-item>
-      </mat-list>
-    </div>
-  </div>
   <div class="row mt-2 mb-2">
     <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 pt-1 widget-container">
       <div

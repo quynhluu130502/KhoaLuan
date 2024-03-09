@@ -36,7 +36,6 @@ export class NcgDashboardComponent implements OnInit, AfterViewInit {
     'NC_Type',
   ];
 
-  item: string = 'me';
   openNCs: any[] = [];
   solvedNCs: any[] = [];
   onTimeNCs: any[] = [];
@@ -120,15 +119,6 @@ export class NcgDashboardComponent implements OnInit, AfterViewInit {
       });
       this.handleUpdate();
     });
-  }
-
-  onItemHover(event: MouseEvent): void {
-    const target = event.target as HTMLElement;
-    target.style.cursor = 'pointer';
-  }
-
-  onItemClick(event: MouseEvent, item: string): void {
-    this.item = item;
   }
 
   handleUpdate() {
