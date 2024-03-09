@@ -150,7 +150,9 @@ export class CreateInternalUserComponent implements OnInit {
     this._qsaService.addApps(this.inforForm.value).subscribe((res) => {
       if (res.result) {
         if (this.userTable) {
-          this.userTable.next(res.result);
+          const data = this.userTable.getValue();
+          data.push(res.result);
+          this.userTable.next(data);
         }
         if (this.dialogData !== null) {
           this.dialogData = this.inforForm.value;

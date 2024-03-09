@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">Profile deletion</h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-describedby="modal-title"
+    (click)="modal.dismiss('Cross click')"
+  ></button>
+</div>
+<div class="modal-body">
+  <p>
+    <strong
+      >{{ modalData.title }}
+      <span class="text-primary">"{{ modalData.object }}"</span>
+      profile?</strong
+    >
+  </p>
+  <p>
+    {{ modalData.content }}
+    <span class="text-danger">This operation can not be undone.</span>
+  </p>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-outline-secondary"
+    (click)="dismissModal()"
+  >
+    Cancel
+  </button>
+  <button type="button" class="btn btn-danger" (click)="closeModal()">
+    Ok
+  </button>
+</div>

@@ -1,6 +1,7 @@
 import {
   AfterViewInit,
   Component,
+  Injector,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -17,6 +18,7 @@ import { CreateInternalUserComponent } from '../qsa/create-internal-user/create-
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MODALS } from '../confirm-modal/confirm-modal.component';
 
 /**
  * @title Basic use of `<table mat-table>`
@@ -109,12 +111,43 @@ export class InternalUserComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   removeInternalUser(user: any) {
-    this._qsaService.removerInternalUser(user.sso).subscribe((res) => {
-      if (res.result) {
-        this.getInternalUsers();
-        return;
+    this.openConfirmModal().then((outcome) => {
+      if (outcome) {
+        this._qsaService.removerInternalUser(user.sso).subscribe((res) => {
+          if (res.result) {
+            this.getInternalUsers();
+            return;
+          }
+          this._toastr.error('Failed to remove internal user');
+        });
       }
-      this._toastr.error('Failed to remove internal user');
     });
+  }
+
+  injector = Injector.create({
+    providers: [
+      {
+        provide: 'modalData',
+        useValue: {
+          title: 'Are you sure you want to delete this',
+          object: 'Internal User',
+          content:
+            'All information associated to this user profile will be permanently deleted.',
+        },
+      },
+    ],
+  });
+
+  async openConfirmModal() {
+    const modalRef = this.modalService.open(MODALS['focusFirst'], {
+      injector: this.injector,
+    });
+    let outcome = false;
+    try {
+      outcome = await modalRef.result;
+    } catch (reason: boolean | any) {
+      outcome = reason;
+    }
+    return outcome;
   }
 }

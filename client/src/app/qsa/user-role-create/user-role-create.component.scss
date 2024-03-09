@@ -2,3 +2,8 @@
   flex-basis: 23%;
   max-width: 23%;
 }
+
+:host ::ng-deep .mat-mdc-card {
+  border-color: #cea6a6;
+  border-width: 1px;
+}
