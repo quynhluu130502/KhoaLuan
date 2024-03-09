@@ -46,7 +46,7 @@ const getUserById = async (req: Request, res: Response) => {
     const sso = req.body.sso;
     const user = await User.findOne({ sso: sso }).select("-pass -salt");
     if (user) {
-      res.json({ message: "User found", user: user });
+      res.json({ message: "User found", result: user });
     } else {
       res.json({ message: "Document not found" });
     }
@@ -140,11 +140,25 @@ const deleteUser = async (req: Request, res: Response) => {
   }
 };
 
+const deleteAllUsers = async (req: Request, res: Response) => {
+  try {
+    await User.deleteMany({});
+    res.status(200).json({ message: "All users deleted" });
+  } catch (error: any) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 const login = async (req: Request, res: Response) => {
   try {
     let sso = req.body.sso;
     let pass = req.body.pass;
-    let user: any = await User.findOne({ sso: sso }).select("-_id");
+    let user: any = await User.findOneAndUpdate(
+      { sso: sso },
+      {
+        last_login: new Date(),
+      }
+    ).select("-_id");
     if (!user) {
       res.json({ message: "User not found" });
       return;
@@ -245,6 +259,7 @@ const userController = {
   updateUser,
   updatePassword,
   deleteUser,
+  deleteAllUsers,
   login,
   refreshToken,
   isAuthorized,

@@ -44,9 +44,9 @@ router.patch("/addApps", async (req: Request, res: Response) => {
   const application = req.body.application;
   const sso = req.body.sso;
   try {
-    let user = await User.findOneAndUpdate({ sso: sso }, { application: application });
+    let user = await User.findOneAndUpdate({ sso: sso }, { application: application }).select("-pass -salt -_id");
     if (user) {
-      res.json({ message: "Applications added successfully" });
+      res.json({ result: user, message: "Applications added successfully" });
     } else {
       res.json({ error: "User not found" });
     }
@@ -54,5 +54,55 @@ router.patch("/addApps", async (req: Request, res: Response) => {
     res.json({ error: "User not found" });
   }
 });
+
+const getInternalUsers = async (req: Request, res: Response) => {
+  try {
+    const users = await User.find({
+      application: {
+        $exists: true,
+        $ne: [],
+      },
+    }).select("-pass -salt");
+    res.json({ result: users, message: "Internal users found" });
+  } catch (error: any) {
+    res.status(400).json({ message: error.message });
+  }
+};
+router.get("/internalUsers", getInternalUsers);
+
+const isInternalUser = async (req: Request, res: Response) => {
+  try {
+    const sso = req.body.sso;
+    const user = await User.findOne({ sso: sso });
+    if (user) {
+      if (user.application.length == 0) {
+        res.json({ result: user, message: "User is not an internal user" });
+        return;
+      }
+      res.json({ message: "User is an internal user" });
+      return;
+    }
+    res.json({ message: "User not found" });
+    return;
+  } catch (error: any) {
+    res.status(400).json({ message: error.message });
+  }
+};
+router.post("/isInternalUser", isInternalUser);
+
+const removeInternalUser = async (req: Request, res: Response) => {
+  try {
+    const sso = req.body.sso;
+    const user = await User.findOneAndUpdate({ sso: sso }, { application: [] });
+    if (user) {
+      res.json({ result: "Success", message: "User removed from application" });
+    } else {
+      res.json({ message: "User not found" });
+    }
+  } catch (error: any) {
+    res.status(400).json({ message: error.message });
+  }
+};
+router.patch("/removeInternalUser", removeInternalUser);
 
 export default router;

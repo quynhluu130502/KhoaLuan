@@ -1,9 +1,12 @@
 import { Router } from "express";
 import userController from "../controllers/userController";
+import user from "../models/user";
 
 const userRouter = Router();
 
 userRouter.get("/", userController.getAllUsers);
+
+userRouter.get("/name", userController.getNameOfUser);
 
 userRouter.post("/", userController.createUser);
 
@@ -22,7 +25,5 @@ userRouter.post("/refreshToken", userController.refreshToken);
 userRouter.get("/protected", userController.isAuthorized);
 
 userRouter.post("/logout", userController.logOut);
-
-userRouter.get("/name", userController.getNameOfUser);
 
 export default userRouter;

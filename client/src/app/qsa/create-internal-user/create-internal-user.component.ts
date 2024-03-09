@@ -1,16 +1,46 @@
-import { Component, QueryList, ViewChildren } from '@angular/core';
+import {
+  Component,
+  Inject,
+  Input,
+  OnInit,
+  Optional,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { UserRoleCreateComponent } from '../user-role-create/user-role-create.component';
 import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { QsaService } from '../../services/qsa.service';
-import { UserRoleCreateComponent } from '../user-role-create/user-role-create.component';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-create-internal-user',
   templateUrl: './create-internal-user.component.html',
   styleUrl: './create-internal-user.component.scss',
+  // providers: [
+  //   { provide: MAT_DIALOG_DATA, useValue: {} }, // Provide a default value for MAT_DIALOG_DATA
+  // ],
 })
-export class CreateInternalUserComponent {
+export class CreateInternalUserComponent implements OnInit {
+  constructor(
+    @Optional() @Inject(MAT_DIALOG_DATA) public dialogData: any,
+    @Optional() public dialogRef: MatDialogRef<CreateInternalUserComponent>,
+    // @Optional() @Inject(BehaviorSubject<any[]>) public userTable: any,
+    private _userService: UserService,
+    private _qsaService: QsaService,
+    private _toast: ToastrService
+  ) {
+    this._qsaService.getApplicationName().subscribe((res) => {
+      this.applications = res;
+      this.applications.forEach((application) => {
+        application.selected = false;
+      });
+    });
+  }
+
+  @Input() userTable?: BehaviorSubject<any[]>; // This is the userTable from internal-user.component.ts
   @ViewChildren(UserRoleCreateComponent)
   userRoleComponents!: QueryList<UserRoleCreateComponent>;
   applications: any[] = [];
@@ -22,17 +52,18 @@ export class CreateInternalUserComponent {
       unit: '',
     },
   ]; // Start with one <app-user-role-create>
-  constructor(
-    private _user: UserService,
-    private _toast: ToastrService,
-    private _qsa: QsaService
-  ) {
-    this._qsa.getApplicationName().subscribe((res) => {
-      this.applications = res;
-      this.applications.forEach((application) => {
-        application.selected = false;
+
+  ngOnInit() {
+    if (this.dialogData !== null) {
+      this.inforForm.patchValue({
+        sso: this.dialogData.sso,
+        email: this.dialogData.email,
+        name: this.dialogData.name,
+        job_function: this.dialogData.job_function,
+        language: this.dialogData.language,
       });
-    });
+      this.userRoles = this.dialogData.application;
+    }
   }
 
   sso = new FormControl('', [
@@ -68,29 +99,23 @@ export class CreateInternalUserComponent {
   onSearch() {
     const sso: string | null = this.sso.value;
     if (sso !== null) {
-      this._user.getUserById(sso).subscribe((res) => {
-        if (res.user) {
+      this._qsaService.isInternalUser(sso).subscribe((res) => {
+        if (res.result) {
           this.inforForm.patchValue({
-            email: res.user.email,
-            name: res.user.name,
-            job_function: res.user.job_function,
-            language: res.user.language,
+            email: res.result.email,
+            name: res.result.name,
+            job_function: res.result.job_function,
+            language: res.result.language,
           });
-          this.userRoles = res.user.application as {
-            application: string;
-            role: string;
-            subBusiness: string;
-            unit: string;
-          }[];
           // Disable the input fields
           this.inforForm.get('email')?.disable();
           this.inforForm.get('name')?.disable();
           this.inforForm.get('job_function')?.disable();
           this.inforForm.get('language')?.disable();
           this._toast.success('Account ID found', 'RETRIEVE USER INFO');
-        } else {
-          this._toast.error('Account ID not found', 'RETRIEVE USER INFO');
+          return;
         }
+        this._toast.error(`${res.message}`, 'RETRIEVE USER INFO');
       });
     }
   }
@@ -122,9 +147,26 @@ export class CreateInternalUserComponent {
       applicationRole.push(component.onSubmit());
     });
     this.inforForm.get('application')?.setValue(applicationRole);
-    console.log();
-    this._qsa.addApps(this.inforForm.value).subscribe((res) => {
-      console.log(res);
+    this._qsaService.addApps(this.inforForm.value).subscribe((res) => {
+      if (res.result) {
+        if (this.userTable) {
+          this.userTable.next(res.result);
+        }
+        if (this.dialogData !== null) {
+          this.dialogData = this.inforForm.value;
+        }
+        this._toast.success('User role added successfully');
+        return;
+      }
     });
+  }
+
+  cancelClick() {
+    this.dialogRef.close();
+  }
+
+  saveClick() {
+    this.addRole();
+    this.dialogRef.close(this.dialogData);
   }
 }

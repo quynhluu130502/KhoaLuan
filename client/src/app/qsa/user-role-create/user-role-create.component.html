@@ -9,8 +9,10 @@
       >
         <mat-form-field class="role-create-field flex-grow-1 flex-shrink-1">
           <mat-label>Application</mat-label>
-          <mat-select [formControl]="applicationControl"
-          (selectionChange)="onSelectionChange($event)">
+          <mat-select
+            [formControl]="applicationControl"
+            (selectionChange)="onSelectionChange($event)"
+          >
             <mat-option
               *ngFor="let app of applications; index as i"
               [value]="app?.applicationCode"
@@ -52,6 +54,7 @@
   </mat-card>
   <button
     mat-mini-fab
+    class="ms-3"
     color="warn"
     matTooltip="Remove this role"
     matTooltipPosition="above"

@@ -65,7 +65,6 @@ export class QsaService {
   }
 
   addApps(data: any): Observable<any> {
-    console.log(data);
     return this._http.patch(`${environment.serverUrl}/qsa/addApps`, data).pipe(
       map((res) => {
         return res;
@@ -73,5 +72,39 @@ export class QsaService {
       retry(2),
       catchError(handleError)
     );
+  }
+
+  getInternalUsers(): Observable<any> {
+    return this._http.get(`${environment.serverUrl}/qsa/internalUsers`).pipe(
+      map((res) => {
+        return res;
+      }),
+      retry(2),
+      catchError(handleError)
+    );
+  }
+
+  isInternalUser(sso: string): Observable<any> {
+    return this._http
+      .post(`${environment.serverUrl}/qsa/isInternalUser`, { sso })
+      .pipe(
+        map((res) => {
+          return res;
+        }),
+        retry(2),
+        catchError(handleError)
+      );
+  }
+
+  removerInternalUser(sso: string): Observable<any> {
+    return this._http
+      .patch(`${environment.serverUrl}/qsa/removeInternalUser`, { sso })
+      .pipe(
+        map((res) => {
+          return res;
+        }),
+        retry(2),
+        catchError(handleError)
+      );
   }
 }

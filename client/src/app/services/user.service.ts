@@ -5,11 +5,6 @@ import { User } from '../models/user.model';
 import { handleError } from '../constant';
 import { environment } from 'src/environments/environment';
 
-interface successfulResponse {
-  user: User;
-  message: string;
-}
-
 const headers: HttpHeaders = new HttpHeaders().set(
   'Content-Type',
   'application/json;charset=utf-8'
@@ -36,12 +31,12 @@ export class UserService {
       );
   }
 
-  public getUserById(id: string): Observable<successfulResponse> {
+  public getUserById(id: string): Observable<any> {
     const requestOptions: object = {
       headers: headers,
     };
     return this._http
-      .post<successfulResponse>(
+      .post<any>(
         `${environment.serverUrl}/user/get`,
         {
           sso: id,
@@ -50,7 +45,7 @@ export class UserService {
       )
       .pipe(
         map((res) => {
-          return res as successfulResponse;
+          return res as any;
         }),
         retry(2),
         catchError(handleError)

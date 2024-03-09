@@ -1,10 +1,13 @@
-<mat-card>
-  <mat-card-header>
+<mat-card style="overflow-y: scroll">
+  <mat-card-header class="text-center">
     <mat-card-title>
-      <h1>Create Internal User</h1>
+      <h1 *ngIf="dialogData === null">Create Internal User</h1>
+      <h1 class="text-center" *ngIf="dialogData !== null">
+        Edit Internal User
+      </h1>
     </mat-card-title>
   </mat-card-header>
-  <mat-tab-group>
+  <mat-tab-group *ngIf="dialogData === null">
     <mat-tab label="Grid Solutions">
       <div class="p-5">
         <mat-form-field>
@@ -64,7 +67,6 @@
               <mat-option value="German">German</mat-option>
               <mat-option value="Spanish">Spanish</mat-option>
             </mat-select>
-            <mat-hint align="end">Click here to drop down menu</mat-hint>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Job Function</mat-label>
@@ -75,7 +77,7 @@
               formControlName="job_function"
             />
           </mat-form-field>
-          <div>
+          <div class="w-100">
             <div *ngFor="let userRole of userRoles; index as i">
               <app-user-role-create
                 (remove)="removeUserRole(i)"
@@ -111,4 +113,101 @@
       </div>
     </mat-tab>
   </mat-tab-group>
+  <div class="p-5" *ngIf="dialogData !== null">
+    <form
+      class="d-flex flex-row flex-wrap justify-content-between align-content-start"
+      [formGroup]="inforForm"
+    >
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          maxlength="6"
+          placeholder="Ex. pascal.lumbroso@med.ge.com"
+          formControlName="email"
+          [readonly]="true"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Full Name</mat-label>
+        <input
+          matInput
+          maxlength="6"
+          placeholder="Ex. 100123"
+          formControlName="name"
+          [readonly]="true"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Language</mat-label>
+        <mat-select formControlName="language" readonly>
+          <mat-option value="English">English</mat-option>
+          <mat-option value="French">French</mat-option>
+          <mat-option value="Turkish">Turkish</mat-option>
+          <mat-option value="Italian">Italian</mat-option>
+          <mat-option value="Portuguese">Portuguese</mat-option>
+          <mat-option value="Chinese">Chinese</mat-option>
+          <mat-option value="German">German</mat-option>
+          <mat-option value="Spanish">Spanish</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Job Function</mat-label>
+        <input
+          matInput
+          maxlength="6"
+          placeholder="Ex. Digital Technology"
+          formControlName="job_function"
+          [readonly]="true"
+        />
+      </mat-form-field>
+      <div class="w-100">
+        <div *ngFor="let userRole of userRoles; index as i">
+          <app-user-role-create
+            (remove)="removeUserRole(i)"
+            [applications]="applications"
+            [userRole]="userRole"
+          ></app-user-role-create>
+        </div>
+        <div
+          class="d-flex flex-row justify-content-end align-content-center align-items-center"
+        >
+          <button
+            matTooltip="Add new role"
+            matTooltipPosition="above"
+            mat-mini-fab
+            color="accent"
+            (click)="addUserRole()"
+            title="Add new role"
+          >
+            <mat-icon>add_circle</mat-icon>
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex flex-row justify-content-center">
+          <button
+            mat-flat-button
+            class="me-3"
+            color="accent"
+            (click)="cancelClick()"
+            type="button"
+          >
+            Cancel
+          </button>
+          <button
+            mat-flat-button
+            class="ms-3"
+            color="primary"
+            (click)="saveClick()"
+            type="button"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </mat-card>

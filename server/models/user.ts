@@ -36,12 +36,12 @@ let userSchema = new mongoose.Schema({
   role: {
     required: false,
     type: String,
-    default: "User",
+    default: "admin",
   },
   application: {
     required: false,
     type: Array,
-    default: ["NC"],
+    default: [],
   },
   last_login: {
     required: true,
