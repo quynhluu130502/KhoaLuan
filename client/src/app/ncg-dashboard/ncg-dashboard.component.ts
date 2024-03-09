@@ -3,7 +3,7 @@ import { Platform } from '@angular/cdk/platform';
 import * as Highcharts from 'highcharts';
 import noData from 'highcharts/modules/no-data-to-display';
 import { NcgService } from '../services/ncg.service';
-import { pieChartOptions } from '../constant';
+import { pieChartOptions, STAGE } from '../constant';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
@@ -45,10 +45,13 @@ export class NcgDashboardComponent implements OnInit, AfterViewInit {
   notStartedActions: any[] = [];
   inProgressActions: any[] = [];
   doneActions: any[] = [];
+  // NC's stage chart
+  ncStages: any = {};
 
   Highcharts: typeof Highcharts = Highcharts;
 
-  pieChartOptions: Highcharts.Options = pieChartOptions;
+  actionStatusOptions: Highcharts.Options = pieChartOptions;
+  ncStageOptions: Highcharts.Options = pieChartOptions;
 
   chartConstructor: string = 'chart'; // optional string, defaults to 'chart'
   chartCallback: Highcharts.ChartCallbackFunction = function (
@@ -63,13 +66,13 @@ export class NcgDashboardComponent implements OnInit, AfterViewInit {
   runOutsideAngular: boolean = false; // optional boolean, defaults to false
 
   ngOnInit(): void {
-    if (this.pieChartOptions.legend) {
+    if (this.actionStatusOptions.legend) {
       if (this.platform.FIREFOX) {
-        this.pieChartOptions.legend.itemMarginTop = 6;
+        this.actionStatusOptions.legend.itemMarginTop = 6;
       } else if (this.platform.SAFARI) {
-        this.pieChartOptions.legend.itemMarginTop = 12.1;
+        this.actionStatusOptions.legend.itemMarginTop = 12.1;
       } else {
-        this.pieChartOptions.legend.itemMarginTop = 8.2;
+        this.actionStatusOptions.legend.itemMarginTop = 8.2;
       }
     }
     this.getNCs();
@@ -106,6 +109,14 @@ export class NcgDashboardComponent implements OnInit, AfterViewInit {
             }
           });
         }
+        if (this.ncStages[STAGE[nc.stage]] === undefined) {
+          this.ncStages[STAGE[nc.stage]] = {
+            name: STAGE[nc.stage],
+            y: 1,
+          };
+        } else {
+          this.ncStages[STAGE[nc.stage]].y++;
+        }
       });
       this.handleUpdate();
     });
@@ -121,7 +132,16 @@ export class NcgDashboardComponent implements OnInit, AfterViewInit {
   }
 
   handleUpdate() {
-    this.pieChartOptions.series = [
+    this.actionStatusOptions = {
+      ...this.actionStatusOptions,
+      title: {
+        text: 'Status of Actions',
+      },
+      tooltip: {
+        pointFormat: '{point.name}: <b>{point.y} Actions</b>',
+      },
+    };
+    this.actionStatusOptions.series = [
       {
         type: 'pie',
         name: 'Actions',
@@ -142,6 +162,22 @@ export class NcgDashboardComponent implements OnInit, AfterViewInit {
             color: '#007BFF',
           },
         ],
+      },
+    ];
+    this.ncStageOptions = {
+      ...this.ncStageOptions,
+      title: {
+        text: 'NC Stages',
+      },
+      tooltip: {
+        pointFormat: '{point.name}: <b>{point.y} NCs</b>',
+      },
+    };
+    this.ncStageOptions.series = [
+      {
+        type: 'pie',
+        name: 'NCs',
+        data: Object.values(this.ncStages),
       },
     ];
     this.updateFlag = true;

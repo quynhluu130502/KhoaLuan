@@ -4,6 +4,7 @@ import { throwError } from 'rxjs';
 export {
   qsaMenu,
   ncgMenu,
+  STAGE,
   handleError,
   handleSimpleError,
   columnChartOptions,
@@ -27,6 +28,7 @@ const qsaMenu = [
     menu: 'In development',
   },
 ];
+
 const ncgMenu = [
   {
     link: '/ncg/dashboard',
@@ -49,6 +51,14 @@ const ncgMenu = [
     menu: 'Help',
   },
 ];
+
+const STAGE: { [key: string]: string } = {
+  '0': 'Created',
+  '1': 'Accepted',
+  '2': 'Solved',
+  '3': 'Closed',
+  '-1': 'Cancelled',
+};
 
 const handleError = (err: HttpErrorResponse) => {
   if (err.error instanceof Error) {
@@ -115,17 +125,9 @@ const pieChartOptions: Highcharts.Options = {
   chart: {
     type: 'pie',
     backgroundColor: '#FFFFFF',
-    // width: 400,
-    // height: 200,
     plotBackgroundColor: undefined,
     plotBorderWidth: undefined,
     plotShadow: false,
-  },
-  title: {
-    text: 'Status of Actions',
-  },
-  tooltip: {
-    pointFormat: '{point.name}: <b>{point.y} Actions</b>',
   },
   legend: {
     floating: false,

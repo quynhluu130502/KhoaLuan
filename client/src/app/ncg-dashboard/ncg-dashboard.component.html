@@ -112,11 +112,25 @@
   </div>
   <div class="row">
     <!-- Action's Status Chart -->
-    <div class="col-12">
+    <div class="col-6">
       <highcharts-chart
         #actionStatusChart
         [Highcharts]="Highcharts"
-        [options]="pieChartOptions"
+        [options]="ncStageOptions"
+        [constructorType]="chartConstructor"
+        [callbackFunction]="chartCallback"
+        [(update)]="updateFlag"
+        [oneToOne]="oneToOneFlag"
+        [runOutsideAngular]="runOutsideAngular"
+        style="width: 100%; height: 400px; display: block"
+      ></highcharts-chart>
+    </div>
+    <!-- NC's Stage Chart -->
+    <div class="col-6">
+      <highcharts-chart
+        #actionStatusChart
+        [Highcharts]="Highcharts"
+        [options]="actionStatusOptions"
         [constructorType]="chartConstructor"
         [callbackFunction]="chartCallback"
         [(update)]="updateFlag"
