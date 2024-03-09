@@ -44,7 +44,13 @@ export class QsaDashboardComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   dataSource = new MatTableDataSource<any>([]);
-  displayedColumns: string[] = ['User', 'NC_ID', 'Status', 'NC_Aging_Date'];
+  displayedColumns: string[] = [
+    'User',
+    'NC_ID',
+    'Status',
+    'Activity',
+    'NC_Aging_Date',
+  ];
 
   numberOfCharts: number = 3;
   Highcharts: typeof Highcharts = Highcharts;
