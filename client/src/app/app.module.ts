@@ -30,6 +30,7 @@ import { NcgDashboardComponent } from './ncg-dashboard/ncg-dashboard.component';
 import { AttachmentComponent } from './attachment/attachment.component';
 import { QsaDashboardComponent } from './qsa-dashboard/qsa-dashboard.component';
 import { StageToStringPipe } from './Pipes/stage-to-string.pipe';
+import { SharedDashboardComponent } from './shared-dashboard/shared-dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +54,7 @@ import { StageToStringPipe } from './Pipes/stage-to-string.pipe';
     NcgDashboardComponent,
     AttachmentComponent,
     QsaDashboardComponent,
+    SharedDashboardComponent,
   ],
   exports: [FeatherModule],
   providers: [],
