@@ -27,10 +27,20 @@
             mat-flat-button
             color="accent"
             type="button"
+            class="me-3"
             (click)="onSearch()"
             [disabled]="sso.invalid"
           >
             Search
+          </button>
+          <button
+            mat-flat-button
+            color="primary"
+            type="button"
+            class="ms-3"
+            (click)="onChange()"
+          >
+            Change Account ID
           </button>
         </div>
         <form

@@ -17,9 +17,9 @@ import { MatSelectChange } from '@angular/material/select';
   styleUrl: './user-role-create.component.scss',
 })
 export class UserRoleCreateComponent implements OnInit, OnChanges {
-  @Input() applications: any;
-  @Input() userRole: any;
   @Output() remove = new EventEmitter<void>();
+  @Input() userRole: any;
+  @Input() applications: any;
   applicationControl = new FormControl('', [Validators.required]);
   roleControl = new FormControl('', [Validators.required]);
   roles: any[] = [];
@@ -33,8 +33,10 @@ export class UserRoleCreateComponent implements OnInit, OnChanges {
     subBusiness: this.subBusinessControl,
     unit: this.unitControl,
   });
+  previousValue: any;
 
   constructor(private _qsa: QsaService) {}
+
   ngOnInit(): void {
     this.applicationControl.valueChanges.subscribe((res) => {
       if (res) {
@@ -75,6 +77,8 @@ export class UserRoleCreateComponent implements OnInit, OnChanges {
         this.applicationControl.setValue(this.userRole.application, {
           emitEvent: true,
         });
+        // Set the previous value in case this component is opend in modal
+        this.previousValue = this.userRole.application;
         this.roleControl.setValue(this.userRole.role, { emitEvent: true });
         this.subBusinessControl.setValue(this.userRole.subBusiness, {
           emitEvent: true,
@@ -83,14 +87,22 @@ export class UserRoleCreateComponent implements OnInit, OnChanges {
       }
     }
   }
+
   onSubmit() {
     return this.roleForm.value;
   }
+
+  isFormValid() {
+    const result = this.roleForm.valid;
+    if (!result) {
+      this.roleForm.markAllAsTouched();
+    }
+    return this.roleForm.valid;
+  }
+
   onSelected(index: any) {
     this.applications[index].selected = !this.applications[index].selected;
   }
-
-  previousValue: any;
 
   onSelectionChange(event: MatSelectChange) {
     if (this.previousValue) {

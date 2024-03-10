@@ -31,14 +31,7 @@ export class CreateInternalUserComponent implements OnInit {
     private _userService: UserService,
     private _qsaService: QsaService,
     private _toast: ToastrService
-  ) {
-    this._qsaService.getApplicationName().subscribe((res) => {
-      this.applications = res;
-      this.applications.forEach((application) => {
-        application.selected = false;
-      });
-    });
-  }
+  ) {}
 
   @Input() userTable?: BehaviorSubject<any[]>; // This is the userTable from internal-user.component.ts
   @ViewChildren(UserRoleCreateComponent)
@@ -54,16 +47,30 @@ export class CreateInternalUserComponent implements OnInit {
   ]; // Start with one <app-user-role-create>
 
   ngOnInit() {
-    if (this.dialogData !== null) {
-      this.inforForm.patchValue({
-        sso: this.dialogData.sso,
-        email: this.dialogData.email,
-        name: this.dialogData.name,
-        job_function: this.dialogData.job_function,
-        language: this.dialogData.language,
+    this._qsaService.getApplicationName().subscribe((res) => {
+      this.applications = res;
+      this.applications.forEach((application) => {
+        application.selected = false;
       });
-      this.userRoles = this.dialogData.application;
-    }
+
+      if (this.dialogData !== null) {
+        this.dialogData.application.forEach((role: any) => {
+          this.applications.forEach((application) => {
+            if (application.applicationCode === role.application) {
+              application.selected = true;
+            }
+          });
+        });
+        this.inforForm.patchValue({
+          sso: this.dialogData.sso,
+          email: this.dialogData.email,
+          name: this.dialogData.name,
+          job_function: this.dialogData.job_function,
+          language: this.dialogData.language,
+        });
+        this.userRoles = this.dialogData.application;
+      }
+    });
   }
 
   sso = new FormControl('', [
@@ -75,14 +82,20 @@ export class CreateInternalUserComponent implements OnInit {
     email: new FormControl({ value: '', disabled: false }, [
       Validators.required,
       Validators.email,
+      Validators.nullValidator,
     ]),
     name: new FormControl({ value: '', disabled: false }, [
       Validators.required,
+      Validators.nullValidator,
     ]),
     job_function: new FormControl({ value: '', disabled: false }, [
       Validators.required,
+      Validators.nullValidator,
     ]),
-    language: new FormControl('English'),
+    language: new FormControl({ value: 'English', disabled: false }, [
+      Validators.required,
+      Validators.nullValidator,
+    ]),
     application: new FormControl(),
   });
 
@@ -108,16 +121,40 @@ export class CreateInternalUserComponent implements OnInit {
             language: res.result.language,
           });
           // Disable the input fields
-          this.inforForm.get('email')?.disable();
-          this.inforForm.get('name')?.disable();
-          this.inforForm.get('job_function')?.disable();
-          this.inforForm.get('language')?.disable();
+          this.disableForm();
           this._toast.success('Account ID found', 'RETRIEVE USER INFO');
           return;
         }
         this._toast.error(`${res.message}`, 'RETRIEVE USER INFO');
       });
     }
+  }
+
+  onChange() {
+    this.enableForm();
+    this.inforForm.patchValue({
+      sso: null,
+      email: null,
+      name: null,
+      job_function: null,
+      language: 'English',
+    });
+  }
+
+  disableForm() {
+    this.inforForm.get('sso')?.disable();
+    this.inforForm.get('email')?.disable();
+    this.inforForm.get('name')?.disable();
+    this.inforForm.get('job_function')?.disable();
+    this.inforForm.get('language')?.disable();
+  }
+
+  enableForm() {
+    this.inforForm.get('sso')?.enable();
+    this.inforForm.get('email')?.enable();
+    this.inforForm.get('name')?.enable();
+    this.inforForm.get('job_function')?.enable();
+    this.inforForm.get('language')?.enable();
   }
 
   addUserRole() {
@@ -142,25 +179,51 @@ export class CreateInternalUserComponent implements OnInit {
   }
 
   addRole() {
+    if (this.userRoles.length === 0) {
+      this._toast.info(
+        'Please add an application role to the user',
+        'ADD USER ROLE'
+      );
+      return;
+    }
+    if (!this.isAllRoleValid()) {
+      this._toast.info(
+        'Please fill in all the required fields',
+        'ADD USER ROLE'
+      );
+      return;
+    }
     const applicationRole: any[] = [];
     this.userRoleComponents.forEach((component) => {
       applicationRole.push(component.onSubmit());
     });
     this.inforForm.get('application')?.setValue(applicationRole);
-    this._qsaService.addApps(this.inforForm.value).subscribe((res) => {
+    const inforFormValue = this.inforForm.value;
+    this._qsaService.addApps(inforFormValue).subscribe((res) => {
       if (res.result) {
-        if (this.userTable) {
+        if (this.userTable !== undefined) {
           const data = this.userTable.getValue();
-          data.push(res.result);
+          data.push({ ...res.result, application: inforFormValue.application });
           this.userTable.next(data);
         }
         if (this.dialogData !== null) {
-          this.dialogData = this.inforForm.value;
+          this.dialogData = inforFormValue;
         }
         this._toast.success('User role added successfully');
         return;
       }
     });
+  }
+
+  isAllRoleValid() {
+    let isValid = true;
+    for (let i = 0; i < this.userRoleComponents.length; i++) {
+      if (!this.userRoleComponents.get(i)?.isFormValid()) {
+        isValid = false;
+        break;
+      }
+    }
+    return isValid;
   }
 
   cancelClick() {
