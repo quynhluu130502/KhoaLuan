@@ -33,6 +33,7 @@ import { StageToStringPipe } from './Pipes/stage-to-string.pipe';
 import { SharedDashboardComponent } from './shared-dashboard/shared-dashboard.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { HeaderComponent } from './header/header.component';
+import { HelpComponent } from './help/help.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +60,7 @@ import { HeaderComponent } from './header/header.component';
     SharedDashboardComponent,
     MyProfileComponent,
     HeaderComponent,
+    HelpComponent,
   ],
   exports: [FeatherModule],
   providers: [],

@@ -58,6 +58,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { GoogleMap } from '@angular/google-maps';
 import { HighchartsChartModule } from 'highcharts-angular';
 
 const VIETNAM_DATE_FORMAT = {
@@ -78,7 +79,7 @@ const VIETNAM_DATE_FORMAT = {
 
 @NgModule({
   declarations: [],
-  imports: [],
+  imports: [GoogleMap],
   exports: [
     MatAutocompleteModule,
     MatButtonModule,
@@ -131,6 +132,7 @@ const VIETNAM_DATE_FORMAT = {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    GoogleMap,
     HighchartsChartModule,
   ],
   // Enable to use moment date adapter for datepicker

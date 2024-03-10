@@ -14,6 +14,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NCRDetailComponent } from './ncg/ncr-detail/ncr-detail.component';
 import { NcgDashboardComponent } from './ncg-dashboard/ncg-dashboard.component';
 import { QsaDashboardComponent } from './qsa-dashboard/qsa-dashboard.component';
+import { HelpComponent } from './help/help.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -40,6 +41,7 @@ const routes: Routes = [
       { path: 'dashboard', component: NcgDashboardComponent },
       { path: 'create-ncr', component: NonConformitiesComponent },
       { path: 'ncr-details/:id', component: NCRDetailComponent },
+      { path: 'help', component: HelpComponent },
       {
         path: 'ticket',
         component: TableTicketComponent,

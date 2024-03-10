@@ -46,7 +46,7 @@ const ncgMenu = [
     menu: 'MY NCs',
   },
   {
-    link: '/ncg/non-conformities',
+    link: '/ncg/help',
     icon: 'info',
     menu: 'Help',
   },
