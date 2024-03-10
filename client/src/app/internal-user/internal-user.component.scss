@@ -1,9 +1,16 @@
 table {
   width: 100%;
+  border: 1px solid #dee2e6;
 }
 
 th {
   text-align: center;
+  width: fit-content;
+  border-right: 1px solid #dee2e6;
+}
+
+td {
+  border-right: 1px solid #dee2e6;
 }
 
 .table-responsive {
