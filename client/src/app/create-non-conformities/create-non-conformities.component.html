@@ -68,6 +68,7 @@
                   <input
                     matInput
                     type="text"
+                    maxlength="500"
                     [formControl]="problemTitle"
                     [required]="true"
                   />
@@ -82,6 +83,7 @@
                   <input
                     matInput
                     type="text"
+                    maxlength="2000"
                     [formControl]="problemDescription"
                     [value]=""
                     [required]="true"
@@ -158,6 +160,7 @@
                     matInput
                     type="number"
                     min="0"
+                    max="9999999999"
                     [formControl]="defectiveQuantityControl"
                   />
                 </mat-form-field>

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { ActivatedRoute, Router, Data } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Data } from '@angular/router';
+import { MyProfileComponent } from '../my-profile/my-profile.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { ToastrService } from 'ngx-toastr';
@@ -26,7 +27,8 @@ export class FullComponent implements OnInit {
     private _auth: AuthService,
     private _router: Router,
     private _userService: UserService,
-    private _toastr: ToastrService
+    private _toastr: ToastrService,
+    public profileDialog: MatDialog
   ) {}
   routerActive: string = 'activelink';
   sidebarMenu: sidebarMenu[] = [];
@@ -58,6 +60,21 @@ export class FullComponent implements OnInit {
         localStorage.removeItem('token');
         localStorage.removeItem('sso');
         this._router.navigate(['/login']);
+      }
+    });
+  }
+
+  onProfileClick() {
+    const dialogRef = this.profileDialog.open(MyProfileComponent, {
+      width: '75%',
+      height: '62.5%',
+      enterAnimationDuration: '225ms',
+      exitAnimationDuration: '225ms',
+      data: {},
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log('result', result);
       }
     });
   }

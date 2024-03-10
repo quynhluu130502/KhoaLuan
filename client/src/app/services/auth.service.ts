@@ -18,6 +18,7 @@ export class AuthService {
   constructor(private _http: HttpClient) {}
 
   userType: string = '';
+  currentUser: User = new User();
 
   login(userInfor: object): Observable<successfulLogin> {
     return this._http
@@ -47,6 +48,7 @@ export class AuthService {
         map((res: any) => {
           if (res && res.result) {
             this.userType = res.result.role;
+            this.currentUser = res.result;
           }
           return res;
         }),

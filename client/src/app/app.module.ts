@@ -31,6 +31,7 @@ import { AttachmentComponent } from './attachment/attachment.component';
 import { QsaDashboardComponent } from './qsa-dashboard/qsa-dashboard.component';
 import { StageToStringPipe } from './Pipes/stage-to-string.pipe';
 import { SharedDashboardComponent } from './shared-dashboard/shared-dashboard.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +56,7 @@ import { SharedDashboardComponent } from './shared-dashboard/shared-dashboard.co
     AttachmentComponent,
     QsaDashboardComponent,
     SharedDashboardComponent,
+    MyProfileComponent,
   ],
   exports: [FeatherModule],
   providers: [],
