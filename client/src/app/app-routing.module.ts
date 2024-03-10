@@ -52,7 +52,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { enableTracing: false })],
+  imports: [
+    RouterModule.forRoot(routes, {
+      enableTracing: false,
+      onSameUrlNavigation: 'reload', // Reload the page if the same URL is clicked
+      scrollPositionRestoration: 'enabled',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

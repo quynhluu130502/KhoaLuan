@@ -44,6 +44,25 @@ const uploadFile = async (req: Request, res: Response, next: NextFunction) => {
   res.json(reqFiles);
 };
 
+const getAllNCs = async (req: Request, res: Response) => {
+  const ncDetails = await NCDetail.find({});
+  res.json(ncDetails);
+};
+
+const getOneNC = async (req: Request, res: Response) => {
+  await NCDetail.findOne({ id: req.params.id })
+    .then((result) => {
+      if (result != null) {
+        return res.json({ result: result, message: "NC Detail found!" });
+      } else {
+        return res.json({ message: "This NC cannot be found!" });
+      }
+    })
+    .catch((err) => {
+      res.json({ message: err });
+    });
+};
+
 const createNC = async (req: Request, res: Response) => {
   try {
     const authorizationHeader = req.headers.authorization;
@@ -77,46 +96,6 @@ const createNC = async (req: Request, res: Response) => {
   }
 };
 
-const cloneNC = async (req: Request, res: Response) => {
-  let ncDetail = await NCDetail.findOne({ id: req.body.id });
-  if (ncDetail) {
-    let temp = ncDetail.toObject();
-    temp._id = new mongoose.Types.ObjectId();
-    const clonedNcDetail = new NCDetail(temp);
-    await clonedNcDetail
-      .save()
-      .then((result) => {
-        res.json({ result: result, message: "NC Detail cloned successfully!" });
-        return;
-      })
-      .catch((err) => {
-        res.json({ message: err });
-      });
-  } else {
-    res.json({ message: "This NC cannot be found!" });
-    return;
-  }
-};
-
-const getAllNCs = async (req: Request, res: Response) => {
-  const ncDetails = await NCDetail.find({});
-  res.json(ncDetails);
-};
-
-const getOneNC = async (req: Request, res: Response) => {
-  await NCDetail.findOne({ id: req.params.id })
-    .then((result) => {
-      if (result != null) {
-        return res.json({ result: result, message: "NC Detail found!" });
-      } else {
-        return res.json({ message: "This NC cannot be found!" });
-      }
-    })
-    .catch((err) => {
-      res.json({ message: err });
-    });
-};
-
 const saveNC = async (req: Request, res: Response) => {
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
     .then((result) => {
@@ -138,6 +117,44 @@ const cancelNC = async (req: Request, res: Response) => {
     .then((result) => {
       if (result) {
         res.json({ result: result, message: "NC Detail cancelled successfully!" });
+      } else {
+        res.json({ message: "This NC cannot be found!" });
+      }
+    })
+    .catch((err) => {
+      res.json({ message: err });
+    });
+};
+
+const cloneNC = async (req: Request, res: Response) => {
+  let ncDetail = await NCDetail.findOne({ id: req.body.id });
+  if (ncDetail) {
+    let temp = ncDetail.toObject();
+    temp._id = new mongoose.Types.ObjectId();
+    const clonedNcDetail = new NCDetail(temp);
+    await clonedNcDetail
+      .save()
+      .then((result) => {
+        res.json({ result: result, message: "NC Detail cloned successfully!" });
+        return;
+      })
+      .catch((err) => {
+        res.json({ message: err });
+      });
+  } else {
+    res.json({ message: "This NC cannot be found!" });
+    return;
+  }
+};
+
+const sendNCBackToRequestor = async (req: Request, res: Response) => {
+  req.body.stage = Stage.Created;
+  req.body.acceptedDate = null;
+  req.body.solvedDate = null;
+  await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
+    .then((result) => {
+      if (result) {
+        res.json({ result: result, message: "NC Detail back successfully!" });
       } else {
         res.json({ message: "This NC cannot be found!" });
       }
@@ -170,23 +187,6 @@ const solveNC = async (req: Request, res: Response) => {
     .then((result) => {
       if (result) {
         res.json({ result: result, message: "NC Detail solved successfully!" });
-      } else {
-        res.json({ message: "This NC cannot be found!" });
-      }
-    })
-    .catch((err) => {
-      res.json({ message: err });
-    });
-};
-
-const sendNCBackToRequestor = async (req: Request, res: Response) => {
-  req.body.stage = Stage.Created;
-  req.body.acceptedDate = null;
-  req.body.solvedDate = null;
-  await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
-    .then((result) => {
-      if (result) {
-        res.json({ result: result, message: "NC Detail back successfully!" });
       } else {
         res.json({ message: "This NC cannot be found!" });
       }
@@ -369,15 +369,15 @@ const ncgController = {
   getMasterData,
   getInternalUers,
   uploadFile,
-  createNC,
-  cloneNC,
   getAllNCs,
   getOneNC,
+  createNC,
   saveNC,
   cancelNC,
+  cloneNC,
+  sendNCBackToRequestor,
   accepNC,
   solveNC,
-  sendNCBackToRequestor,
   closeNC,
   deleteOneNC,
   getMyNCs,

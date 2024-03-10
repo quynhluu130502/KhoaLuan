@@ -108,7 +108,9 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
     if (this.openConfirmToast()) {
       this._ncgService.cancelNC(this.nc_id).subscribe((res) => {
         if (res.result) {
+          this.stage.next(-1);
           this._toastr.success('Success', 'NCR cancelled successfully');
+          this._router.navigate(['/ncg/ncr-details/', this.nc_id]);
         } else {
           this._toastr.error('Error', 'Error in cancelling the NCR');
           console.log(res.message);
@@ -146,8 +148,10 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
       .backNC(this.combineForms(), this.nc_id)
       .subscribe((res) => {
         if (res.result) {
-          this.stepper.previous();
+          this.stepper.reset();
+          this.stage.next(0);
           this._toastr.success('Success', 'NCR sent back successfully');
+          this._router.navigate(['/ncg/ncr-details/', this.nc_id]);
         } else {
           this._toastr.error('Error', 'Error in sending back the NCR');
           console.log(res.message);
@@ -155,12 +159,21 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
       });
   }
   onSave() {
-    if (this.isRequestor()) return;
+    if (this.stage.value !== 0) {
+      if (this.isRequestor()) {
+        this._toastr.error(
+          'Error',
+          'You are not authorized to perform this action'
+        );
+        return;
+      }
+    }
     this._ncgService
       .saveNC(this.combineForms(), this.nc_id)
       .subscribe((res) => {
         if (res.result) {
           this._toastr.success('Success', 'NCR updated successfully');
+          this._router.navigate(['/ncg/ncr-details/', this.nc_id]);
         } else {
           this._toastr.error('Error', 'Error in updating the NCR');
           console.log(res.message);
@@ -169,14 +182,23 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
   }
   onAccept() {
     if (this.isRequestor()) return;
+    if (this.detailForm.invalid) {
+      this.tabGroup.selectedIndex = 1;
+      this._toastr.error(
+        'Error',
+        'Please fill all the fields in the detail form'
+      );
+      return;
+    }
     if (this.stage.value === 0) {
-      if (this.detailForm.invalid) return;
       this._ncgService
         .acceptNC(this.combineForms(), this.nc_id)
         .subscribe((res) => {
           if (res.result) {
             this.stepper.next();
+            this.stage.next(1);
             this._toastr.success('Success', 'NCR accepted successfully');
+            this._router.navigate(['/ncg/ncr-details/', this.nc_id]);
           } else {
             this._toastr.error('Error', 'Error in updating the NCR');
             console.log(res.message);
@@ -184,18 +206,15 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
         });
       return;
     }
-    if (!this.formValid()) {
-      this._toastr.error('Error', 'Please fill all the fields');
+  }
+
+  onSolve() {
+    if (
+      !this.isAllFormValid() ||
+      !this.isActionTableValid() ||
+      this.isRequestor()
+    )
       return;
-    }
-    if (this.actionsTable.value.length === 0) {
-      this._toastr.error(
-        'Error',
-        'Please add actions in Investigations and Solutions Table to proceed'
-      );
-      this.tabGroup.selectedIndex = 2;
-      return;
-    }
     // Stage 1 is Accepted
     if (this.stage.value === 1) {
       this._ncgService
@@ -203,7 +222,9 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
         .subscribe((res) => {
           if (res.result) {
             this.stepper.next();
-            this._toastr.success('Success', 'NCR accepted successfully');
+            this.stage.next(2);
+            this._toastr.success('Success', 'NCR solved successfully');
+            this._router.navigate(['/ncg/ncr-details/', this.nc_id]);
           } else {
             this._toastr.error('Error', 'Error in updating the NCR');
             console.log(res.message);
@@ -211,6 +232,15 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
         });
       return;
     }
+  }
+
+  onClose() {
+    if (
+      !this.isAllFormValid() ||
+      !this.isActionTableValid() ||
+      this.isRequestor()
+    )
+      return;
     // Stage 2 is Solved
     if (this.stage.value === 2) {
       let allActionsClosed = true;
@@ -231,6 +261,7 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
         .subscribe((res) => {
           if (res.result) {
             this.stepper.next();
+            this.stage.next(3);
             this._toastr.success('Success', 'NCR closed successfully');
             this._router.navigate(['/ncg/ncr-details/', this.nc_id]);
           } else {
@@ -253,23 +284,37 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
     };
   }
 
-  formValid() {
-    return this.detailForm.valid && this.investigationForm.valid;
-  }
-
-  openConfirmToast(): boolean {
-    if (confirm('Are you sure you want to do that?')) {
-      return true;
-    }
+  isAllFormValid(): boolean {
+    if (this.detailForm.valid && this.investigationForm.valid) return true;
+    this._toastr.error('Error', 'Please fill all the fields');
     return false;
   }
 
-  isRequestor() {
+  isRequestor(): boolean {
     if (this._authService.userType === 'requestor') {
       this._toastr.error(
         'Error',
         'You are not authorized to perform this action'
       );
+      return true;
+    }
+    return false;
+  }
+
+  isActionTableValid(): boolean {
+    if (this.actionsTable.value.length === 0) {
+      this._toastr.error(
+        'Error',
+        'Please add actions in Investigations and Solutions Table to proceed'
+      );
+      this.tabGroup.selectedIndex = 2;
+      return false;
+    }
+    return true;
+  }
+
+  openConfirmToast(): boolean {
+    if (confirm('Are you sure you want to do that?')) {
       return true;
     }
     return false;

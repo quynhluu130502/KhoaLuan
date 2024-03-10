@@ -87,9 +87,19 @@
             Save
           </button>
         </div>
-        <div class="me-3">
-          <button mat-raised-button color="primary" (click)="onAccept()">
+        <div class="me-3" *ngIf="this.stage.value === 0">
+          <button mat-raised-button color="accent" (click)="onAccept()">
             Accept
+          </button>
+        </div>
+        <div class="me-3" *ngIf="this.stage.value === 1">
+          <button mat-raised-button color="accent" (click)="onSolve()">
+            Solve
+          </button>
+        </div>
+        <div class="me-3" *ngIf="this.stage.value === 2">
+          <button mat-raised-button color="accent" (click)="onClose()">
+            Close
           </button>
         </div>
       </div>
