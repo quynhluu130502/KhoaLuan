@@ -23,9 +23,9 @@ const qsaMenu = [
     menu: 'Dashboard',
   },
   {
-    link: '/qsa/unknown',
+    link: '/qsa/help',
     icon: 'package',
-    menu: 'In development',
+    menu: 'Contact',
   },
 ];
 

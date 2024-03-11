@@ -26,6 +26,16 @@
   >
     Non Conformities Application for Grid Solutions
   </marquee> -->
+  <div
+    class="back-to-home d-flex flex-row align-items-center"
+    [routerLink]="'/'"
+    [matTooltip]="'Return to Landing Page'"
+    [matTooltipPosition]="'below'"
+  >
+    <span class="material-icons me-1">home</span
+    ><span class="ms-1">Landing Page</span>
+  </div>
+  <app-notifications-chatter></app-notifications-chatter>
   <mat-toolbar>
     <button
       type="button"
@@ -34,6 +44,8 @@
       mat-icon-button
       (click)="toggleSidebar.emit()"
       *ngIf="isHandset$ | async"
+      [matTooltip]="'Open Menu'"
+      [matTooltipPosition]="'below'"
     >
       <i-feather
         name="menu"

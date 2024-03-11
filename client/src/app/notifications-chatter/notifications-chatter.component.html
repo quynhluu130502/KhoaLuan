@@ -1,0 +1,47 @@
+<div class="notifications-chatter-container">
+  <button
+    mat-icon-button
+    type="button"
+    color="primary"
+    aria-label="Example icon button with a home icon"
+    [matMenuTriggerFor]="notificationsMenu"
+  >
+    <mat-icon
+      style="color: #fff"
+      matBadge="{{ notSeenCount }}"
+      matBadgeColor="warn"
+      aria-hidden="false"
+      >notifications</mat-icon
+    >
+  </button>
+  <!-- Use xPosition="before" to position the menu to the left of the trigger -->
+  <mat-menu #notificationsMenu="matMenu" xPosition="before">
+    <div id="menu-container">
+      <button
+        *ngFor="let noti of notifications; index as i; last as last"
+        mat-menu-item
+        class="customize-chatter"
+        [ngClass]="{ active: noti.seen }"
+        (click)="setSeen(noti)"
+      >
+        <div
+          class="d-flex flex-row justify-content-start align-items-center chat-item-container"
+        >
+          <div class="w-100 chat-item">
+            <div
+              class="d-flex flex-row justify-content-start align-items-start"
+            >
+              <div class="message">
+                <span class="me-1">[NC</span>
+                <span class="me-1">{{ noti.solution }}]</span>
+                <span class="me-1 sso-user">{{ noti.ssoUser }}</span>
+                <span class="me-1">{{ noti.action }}</span>
+                <span class="me-1 sso-user">{{ noti.ncID }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
+  </mat-menu>
+</div>

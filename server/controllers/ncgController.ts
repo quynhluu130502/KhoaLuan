@@ -1,10 +1,9 @@
 import { Request, Response, NextFunction } from "express";
-import { JsonWebTokenError, JwtPayload, verify } from "jsonwebtoken";
 import mongoose from "mongoose";
 import excel from "exceljs";
-
 import { sendMailToValidator } from "../configs/sendMail";
 import masterData from "../data/masterData.json";
+import userController from "./userController";
 import NCDetail from "../models/NCDetail";
 import User from "../models/user";
 
@@ -64,39 +63,25 @@ const getOneNC = async (req: Request, res: Response) => {
 };
 
 const createNC = async (req: Request, res: Response) => {
-  try {
-    const authorizationHeader = req.headers.authorization;
-    let token = "";
-    if (authorizationHeader) {
-      token = authorizationHeader.split(" ")[1];
-      const data: JwtPayload = verify(token, process.env.TOKEN_SECRET!) as JwtPayload;
-      if (!data) {
-        res.status(401).send("Invalid token");
-        return;
-      }
-      req.body.creator = data.sso;
-    } else {
-      res.status(401).send("Authorization header missing");
-      return;
-    }
-    const ncDetail = new NCDetail(req.body);
-    ncDetail.stage = Stage.Created;
-    await ncDetail
-      .save()
-      .then((result) => {
-        sendMailToValidator(result);
-        res.json({ result: result, message: "NC Detail created successfully!" });
-      })
-      .catch((err) => {
-        res.json({ message: err });
-      });
-  } catch (err) {
-    res.status(401).send({ message: "Invalid token", error: err });
-    return;
-  }
+  req.body.creator = req.body.user.sso;
+  const ncDetail = new NCDetail(req.body);
+  ncDetail.stage = Stage.Created;
+  await ncDetail
+    .save()
+    .then(async (result: any) => {
+      const noti = createMessage(req.body.user.name, "have assigned you to", result.id);
+      await userController.createNotification(result.validator, noti);
+      await sendMailToValidator(result);
+      res.json({ result: result, message: "NC Detail created successfully!" });
+    })
+    .catch((err) => {
+      res.json({ message: err });
+    });
 };
 
 const saveNC = async (req: Request, res: Response) => {
+  const noti = createMessage(req.body.user.name, "had saved action on", req.body.id);
+  await userController.createNotification(req.body.user.sso, noti);
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
     .then((result) => {
       if (result) {
@@ -111,6 +96,8 @@ const saveNC = async (req: Request, res: Response) => {
 };
 
 const cancelNC = async (req: Request, res: Response) => {
+  const noti = createMessage(req.body.user.name, "had cancelled action on", req.body.id);
+  await userController.createNotification(req.body.user.sso, noti);
   req.body.stage = Stage.Cancelled;
   req.body.cancelledDate = new Date();
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
@@ -127,6 +114,8 @@ const cancelNC = async (req: Request, res: Response) => {
 };
 
 const cloneNC = async (req: Request, res: Response) => {
+  const noti = createMessage(req.body.user.name, "had cloned action on", req.body.id);
+  await userController.createNotification(req.body.user.sso, noti);
   let ncDetail = await NCDetail.findOne({ id: req.body.id });
   if (ncDetail) {
     let temp = ncDetail.toObject();
@@ -148,6 +137,8 @@ const cloneNC = async (req: Request, res: Response) => {
 };
 
 const sendNCBackToRequestor = async (req: Request, res: Response) => {
+  const noti = createMessage(req.body.user.name, "had sent back action on", req.body.id);
+  await userController.createNotification(req.body.user.sso, noti);
   req.body.stage = Stage.Created;
   req.body.acceptedDate = null;
   req.body.solvedDate = null;
@@ -165,6 +156,8 @@ const sendNCBackToRequestor = async (req: Request, res: Response) => {
 };
 
 const accepNC = async (req: Request, res: Response) => {
+  const noti = createMessage(req.body.user.name, "had accepted action on", req.body.id);
+  await userController.createNotification(req.body.user.sso, noti);
   req.body.stage = Stage.Accepted;
   req.body.acceptedDate = new Date();
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
@@ -181,6 +174,8 @@ const accepNC = async (req: Request, res: Response) => {
 };
 
 const solveNC = async (req: Request, res: Response) => {
+  const noti = createMessage(req.body.user.name, "had solved action on", req.body.id);
+  await userController.createNotification(req.body.user.sso, noti);
   req.body.stage = Stage.Solved;
   req.body.solvedDate = new Date();
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
@@ -197,6 +192,8 @@ const solveNC = async (req: Request, res: Response) => {
 };
 
 const closeNC = async (req: Request, res: Response) => {
+  const noti = createMessage(req.body.user.name, "had closed action on", req.body.id);
+  await userController.createNotification(req.body.user.sso, noti);
   req.body.stage = Stage.Closed;
   req.body.closedDate = new Date();
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
@@ -213,6 +210,8 @@ const closeNC = async (req: Request, res: Response) => {
 };
 
 const deleteOneNC = async (req: Request, res: Response) => {
+  const noti = createMessage(req.body.user.name, "had deleted action on", req.params.id);
+  await userController.createNotification(req.body.user.sso, noti);
   await NCDetail.findOneAndDelete({ id: req.params.id })
     .then((result) => {
       if (result) {
@@ -227,31 +226,8 @@ const deleteOneNC = async (req: Request, res: Response) => {
 };
 
 const getMyNCs = async (req: Request, res: Response) => {
-  const authorizationHeader = req.headers.authorization;
-  let token = "";
-  if (authorizationHeader) {
-    token = authorizationHeader.split(" ")[1];
-    try {
-      const data: JwtPayload = verify(token, process.env.TOKEN_SECRET!) as JwtPayload;
-      if (!data) {
-        res.status(401).send("Invalid token");
-        return;
-      }
-      const ncDetails = await NCDetail.find({ creator: data.sso });
-      res.json(ncDetails);
-    } catch (err) {
-      if (err instanceof JsonWebTokenError) {
-        res.status(401).json({ message: "Token expired" });
-        return;
-      } else {
-        res.status(401).json({ message: "Invalid token" });
-        return;
-      }
-    }
-  } else {
-    res.status(401).send("Authorization header missing");
-    return;
-  }
+  const ncDetails = await NCDetail.find({ creator: req.body.user.sso });
+  res.json(ncDetails);
 };
 
 const getNameBySSO = async (sso: string) => {
@@ -273,57 +249,36 @@ const getNameById = async (req: Request, res: Response) => {
 };
 
 const exportMyNCToExcel = async (req: Request, res: Response) => {
-  try {
-    const authorizationHeader = req.headers.authorization;
-    let token = "";
-    let creator = "";
-    if (authorizationHeader) {
-      token = authorizationHeader.split(" ")[1];
-      const data: JwtPayload = verify(token, process.env.TOKEN_SECRET!) as JwtPayload;
-      if (!data) {
-        res.status(401).send("Invalid token");
-        return;
-      }
-      creator = data.sso;
-    } else {
-      res.status(401).send("Authorization header missing");
-      return;
-    }
-    const creatorName = await getNameBySSO(creator);
-    let counter = 1;
-    const workbook = new excel.Workbook();
-    const worksheet = workbook.addWorksheet("NC_Report");
-    worksheet.columns = [
-      { header: "No.", key: "no", width: 10 },
-      { header: "NC ID", key: "id", width: 20 },
-      { header: "NC Title", key: "problemTitle", width: 32 },
-      { header: "NC Description", key: "problemDescription", width: 32 },
-      { header: "Creator", key: "creator", width: 15 },
-      { header: "Created Date", key: "createdDate", width: 15 },
-      { header: "Accepted Date", key: "acceptedDate", width: 15 },
-      { header: "Solved Date", key: "solvedDate", width: 15 },
-      { header: "Closed Date", key: "closedDate", width: 15 },
-      { header: "Closed Date", key: "cancelledDate", width: 15 },
-      { header: "Stage", key: "stage", width: 15 },
-    ];
-    const ncDetails = await NCDetail.find({ creator: creator });
-    ncDetails.forEach((ncDetail: any) => {
-      ncDetail.creator = creatorName;
-      ncDetail.stage = StageString[ncDetail.stage.toString() as keyof typeof StageString];
-      ncDetail.no = counter++;
-      worksheet.addRow(ncDetail);
-    });
-    res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-    res.setHeader("Content-Disposition", "attachment; filename=" + "NC_Details.xlsx");
-    return workbook.xlsx.write(res).then(function () {
-      res.status(200).end();
-    });
-  } catch (err) {
-    res.status(404).send({
-      status: "error",
-      message: err,
-    });
-  }
+  const creator = req.body.user.sso;
+  const creatorName = await getNameBySSO(creator);
+  let counter = 1;
+  const workbook = new excel.Workbook();
+  const worksheet = workbook.addWorksheet("NC_Report");
+  worksheet.columns = [
+    { header: "No.", key: "no", width: 10 },
+    { header: "NC ID", key: "id", width: 20 },
+    { header: "NC Title", key: "problemTitle", width: 32 },
+    { header: "NC Description", key: "problemDescription", width: 32 },
+    { header: "Creator", key: "creator", width: 15 },
+    { header: "Created Date", key: "createdDate", width: 15 },
+    { header: "Accepted Date", key: "acceptedDate", width: 15 },
+    { header: "Solved Date", key: "solvedDate", width: 15 },
+    { header: "Closed Date", key: "closedDate", width: 15 },
+    { header: "Closed Date", key: "cancelledDate", width: 15 },
+    { header: "Stage", key: "stage", width: 15 },
+  ];
+  const ncDetails = await NCDetail.find({ creator: creator });
+  ncDetails.forEach((ncDetail: any) => {
+    ncDetail.creator = creatorName;
+    ncDetail.stage = StageString[ncDetail.stage.toString() as keyof typeof StageString];
+    ncDetail.no = counter++;
+    worksheet.addRow(ncDetail);
+  });
+  res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+  res.setHeader("Content-Disposition", "attachment; filename=" + "NC_Details.xlsx");
+  return workbook.xlsx.write(res).then(function () {
+    res.status(200).end();
+  });
 };
 
 const countNumberOfEachDetectionPhase = async (req: Request, res: Response) => {
@@ -363,6 +318,31 @@ const countNumberOfEachProductType = async (req: Request, res: Response) => {
     }
   });
   res.json(productTypes);
+};
+
+/**
+ * Hàm tạo thông báo.
+ *
+ * @param {string} ssoUser - Tên người dùng SSO
+ * @param {string} action - Hành động được thực hiện
+ * @param {string} ncID - ID của Non Conformity
+ *
+ * @returns {{
+ *   solution: string,
+ *   ssoUser: string,
+ *   action: string,
+ *   ncID: string,
+ *   seen: boolean,
+ * }}
+ */
+const createMessage = (ssoUser: string, action: string, ncID: string) => {
+  return {
+    solution: "Grid Solutions",
+    ssoUser: ssoUser,
+    action: action,
+    ncID: ncID,
+    seen: false,
+  };
 };
 
 const ncgController = {

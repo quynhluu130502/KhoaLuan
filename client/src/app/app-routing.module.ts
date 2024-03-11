@@ -29,6 +29,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'internal-user', pathMatch: 'full' },
       { path: 'internal-user', component: InternalUserComponent },
       { path: 'dashboard', component: QsaDashboardComponent },
+      { path: 'help', component: HelpComponent },
     ],
   },
   {

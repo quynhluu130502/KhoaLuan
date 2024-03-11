@@ -88,4 +88,42 @@ export class UserService {
         catchError(handleError)
       );
   }
+
+  public getNotifications(): Observable<any> {
+    const requestOptions: object = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }),
+    };
+    return this._http
+      .get<any>(`${environment.serverUrl}/user/notifications`, requestOptions)
+      .pipe(
+        map((res) => {
+          return res as any;
+        }),
+        retry(2),
+        catchError(handleError)
+      );
+  }
+
+  public markNotificationAsSeen(_id: any): Observable<any> {
+    const requestOptions: object = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }),
+    };
+    return this._http
+      .patch<any>(
+        `${environment.serverUrl}/user/notifications/seen`,
+        { _id: _id },
+        requestOptions
+      )
+      .pipe(
+        map((res) => {
+          return res as any;
+        }),
+        retry(2),
+        catchError(handleError)
+      );
+  }
 }

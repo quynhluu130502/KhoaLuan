@@ -205,18 +205,7 @@ const refreshToken = async (req: Request, res: Response) => {
 };
 
 const isAuthorized = async (req: Request, res: Response) => {
-  const authorizationHeader = req.headers.authorization;
-  if (authorizationHeader) {
-    const token = authorizationHeader.split(" ")[1];
-    try {
-      const user = verify(token, process.env.TOKEN_SECRET!);
-      res.json({ message: "Protected data", result: user });
-    } catch {
-      res.json({ message: "Invalid token" });
-    }
-  } else {
-    res.json({ message: "Authorization header missing" });
-  }
+  res.json({ message: "Protected data", result: req.body.user });
 };
 
 const logOut = async (req: Request, res: Response) => {
@@ -225,31 +214,39 @@ const logOut = async (req: Request, res: Response) => {
 };
 
 const getNameOfUser = async (req: Request, res: Response) => {
-  try {
-    const authorizationHeader = req.headers.authorization;
-    let token = "";
-    let sso = "";
-    if (authorizationHeader) {
-      token = authorizationHeader.split(" ")[1];
-      const data: JwtPayload = verify(token, process.env.TOKEN_SECRET!) as JwtPayload;
-      if (!data) {
-        res.status(401).send("Invalid token");
-        return;
-      }
-      sso = data.sso;
-    } else {
-      res.status(401).send("Authorization header missing");
-      return;
-    }
-    const user = await User.findOne({ sso: sso }).select("name");
-    if (user) {
-      res.json({ message: "User found", result: user.name });
-    } else {
-      res.json({ message: "Document not found" });
-    }
-  } catch (error: any) {
-    res.status(400).json({ message: error.message });
+  const sso = req.body.user.sso;
+  const user = await User.findOne({ sso: sso }).select("name");
+  if (user) {
+    res.json({ message: "User found", result: user.name });
+  } else {
+    res.json({ message: "Document not found" });
   }
+};
+
+const getNotifications = async (req: Request, res: Response) => {
+  const sso = req.body.user.sso;
+  const user = await User.findOne({ sso: sso }).select("notifications");
+  if (user) {
+    res.json({ message: "User found", result: user.notifications });
+    return;
+  } else {
+    res.json({ message: "User not found" });
+    return;
+  }
+};
+
+const createNotification = async (sso: string, notification: any) => {
+  notification._id = new Date().getTime();
+  await User.updateOne({ sso: sso }, { $push: { notifications: notification } });
+};
+
+const setSeenNotification = async (req: Request, res: Response) => {
+  const user = await User.updateOne({ sso: req.body.user.sso }, { $set: { "notifications.$[elem].seen": true } }, { arrayFilters: [{ "elem._id": req.body._id }] });
+  if (user) {
+    res.json({ result: user, message: "Notification updated" });
+    return;
+  }
+  res.json({ message: "Notification not found" });
 };
 
 const userController = {
@@ -267,6 +264,9 @@ const userController = {
   generateHash,
   generateSalt,
   getNameOfUser,
+  getNotifications,
+  createNotification,
+  setSeenNotification,
 };
 
 export default userController;

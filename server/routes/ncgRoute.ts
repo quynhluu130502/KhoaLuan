@@ -1,6 +1,7 @@
-import { Router, Request, Response, NextFunction } from "express";
+import { Router } from "express";
 import ncgController from "../controllers/ncgController";
 import upload from "../middlewares/multerConfig";
+import verifyToken from "../middlewares/verifyToken";
 
 const ncgRouter = Router();
 
@@ -12,33 +13,33 @@ ncgRouter.get("/internalUsers", ncgController.getInternalUers);
 
 ncgRouter.post("/upload", upload.array("file", 6), ncgController.uploadFile);
 
-ncgRouter.post("/create", ncgController.createNC);
+ncgRouter.post("/create", verifyToken, ncgController.createNC);
 
-ncgRouter.post("/clone", ncgController.cloneNC);
+ncgRouter.post("/clone", verifyToken, ncgController.cloneNC);
 
 ncgRouter.get("/list", ncgController.getAllNCs);
 
 ncgRouter.get("/get/:id", ncgController.getOneNC);
 
-ncgRouter.patch("", ncgController.saveNC);
+ncgRouter.patch("", verifyToken, ncgController.saveNC);
 
-ncgRouter.patch("/cancel", ncgController.cancelNC);
+ncgRouter.patch("/cancel", verifyToken, ncgController.cancelNC);
 
-ncgRouter.put("/accept", ncgController.accepNC);
+ncgRouter.put("/accept", verifyToken, ncgController.accepNC);
 
-ncgRouter.put("/solve", ncgController.solveNC);
+ncgRouter.put("/solve", verifyToken, ncgController.solveNC);
 
-ncgRouter.put("/reject", ncgController.sendNCBackToRequestor);
+ncgRouter.put("/reject", verifyToken, ncgController.sendNCBackToRequestor);
 
-ncgRouter.put("/close", ncgController.closeNC);
+ncgRouter.put("/close", verifyToken, ncgController.closeNC);
 
-ncgRouter.delete("/:id", ncgController.deleteOneNC);
+ncgRouter.delete("/:id", verifyToken, ncgController.deleteOneNC);
 
-ncgRouter.get("/myNCs", ncgController.getMyNCs);
+ncgRouter.get("/myNCs", verifyToken, ncgController.getMyNCs);
 
 ncgRouter.get("/getNameBySSO/:sso", ncgController.getNameById);
 
-ncgRouter.get("/exportExcel/myNC", ncgController.exportMyNCToExcel);
+ncgRouter.get("/exportExcel/myNC", verifyToken, ncgController.exportMyNCToExcel);
 
 ncgRouter.get("/count/detectionPhase", ncgController.countNumberOfEachDetectionPhase);
 

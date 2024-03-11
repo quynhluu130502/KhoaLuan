@@ -1,12 +1,13 @@
 import { Router } from "express";
 import userController from "../controllers/userController";
 import { sendContactForm } from "../configs/sendMail";
+import verifyToken from "../middlewares/verifyToken";
 
 const userRouter = Router();
 
 userRouter.get("/", userController.getAllUsers);
 
-userRouter.get("/name", userController.getNameOfUser);
+userRouter.get("/name", verifyToken, userController.getNameOfUser);
 
 userRouter.post("/", userController.createUser);
 
@@ -22,9 +23,13 @@ userRouter.post("/login", userController.login);
 
 userRouter.post("/refreshToken", userController.refreshToken);
 
-userRouter.get("/protected", userController.isAuthorized);
+userRouter.get("/protected", verifyToken, userController.isAuthorized);
 
 userRouter.post("/logout", userController.logOut);
+
+userRouter.get("/notifications", verifyToken, userController.getNotifications);
+
+userRouter.patch("/notifications/seen", verifyToken, userController.setSeenNotification);
 
 userRouter.post("/sendContactForm", sendContactForm);
 

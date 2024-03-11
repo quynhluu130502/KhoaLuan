@@ -36,7 +36,7 @@ mat-sidenav-content {
   width: 8vw;
   box-shadow: 0px 7px 30px 0px $shadow;
   border: 0;
-  z-index: 2;
+  z-index: 10;
   background-color: #fff;
 
   .list-group {

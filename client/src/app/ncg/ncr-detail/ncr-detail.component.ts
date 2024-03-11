@@ -65,6 +65,14 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
               }
             }
           }
+          if (this.tabGroup) {
+            if (stage === 0 || stage === 1) {
+              this.tabGroup.selectedIndex = 1;
+            }
+            if (stage === 2) {
+              this.tabGroup.selectedIndex = 2;
+            }
+          }
         }
       })
     );
@@ -172,7 +180,7 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
       .saveNC(this.combineForms(), this.nc_id)
       .subscribe((res) => {
         if (res.result) {
-          this._toastr.success('Success', 'NCR updated successfully');
+          this._toastr.success('Success', 'NCR saved successfully');
           this._router.navigate(['/ncg/ncr-details/', this.nc_id]);
         } else {
           this._toastr.error('Error', 'Error in updating the NCR');
@@ -286,7 +294,9 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
 
   isAllFormValid(): boolean {
     if (this.detailForm.valid && this.investigationForm.valid) return true;
-    this._toastr.error('Error', 'Please fill all the fields');
+    this._toastr.error('Error', 'Please fill all the fields in both two forms');
+    if (this.detailForm.invalid) this.tabGroup.selectedIndex = 1;
+    if (this.investigationForm.invalid) this.tabGroup.selectedIndex = 2;
     return false;
   }
 

@@ -1,0 +1,38 @@
+.notifications-chatter-container {
+  margin: auto 0;
+}
+
+button.mat-menu-item {
+  width: 100%;
+}
+
+.active {
+  background-color: #ebedf0;
+}
+
+.customize-chatter:hover {
+  background-color: #ebedf0;
+}
+
+::ng-deep {
+  .mat-mdc-menu-panel {
+    max-width: fit-content !important;
+    width: fit-content !important;
+  }
+}
+#menu-container {
+  width: 400px;
+  height: 400px;
+  overflow: auto;
+}
+
+div.message {
+  white-space-collapse: preserve;
+  text-wrap: wrap;
+  line-height: 1.5rem;
+}
+
+.message .sso-user {
+  font-weight: 500;
+  color: #1687fb;
+}

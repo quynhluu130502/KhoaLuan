@@ -34,6 +34,7 @@ import { SharedDashboardComponent } from './shared-dashboard/shared-dashboard.co
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { HeaderComponent } from './header/header.component';
 import { HelpComponent } from './help/help.component';
+import { NotificationsChatterComponent } from './notifications-chatter/notifications-chatter.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +62,7 @@ import { HelpComponent } from './help/help.component';
     MyProfileComponent,
     HeaderComponent,
     HelpComponent,
+    NotificationsChatterComponent,
   ],
   exports: [FeatherModule],
   providers: [],
