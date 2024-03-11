@@ -43,4 +43,10 @@ export class FullComponent implements OnInit {
     // mat-sidenav will be toggled based on the drawer variable and a overlay will be shown on the content
     this.drawer.toggle();
   }
+
+  closeSidebar() {
+    if (this.drawer.mode === 'over') {
+      this.drawer.close();
+    }
+  }
 }

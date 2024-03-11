@@ -19,6 +19,7 @@
             matRipple
             [matRippleColor]="'#f7f8f443'"
             routerLink="{{ sidenav.link }}"
+            (click)="closeSidebar()"
             class="sidebar-menu fs-6 w-100 d-flex flex-column align-items-center"
             [routerLinkActive]="routerActive"
           >

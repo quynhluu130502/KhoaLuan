@@ -12,9 +12,11 @@
     <div style="border: 1px solid black;  width: 95%;border-radius: 10px 10px;">
       <div style="padding:30px;">
         {{>header}}
-        <p style="font-family: Verdana;">Hi {{validatorName}},</p>
+        <p style="font-family: Verdana; font-size:25px">Hi {{validatorName}},</p>
         <p style="font-weight: 100; font-size: 16px ; line-height: 25px;  font-family: Verdana; color: #1C1E3A;">A New NC has been created with below details. You are assigned
-          as a validator on this NC. Kindly click on below link to complete your action.</p>
+          as a validator on this NC. Kindly click on this
+          <a href="https://khoaluan-r8ub.onrender.com/ncg/ncr-details/{{ncId}}" target="_blank">Link</a>
+          to complete your action.</p>
         <br />
         <div
           style="background: transparent linear-gradient(90deg, #2BAD90 0%, #00489A 100%) 0% 0% no-repeat padding-box;
@@ -22,8 +24,8 @@
                         height: fit-content; color: white; padding: 10px;margin:auto"
           class="main"
         >
-          <p>Details of the Non-Conformity</p>
-          <ul>
+          <p style="font-size: 18px;">Details of the Non Conformity</p>
+          <ul style="font-size: 18px;">
             <li>NC ID: {{ncId}}</li>
             <li>Problem Title: {{ncProblemTitle}}</li>
             <li>NC Status: {{ncStatus}}</li>
@@ -37,7 +39,7 @@
           <span>Non-Conformity Team</span>
         </p>
       </div>
-{{>footer}}
+      {{>footer}}
     </div>
   </body>
 </html>

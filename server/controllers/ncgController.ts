@@ -80,11 +80,11 @@ const createNC = async (req: Request, res: Response) => {
 };
 
 const saveNC = async (req: Request, res: Response) => {
-  const noti = createMessage(req.body.user.name, "had saved action on", req.body.id);
-  await userController.createNotification(req.body.user.sso, noti);
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
-    .then((result) => {
+    .then(async (result: any) => {
       if (result) {
+        const noti = createMessage(req.body.user.name, "had saved action on", req.body.id);
+        await userController.createNotification(result.validator, noti);
         res.json({ result: result, message: "NC Detail saved successfully!" });
       } else {
         res.json({ message: "This NC cannot be found!" });
@@ -96,13 +96,13 @@ const saveNC = async (req: Request, res: Response) => {
 };
 
 const cancelNC = async (req: Request, res: Response) => {
-  const noti = createMessage(req.body.user.name, "had cancelled action on", req.body.id);
-  await userController.createNotification(req.body.user.sso, noti);
   req.body.stage = Stage.Cancelled;
   req.body.cancelledDate = new Date();
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
-    .then((result) => {
+    .then(async (result: any) => {
       if (result) {
+        const noti = createMessage(req.body.user.name, "had cancelled action on", req.body.id);
+        await userController.createNotification(result.validator, noti);
         res.json({ result: result, message: "NC Detail cancelled successfully!" });
       } else {
         res.json({ message: "This NC cannot be found!" });
@@ -114,8 +114,6 @@ const cancelNC = async (req: Request, res: Response) => {
 };
 
 const cloneNC = async (req: Request, res: Response) => {
-  const noti = createMessage(req.body.user.name, "had cloned action on", req.body.id);
-  await userController.createNotification(req.body.user.sso, noti);
   let ncDetail = await NCDetail.findOne({ id: req.body.id });
   if (ncDetail) {
     let temp = ncDetail.toObject();
@@ -123,7 +121,9 @@ const cloneNC = async (req: Request, res: Response) => {
     const clonedNcDetail = new NCDetail(temp);
     await clonedNcDetail
       .save()
-      .then((result) => {
+      .then(async (result: any) => {
+        const noti = createMessage(req.body.user.name, "had cloned action on", req.body.id);
+        await userController.createNotification(result.validator, noti);
         res.json({ result: result, message: "NC Detail cloned successfully!" });
         return;
       })
@@ -137,14 +137,14 @@ const cloneNC = async (req: Request, res: Response) => {
 };
 
 const sendNCBackToRequestor = async (req: Request, res: Response) => {
-  const noti = createMessage(req.body.user.name, "had sent back action on", req.body.id);
-  await userController.createNotification(req.body.user.sso, noti);
   req.body.stage = Stage.Created;
   req.body.acceptedDate = null;
   req.body.solvedDate = null;
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
-    .then((result) => {
+    .then(async (result: any) => {
       if (result) {
+        const noti = createMessage(req.body.user.name, "had sent back action on", req.body.id);
+        await userController.createNotification(result.validator, noti);
         res.json({ result: result, message: "NC Detail back successfully!" });
       } else {
         res.json({ message: "This NC cannot be found!" });
@@ -156,13 +156,13 @@ const sendNCBackToRequestor = async (req: Request, res: Response) => {
 };
 
 const accepNC = async (req: Request, res: Response) => {
-  const noti = createMessage(req.body.user.name, "had accepted action on", req.body.id);
-  await userController.createNotification(req.body.user.sso, noti);
   req.body.stage = Stage.Accepted;
   req.body.acceptedDate = new Date();
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
-    .then((result) => {
+    .then(async (result: any) => {
       if (result) {
+        const noti = createMessage(req.body.user.name, "had accepted action on", req.body.id);
+        await userController.createNotification(result.validator, noti);
         res.json({ result: result, message: "NC Detail accepted successfully!" });
       } else {
         res.json({ message: "This NC cannot be found!" });
@@ -174,13 +174,13 @@ const accepNC = async (req: Request, res: Response) => {
 };
 
 const solveNC = async (req: Request, res: Response) => {
-  const noti = createMessage(req.body.user.name, "had solved action on", req.body.id);
-  await userController.createNotification(req.body.user.sso, noti);
   req.body.stage = Stage.Solved;
   req.body.solvedDate = new Date();
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
-    .then((result) => {
+    .then(async (result: any) => {
       if (result) {
+        const noti = createMessage(req.body.user.name, "had solved action on", req.body.id);
+        await userController.createNotification(result.validator, noti);
         res.json({ result: result, message: "NC Detail solved successfully!" });
       } else {
         res.json({ message: "This NC cannot be found!" });
@@ -192,13 +192,13 @@ const solveNC = async (req: Request, res: Response) => {
 };
 
 const closeNC = async (req: Request, res: Response) => {
-  const noti = createMessage(req.body.user.name, "had closed action on", req.body.id);
-  await userController.createNotification(req.body.user.sso, noti);
   req.body.stage = Stage.Closed;
   req.body.closedDate = new Date();
   await NCDetail.findOneAndUpdate({ id: req.body.id }, req.body)
-    .then((result) => {
+    .then(async (result: any) => {
       if (result) {
+        const noti = createMessage(req.body.user.name, "had closed action on", req.body.id);
+        await userController.createNotification(result.validator, noti);
         res.json({ result: result, message: "NC Detail closed successfully!" });
       } else {
         res.json({ message: "This NC cannot be found!" });
@@ -210,11 +210,11 @@ const closeNC = async (req: Request, res: Response) => {
 };
 
 const deleteOneNC = async (req: Request, res: Response) => {
-  const noti = createMessage(req.body.user.name, "had deleted action on", req.params.id);
-  await userController.createNotification(req.body.user.sso, noti);
   await NCDetail.findOneAndDelete({ id: req.params.id })
-    .then((result) => {
+    .then(async (result: any) => {
       if (result) {
+        const noti = createMessage(req.body.user.name, "had deleted action on", req.params.id);
+        await userController.createNotification(result.validator, noti);
         res.json({ result: result, message: "NC Detail deleted successfully!" });
       } else {
         res.json({ message: "This NC cannot be found!" });

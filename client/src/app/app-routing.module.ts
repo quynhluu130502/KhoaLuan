@@ -15,6 +15,7 @@ import { NCRDetailComponent } from './ncg/ncr-detail/ncr-detail.component';
 import { NcgDashboardComponent } from './ncg-dashboard/ncg-dashboard.component';
 import { QsaDashboardComponent } from './qsa-dashboard/qsa-dashboard.component';
 import { HelpComponent } from './help/help.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -51,6 +52,8 @@ const routes: Routes = [
       },
     ],
   },
+  { path: 'admin', redirectTo: 'create/user', pathMatch: 'full' },
+  { path: 'create/user', component: CreateUserComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 

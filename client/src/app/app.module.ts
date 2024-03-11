@@ -35,6 +35,7 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { HeaderComponent } from './header/header.component';
 import { HelpComponent } from './help/help.component';
 import { NotificationsChatterComponent } from './notifications-chatter/notifications-chatter.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +64,7 @@ import { NotificationsChatterComponent } from './notifications-chatter/notificat
     HeaderComponent,
     HelpComponent,
     NotificationsChatterComponent,
+    CreateUserComponent,
   ],
   exports: [FeatherModule],
   providers: [],

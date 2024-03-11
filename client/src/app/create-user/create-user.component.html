@@ -1,0 +1,120 @@
+<div class="p-5">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        class="form-control"
+      />
+      <label
+        *ngIf="this.registerForm?.get('name')?.invalid"
+        [ngClass]="'text-danger'"
+      >
+        You must enter a name.
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="form-control"
+      />
+      <label
+        *ngIf="this.registerForm?.get('email')?.invalid"
+        [ngClass]="'text-danger'"
+      >
+        You must enter a valid email.
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="language">Language:</label>
+      <select id="language" formControlName="language" class="form-control">
+        <option value="English">English</option>
+        <option value="French">French</option>
+        <option value="Turkish">Turkish</option>
+        <option value="Italian">Italian</option>
+        <option value="Portuguese">Portuguese</option>
+        <option value="Chinese">Chinese</option>
+        <option value="German">German</option>
+        <option value="Spanish">Spanish</option>
+      </select>
+      <label
+        *ngIf="this.registerForm?.get('language')?.invalid"
+        [ngClass]="'text-danger'"
+      >
+        Select a language.
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="role">Chức vụ:</label>
+      <select id="role" formControlName="role" class="form-control" required>
+        <option value="requestor">Requestor</option>
+        <option value="validator">Validator</option>
+        <option value="admin">Admin</option>
+      </select>
+      <label
+        *ngIf="this.registerForm?.get('role')?.invalid"
+        [ngClass]="'text-danger'"
+      >
+        Select a role.
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="pass">Password:</label>
+      <input
+        type="text"
+        id="pass"
+        formControlName="pass"
+        class="form-control"
+      />
+      <label
+        *ngIf="this.registerForm?.get('pass')?.invalid"
+        [ngClass]="'text-danger'"
+      >
+        You must enter a password.
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="job_function">Job Function:</label>
+      <input
+        type="text"
+        id="job_function"
+        formControlName="job_function"
+        class="form-control"
+      />
+      <label
+        *ngIf="this.registerForm?.get('job_function')?.invalid"
+        [ngClass]="'text-danger'"
+      >
+        You must enter a job function.
+      </label>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="registerForm.invalid"
+    >
+      Đăng ký
+    </button>
+  </form>
+  <div class="row">
+    <div class="col-12 text-center">
+      <marquee
+        behavior="scroll"
+        direction="left"
+        scrollamount="15"
+        width="50%"
+        class="blink"
+        >Yêu Lưu Như Quỳnh nè ❤❤</marquee
+      >
+      <img
+        src="https://lh3.googleusercontent.com/drive-viewer/AKGpihZpiIJhuO5WR-bI5RVzNvzTNzzoFdobflRUkHKF_DE45QGkE9QVILeoMfrKJOdsmZoLy4lnPjhqdUjQbzHU2zW6x58nTQ=w1910-h937"
+        alt="Page Image"
+      />
+    </div>
+  </div>
+</div>
