@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-help',
@@ -13,7 +14,11 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './help.component.scss',
 })
 export class HelpComponent implements OnInit {
-  constructor(private builder: FormBuilder, private _toastr: ToastrService) {}
+  constructor(
+    private builder: FormBuilder,
+    private _toastr: ToastrService,
+    private _userService: UserService
+  ) {}
   helpForm: FormGroup = new FormGroup({});
   center: google.maps.LatLngLiteral = { lat: 24, lng: 12 };
   zoom = 4;
@@ -27,13 +32,25 @@ export class HelpComponent implements OnInit {
     });
   }
 
-  onSubmit(formData: any) {
+  onSubmit(formData: object) {
     if (this.helpForm.invalid) {
       this._toastr.error('Please fill all fields');
       return;
     }
-    this.helpForm.get('fullName')?.invalid;
-    console.log(formData);
+    this._userService.sendContactForm(formData).subscribe({
+      next: (res: any) => {
+        if (res.result) {
+          this._toastr.success('Message sent', 'Success');
+          this.helpForm.reset();
+          return;
+        }
+        this._toastr.error(`${res.message}`, 'Error sending message');
+        return;
+      },
+      error: (err: any) => {
+        this._toastr.error(`${err}`, 'Error sending message');
+      },
+    });
   }
 
   moveMap(event: google.maps.MapMouseEvent) {

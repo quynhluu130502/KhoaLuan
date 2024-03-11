@@ -1,7 +1,7 @@
 import hbs, { NodemailerExpressHandlebarsOptions } from "nodemailer-express-handlebars";
 import nodemailer from "nodemailer";
 import path from "path";
-
+import { Request, Response } from "express";
 import ncgController from "../controllers/ncgController";
 
 const Stage = {
@@ -39,7 +39,7 @@ const handlebarOptions = {
 // use a template file with nodemailer
 transporter.use("compile", hbs(handlebarOptions as NodemailerExpressHandlebarsOptions));
 
-export default async function sendMailToValidator(nc: any) {
+const sendMailToValidator = async (nc: any) => {
   const creatorName = await ncgController.getNameBySSO(nc.creator);
   const mailOptions = {
     from: "quynhluu1305@gmail.com", // sender address
@@ -62,4 +62,28 @@ export default async function sendMailToValidator(nc: any) {
   } catch (error) {
     console.log(`Nodemailer get error while sending email to someone`, error);
   }
-}
+};
+
+const sendContactForm = async (req: Request, res: Response) => {
+  const mailOptions = {
+    from: req.body.email,
+    template: "contact",
+    to: ["quynhluu1305@gmail.com", "younghungold@gmail.com"],
+    subject: `${req.body.subject} - ${req.body.fullName}`,
+    context: {
+      fullName: req.body.fullName,
+      email: req.body.email,
+      subject: req.body.subject,
+      message: req.body.message,
+    },
+  };
+  try {
+    await transporter.sendMail(mailOptions);
+    res.json({ result: "Success", message: "Email sent successfully" });
+  } catch (error) {
+    console.log(`Nodemailer get error while sending email to someone`, error);
+    res.json({ message: "Email sent failed" });
+  }
+};
+
+export { sendMailToValidator, sendContactForm };

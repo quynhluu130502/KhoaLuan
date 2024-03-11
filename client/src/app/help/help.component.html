@@ -5,12 +5,6 @@
         <div class="col-md-7">
           <div class="contact-wrap w-100 p-md-5 p-4">
             <h3 class="mb-4 fs-3">Contact Us</h3>
-            <div id="form-message-warning" class="mb-4">
-              Your message was not sent, Please try again.
-            </div>
-            <div id="form-message-success" class="mb-4">
-              Your message was sent, thank you!
-            </div>
             <form
               method="POST"
               id="contactForm"
@@ -87,8 +81,8 @@
                       formControlName="message"
                       class="form-control"
                       id="message"
-                      cols="30"
-                      rows="4"
+                      [cols]="50"
+                      [rows]="30"
                       placeholder="Message"
                     ></textarea>
                     <label
@@ -147,7 +141,7 @@
             <div class="text">
               <p>
                 <span>Phone:</span>
-                <a href="tel://1234567920">+ 84 966-193-904</a>
+                <a href="tel://0966193904">+ 84 966-193-904</a>
               </p>
             </div>
           </div>

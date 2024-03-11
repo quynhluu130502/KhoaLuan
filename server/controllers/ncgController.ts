@@ -3,7 +3,7 @@ import { JsonWebTokenError, JwtPayload, verify } from "jsonwebtoken";
 import mongoose from "mongoose";
 import excel from "exceljs";
 
-import sendMailToValidator from "../configs/sendMail";
+import { sendMailToValidator } from "../configs/sendMail";
 import masterData from "../data/masterData.json";
 import NCDetail from "../models/NCDetail";
 import User from "../models/user";
