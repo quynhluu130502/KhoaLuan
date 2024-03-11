@@ -424,7 +424,7 @@
       <div class="d-flex flex-row justify-content-center">
         <button
           mat-raised-button
-          color="warn"
+          class="btn-reset"
           (click)="onResetClick()"
           type="button"
         >
@@ -432,13 +432,15 @@
         </button>
         <button
           mat-stroked-button
-          color="accent"
+          class="btn-save"
           type="button"
           (click)="onSaveClick()"
         >
           Save
         </button>
-        <button mat-raised-button color="primary" type="submit">Submit</button>
+        <button mat-raised-button class="btn-submit" type="submit">
+          Submit
+        </button>
       </div>
     </form>
   </div>

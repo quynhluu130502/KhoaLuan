@@ -27,6 +27,24 @@
 }
 
 .problem-description {
-  max-height:250px;
-  overflow-y:scroll;
+  max-height: 250px;
+  overflow-y: scroll;
+}
+
+.btn-reset {
+  background-color: #e46a74;
+  border-color: #97bfd6;
+  border-width: 2px;
+}
+
+.btn-save {
+  background-color: #fff;
+  border-color: #97bfd6;
+  border-width: 2px;
+}
+
+.btn-submit {
+  background-color: rgb(7, 198, 212);
+  border-color: #97bfd6;
+  border-width: 2px;
 }
