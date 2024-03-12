@@ -45,11 +45,11 @@ export class QsaDashboardComponent implements OnInit, AfterViewInit {
 
   dataSource = new MatTableDataSource<any>([]);
   displayedColumns: string[] = [
-    'User',
-    'NC_ID',
-    'Status',
-    'Activity',
-    'NC_Aging_Date',
+    'creatorName',
+    'id',
+    'stage',
+    'activity',
+    'agingDate',
   ];
 
   numberOfCharts: number = 3;
@@ -188,6 +188,13 @@ export class QsaDashboardComponent implements OnInit, AfterViewInit {
         );
         element.creatorName = creatorName.result;
         element.agingDate = this.getAgingDate(element);
+        if (element.stage === 3 || element.stage === -1) {
+          element.activity = 'Overdue';
+          element.overDue = true;
+        } else {
+          element.activity = 'On Time';
+          element.overDue = false;
+        }
       }
       this.dataSource.data = res;
     });

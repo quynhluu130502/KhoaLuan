@@ -27,12 +27,7 @@ export class TableTicketComponent implements OnInit, AfterViewInit {
         console.log('NavigationEnd');
       });
   }
-  displayedColumns: string[] = [
-    'NC_ID',
-    'Detected_By_Unit',
-    'Status',
-    'Action_Plan_Due_Date',
-  ];
+  displayedColumns: string[] = ['id', 'detectedByUnit', 'stage', 'dueDate'];
   dataSource = new MatTableDataSource<any>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -59,12 +54,10 @@ export class TableTicketComponent implements OnInit, AfterViewInit {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    console.log(filterValue);
-    // this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    // if (this.dataSource.paginator) {
-    //   this.dataSource.paginator.firstPage();
-    // }
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   exportMyNCToExcel() {
@@ -80,5 +73,9 @@ export class TableTicketComponent implements OnInit, AfterViewInit {
       link.click();
       window.URL.revokeObjectURL(url);
     });
+  }
+
+  reArrangeColumns() {
+    this.displayedColumns = this.displayedColumns.reverse();
   }
 }

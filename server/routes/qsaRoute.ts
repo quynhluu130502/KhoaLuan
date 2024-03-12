@@ -51,7 +51,7 @@ router.patch("/addApps", async (req: Request, res: Response) => {
       res.json({ error: "User not found" });
     }
   } catch (err) {
-    res.json({ error: "User not found" });
+    res.json({ error: "There was an error" });
   }
 });
 

@@ -21,15 +21,24 @@ export class NcgDashboardComponent implements OnInit, AfterViewInit {
 
   dataSource = new MatTableDataSource<any>([]);
   displayedColumns: string[] = [
-    'NC_ID',
-    'Activity',
-    'Status',
-    'Detected_By_Unit',
-    'NC_Type',
+    'id',
+    'activity',
+    'stage',
+    'detectedByUnit',
+    'ncType',
   ];
 
   ngOnInit(): void {
     this._ncgService.getAllNCs().subscribe((res) => {
+      res.forEach((element: any) => {
+        if (element.stage === 3 || element.stage === -1) {
+          element.activity = 'Overdue';
+          element.overDue = true;
+        } else {
+          element.activity = 'On Time';
+          element.overDue = false;
+        }
+      });
       this.dataSource.data = res;
     });
   }

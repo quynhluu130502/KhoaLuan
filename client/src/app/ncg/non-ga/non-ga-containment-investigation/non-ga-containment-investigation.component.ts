@@ -59,15 +59,15 @@ export class NonGaContainmentInvestigationComponent
 
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
   displayedColumns: string[] = [
-    'ID',
-    'Class',
-    'Action_Description',
-    'Department',
+    'id',
+    'class',
+    'actionDescription',
+    'department',
     'Responsible',
-    'Additional_Notify_Person',
-    'Start_Date',
-    'Completion_Date',
-    'Status',
+    'additionalNotifyPerson',
+    'startDate',
+    'completionDate',
+    'status',
     'Edit',
     'Delete',
   ];

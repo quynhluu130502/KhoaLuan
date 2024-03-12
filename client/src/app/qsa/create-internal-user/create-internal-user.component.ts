@@ -197,8 +197,10 @@ export class CreateInternalUserComponent implements OnInit {
     this.userRoleComponents.forEach((component) => {
       applicationRole.push(component.onSubmit());
     });
+    this.enableForm();
     this.inforForm.get('application')?.setValue(applicationRole);
     const inforFormValue = this.inforForm.value;
+    this.disableForm();
     this._qsaService.addApps(inforFormValue).subscribe((res) => {
       if (res.result) {
         if (this.userTable !== undefined) {
