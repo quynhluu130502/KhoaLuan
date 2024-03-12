@@ -16,7 +16,7 @@ const getAllUsers = async (req: Request, res: Response) => {
 
 const createUser = async (req: Request, res: Response) => {
   if (!req.body.email || !req.body.name || !req.body.pass) {
-    return res.status(400).send({ error: "Missing required fields: email, name, pass" });
+    return res.status(400).send({ message: "Missing required fields: email, name, pass" });
   }
   let salt: string = crypto.randomBytes(16).toString("hex");
   let hash: string = crypto.pbkdf2Sync(req.body.pass, salt, 1000, 64, `sha512`).toString(`hex`);
@@ -34,10 +34,10 @@ const createUser = async (req: Request, res: Response) => {
   });
   User.create(user)
     .then((user: any) => {
-      res.json(user);
+      res.json({ result: user, message: "User created" });
     })
     .catch((err: any): void => {
-      console.log(err);
+      res.json({ message: err.message });
     });
 };
 

@@ -70,6 +70,21 @@ export class UserService {
       );
   }
 
+  public createUser(user: User): Observable<any> {
+    const requestOptions: object = {
+      headers: headers,
+    };
+    return this._http
+      .post<any>(`${environment.serverUrl}/user`, user, requestOptions)
+      .pipe(
+        map((res) => {
+          return res as any;
+        }),
+        retry(2),
+        catchError(handleError)
+      );
+  }
+
   public sendContactForm(formData: any): Observable<any> {
     const requestOptions: object = {
       headers: headers,
