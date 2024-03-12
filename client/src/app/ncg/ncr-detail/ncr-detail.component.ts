@@ -72,6 +72,10 @@ export class NCRDetailComponent implements OnInit, OnDestroy {
             if (stage === 2) {
               this.tabGroup.selectedIndex = 2;
             }
+            if (stage === 3 || stage === -1) {
+              this.detailForm.disable();
+              this.investigationForm.disable();
+            }
           }
         }
       })

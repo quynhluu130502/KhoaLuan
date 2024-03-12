@@ -22,11 +22,6 @@ const qsaMenu = [
     icon: 'layout',
     menu: 'Dashboard',
   },
-  {
-    link: '/qsa/help',
-    icon: 'package',
-    menu: 'Contact',
-  },
 ];
 
 const ncgMenu = [

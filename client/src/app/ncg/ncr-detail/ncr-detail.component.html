@@ -69,7 +69,7 @@
           </button>
         </div>
         <div class="me-3">
-          <button mat-raised-button color="primary" (click)="onClone()">
+          <button mat-raised-button class="btn-clone" (click)="onClone()">
             Clone
           </button>
         </div>
@@ -88,17 +88,17 @@
           </button>
         </div>
         <div class="me-3" *ngIf="this.stage.value === 0">
-          <button mat-raised-button color="accent" (click)="onAccept()">
+          <button mat-raised-button class="btn-submit" (click)="onAccept()">
             Accept
           </button>
         </div>
         <div class="me-3" *ngIf="this.stage.value === 1">
-          <button mat-raised-button color="accent" (click)="onSolve()">
+          <button mat-raised-button class="btn-submit" (click)="onSolve()">
             Solve
           </button>
         </div>
         <div class="me-3" *ngIf="this.stage.value === 2">
-          <button mat-raised-button color="accent" (click)="onClose()">
+          <button mat-raised-button class="btn-submit" (click)="onClose()">
             Close
           </button>
         </div>

@@ -6,6 +6,10 @@ mat-form-field {
   width: 45%;
 }
 
+.btn-reset {
+  background-color: #03c9d7;
+}
+
 :host ::ng-deep .mat-mdc-card-header-text {
   width: 100%;
   font-size: 20px;

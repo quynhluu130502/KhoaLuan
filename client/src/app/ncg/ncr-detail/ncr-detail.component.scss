@@ -2,6 +2,10 @@
   background-color: #e5e8ec;
   box-shadow: none !important;
 }
+.btn-clone {
+  border: 2px solid #ffd740;
+  color: #ffd740;
+}
 
 .second-btn-primary {
   border: 2px solid #1687fb !important;
@@ -11,6 +15,11 @@
 .second-btn-warn {
   border: 1px solid #f44336 !important;
   color: #f44336;
+}
+
+.btn-submit {
+  color: #fff;
+  background-color: #03c9d7;
 }
 
 /* Not recommended for accessibility */
