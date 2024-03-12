@@ -23,9 +23,9 @@
 // Sidebar
 // @=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@=@
 
-mat-sidenav {
-  top: 64px !important;
-}
+// mat-sidenav {
+//   top: 65px !important;
+// }
 
 mat-sidenav-content {
   top: 45px;
@@ -38,6 +38,10 @@ mat-sidenav-content {
   border: 0;
   z-index: 10;
   background-color: #fff;
+
+  ul {
+    margin-top: 5rem;
+  }
 
   .list-group {
     display: flex;

@@ -25,6 +25,29 @@ export class LandingPageComponent implements OnInit {
       this._router.navigate(['/login']);
       return;
     }
+    this._authService.getRefreshToken().subscribe({
+      next: (res) => {
+        if (res.token) {
+          localStorage.setItem('token', res.token);
+          this.getUserType();
+          return;
+        }
+        this._toastr.info('Please login to view this page', 'Info', {
+          timeOut: 3000,
+        });
+        this._router.navigate(['/login']);
+      },
+      error: (err) => {
+        this._toastr.error('Please login to view this page', 'Error', {
+          timeOut: 3000,
+        });
+        this._router.navigate(['/login']);
+        console.log(err);
+      },
+    });
+  }
+
+  getUserType() {
     this._authService.getProtected().subscribe({
       next: (res) => {
         if (res.result) {
