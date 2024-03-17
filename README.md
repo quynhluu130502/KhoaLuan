@@ -7,7 +7,7 @@ Open 2 terminals, one for the client and one for the server.
 - On the server, use the command "npm run dev."
 - With the client, use the command "ng serve --o."
 
-Note: I do not push the.env from the server folder to Github, and you must have mkcrt to generate a certificate for the HTTPS connection on the server. Contact me at ***viethungitmi@gmail.com*** for more instructions.
+Note: I do not push the.env from the server folder to Github, and you must have mkcrt to generate a certificate for the HTTPS connection on the server. Contact me at ***quynhluu1305@gmail.com*** for more instructions.
 
 # KhoaLuan
 

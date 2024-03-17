@@ -157,9 +157,9 @@ let ncDetailSchema = new mongoose.Schema({
 ncDetailSchema.pre("save", async function (next) {
   if (this.isNew) {
     let year = new Date().getFullYear();
-    let id = "NC-2" + Math.floor(Math.random() * 100000000);
+    let id = "NC-24" + Math.floor(Math.random() * 10000000);
     while (await mongoose.models.NCDetail.findOne({ id: id })) {
-      id = "NC-2" + Math.floor(Math.random() * 100000000);
+      id = "NC-2" + Math.floor(Math.random() * 10000000);
     }
     this.id = id;
     next();

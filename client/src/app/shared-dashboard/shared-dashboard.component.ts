@@ -135,7 +135,7 @@ export class SharedDashboardComponent implements OnInit {
     this.ncStageOptions = {
       ...this.ncStageOptions,
       title: {
-        text: 'NC Stages',
+        text: 'NC Status',
       },
       tooltip: {
         pointFormat: '{point.name}: <b>{point.y} NCs</b>',

@@ -178,8 +178,8 @@ export class NonGaNcDetailsComponent implements OnInit {
         this.device = selectedProductType[0].mdDevice;
       } else {
         this.device = [];
+        this.deviceControl.setValue('');
       }
-      this.deviceControl.setValue('');
     });
     // Device
     this.filteredDevice = this.deviceControl.valueChanges.pipe(
@@ -228,8 +228,8 @@ export class NonGaNcDetailsComponent implements OnInit {
         this.symptomCodeL1s = selectedSymptomCodeL0[0].mdSymptomCodeL1s;
       } else {
         this.symptomCodeL1s = [];
+        this.symptomCodeL1Control.setValue('');
       }
-      this.symptomCodeL1Control.setValue('');
     });
     // Symptom Code L1
     this.filteredSymptomCodeL1 = this.symptomCodeL1Control.valueChanges.pipe(

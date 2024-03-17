@@ -87,6 +87,8 @@ if (env === "production") {
 // 404 Error Handler
 import createError from "http-errors";
 app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
   // Error goes via `next()` method
   setImmediate(() => {
     // next(new Error("Something went wrong"));
