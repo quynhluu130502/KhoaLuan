@@ -34,7 +34,8 @@ const getInternalUers = async (req: Request, res: Response) => {
 
 const uploadFile = async (req: Request, res: Response, next: NextFunction) => {
   const reqFiles: string[] = [];
-  const url = req.protocol + "://" + req.get("host");
+  // const url = req.protocol + "://" + req.get("host");
+  const url = "https://" + req.get("host");
   if (req.files && Array.isArray(req.files)) {
     for (let i = 0; i < req.files.length; i++) {
       reqFiles.push(url + "/public/" + req.files[i].filename);
