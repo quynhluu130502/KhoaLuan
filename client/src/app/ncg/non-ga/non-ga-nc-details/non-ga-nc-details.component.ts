@@ -107,6 +107,7 @@ export class NonGaNcDetailsComponent implements OnInit {
   deviceControl = new FormControl<string | any>('', Validators.required);
   device: any[] = [];
   filteredDevice: Observable<any[]> = new Observable<any[]>();
+  prevDevice: any;
 
   // Symptom Code L0
   symptomCodeL0Control = new FormControl('', Validators.required);
@@ -117,6 +118,7 @@ export class NonGaNcDetailsComponent implements OnInit {
   symptomCodeL1Control = new FormControl('', Validators.required);
   symptomCodeL1s: any[] = [];
   filteredSymptomCodeL1: Observable<any[]> = new Observable<any[]>();
+  prevSymptomCodeL0: any;
 
   // Location Where Detected
   locationWhereDetectedControl = new FormControl('', Validators.required);
@@ -178,13 +180,19 @@ export class NonGaNcDetailsComponent implements OnInit {
         this.device = selectedProductType[0].mdDevice;
       } else {
         this.device = [];
-        this.deviceControl.setValue('');
       }
+      this.deviceControl.setValue('');
     });
     // Device
     this.filteredDevice = this.deviceControl.valueChanges.pipe(
       startWith(''),
       map((value) => {
+        if (value !== '') {
+          this.prevDevice = value;
+        }
+        if (value == '' && this.prevDevice && this.deviceControl.disabled) {
+          this.deviceControl.setValue(this.prevDevice);
+        }
         const name = typeof value === 'string' ? value : value?.code;
         return name ? this._filterDevice(name as string) : this.device.slice();
       }),
@@ -228,13 +236,23 @@ export class NonGaNcDetailsComponent implements OnInit {
         this.symptomCodeL1s = selectedSymptomCodeL0[0].mdSymptomCodeL1s;
       } else {
         this.symptomCodeL1s = [];
-        this.symptomCodeL1Control.setValue('');
       }
+      this.symptomCodeL1Control.setValue('');
     });
     // Symptom Code L1
     this.filteredSymptomCodeL1 = this.symptomCodeL1Control.valueChanges.pipe(
       startWith(''),
       map((value: any) => {
+        if (value !== '') {
+          this.prevSymptomCodeL0 = value;
+        }
+        if (
+          value == '' &&
+          this.prevSymptomCodeL0 &&
+          this.symptomCodeL1Control.disabled
+        ) {
+          this.symptomCodeL1Control.setValue(this.prevSymptomCodeL0);
+        }
         const name = typeof value === 'string' ? value : value?.code;
         return name
           ? this._filterSymptomCodeL1(name as string)

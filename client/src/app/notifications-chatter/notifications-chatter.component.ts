@@ -16,7 +16,7 @@ export class NotificationsChatterComponent implements OnInit {
   ngOnInit(): void {
     this._userService.getNotifications().subscribe((res) => {
       if (res.result) {
-        this.notifications = res.result;
+        this.notifications = res.result.reverse();
         this.calNotSeen();
         return;
       }
