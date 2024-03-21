@@ -44,7 +44,7 @@ const sendMailToValidator = async (nc: any) => {
   const mailOptions = {
     from: "quynhluu1305@gmail.com", // sender address
     template: "index", // the name of the template file, i.e., email.handlebars
-    to: ["quynhluu1305@gmail.com", "younghungold@gmail.com"],
+    to: ["quynhluu1305@gmail.com", "quynhln20406c@st.uel.edu.vn"],
     subject: `A new NC has been creadted by ${creatorName} and assigned to you`,
     context: {
       ncId: nc.id,
@@ -68,7 +68,7 @@ const sendContactForm = async (req: Request, res: Response) => {
   const mailOptions = {
     from: req.body.email,
     template: "contact",
-    to: ["quynhluu1305@gmail.com", "younghungold@gmail.com"],
+    to: ["quynhluu1305@gmail.com", "quynhln20406c@st.uel.edu.vn"],
     subject: `${req.body.subject} - ${req.body.fullName}`,
     context: {
       fullName: req.body.fullName,
