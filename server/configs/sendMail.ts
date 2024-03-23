@@ -19,6 +19,9 @@ var transporter = nodemailer.createTransport({
     user: process.env.MAIL_USERNAME!,
     pass: process.env.MAIL_PASSWORD!,
   },
+  // tls: {
+  //   rejectUnauthorized: false
+  // }
 });
 
 const viewPath = path.resolve(__dirname, "./templates/views/");
@@ -40,17 +43,19 @@ const handlebarOptions = {
 transporter.use("compile", hbs(handlebarOptions as NodemailerExpressHandlebarsOptions));
 
 const sendMailToValidator = async (nc: any) => {
-  const creatorName = await ncgController.getNameBySSO(nc.creator);
+  const validatorInfo = await ncgController.getUserBySSO(nc.validator);
+  const validatorName = validatorInfo.name;
+  const validatorEmail = validatorInfo.email !== "quynhluu1305@gmail.com" && validatorInfo.email !== "quynhln20406c@st.uel.edu.vn" ? validatorInfo.email : "";
   const mailOptions = {
     from: "quynhluu1305@gmail.com", // sender address
     template: "index", // the name of the template file, i.e., email.handlebars
-    to: ["quynhluu1305@gmail.com", "quynhln20406c@st.uel.edu.vn"],
-    subject: `A new NC has been creadted by ${creatorName} and assigned to you`,
+    to: ["quynhluu1305@gmail.com", "quynhln20406c@st.uel.edu.vn", `${validatorEmail}`],
+    subject: `A new NC has been creadted by ${validatorName} and assigned to you`,
     context: {
       ncId: nc.id,
       ncProblemTitle: nc.problemTitle,
       ncStatus: Stage[nc.stage.toString() as keyof typeof Stage],
-      ncCreatedBy: creatorName,
+      ncCreatedBy: validatorName,
       ncCreatedDate: nc.createdDate,
     },
     // cc: "email@gmail.com",

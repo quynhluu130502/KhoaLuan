@@ -43,7 +43,9 @@ export class CreateUserComponent implements OnInit {
 
   onSubmit() {
     const newUser = this.registerForm.value as User;
+    this.registerForm.disable();
     this._userService.createUser(newUser).subscribe((res) => {
+      this.registerForm.enable();
       if (res.result) {
         this._toastr.success('User created successfully', 'Success');
         this.openConfirmModal().then((outcome) => {

@@ -231,6 +231,15 @@ const getMyNCs = async (req: Request, res: Response) => {
   res.json(ncDetails);
 };
 
+const getUserBySSO = async (sso: string) => {
+  const user = await User.findOne({ sso: sso });
+  if (user) {
+    return user;
+  } else {
+    return null;
+  }
+};
+
 const getNameBySSO = async (sso: string) => {
   const user = await User.findOne({ sso: sso });
   if (user) {
@@ -362,6 +371,7 @@ const ncgController = {
   closeNC,
   deleteOneNC,
   getMyNCs,
+  getUserBySSO,
   getNameBySSO,
   getNameById,
   exportMyNCToExcel,
