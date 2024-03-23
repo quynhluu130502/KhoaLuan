@@ -44,18 +44,19 @@ transporter.use("compile", hbs(handlebarOptions as NodemailerExpressHandlebarsOp
 
 const sendMailToValidator = async (nc: any) => {
   const validatorInfo = await ncgController.getUserBySSO(nc.validator);
+  const creatorName = await ncgController.getNameBySSO(nc.creator);
   const validatorName = validatorInfo.name;
   const validatorEmail = validatorInfo.email !== "quynhluu1305@gmail.com" && validatorInfo.email !== "quynhln20406c@st.uel.edu.vn" ? validatorInfo.email : "";
   const mailOptions = {
     from: "quynhluu1305@gmail.com", // sender address
     template: "index", // the name of the template file, i.e., email.handlebars
     to: ["quynhluu1305@gmail.com", "quynhln20406c@st.uel.edu.vn", `${validatorEmail}`],
-    subject: `A new NC has been creadted by ${validatorName} and assigned to you`,
+    subject: `A new NC has been creadted by ${creatorName} and assigned to you - ${validatorName}`,
     context: {
       ncId: nc.id,
       ncProblemTitle: nc.problemTitle,
       ncStatus: Stage[nc.stage.toString() as keyof typeof Stage],
-      ncCreatedBy: validatorName,
+      ncCreatedBy: creatorName,
       ncCreatedDate: nc.createdDate,
     },
     // cc: "email@gmail.com",
