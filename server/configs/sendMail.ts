@@ -57,7 +57,7 @@ const sendMailToValidator = async (nc: any) => {
       ncProblemTitle: nc.problemTitle,
       ncStatus: Stage[nc.stage.toString() as keyof typeof Stage],
       ncCreatedBy: creatorName,
-      ncCreatedDate: nc.createdDate,
+      ncCreatedDate: new Date(nc.createdDate).toUTCString(),
     },
     // cc: "email@gmail.com",
     // bcc: "email@gmail.com",
