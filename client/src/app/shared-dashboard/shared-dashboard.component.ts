@@ -16,7 +16,7 @@ export class SharedDashboardComponent implements OnInit {
   constructor(private _ncgService: NcgService, public platform: Platform) {}
   @ViewChild('actionStatusChart') actionStatusChart!: Highcharts.Chart;
   openNCs: any[] = [];
-  solvedNCs: any[] = [];
+  closedNCs: any[] = [];
   onTimeNCs: any[] = [];
   overDueNCs: any[] = [];
   // Action's status chart
@@ -59,12 +59,18 @@ export class SharedDashboardComponent implements OnInit {
   getNCs(): void {
     this._ncgService.getAllNCs().subscribe((res) => {
       res.forEach((nc: any) => {
+        const dueDate = new Date(nc.dueDate);
         // Define the status of the NC
         if (nc.stage === 3) {
-          this.solvedNCs.push(nc);
+          this.closedNCs.push(nc);
+          const closedDate = new Date(nc.closedDate);
+          if (closedDate < dueDate) {
+            this.onTimeNCs.push(nc);
+          } else {
+            this.overDueNCs.push(nc);
+          }
         } else if (nc.stage !== -1) {
           this.openNCs.push(nc);
-          const dueDate = new Date(nc.dueDate);
           // Compare the due date with the current date and push the NC to the corresponding array
           if (new Date() > dueDate) {
             this.overDueNCs.push(nc);

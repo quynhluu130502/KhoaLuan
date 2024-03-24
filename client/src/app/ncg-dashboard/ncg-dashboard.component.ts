@@ -31,12 +31,26 @@ export class NcgDashboardComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this._ncgService.getAllNCs().subscribe((res) => {
       res.forEach((element: any) => {
-        if (element.stage === 3 || element.stage === -1) {
+        if (element.stage === -1) {
           element.activity = 'Overdue';
           element.overDue = true;
-        } else {
+        }
+        if (element.stage === 3 && new Date(element.closedDate) < new Date()) {
           element.activity = 'On Time';
           element.overDue = false;
+        }
+        if (element.stage === 3 && new Date(element.closedDate) > new Date()) {
+          element.activity = 'Overdue';
+          element.overDue = true;
+        }
+        if (element.stage !== -1 && element.stage !== -3) {
+          if (new Date(element.dueDate) < new Date()) {
+            element.activity = 'Overdue';
+            element.overDue = true;
+          } else {
+            element.activity = 'On Time';
+            element.overDue = false;
+          }
         }
       });
       this.dataSource.data = res;
