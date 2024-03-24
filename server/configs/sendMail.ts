@@ -51,7 +51,7 @@ const sendMailToValidator = async (nc: any) => {
     from: "quynhluu1305@gmail.com", // sender address
     template: "index", // the name of the template file, i.e., email.handlebars
     to: ["quynhluu1305@gmail.com", "quynhln20406c@st.uel.edu.vn", `${validatorEmail}`],
-    subject: `A new NC has been creadted by ${creatorName} and assigned to you - ${validatorName}`,
+    subject: `A new NC has been created by ${creatorName} and assigned to you - ${validatorName}`,
     context: {
       ncId: nc.id,
       ncProblemTitle: nc.problemTitle,
