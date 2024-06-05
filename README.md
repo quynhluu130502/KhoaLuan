@@ -7,11 +7,15 @@ You can experience the demo through:
   - The admin account has an account ID of 100000 and a password of 123456.
   - A regular account has an account ID of 100002 and a password 123456.
 - Server:https://khoaluanserver.onrender.com
-- Demo video:
+- Demo video: 
+
+https://github.com/viethungle0503/KhoaLuan/assets/79963761/843f6476-d29e-481f-9c19-55209c85bd6b
+
+
 
 # Setup
 
-After you use "git clone https://github.com/quynhluu130502/KhoaLuan.git," you will have a folder named KhoaLuan. Open with VSCode or any editor you have.
+After you use "git clone https://github.com/viethungle0503/KhoaLuan.git," you will have a folder named KhoaLuan. Open with VSCode or any editor you have.
 
 Open 2 terminals, one for the client and one for the server.
 
