@@ -1,3 +1,14 @@
+# Introduction
+
+This is a project that I developed using someone else's GitHub account. This project is used in the final thesis defense. After the project is completed, the ownership rights are returned to me.
+You can experience the demo through:
+
+- Client: https://khoaluan-r8ub.onrender.com
+  - The admin account has an account ID of 100000 and a password of 123456.
+  - A regular account has an account ID of 100002 and a password 123456.
+- Server:https://khoaluanserver.onrender.com
+- Demo video:
+
 # Setup
 
 After you use "git clone https://github.com/quynhluu130502/KhoaLuan.git," you will have a folder named KhoaLuan. Open with VSCode or any editor you have.
@@ -7,7 +18,7 @@ Open 2 terminals, one for the client and one for the server.
 - On the server, use the command "npm run dev."
 - With the client, use the command "ng serve --o."
 
-Note: I do not push the.env from the server folder to Github, and you must have mkcrt to generate a certificate for the HTTPS connection on the server. Contact me at ***quynhluu1305@gmail.com*** for more instructions.
+Note: I do not push the.env from the server folder to Github, and you must have mkcrt to generate a certificate for the HTTPS connection on the server. Contact me at viethungitmi@gmail.com if you want for more instructions.
 
 # KhoaLuan
 
